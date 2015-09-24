@@ -7,21 +7,110 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420C75D91BB4108F0025E1D8 /* CCDownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C75D81BB4108F0025E1D8 /* CCDownloadCell.swift */; };
+		420C75DC1BB41AB50025E1D8 /* DownloadTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */; };
+		420C75DE1BB421900025E1D8 /* CCVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C75DD1BB421900025E1D8 /* CCVideoModel.swift */; };
+		420C75E11BB430720025E1D8 /* CCAboutusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C75E01BB430720025E1D8 /* CCAboutusView.swift */; };
+		420C75E31BB4308E0025E1D8 /* CCAboutusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420C75E21BB4308E0025E1D8 /* CCAboutusView.xib */; };
 		427A65931BAD0D8A004A0627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427A65921BAD0D8A004A0627 /* AppDelegate.swift */; };
-		427A65951BAD0D8A004A0627 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427A65941BAD0D8A004A0627 /* ViewController.swift */; };
 		427A65981BAD0D8A004A0627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427A65961BAD0D8A004A0627 /* Main.storyboard */; };
-		427A659A1BAD0D8A004A0627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 427A65991BAD0D8A004A0627 /* Assets.xcassets */; };
 		427A659D1BAD0D8A004A0627 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427A659B1BAD0D8A004A0627 /* LaunchScreen.storyboard */; };
+		427A65AE1BAD1061004A0627 /* CCMainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427A65AD1BAD1061004A0627 /* CCMainTabbarController.swift */; };
+		4286B2551BAD3FB30015EDDA /* localPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4286B2541BAD3FB30015EDDA /* localPlist.plist */; };
+		4286B26B1BAD407E0015EDDA /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B25A1BAD407E0015EDDA /* kr-video-player-close@2x.png */; };
+		4286B26C1BAD407E0015EDDA /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B25B1BAD407E0015EDDA /* kr-video-player-close@3x.png */; };
+		4286B26D1BAD407E0015EDDA /* kr-video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B25C1BAD407E0015EDDA /* kr-video-player-fullscreen@2x.png */; };
+		4286B26E1BAD407E0015EDDA /* kr-video-player-fullscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B25D1BAD407E0015EDDA /* kr-video-player-fullscreen@3x.png */; };
+		4286B26F1BAD407E0015EDDA /* kr-video-player-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B25E1BAD407E0015EDDA /* kr-video-player-pause@2x.png */; };
+		4286B2701BAD407E0015EDDA /* kr-video-player-pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B25F1BAD407E0015EDDA /* kr-video-player-pause@3x.png */; };
+		4286B2711BAD407E0015EDDA /* kr-video-player-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B2601BAD407E0015EDDA /* kr-video-player-play@2x.png */; };
+		4286B2721BAD407E0015EDDA /* kr-video-player-play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B2611BAD407E0015EDDA /* kr-video-player-play@3x.png */; };
+		4286B2731BAD407E0015EDDA /* kr-video-player-point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B2621BAD407E0015EDDA /* kr-video-player-point@2x.png */; };
+		4286B2741BAD407E0015EDDA /* kr-video-player-point@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B2631BAD407E0015EDDA /* kr-video-player-point@3x.png */; };
+		4286B2751BAD407E0015EDDA /* kr-video-player-shrinkscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B2641BAD407E0015EDDA /* kr-video-player-shrinkscreen@2x.png */; };
+		4286B2761BAD407E0015EDDA /* kr-video-player-shrinkscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B2651BAD407E0015EDDA /* kr-video-player-shrinkscreen@3x.png */; };
+		428711601BAEB64300A89536 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287115F1BAEB64300A89536 /* libbz2.dylib */; };
+		428711621BAEB64E00A89536 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711611BAEB64E00A89536 /* libc++.dylib */; };
+		428711641BAEB65600A89536 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711631BAEB65600A89536 /* libiconv.dylib */; };
+		428711661BAEB65E00A89536 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711651BAEB65E00A89536 /* libstdc++.dylib */; };
+		428711681BAEB66400A89536 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711671BAEB66400A89536 /* libz.dylib */; };
+		4287116A1BAEB66A00A89536 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711691BAEB66A00A89536 /* AudioToolbox.framework */; };
+		4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116B1BAEB67200A89536 /* CoreAudio.framework */; };
+		4287116E1BAEB67800A89536 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116D1BAEB67800A89536 /* AVFoundation.framework */; };
+		428711701BAEB67F00A89536 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116F1BAEB67F00A89536 /* CoreGraphics.framework */; };
+		428711721BAEB70B00A89536 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711711BAEB70B00A89536 /* libstdc++.6.dylib */; };
+		42890BD81BB2BC6D0044519A /* CCDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890BD71BB2BC6D0044519A /* CCDownloadController.swift */; };
+		42A3151C1BAE93A100A1F1F7 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */; };
+		42C648CF1BAEDB8C000D5764 /* 1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 42C648CE1BAEDB8C000D5764 /* 1.mov */; };
+		42C648DA1BAEDCDC000D5764 /* KRVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C648D71BAEDCDC000D5764 /* KRVideoPlayerControlView.m */; };
+		42C648DF1BAEE336000D5764 /* CCMediaListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C648DE1BAEE336000D5764 /* CCMediaListController.swift */; };
+		42C648E21BAFBA7B000D5764 /* CCMediaSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C648E11BAFBA7B000D5764 /* CCMediaSelectView.swift */; };
+		42D67D431BB25F3900B1C81D /* MRVLCMediaController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 42D67D421BB25F3900B1C81D /* MRVLCMediaController.mm */; };
+		42D67D661BB267C300B1C81D /* CCLaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D67D651BB267C300B1C81D /* CCLaunchController.swift */; };
+		42D67D681BB267E700B1C81D /* CCMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D67D671BB267E700B1C81D /* CCMacro.swift */; };
+		42DE72B41BAD1A52002FFA94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DE72B31BAD1A52002FFA94 /* Assets.xcassets */; };
+		42FB6D4D1BB1105200AFA95D /* CCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D4C1BB1105200AFA95D /* CCBaseNavigationController.swift */; };
+		42FB6D4F1BB1130C00AFA95D /* CCNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D4E1BB1130C00AFA95D /* CCNewsController.swift */; };
+		42FB6D531BB13BAD00AFA95D /* CCNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D521BB13BAD00AFA95D /* CCNetworkController.swift */; };
+		42FB6D551BB13C5400AFA95D /* CCMoreTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D541BB13C5400AFA95D /* CCMoreTableController.swift */; };
+		86B1C57553506A939263E715 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AED69034027756B014FF66D /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1DFF7DE1B2A0ADC402D36B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		420C75D81BB4108F0025E1D8 /* CCDownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadCell.swift; sourceTree = "<group>"; };
+		420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTool.swift; sourceTree = "<group>"; };
+		420C75DD1BB421900025E1D8 /* CCVideoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoModel.swift; sourceTree = "<group>"; };
+		420C75E01BB430720025E1D8 /* CCAboutusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCAboutusView.swift; sourceTree = "<group>"; };
+		420C75E21BB4308E0025E1D8 /* CCAboutusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCAboutusView.xib; sourceTree = "<group>"; };
 		427A658F1BAD0D8A004A0627 /* iCCUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCCUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		427A65921BAD0D8A004A0627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		427A65941BAD0D8A004A0627 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		427A65921BAD0D8A004A0627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../AppDelegate.swift; sourceTree = "<group>"; };
 		427A65971BAD0D8A004A0627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		427A65991BAD0D8A004A0627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		427A659C1BAD0D8A004A0627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		427A659E1BAD0D8A004A0627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		427A659E1BAD0D8A004A0627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Info.plist; sourceTree = "<group>"; };
+		427A65AD1BAD1061004A0627 /* CCMainTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMainTabbarController.swift; sourceTree = "<group>"; };
+		4286B2541BAD3FB30015EDDA /* localPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = localPlist.plist; path = ../localPlist.plist; sourceTree = "<group>"; };
+		4286B25A1BAD407E0015EDDA /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
+		4286B25B1BAD407E0015EDDA /* kr-video-player-close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@3x.png"; sourceTree = "<group>"; };
+		4286B25C1BAD407E0015EDDA /* kr-video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
+		4286B25D1BAD407E0015EDDA /* kr-video-player-fullscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@3x.png"; sourceTree = "<group>"; };
+		4286B25E1BAD407E0015EDDA /* kr-video-player-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@2x.png"; sourceTree = "<group>"; };
+		4286B25F1BAD407E0015EDDA /* kr-video-player-pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@3x.png"; sourceTree = "<group>"; };
+		4286B2601BAD407E0015EDDA /* kr-video-player-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@2x.png"; sourceTree = "<group>"; };
+		4286B2611BAD407E0015EDDA /* kr-video-player-play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@3x.png"; sourceTree = "<group>"; };
+		4286B2621BAD407E0015EDDA /* kr-video-player-point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@2x.png"; sourceTree = "<group>"; };
+		4286B2631BAD407E0015EDDA /* kr-video-player-point@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@3x.png"; sourceTree = "<group>"; };
+		4286B2641BAD407E0015EDDA /* kr-video-player-shrinkscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@2x.png"; sourceTree = "<group>"; };
+		4286B2651BAD407E0015EDDA /* kr-video-player-shrinkscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@3x.png"; sourceTree = "<group>"; };
+		4287115F1BAEB64300A89536 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
+		428711611BAEB64E00A89536 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		428711631BAEB65600A89536 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		428711651BAEB65E00A89536 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		428711671BAEB66400A89536 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		428711691BAEB66A00A89536 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4287116B1BAEB67200A89536 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		4287116D1BAEB67800A89536 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4287116F1BAEB67F00A89536 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		428711711BAEB70B00A89536 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		42890BD71BB2BC6D0044519A /* CCDownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadController.swift; sourceTree = "<group>"; };
+		42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = ../../../../../../Resources/SDK/MobileVLCKit.framework; sourceTree = "<group>"; };
+		42C648CE1BAEDB8C000D5764 /* 1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 1.mov; sourceTree = "<group>"; };
+		42C648D61BAEDCDC000D5764 /* KRVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerControlView.h; sourceTree = "<group>"; };
+		42C648D71BAEDCDC000D5764 /* KRVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRVideoPlayerControlView.m; sourceTree = "<group>"; };
+		42C648DD1BAEDD79000D5764 /* Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Bridging_Header.h; path = ../Vendor/Classes/Bridging_Header.h; sourceTree = "<group>"; };
+		42C648DE1BAEE336000D5764 /* CCMediaListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCMediaListController.swift; path = ../CCMediaListController.swift; sourceTree = "<group>"; };
+		42C648E11BAFBA7B000D5764 /* CCMediaSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMediaSelectView.swift; sourceTree = "<group>"; };
+		42D67D411BB25F3900B1C81D /* MRVLCMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRVLCMediaController.h; sourceTree = "<group>"; };
+		42D67D421BB25F3900B1C81D /* MRVLCMediaController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MRVLCMediaController.mm; sourceTree = "<group>"; };
+		42D67D651BB267C300B1C81D /* CCLaunchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLaunchController.swift; sourceTree = "<group>"; };
+		42D67D671BB267E700B1C81D /* CCMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMacro.swift; sourceTree = "<group>"; };
+		42DE72B31BAD1A52002FFA94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42FB6D4C1BB1105200AFA95D /* CCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBaseNavigationController.swift; sourceTree = "<group>"; };
+		42FB6D4E1BB1130C00AFA95D /* CCNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNewsController.swift; sourceTree = "<group>"; };
+		42FB6D521BB13BAD00AFA95D /* CCNetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNetworkController.swift; sourceTree = "<group>"; };
+		42FB6D541BB13C5400AFA95D /* CCMoreTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMoreTableController.swift; sourceTree = "<group>"; };
+		7AED69034027756B014FF66D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF23A94C6BA301B4E5079EC1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +118,75 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				428711721BAEB70B00A89536 /* libstdc++.6.dylib in Frameworks */,
+				428711701BAEB67F00A89536 /* CoreGraphics.framework in Frameworks */,
+				4287116E1BAEB67800A89536 /* AVFoundation.framework in Frameworks */,
+				4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */,
+				4287116A1BAEB66A00A89536 /* AudioToolbox.framework in Frameworks */,
+				428711681BAEB66400A89536 /* libz.dylib in Frameworks */,
+				428711661BAEB65E00A89536 /* libstdc++.dylib in Frameworks */,
+				428711641BAEB65600A89536 /* libiconv.dylib in Frameworks */,
+				428711621BAEB64E00A89536 /* libc++.dylib in Frameworks */,
+				428711601BAEB64300A89536 /* libbz2.dylib in Frameworks */,
+				42A3151C1BAE93A100A1F1F7 /* MobileVLCKit.framework in Frameworks */,
+				86B1C57553506A939263E715 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33E5060F3617C30258A25902 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				428711711BAEB70B00A89536 /* libstdc++.6.dylib */,
+				4287116F1BAEB67F00A89536 /* CoreGraphics.framework */,
+				4287116D1BAEB67800A89536 /* AVFoundation.framework */,
+				4287116B1BAEB67200A89536 /* CoreAudio.framework */,
+				428711691BAEB66A00A89536 /* AudioToolbox.framework */,
+				428711671BAEB66400A89536 /* libz.dylib */,
+				428711651BAEB65E00A89536 /* libstdc++.dylib */,
+				428711631BAEB65600A89536 /* libiconv.dylib */,
+				428711611BAEB64E00A89536 /* libc++.dylib */,
+				4287115F1BAEB64300A89536 /* libbz2.dylib */,
+				7AED69034027756B014FF66D /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3518C6FF5B92F85DA0B079FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF23A94C6BA301B4E5079EC1 /* Pods.debug.xcconfig */,
+				0E1DFF7DE1B2A0ADC402D36B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		420C75DA1BB41A6A0025E1D8 /* ToolKit */ = {
+			isa = PBXGroup;
+			children = (
+				420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */,
+			);
+			path = ToolKit;
+			sourceTree = "<group>";
+		};
+		420C75DF1BB430590025E1D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				420C75E01BB430720025E1D8 /* CCAboutusView.swift */,
+				420C75E21BB4308E0025E1D8 /* CCAboutusView.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		427A65861BAD0D8A004A0627 = {
 			isa = PBXGroup;
 			children = (
 				427A65911BAD0D8A004A0627 /* iCCUT */,
 				427A65901BAD0D8A004A0627 /* Products */,
+				3518C6FF5B92F85DA0B079FE /* Pods */,
+				33E5060F3617C30258A25902 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +201,248 @@
 		427A65911BAD0D8A004A0627 /* iCCUT */ = {
 			isa = PBXGroup;
 			children = (
+				427A65A61BAD0E91004A0627 /* Classes */,
+			);
+			path = iCCUT;
+			sourceTree = "<group>";
+		};
+		427A65A61BAD0E91004A0627 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				420C75DA1BB41A6A0025E1D8 /* ToolKit */,
+				427A65AB1BAD0F37004A0627 /* Resource */,
+				4286B2561BAD3FDF0015EDDA /* Vendor */,
+				427A65AA1BAD0F16004A0627 /* Common */,
+				427A65A91BAD0EFC004A0627 /* Model */,
+				427A65A81BAD0EEC004A0627 /* View */,
+				427A65A71BAD0ED4004A0627 /* Controller */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		427A65A71BAD0ED4004A0627 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				427A65AC1BAD0FB8004A0627 /* Main */,
+				427A65AF1BAD1283004A0627 /* News */,
+				427A65B21BAD12AC004A0627 /* Network */,
+				427A65B01BAD1296004A0627 /* Media */,
+				427A65B11BAD12A1004A0627 /* More */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		427A65A81BAD0EEC004A0627 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		427A65A91BAD0EFC004A0627 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		427A65AA1BAD0F16004A0627 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				42D67D641BB2677B00B1C81D /* Launch */,
+				42C648E31BAFC655000D5764 /* Macro */,
+				42C648DD1BAEDD79000D5764 /* Bridging_Header.h */,
 				427A65921BAD0D8A004A0627 /* AppDelegate.swift */,
-				427A65941BAD0D8A004A0627 /* ViewController.swift */,
 				427A65961BAD0D8A004A0627 /* Main.storyboard */,
-				427A65991BAD0D8A004A0627 /* Assets.xcassets */,
 				427A659B1BAD0D8A004A0627 /* LaunchScreen.storyboard */,
 				427A659E1BAD0D8A004A0627 /* Info.plist */,
 			);
-			path = iCCUT;
+			path = Common;
+			sourceTree = "<group>";
+		};
+		427A65AB1BAD0F37004A0627 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				42890BD41BB2B37E0044519A /* Plist */,
+				42C648CE1BAEDB8C000D5764 /* 1.mov */,
+				42DE72B31BAD1A52002FFA94 /* Assets.xcassets */,
+			);
+			name = Resource;
+			path = /Users/maru/Documents/Projective/iCCUT/iCCUT/Classes/Resource;
+			sourceTree = "<absolute>";
+		};
+		427A65AC1BAD0FB8004A0627 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				427A65AD1BAD1061004A0627 /* CCMainTabbarController.swift */,
+				42FB6D4C1BB1105200AFA95D /* CCBaseNavigationController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		427A65AF1BAD1283004A0627 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				42FB6D4E1BB1130C00AFA95D /* CCNewsController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		427A65B01BAD1296004A0627 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				42890BD61BB2BC2A0044519A /* Controller */,
+				42890BD51BB2BC1F0044519A /* Model */,
+				42C648E01BAFBA36000D5764 /* View */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		427A65B11BAD12A1004A0627 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				420C75DF1BB430590025E1D8 /* View */,
+				42FB6D541BB13C5400AFA95D /* CCMoreTableController.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		427A65B21BAD12AC004A0627 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				42DE72CD1BAD36DD002FFA94 /* View */,
+				42DE72BF1BAD3682002FFA94 /* Model */,
+				42DE72B71BAD3665002FFA94 /* Controller */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4286B2561BAD3FDF0015EDDA /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				4286B2791BAD40D70015EDDA /* MobileVLC */,
+				4286B2581BAD40690015EDDA /* MRVLCPlayer */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		4286B2581BAD40690015EDDA /* MRVLCPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				4286B2591BAD407E0015EDDA /* Asset */,
+				4286B2661BAD407E0015EDDA /* Classes */,
+			);
+			name = MRVLCPlayer;
+			sourceTree = "<group>";
+		};
+		4286B2591BAD407E0015EDDA /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				4286B25A1BAD407E0015EDDA /* kr-video-player-close@2x.png */,
+				4286B25B1BAD407E0015EDDA /* kr-video-player-close@3x.png */,
+				4286B25C1BAD407E0015EDDA /* kr-video-player-fullscreen@2x.png */,
+				4286B25D1BAD407E0015EDDA /* kr-video-player-fullscreen@3x.png */,
+				4286B25E1BAD407E0015EDDA /* kr-video-player-pause@2x.png */,
+				4286B25F1BAD407E0015EDDA /* kr-video-player-pause@3x.png */,
+				4286B2601BAD407E0015EDDA /* kr-video-player-play@2x.png */,
+				4286B2611BAD407E0015EDDA /* kr-video-player-play@3x.png */,
+				4286B2621BAD407E0015EDDA /* kr-video-player-point@2x.png */,
+				4286B2631BAD407E0015EDDA /* kr-video-player-point@3x.png */,
+				4286B2641BAD407E0015EDDA /* kr-video-player-shrinkscreen@2x.png */,
+				4286B2651BAD407E0015EDDA /* kr-video-player-shrinkscreen@3x.png */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		4286B2661BAD407E0015EDDA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				42C648D61BAEDCDC000D5764 /* KRVideoPlayerControlView.h */,
+				42C648D71BAEDCDC000D5764 /* KRVideoPlayerControlView.m */,
+				42D67D411BB25F3900B1C81D /* MRVLCMediaController.h */,
+				42D67D421BB25F3900B1C81D /* MRVLCMediaController.mm */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4286B2791BAD40D70015EDDA /* MobileVLC */ = {
+			isa = PBXGroup;
+			children = (
+				42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */,
+			);
+			name = MobileVLC;
+			sourceTree = "<group>";
+		};
+		42890BD41BB2B37E0044519A /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				4286B2541BAD3FB30015EDDA /* localPlist.plist */,
+			);
+			path = Plist;
+			sourceTree = "<group>";
+		};
+		42890BD51BB2BC1F0044519A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				420C75DD1BB421900025E1D8 /* CCVideoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		42890BD61BB2BC2A0044519A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42C648DE1BAEE336000D5764 /* CCMediaListController.swift */,
+				42890BD71BB2BC6D0044519A /* CCDownloadController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		42C648E01BAFBA36000D5764 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42C648E11BAFBA7B000D5764 /* CCMediaSelectView.swift */,
+				420C75D81BB4108F0025E1D8 /* CCDownloadCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42C648E31BAFC655000D5764 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				42D67D671BB267E700B1C81D /* CCMacro.swift */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		42D67D641BB2677B00B1C81D /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				42D67D651BB267C300B1C81D /* CCLaunchController.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		42DE72B71BAD3665002FFA94 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42FB6D521BB13BAD00AFA95D /* CCNetworkController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		42DE72BF1BAD3682002FFA94 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		42DE72CD1BAD36DD002FFA94 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +452,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 427A65A11BAD0D8A004A0627 /* Build configuration list for PBXNativeTarget "iCCUT" */;
 			buildPhases = (
+				7E49AC1D605AC4D3DA5429DF /* Check Pods Manifest.lock */,
 				427A658B1BAD0D8A004A0627 /* Sources */,
 				427A658C1BAD0D8A004A0627 /* Frameworks */,
 				427A658D1BAD0D8A004A0627 /* Resources */,
+				416FAA185F4C838C7F5F6491 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -90,6 +473,7 @@
 		427A65871BAD0D8A004A0627 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Alloc;
 				TargetAttributes = {
@@ -121,20 +505,83 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4286B26B1BAD407E0015EDDA /* kr-video-player-close@2x.png in Resources */,
+				4286B2711BAD407E0015EDDA /* kr-video-player-play@2x.png in Resources */,
+				4286B2741BAD407E0015EDDA /* kr-video-player-point@3x.png in Resources */,
 				427A659D1BAD0D8A004A0627 /* LaunchScreen.storyboard in Resources */,
-				427A659A1BAD0D8A004A0627 /* Assets.xcassets in Resources */,
+				4286B2721BAD407E0015EDDA /* kr-video-player-play@3x.png in Resources */,
+				4286B2551BAD3FB30015EDDA /* localPlist.plist in Resources */,
+				4286B26D1BAD407E0015EDDA /* kr-video-player-fullscreen@2x.png in Resources */,
+				4286B2701BAD407E0015EDDA /* kr-video-player-pause@3x.png in Resources */,
+				4286B2761BAD407E0015EDDA /* kr-video-player-shrinkscreen@3x.png in Resources */,
+				4286B2751BAD407E0015EDDA /* kr-video-player-shrinkscreen@2x.png in Resources */,
+				42DE72B41BAD1A52002FFA94 /* Assets.xcassets in Resources */,
+				4286B26C1BAD407E0015EDDA /* kr-video-player-close@3x.png in Resources */,
+				4286B26F1BAD407E0015EDDA /* kr-video-player-pause@2x.png in Resources */,
+				42C648CF1BAEDB8C000D5764 /* 1.mov in Resources */,
+				420C75E31BB4308E0025E1D8 /* CCAboutusView.xib in Resources */,
+				4286B2731BAD407E0015EDDA /* kr-video-player-point@2x.png in Resources */,
+				4286B26E1BAD407E0015EDDA /* kr-video-player-fullscreen@3x.png in Resources */,
 				427A65981BAD0D8A004A0627 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		416FAA185F4C838C7F5F6491 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E49AC1D605AC4D3DA5429DF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		427A658B1BAD0D8A004A0627 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				427A65951BAD0D8A004A0627 /* ViewController.swift in Sources */,
+				42FB6D531BB13BAD00AFA95D /* CCNetworkController.swift in Sources */,
+				42FB6D4D1BB1105200AFA95D /* CCBaseNavigationController.swift in Sources */,
+				42FB6D551BB13C5400AFA95D /* CCMoreTableController.swift in Sources */,
+				420C75DC1BB41AB50025E1D8 /* DownloadTool.swift in Sources */,
+				420C75D91BB4108F0025E1D8 /* CCDownloadCell.swift in Sources */,
+				42890BD81BB2BC6D0044519A /* CCDownloadController.swift in Sources */,
+				42D67D431BB25F3900B1C81D /* MRVLCMediaController.mm in Sources */,
+				42D67D681BB267E700B1C81D /* CCMacro.swift in Sources */,
+				42D67D661BB267C300B1C81D /* CCLaunchController.swift in Sources */,
+				42C648DF1BAEE336000D5764 /* CCMediaListController.swift in Sources */,
+				42C648E21BAFBA7B000D5764 /* CCMediaSelectView.swift in Sources */,
+				420C75DE1BB421900025E1D8 /* CCVideoModel.swift in Sources */,
+				427A65AE1BAD1061004A0627 /* CCMainTabbarController.swift in Sources */,
+				420C75E11BB430720025E1D8 /* CCAboutusView.swift in Sources */,
+				42FB6D4F1BB1130C00AFA95D /* CCNewsController.swift in Sources */,
+				42C648DA1BAEDCDC000D5764 /* KRVideoPlayerControlView.m in Sources */,
 				427A65931BAD0D8A004A0627 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +595,7 @@
 				427A65971BAD0D8A004A0627 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		427A659B1BAD0D8A004A0627 /* LaunchScreen.storyboard */ = {
@@ -156,6 +604,7 @@
 				427A659C1BAD0D8A004A0627 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -244,23 +693,48 @@
 		};
 		427A65A21BAD0D8A004A0627 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF23A94C6BA301B4E5079EC1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/maru/Resources/SDK,
+				);
 				INFOPLIST_FILE = iCCUT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Alloc.iCCUT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/maru/Documents/Projective/iCCUT/iCCUT/Classes/Vendor/Classes/Bridging_Header.h;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		427A65A31BAD0D8A004A0627 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E1DFF7DE1B2A0ADC402D36B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/maru/Resources/SDK,
+				);
 				INFOPLIST_FILE = iCCUT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Alloc.iCCUT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/maru/Documents/Projective/iCCUT/iCCUT/Classes/Vendor/Classes/Bridging_Header.h;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 			};
 			name = Release;
 		};
@@ -283,6 +757,7 @@
 				427A65A31BAD0D8A004A0627 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
