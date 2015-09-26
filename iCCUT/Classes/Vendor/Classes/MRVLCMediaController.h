@@ -12,5 +12,6 @@
 
 @property (nonatomic,strong) NSURL *mediaURL;
 @property (nonatomic,assign) BOOL isFullscreenModel;
+@property (nonatomic,copy) void (^downloadBlock)(void);
 
 @end

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>01</key>
+	<string>帐号或密码不对，请重新输入</string>
+	<key>02</key>
+	<string>该账号正在使用中，请您与网管联系 !!!</string>
+	<key>03</key>
+	<string>本帐号只能在指定地址使用</string>
+	<key>04</key>
+	<string>本帐号费用超支或时长流量超过限制</string>
+	<key>05</key>
+	<string>本帐号暂停使用</string>
+	<key>06</key>
+	<string>System buffer full</string>
+	<key>07</key>
+	<string></string>
+	<key>08</key>
+	<string>本帐号正在使用,不能修改</string>
+	<key>09</key>
+	<string>新密码与确认新密码不匹配,不能修改</string>
+	<key>10</key>
+	<string>密码修改成功</string>
+	<key>11</key>
+	<string>本帐号只能在指定地址使用</string>
+	<key>12</key>
+	<string></string>
+	<key>13</key>
+	<string></string>
+	<key>14</key>
+	<string>注销成功</string>
+	<key>15</key>
+	<string>登录成功</string>
+</dict>
+</plist>

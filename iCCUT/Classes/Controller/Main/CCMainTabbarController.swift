@@ -15,6 +15,10 @@ class CCMainTabbarController: UITabBarController {
         super.viewDidLoad()
         
         setupView()
+        
+        let a: CCHTMLParser = CCHTMLParser()
+        a.queryFlow()
+        print(a.resultArray)
     }
     
 

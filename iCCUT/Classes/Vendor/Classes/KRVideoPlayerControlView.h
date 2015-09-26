@@ -10,6 +10,7 @@
 
 @interface KRVideoPlayerControlView : UIView
 
+@property (nonatomic,strong,readonly) UIButton *downloadButton;
 @property (nonatomic, strong, readonly) UIView *topBar;
 @property (nonatomic, strong, readonly) UIView *bottomBar;
 @property (nonatomic, strong, readonly) UIButton *playButton;

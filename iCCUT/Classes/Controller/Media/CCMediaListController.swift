@@ -106,9 +106,22 @@ class CCMediaListController: UITableViewController {
         let playerController: MRVLCMediaController = MRVLCMediaController()
         
         let dic: NSDictionary = (dataArray?.objectAtIndex(indexPath.row))! as! NSDictionary
+        
         let urlString: NSString = dic["url"] as! NSString
         
         playerController.mediaURL = NSURL(string: urlString as String)
+        
+        let model = CCVideoModel()
+        model.name = "测试"
+        model.url = urlString as String
+        model.sorOne = "1"
+        model.sortTwo = "2"
+        
+        playerController.downloadBlock = ({() in
+            print("开始下载")
+            
+            let path = DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
+        })
         
         presentViewController(playerController, animated: true, completion: nil)
     }

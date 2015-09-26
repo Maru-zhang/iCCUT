@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Nf-FI-xCR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-729" y="661"/>
+            <point key="canvasLocation" x="-646.5" y="634"/>
         </scene>
         <!--网络-->
         <scene sceneID="thT-9F-VKD">
@@ -319,14 +319,17 @@
             <objects>
                 <tableViewController id="olW-AP-xFY" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Btp-6Z-JIS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection id="6dQ-Kn-i5u">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zcr-3D-LNL">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zcr-3D-LNL" id="4vF-Ce-g7k">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仅在Wifi下播放" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-7u-ZFV">
@@ -351,10 +354,10 @@
                                                     <exclude reference="Wea-i7-YP1"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="Vbu-EI-lzC"/>
-                                                    <exclude reference="Y7k-1w-EDp"/>
                                                     <exclude reference="98u-IR-gii"/>
                                                     <exclude reference="Iii-iL-wNo"/>
+                                                    <exclude reference="Vbu-EI-lzC"/>
+                                                    <exclude reference="Y7k-1w-EDp"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -363,10 +366,10 @@
                                                     <include reference="Wea-i7-YP1"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="Vbu-EI-lzC"/>
-                                                    <include reference="Y7k-1w-EDp"/>
                                                     <include reference="98u-IR-gii"/>
                                                     <include reference="Iii-iL-wNo"/>
+                                                    <include reference="Vbu-EI-lzC"/>
+                                                    <include reference="Y7k-1w-EDp"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -394,10 +397,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="downloadCell" rowHeight="69" id="8ze-rZ-6n5" customClass="CCDownloadCell" customModule="iCCUT" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8ze-rZ-6n5" id="e69-ce-YWE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="武媚娘传奇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0N-yp-LBj">
@@ -476,12 +479,12 @@
                                             <exclude reference="Mpe-lE-Way"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="9Yi-bx-YJK"/>
-                                            <exclude reference="mDf-kL-F7P"/>
                                             <exclude reference="20d-LU-hOz"/>
                                             <exclude reference="3kO-VH-qLK"/>
                                             <exclude reference="VAI-sV-Hrt"/>
                                             <exclude reference="kN5-q5-0fX"/>
+                                            <exclude reference="9Yi-bx-YJK"/>
+                                            <exclude reference="mDf-kL-F7P"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -491,12 +494,12 @@
                                             <include reference="Mpe-lE-Way"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="9Yi-bx-YJK"/>
-                                            <include reference="mDf-kL-F7P"/>
                                             <include reference="20d-LU-hOz"/>
                                             <include reference="3kO-VH-qLK"/>
                                             <include reference="VAI-sV-Hrt"/>
                                             <include reference="kN5-q5-0fX"/>
+                                            <include reference="9Yi-bx-YJK"/>
+                                            <include reference="mDf-kL-F7P"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

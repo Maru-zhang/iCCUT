@@ -87,6 +87,7 @@
     [self.controlView.fullScreenButton addTarget:self action:@selector(fullScreenButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.controlView.shrinkScreenButton addTarget:self action:@selector(shrinkScreenButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.controlView.progressSlider addTarget:self action:@selector(progressClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.controlView.downloadButton addTarget:self action:@selector(downloadClick) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -140,6 +141,11 @@
     [_vlcPlayer setTime:targetTime];
     
     NSLog(@"%d",targetIntvalue);
+}
+
+- (void)downloadClick {
+    
+    self.downloadBlock();
 }
 
 #pragma mark - Override

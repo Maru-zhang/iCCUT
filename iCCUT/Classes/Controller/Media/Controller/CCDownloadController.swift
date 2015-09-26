@@ -10,7 +10,9 @@ import UIKit
 
 class CCDownloadController: UITableViewController {
 
-    
+    /** downloadTool单例 */
+    let downloadTool = DownloadTool.shareDownloadTool()
+    /** 数据源 */
     var dataSource: NSArray?
     
     let identifier = "downloadCell"
@@ -63,8 +65,9 @@ class CCDownloadController: UITableViewController {
         let downloadTask = manager.downloadTaskWithRequest(request, progress: nil, destination: { (url, request) -> NSURL in
             print(filePath)
             return filePath
-            }) { (response, url, downloadError) -> Void in
-                
+            })
+            { (response, url, downloadError) -> Void in
+
         }
         
         downloadTask.resume()

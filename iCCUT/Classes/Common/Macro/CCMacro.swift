@@ -17,3 +17,6 @@ let NAV_FONT_COLOR: UIColor = UIColor.whiteColor()
 
 /** Name */
 let NAV_NAME_ARRAY: NSArray = ["主页","网络","视频","我"]
+
+/** Codeing */
+let KCodeGB2312 = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue))

@@ -10,8 +10,6 @@
 		420C75D91BB4108F0025E1D8 /* CCDownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C75D81BB4108F0025E1D8 /* CCDownloadCell.swift */; };
 		420C75DC1BB41AB50025E1D8 /* DownloadTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */; };
 		420C75DE1BB421900025E1D8 /* CCVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C75DD1BB421900025E1D8 /* CCVideoModel.swift */; };
-		420C75E11BB430720025E1D8 /* CCAboutusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C75E01BB430720025E1D8 /* CCAboutusView.swift */; };
-		420C75E31BB4308E0025E1D8 /* CCAboutusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420C75E21BB4308E0025E1D8 /* CCAboutusView.xib */; };
 		427A65931BAD0D8A004A0627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427A65921BAD0D8A004A0627 /* AppDelegate.swift */; };
 		427A65981BAD0D8A004A0627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427A65961BAD0D8A004A0627 /* Main.storyboard */; };
 		427A659D1BAD0D8A004A0627 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427A659B1BAD0D8A004A0627 /* LaunchScreen.storyboard */; };
@@ -40,6 +38,9 @@
 		428711701BAEB67F00A89536 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116F1BAEB67F00A89536 /* CoreGraphics.framework */; };
 		428711721BAEB70B00A89536 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711711BAEB70B00A89536 /* libstdc++.6.dylib */; };
 		42890BD81BB2BC6D0044519A /* CCDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890BD71BB2BC6D0044519A /* CCDownloadController.swift */; };
+		42A26D2A1BB675CB007821E7 /* CCHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A26D291BB675CB007821E7 /* CCHTTPClient.swift */; };
+		42A26D2C1BB67786007821E7 /* CCHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */; };
+		42A26D2E1BB6783A007821E7 /* Msg.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42A26D2D1BB6783A007821E7 /* Msg.plist */; };
 		42A3151C1BAE93A100A1F1F7 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */; };
 		42C648CF1BAEDB8C000D5764 /* 1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 42C648CE1BAEDB8C000D5764 /* 1.mov */; };
 		42C648DA1BAEDCDC000D5764 /* KRVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C648D71BAEDCDC000D5764 /* KRVideoPlayerControlView.m */; };
@@ -61,8 +62,6 @@
 		420C75D81BB4108F0025E1D8 /* CCDownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadCell.swift; sourceTree = "<group>"; };
 		420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTool.swift; sourceTree = "<group>"; };
 		420C75DD1BB421900025E1D8 /* CCVideoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoModel.swift; sourceTree = "<group>"; };
-		420C75E01BB430720025E1D8 /* CCAboutusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCAboutusView.swift; sourceTree = "<group>"; };
-		420C75E21BB4308E0025E1D8 /* CCAboutusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCAboutusView.xib; sourceTree = "<group>"; };
 		427A658F1BAD0D8A004A0627 /* iCCUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCCUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		427A65921BAD0D8A004A0627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../AppDelegate.swift; sourceTree = "<group>"; };
 		427A65971BAD0D8A004A0627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +92,9 @@
 		4287116F1BAEB67F00A89536 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		428711711BAEB70B00A89536 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		42890BD71BB2BC6D0044519A /* CCDownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadController.swift; sourceTree = "<group>"; };
+		42A26D291BB675CB007821E7 /* CCHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCHTTPClient.swift; sourceTree = "<group>"; };
+		42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCHTMLParser.swift; sourceTree = "<group>"; };
+		42A26D2D1BB6783A007821E7 /* Msg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Msg.plist; sourceTree = "<group>"; };
 		42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = ../../../../../../Resources/SDK/MobileVLCKit.framework; sourceTree = "<group>"; };
 		42C648CE1BAEDB8C000D5764 /* 1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 1.mov; sourceTree = "<group>"; };
 		42C648D61BAEDCDC000D5764 /* KRVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerControlView.h; sourceTree = "<group>"; };
@@ -174,8 +176,6 @@
 		420C75DF1BB430590025E1D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				420C75E01BB430720025E1D8 /* CCAboutusView.swift */,
-				420C75E21BB4308E0025E1D8 /* CCAboutusView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -376,6 +376,7 @@
 		42890BD41BB2B37E0044519A /* Plist */ = {
 			isa = PBXGroup;
 			children = (
+				42A26D2D1BB6783A007821E7 /* Msg.plist */,
 				4286B2541BAD3FB30015EDDA /* localPlist.plist */,
 			);
 			path = Plist;
@@ -434,6 +435,8 @@
 		42DE72BF1BAD3682002FFA94 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				42A26D291BB675CB007821E7 /* CCHTTPClient.swift */,
+				42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A26D2E1BB6783A007821E7 /* Msg.plist in Resources */,
 				4286B26B1BAD407E0015EDDA /* kr-video-player-close@2x.png in Resources */,
 				4286B2711BAD407E0015EDDA /* kr-video-player-play@2x.png in Resources */,
 				4286B2741BAD407E0015EDDA /* kr-video-player-point@3x.png in Resources */,
@@ -519,7 +523,6 @@
 				4286B26C1BAD407E0015EDDA /* kr-video-player-close@3x.png in Resources */,
 				4286B26F1BAD407E0015EDDA /* kr-video-player-pause@2x.png in Resources */,
 				42C648CF1BAEDB8C000D5764 /* 1.mov in Resources */,
-				420C75E31BB4308E0025E1D8 /* CCAboutusView.xib in Resources */,
 				4286B2731BAD407E0015EDDA /* kr-video-player-point@2x.png in Resources */,
 				4286B26E1BAD407E0015EDDA /* kr-video-player-fullscreen@3x.png in Resources */,
 				427A65981BAD0D8A004A0627 /* Main.storyboard in Resources */,
@@ -568,6 +571,7 @@
 			files = (
 				42FB6D531BB13BAD00AFA95D /* CCNetworkController.swift in Sources */,
 				42FB6D4D1BB1105200AFA95D /* CCBaseNavigationController.swift in Sources */,
+				42A26D2A1BB675CB007821E7 /* CCHTTPClient.swift in Sources */,
 				42FB6D551BB13C5400AFA95D /* CCMoreTableController.swift in Sources */,
 				420C75DC1BB41AB50025E1D8 /* DownloadTool.swift in Sources */,
 				420C75D91BB4108F0025E1D8 /* CCDownloadCell.swift in Sources */,
@@ -579,10 +583,10 @@
 				42C648E21BAFBA7B000D5764 /* CCMediaSelectView.swift in Sources */,
 				420C75DE1BB421900025E1D8 /* CCVideoModel.swift in Sources */,
 				427A65AE1BAD1061004A0627 /* CCMainTabbarController.swift in Sources */,
-				420C75E11BB430720025E1D8 /* CCAboutusView.swift in Sources */,
 				42FB6D4F1BB1130C00AFA95D /* CCNewsController.swift in Sources */,
 				42C648DA1BAEDCDC000D5764 /* KRVideoPlayerControlView.m in Sources */,
 				427A65931BAD0D8A004A0627 /* AppDelegate.swift in Sources */,
+				42A26D2C1BB67786007821E7 /* CCHTMLParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
