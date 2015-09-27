@@ -15,10 +15,10 @@ class CCMainTabbarController: UITabBarController {
         super.viewDidLoad()
         
         setupView()
-        
-        let a: CCHTMLParser = CCHTMLParser()
-        a.queryFlow()
-        print(a.resultArray)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
 
@@ -49,11 +49,10 @@ class CCMainTabbarController: UITabBarController {
         
         //设置字体颜色
         let attributesN =  [NSForegroundColorAttributeName: UIColor.grayColor()]
-        let attributesH = [NSForegroundColorAttributeName: UIColor(red: 1, green: 109.0/255.0, blue: 0, alpha: 1)]
+        let attributesH = [NSForegroundColorAttributeName: NAV_COLOR]
         //赋值字体颜色
         UITabBarItem.appearance().setTitleTextAttributes(attributesN, forState: UIControlState.Normal)
         UITabBarItem.appearance().setTitleTextAttributes(attributesH, forState: UIControlState.Selected)
-        
     }
     
 

@@ -21,7 +21,7 @@ class CCHTMLParser: NSObject {
     /** 登陆状态信息 */
     var loginStatusInfo: NSString?
     /** 解析结果数据 */
-    var resultArray: NSArray?
+    var resultArray: NSArray = NSArray()
     /** 登陆信息表 */
     let msgDic: NSArray = (NSDictionary(contentsOfURL: NSBundle.mainBundle().URLForResource("Msg", withExtension: "plist")!)?.allKeys)!
     
@@ -30,7 +30,7 @@ class CCHTMLParser: NSObject {
     // <Public Method>
     func parseHTMLWithPageString(page: NSString) {
         
-        let msg: NSString = page.substringWithRange(NSMakeRange(312, 2))
+        let msg: NSString = page.substringWithRange(NSMakeRange(313, 2))
         
         print(msg)
         
@@ -38,7 +38,7 @@ class CCHTMLParser: NSObject {
             //成功登陆
             self.loginStatus = CCUTLoginStatus.Sucess
             
-            self.loginStatusInfo = "Login Success"
+            self.loginStatusInfo = "您已经成功登录"
             
             queryFlow()
         }else if msg.isEqualToString("va") {
@@ -65,6 +65,7 @@ class CCHTMLParser: NSObject {
         }
     }
     
+    //获取数据
     func queryFlow() {
         
         var pageString: NSString?
@@ -101,5 +102,6 @@ class CCHTMLParser: NSObject {
         
         //传送结果
         self.resultArray = NSArray(array: [NSNumber(integer: time),NSNumber(integer: flow),NSNumber(integer: fee)])
+        print(self.resultArray)
     }
 }

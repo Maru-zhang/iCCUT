@@ -41,6 +41,8 @@
 		42A26D2A1BB675CB007821E7 /* CCHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A26D291BB675CB007821E7 /* CCHTTPClient.swift */; };
 		42A26D2C1BB67786007821E7 /* CCHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */; };
 		42A26D2E1BB6783A007821E7 /* Msg.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42A26D2D1BB6783A007821E7 /* Msg.plist */; };
+		42A26D301BB69021007821E7 /* CCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A26D2F1BB69021007821E7 /* CCLoginViewController.swift */; };
+		42A26D331BB6A351007821E7 /* CCTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A26D321BB6A351007821E7 /* CCTextFiled.swift */; };
 		42A3151C1BAE93A100A1F1F7 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */; };
 		42C648CF1BAEDB8C000D5764 /* 1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 42C648CE1BAEDB8C000D5764 /* 1.mov */; };
 		42C648DA1BAEDCDC000D5764 /* KRVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C648D71BAEDCDC000D5764 /* KRVideoPlayerControlView.m */; };
@@ -92,9 +94,11 @@
 		4287116F1BAEB67F00A89536 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		428711711BAEB70B00A89536 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		42890BD71BB2BC6D0044519A /* CCDownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadController.swift; sourceTree = "<group>"; };
-		42A26D291BB675CB007821E7 /* CCHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCHTTPClient.swift; sourceTree = "<group>"; };
+		42A26D291BB675CB007821E7 /* CCHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCHTTPClient.swift; path = ../Controller/Network/Model/CCHTTPClient.swift; sourceTree = "<group>"; };
 		42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCHTMLParser.swift; sourceTree = "<group>"; };
 		42A26D2D1BB6783A007821E7 /* Msg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Msg.plist; sourceTree = "<group>"; };
+		42A26D2F1BB69021007821E7 /* CCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCLoginViewController.swift; path = ../Main/CCLoginViewController.swift; sourceTree = "<group>"; };
+		42A26D321BB6A351007821E7 /* CCTextFiled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTextFiled.swift; sourceTree = "<group>"; };
 		42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = ../../../../../../Resources/SDK/MobileVLCKit.framework; sourceTree = "<group>"; };
 		42C648CE1BAEDB8C000D5764 /* 1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 1.mov; sourceTree = "<group>"; };
 		42C648D61BAEDCDC000D5764 /* KRVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerControlView.h; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 		420C75DA1BB41A6A0025E1D8 /* ToolKit */ = {
 			isa = PBXGroup;
 			children = (
+				42A26D291BB675CB007821E7 /* CCHTTPClient.swift */,
 				420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */,
 			);
 			path = ToolKit;
@@ -223,6 +228,8 @@
 		427A65A71BAD0ED4004A0627 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				42A26D311BB6A2F1007821E7 /* Login */,
+				42D67D641BB2677B00B1C81D /* Launch */,
 				427A65AC1BAD0FB8004A0627 /* Main */,
 				427A65AF1BAD1283004A0627 /* News */,
 				427A65B21BAD12AC004A0627 /* Network */,
@@ -249,7 +256,6 @@
 		427A65AA1BAD0F16004A0627 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				42D67D641BB2677B00B1C81D /* Launch */,
 				42C648E31BAFC655000D5764 /* Macro */,
 				42C648DD1BAEDD79000D5764 /* Bridging_Header.h */,
 				427A65921BAD0D8A004A0627 /* AppDelegate.swift */,
@@ -399,6 +405,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		42A26D311BB6A2F1007821E7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				42A26D2F1BB69021007821E7 /* CCLoginViewController.swift */,
+				42A26D321BB6A351007821E7 /* CCTextFiled.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		42C648E01BAFBA36000D5764 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,7 +436,8 @@
 			children = (
 				42D67D651BB267C300B1C81D /* CCLaunchController.swift */,
 			);
-			path = Launch;
+			name = Launch;
+			path = ../Common/Launch;
 			sourceTree = "<group>";
 		};
 		42DE72B71BAD3665002FFA94 /* Controller */ = {
@@ -435,7 +451,6 @@
 		42DE72BF1BAD3682002FFA94 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				42A26D291BB675CB007821E7 /* CCHTTPClient.swift */,
 				42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */,
 			);
 			path = Model;
@@ -571,6 +586,8 @@
 			files = (
 				42FB6D531BB13BAD00AFA95D /* CCNetworkController.swift in Sources */,
 				42FB6D4D1BB1105200AFA95D /* CCBaseNavigationController.swift in Sources */,
+				42A26D301BB69021007821E7 /* CCLoginViewController.swift in Sources */,
+				42A26D331BB6A351007821E7 /* CCTextFiled.swift in Sources */,
 				42A26D2A1BB675CB007821E7 /* CCHTTPClient.swift in Sources */,
 				42FB6D551BB13C5400AFA95D /* CCMoreTableController.swift in Sources */,
 				420C75DC1BB41AB50025E1D8 /* DownloadTool.swift in Sources */,
