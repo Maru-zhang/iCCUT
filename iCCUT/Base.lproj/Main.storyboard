@@ -310,7 +310,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_wifi" translatesAutoresizingMaskIntoConstraints="NO" id="kO6-4M-0wC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_wifi" highlightedImage="detail_wifi _high" translatesAutoresizingMaskIntoConstraints="NO" id="kO6-4M-0wC">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="138" id="30C-Xh-cLl"/>
@@ -329,7 +329,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_time" translatesAutoresizingMaskIntoConstraints="NO" id="9sQ-VI-gkC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_time" highlightedImage="detail_time _high" translatesAutoresizingMaskIntoConstraints="NO" id="9sQ-VI-gkC">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0ef-Gj-hLE"/>
@@ -348,7 +348,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_data" translatesAutoresizingMaskIntoConstraints="NO" id="YQ2-Cq-bTm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_data" highlightedImage="detail_data _high" translatesAutoresizingMaskIntoConstraints="NO" id="YQ2-Cq-bTm">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="L0j-hW-pEv"/>
@@ -367,7 +367,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_money" translatesAutoresizingMaskIntoConstraints="NO" id="e8q-sV-pqp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_money" highlightedImage="detail_money _high" translatesAutoresizingMaskIntoConstraints="NO" id="e8q-sV-pqp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2RI-3Z-hbv"/>
@@ -404,14 +404,17 @@
                                 <color key="textColor" red="0.69019607839999997" green="0.83921568629999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QU-o6-0vt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QU-o6-0vt">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="49c-nU-7Bf"/>
                                     <constraint firstAttribute="width" constant="225" id="bQF-YY-UfY"/>
                                 </constraints>
+                                <color key="tintColor" red="0.078431372550000003" green="0.69803921570000005" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="注销" backgroundImage="detail_button">
                                     <color key="titleColor" red="0.078431372549019607" green="0.69803921568627447" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -426,7 +429,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="detailButtonClick:" destination="FrC-cY-yAV" eventType="touchUpInside" id="PLi-Nu-ony"/>
+                                    <action selector="cancelClick:" destination="FrC-cY-yAV" eventType="touchUpInside" id="rE6-yE-Z5e"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8b-56-X8C">
@@ -499,30 +502,30 @@
                                 <exclude reference="s8b-56-X8C"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="yN8-wN-non"/>
-                                <exclude reference="zJR-It-xqB"/>
-                                <exclude reference="HFs-6r-cio"/>
-                                <exclude reference="S82-zo-cVh"/>
-                                <exclude reference="drJ-oq-21t"/>
-                                <exclude reference="nnK-IP-oIH"/>
+                                <exclude reference="8l8-UH-939"/>
+                                <exclude reference="uPb-zN-dSh"/>
+                                <exclude reference="43H-jY-mb7"/>
                                 <exclude reference="baX-ES-KCF"/>
                                 <exclude reference="tTj-iY-GLG"/>
+                                <exclude reference="3fb-mR-oJM"/>
+                                <exclude reference="KMQ-gQ-Nui"/>
+                                <exclude reference="RSI-ae-G7F"/>
+                                <exclude reference="flh-GU-EJ4"/>
                                 <exclude reference="AQB-FZ-YwE"/>
                                 <exclude reference="BNT-1y-Z4K"/>
                                 <exclude reference="VS7-iw-EQf"/>
                                 <exclude reference="aug-tf-L0S"/>
                                 <exclude reference="k4R-vI-gic"/>
-                                <exclude reference="3fb-mR-oJM"/>
-                                <exclude reference="KMQ-gQ-Nui"/>
-                                <exclude reference="RSI-ae-G7F"/>
-                                <exclude reference="flh-GU-EJ4"/>
-                                <exclude reference="FZR-sA-l42"/>
-                                <exclude reference="GJd-Xl-lRb"/>
-                                <exclude reference="43H-jY-mb7"/>
                                 <exclude reference="MdG-gO-y9y"/>
                                 <exclude reference="bGg-3n-AWK"/>
-                                <exclude reference="8l8-UH-939"/>
-                                <exclude reference="uPb-zN-dSh"/>
+                                <exclude reference="HFs-6r-cio"/>
+                                <exclude reference="S82-zo-cVh"/>
+                                <exclude reference="drJ-oq-21t"/>
+                                <exclude reference="nnK-IP-oIH"/>
+                                <exclude reference="FZR-sA-l42"/>
+                                <exclude reference="GJd-Xl-lRb"/>
+                                <exclude reference="yN8-wN-non"/>
+                                <exclude reference="zJR-It-xqB"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -538,36 +541,36 @@
                                 <include reference="s8b-56-X8C"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="yN8-wN-non"/>
-                                <include reference="zJR-It-xqB"/>
-                                <include reference="HFs-6r-cio"/>
-                                <include reference="S82-zo-cVh"/>
-                                <include reference="drJ-oq-21t"/>
-                                <include reference="nnK-IP-oIH"/>
+                                <include reference="8l8-UH-939"/>
+                                <include reference="uPb-zN-dSh"/>
+                                <include reference="43H-jY-mb7"/>
                                 <include reference="baX-ES-KCF"/>
                                 <include reference="tTj-iY-GLG"/>
+                                <include reference="3fb-mR-oJM"/>
+                                <include reference="KMQ-gQ-Nui"/>
+                                <include reference="RSI-ae-G7F"/>
+                                <include reference="flh-GU-EJ4"/>
                                 <include reference="AQB-FZ-YwE"/>
                                 <include reference="BNT-1y-Z4K"/>
                                 <include reference="VS7-iw-EQf"/>
                                 <include reference="aug-tf-L0S"/>
                                 <include reference="k4R-vI-gic"/>
-                                <include reference="3fb-mR-oJM"/>
-                                <include reference="KMQ-gQ-Nui"/>
-                                <include reference="RSI-ae-G7F"/>
-                                <include reference="flh-GU-EJ4"/>
-                                <include reference="FZR-sA-l42"/>
-                                <include reference="GJd-Xl-lRb"/>
-                                <include reference="43H-jY-mb7"/>
                                 <include reference="MdG-gO-y9y"/>
                                 <include reference="bGg-3n-AWK"/>
-                                <include reference="8l8-UH-939"/>
-                                <include reference="uPb-zN-dSh"/>
+                                <include reference="HFs-6r-cio"/>
+                                <include reference="S82-zo-cVh"/>
+                                <include reference="drJ-oq-21t"/>
+                                <include reference="nnK-IP-oIH"/>
+                                <include reference="FZR-sA-l42"/>
+                                <include reference="GJd-Xl-lRb"/>
+                                <include reference="yN8-wN-non"/>
+                                <include reference="zJR-It-xqB"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="网络" id="FqU-Ri-9Rp"/>
                     <connections>
-                        <outlet property="detailButton" destination="3QU-o6-0vt" id="RRg-Tc-Gh3"/>
+                        <outlet property="cancelButton" destination="3QU-o6-0vt" id="Rzt-4t-s0P"/>
                         <outlet property="feeLable" destination="cK4-34-NJ3" id="74P-ic-8ri"/>
                         <outlet property="flowLable" destination="0q7-Yc-MHm" id="1ll-5d-zpH"/>
                         <outlet property="timeLable" destination="BrA-4f-PDy" id="8Vm-ZI-kEK"/>
@@ -1064,9 +1067,13 @@
         <image name="Login_BG" width="750" height="1334"/>
         <image name="detail_button" width="450" height="84"/>
         <image name="detail_data" width="40" height="80"/>
+        <image name="detail_data _high" width="40" height="80"/>
         <image name="detail_money" width="54" height="80"/>
+        <image name="detail_money _high" width="54" height="80"/>
         <image name="detail_time" width="85" height="80"/>
+        <image name="detail_time _high" width="85" height="80"/>
         <image name="detail_wifi" width="277" height="211"/>
+        <image name="detail_wifi _high" width="277" height="211"/>
         <image name="login_account" width="41" height="49"/>
         <image name="login_buttonBG" width="522" height="73"/>
         <image name="login_input" width="522" height="73"/>

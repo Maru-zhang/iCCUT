@@ -6,7 +6,7 @@
 //  Copyright © 2015年 Alloc. All rights reserved.
 //
 
-enum CCUTLoginStatus {
+enum CCUTLoginStatus: NSString {
     case Sucess
     case Error
     case UnLogin
@@ -23,7 +23,8 @@ class CCHTMLParser: NSObject {
     /** 解析结果数据 */
     var resultArray: NSArray = NSArray()
     /** 登陆信息表 */
-    let msgDic: NSArray = (NSDictionary(contentsOfURL: NSBundle.mainBundle().URLForResource("Msg", withExtension: "plist")!)?.allKeys)!
+    let msgKey: NSArray = (NSDictionary(contentsOfURL: NSBundle.mainBundle().URLForResource("Msg", withExtension: "plist")!)?.allKeys)!
+    let msgDic:NSDictionary = NSDictionary(contentsOfURL: NSBundle.mainBundle().URLForResource("Msg", withExtension: "plist")!)!
     
     
     
@@ -47,7 +48,7 @@ class CCHTMLParser: NSObject {
         }else {
             var isInCCUT = false
             
-            for info in msgDic {
+            for info in msgKey {
                 
                 if msg.isEqualToString(info as! String) {
                     
@@ -55,7 +56,7 @@ class CCHTMLParser: NSObject {
                     
                     self.loginStatus = CCUTLoginStatus.Error
                     
-                    self.loginStatusInfo = info as? NSString
+                    self.loginStatusInfo = msgDic[info as! String] as? NSString
                 }
             }
             if !isInCCUT {

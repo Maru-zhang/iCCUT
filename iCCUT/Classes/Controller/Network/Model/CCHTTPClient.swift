@@ -29,6 +29,8 @@ class CCHTTPClient: NSObject {
     let postAddress = "http://222.28.211.100"
     /** 是否成功登陆 */
     var userType: UserType = UserType.nerverLogin
+    /** 网络类型监控 */
+    let networkManager: AFNetworkReachabilityManager = AFNetworkReachabilityManager.sharedManager()
     /** HTTP操作管理 */
     let operationManager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
     /** 网页分析器 */
@@ -57,7 +59,10 @@ class CCHTTPClient: NSObject {
     
     
     //< Public Method >
+    //登陆操作
     func loginWithAccountAndPassword(act: NSString,pwd: NSString) -> Bool {
+        
+        var result: Bool = false
         
         //配置POST参数
         let parameters: NSDictionary = ["DDDDD": act,"upass": pwd,"0MKKey": "登录 Login"]
@@ -80,6 +85,7 @@ class CCHTTPClient: NSObject {
                 //更改用户身份
                 self.userType = UserType.haveLogin
                 self.userDefault.setObject(self.userType.rawValue, forKey: KUSER_TYPE)
+                result = true
             }else if self.parser.loginStatus == CCUTLoginStatus.UnLogin {
                 //更改用户身份
                 self.userType = UserType.haveOut
@@ -96,13 +102,33 @@ class CCHTTPClient: NSObject {
                 print(operationError)
         }
         
-        //判断是否成功登录
-        if self.userType == UserType.haveLogin {
-            return true
-        }else {
-            return false
+        return result
+    }
+    
+    //登出操作
+    func logout() -> Bool {
+        
+        var result: Bool = true
+        
+        //配置超时
+        operationManager.requestSerializer.timeoutInterval = 3
+        
+        //配置响应类型
+        operationManager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
+        
+        //开始请求
+        operationManager.GET(postAddress, parameters: nil, success: { (operation, operationObject) -> Void in
+        
+            print("注销成功")
+            
+            })
+        { (operation, operationError) -> Void in
+            print(operationError)
+            result = false
         }
-
+        
+        //返回结果
+        return result
     }
     
     //更新登录数据

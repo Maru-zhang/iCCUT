@@ -36,7 +36,7 @@ class CCLoginViewController: UIViewController {
     //< Private Method >
     private func setupView() {
         
-        //检测是不是有本地化数据
+        //检测是不是有本地化数据，如果有就显示到登陆界面上面来
         if (userDefault.objectForKey(KACCOUNT) != nil) && (userDefault.objectForKey(KPASSWORD) != nil) {
             self.accountText.text = userDefault.objectForKey(KACCOUNT) as? String
             self.passwordText.text = userDefault.objectForKey(KPASSWORD)as? String
@@ -49,6 +49,10 @@ class CCLoginViewController: UIViewController {
         
     }
     @IBAction func loginClick(sender: AnyObject) {
+        
+        //配置等候界面
+        let progressView = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        progressView.labelText = "正在登录"
         
         if rememberSwitch.on {
             //如果是记住密码
@@ -63,12 +67,16 @@ class CCLoginViewController: UIViewController {
                 userDefault.setObject(account, forKey: "account")
                 userDefault.setObject(password, forKey: "password")
             }
-            //退出控制器
-            dismissViewControllerAnimated(true, completion: nil)
             
         }else {
             //如果是不记住密码
         }
+        //退出控制器
+        dismissViewControllerAnimated(true, completion: { () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                progressView.hide(true)
+            })
+        })
         
     }
     @IBAction func guestLoginClick(sender: AnyObject) {

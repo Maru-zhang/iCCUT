@@ -20,7 +20,7 @@ class CCNetworkController: UIViewController {
     /** 费用标签 */
     @IBOutlet weak var feeLable: UILabel!
     /** 注销按钮 */
-    @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     /** 默认属性 */
     let defaultText = "暂无数据"
     
@@ -34,48 +34,73 @@ class CCNetworkController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        setupView()
+        
         setupSetting()
         
-        print(client.userType.rawValue)
-        
-        if client.userType == UserType.nerverLogin || client.userType == UserType.unremeber{
-            
-            //用户第一次进入
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("login")
-            presentViewController(loginVC, animated: true, completion: nil)
-            
-        }else if client.userType == UserType.haveLogin {
-            print(client.userType)
-            //自动登录
-            let account = NSUserDefaults.standardUserDefaults().objectForKey(KACCOUNT) as! NSString
-            let password = NSUserDefaults.standardUserDefaults().objectForKey(KPASSWORD)as! NSString
-            //异步线程
-            client.loginWithAccountAndPassword(account, pwd: password)
-            
-        }else if client.userType == UserType.guest {
-            //游客模式，不需要登录
-        }else if client.userType == UserType.haveOut {
-            //已经登出，需要重新登录
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("login")
-            presentViewController(loginVC, animated: true, completion: nil)
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        
+        //检测网络状态
+        client.networkManager.setReachabilityStatusChangeBlock { (status) -> Void in
+            
+            if status == AFNetworkReachabilityStatus.ReachableViaWiFi {
+                //处在wifi环境下
+                self.showLoginControllerOrNot()
+            }
+        }
+        
+        //开始监控网络
+        client.networkManager.startMonitoring()
+        
+        print(client.userType.rawValue)
+        
         //进入页面的时候默认刷新一次
         performSelector(Selector("updateFlowData"), withObject: nil, afterDelay: 1)
+        
     }
     
     // < Action >
     @IBAction func refreshClick(sender: AnyObject) {
         updateFlowData()
     }
-    @IBAction func detailButtonClick(sender: AnyObject) {
+    
+    @IBAction func cancelClick(sender: AnyObject) {
+        
+        if cancelButton.selected {
+            
+            showLoginControllerOrNot()
+            
+        }else {
+            let progressView = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            
+            progressView.labelText = "正在注销"
+            
+            //登出成功和登出失败
+            if client.logout() {
+                
+                progressView.hide(true)
+                self.cancelButton.selected = true
+                
+            }else {
+                print("注销失败")
+                progressView.mode = MBProgressHUDMode.Text
+                progressView.labelText = "注销失败!"
+                self.cancelButton.selected = false
+            }
+        }
+        
     }
+
     
     // <Private Method>
+    func setupView() {
+        self.cancelButton.setTitle("登陆", forState: UIControlState.Selected)
+        self.cancelButton.setTitle("注销", forState: UIControlState.Normal)
+    }
     
     
     // Private Method
@@ -102,6 +127,31 @@ class CCNetworkController: UIViewController {
             timeLable.text = defaultText
             flowLable.text = defaultText
             feeLable.text = defaultText
+        }
+    }
+    
+    func showLoginControllerOrNot() {
+        
+        if client.userType == UserType.nerverLogin || client.userType == UserType.unremeber{
+            
+            //用户第一次进入
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("login")
+            presentViewController(loginVC, animated: true, completion: nil)
+            
+        }else if client.userType == UserType.haveLogin {
+            print(client.userType)
+            //自动登录
+            let account = NSUserDefaults.standardUserDefaults().objectForKey(KACCOUNT) as! NSString
+            let password = NSUserDefaults.standardUserDefaults().objectForKey(KPASSWORD)as! NSString
+            //异步线程
+            client.loginWithAccountAndPassword(account, pwd: password)
+            
+        }else if client.userType == UserType.guest {
+            //游客模式，不需要登录
+        }else if client.userType == UserType.haveOut {
+            //已经登出，需要重新登录
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("login")
+            presentViewController(loginVC, animated: true, completion: nil)
         }
     }
 }
