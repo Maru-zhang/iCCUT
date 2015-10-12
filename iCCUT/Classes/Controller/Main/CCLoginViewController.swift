@@ -62,28 +62,45 @@ class CCLoginViewController: UIViewController {
             //开始登录操作
             client.loginWithAccountAndPassword(account!, pwd: password!)
             
-            //如果已经成功登录
-            if client.userType == UserType.haveLogin {
-                userDefault.setObject(account, forKey: "account")
-                userDefault.setObject(password, forKey: "password")
+            if client.parser.loginStatus == CCUTLoginStatus.Sucess {
+                
+                //开始存储密码
+                userDefault.setObject(account, forKey: KACCOUNT)
+                userDefault.setObject(password, forKey: KPASSWORD)
+                
+                //退出控制器
+                dismissViewControllerAnimated(true, completion: { () -> Void in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        progressView.hide(true)
+                    })
+                })
+                
+            }else if client.parser.loginStatus == CCUTLoginStatus.Error {
+                progressView.hide(true)
+                MBProgressHUD.showError("登陆出错！", toView: self.view)
+            }else {
+                progressView.hide(true)
+                print(client.parser.loginStatusInfo)
             }
+            
             
         }else {
             //如果是不记住密码
+            let account = self.accountText.text
+            let password = self.passwordText.text
+            
+            //开始登录操作
+            client.loginWithAccountAndPassword(account!, pwd: password!)
+            
         }
-        //退出控制器
-        dismissViewControllerAnimated(true, completion: { () -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                progressView.hide(true)
-            })
-        })
+
         
     }
     @IBAction func guestLoginClick(sender: AnyObject) {
         
         let client = CCHTTPClient.getInstance()
         
-        client.userType = UserType.guest
+        client
         
         dismissViewControllerAnimated(true, completion: nil)
     }

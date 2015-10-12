@@ -7,9 +7,10 @@
 //
 
 enum CCUTLoginStatus: NSString {
-    case Sucess
-    case Error
-    case UnLogin
+    case UnLogin /* 还没有登陆 */
+    case Sucess  /* 已成功登陆 */
+    case Error   /* 出现错误 */
+    case Out     /* 断网 */
 }
 
 class CCHTMLParser: NSObject {
@@ -42,9 +43,12 @@ class CCHTMLParser: NSObject {
             self.loginStatusInfo = "您已经成功登录"
             
             queryFlow()
+            
         }else if msg.isEqualToString("va") {
+            
             //还未登陆
             self.loginStatus = CCUTLoginStatus.UnLogin
+            
         }else {
             var isInCCUT = false
             
@@ -57,13 +61,15 @@ class CCHTMLParser: NSObject {
                     self.loginStatus = CCUTLoginStatus.Error
                     
                     self.loginStatusInfo = msgDic[info as! String] as? NSString
+                    
+                    print("==========\(loginStatusInfo)")
                 }
             }
             if !isInCCUT {
-                self.loginStatus = CCUTLoginStatus.Error
-                self.loginStatusInfo = "未加入CCUT!"
+                self.loginStatus = CCUTLoginStatus.Out
             }
         }
+        print("==========\(loginStatus)")
     }
     
     //获取数据
@@ -103,6 +109,7 @@ class CCHTMLParser: NSObject {
         
         //传送结果
         self.resultArray = NSArray(array: [NSNumber(integer: time),NSNumber(integer: flow),NSNumber(integer: fee)])
-        print(self.resultArray)
+        
+        print(resultArray)
     }
 }

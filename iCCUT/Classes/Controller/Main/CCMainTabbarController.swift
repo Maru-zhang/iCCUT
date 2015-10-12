@@ -15,10 +15,12 @@ class CCMainTabbarController: UITabBarController {
         super.viewDidLoad()
         
         setupView()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+
     }
     
 

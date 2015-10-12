@@ -21,9 +21,10 @@ class CCNetworkController: UIViewController {
     @IBOutlet weak var feeLable: UILabel!
     /** 注销按钮 */
     @IBOutlet weak var cancelButton: UIButton!
+    /** 自动登陆开关 */
+    @IBOutlet weak var autoSwitch: UISwitch!
     /** 默认属性 */
     let defaultText = "暂无数据"
-    
     
     // < Life Cycle>
     override func viewDidLoad() {
@@ -43,24 +44,32 @@ class CCNetworkController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        //获取22.28.211.100的页面
+        var pageContent: NSString?
         
-        //检测网络状态
-        client.networkManager.setReachabilityStatusChangeBlock { (status) -> Void in
+        
+        client.operationManager.GET("http://222.28.211.100", parameters: nil, success: { (operation, operObj) -> Void in
+            pageContent = NSString(data:operation.responseData! , encoding: KCodeGB2312)
+            //成功获取页面
+            //检查是已经登陆还是还没有登陆
+            self.client.parser.parseHTMLWithPageString(pageContent!)
             
-            if status == AFNetworkReachabilityStatus.ReachableViaWiFi {
-                //处在wifi环境下
-                self.showLoginControllerOrNot()
+            if self.client.parser.loginStatus == CCUTLoginStatus.UnLogin {
+                //还没有登陆
+                self.autoLoginOrNot()
+            }else {
+                //已经登陆
+                self.client.parser.loginStatus == CCUTLoginStatus.Sucess
+                self.updateFlowData()
             }
+            
+            }) { (operation, operError) -> Void in
+                
+                //获取页面失败，提示检测网络
+                MBProgressHUD.showError("出现错误!", toView: self.view)
+                print(operError)
         }
-        
-        //开始监控网络
-        client.networkManager.startMonitoring()
-        
-        print(client.userType.rawValue)
-        
-        //进入页面的时候默认刷新一次
-        performSelector(Selector("updateFlowData"), withObject: nil, afterDelay: 1)
-        
+  
     }
     
     // < Action >
@@ -72,7 +81,10 @@ class CCNetworkController: UIViewController {
         
         if cancelButton.selected {
             
-            showLoginControllerOrNot()
+            //显示登陆界面
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("login")
+            presentViewController(loginVC, animated: true, completion: nil)
+            cancelButton.selected = false
             
         }else {
             let progressView = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -84,6 +96,7 @@ class CCNetworkController: UIViewController {
                 
                 progressView.hide(true)
                 self.cancelButton.selected = true
+                showDefaultLlowData()
                 
             }else {
                 print("注销失败")
@@ -108,50 +121,83 @@ class CCNetworkController: UIViewController {
         
         tabBarController?.navigationItem.title = tabBarItem.title
         tabBarController?.navigationItem.rightBarButtonItem = nil
+        
+        autoSwitch.addObserver(self, forKeyPath: "autoKey", options: NSKeyValueObservingOptions.New, context: nil)
     }
     
     func updateFlowData() {
         
         print("======刷新数据=======")
+        
+        //更新数据
+        client.updateQueryLoginPage()
+        
         //检测数据正确性
         if client.resultArray.count > 0 {
-            //获取对印的数值
-            let time = client.resultArray[0] as! NSNumber
-            let flow = client.resultArray[1] as! NSNumber
-            let menoy = client.resultArray[2] as! NSNumber
-            
-            timeLable.text = NSString(format: "%d分钟", time.integerValue) as String
-            flowLable.text = NSString(format: "%d MByte", flow.integerValue) as String
-            feeLable.text = NSString(format: "%d元", menoy.integerValue) as String
+            showLatestFlowData()
         }else {
-            timeLable.text = defaultText
-            flowLable.text = defaultText
-            feeLable.text = defaultText
+            showDefaultLlowData()
         }
     }
     
-    func showLoginControllerOrNot() {
+    func autoLoginOrNot() {
         
-        if client.userType == UserType.nerverLogin || client.userType == UserType.unremeber{
+        let userDefault = NSUserDefaults.standardUserDefaults()
+
+        let account = userDefault.objectForKey(KACCOUNT)
+        let password = userDefault.objectForKey(KPASSWORD)
+        
+        if (client.userType == CCUserLoginType.AutoLogin) && (account != nil){
+            //可以自动登陆
+            client.loginWithAccountAndPassword(account as! NSString, pwd: password as! NSString)
             
-            //用户第一次进入
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("login")
-            presentViewController(loginVC, animated: true, completion: nil)
             
-        }else if client.userType == UserType.haveLogin {
-            print(client.userType)
-            //自动登录
-            let account = NSUserDefaults.standardUserDefaults().objectForKey(KACCOUNT) as! NSString
-            let password = NSUserDefaults.standardUserDefaults().objectForKey(KPASSWORD)as! NSString
-            //异步线程
-            client.loginWithAccountAndPassword(account, pwd: password)
+            //查看是否登陆成功
+            if client.parser.loginStatus ==  CCUTLoginStatus.Sucess {
+                //刷新
+                updateFlowData()
+                self.cancelButton.selected = false
+            }else {
+                //登陆失败
+                MBProgressHUD.showError("登陆失败！", toView: self.view)
+                self.cancelButton.selected = true
+            }
             
-        }else if client.userType == UserType.guest {
-            //游客模式，不需要登录
-        }else if client.userType == UserType.haveOut {
-            //已经登出，需要重新登录
+            
+            
+        }else {
+            //显示登陆界面
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("login")
             presentViewController(loginVC, animated: true, completion: nil)
         }
     }
+    
+    
+    //显示最新的数据或者显示默认的数据
+    private func showDefaultLlowData() {
+        timeLable.text = defaultText
+        flowLable.text = defaultText
+        feeLable.text = defaultText
+    }
+    
+    private func showLatestFlowData() {
+        //获取对印的数值
+        let time = client.resultArray[0] as! NSNumber
+        let flow = client.resultArray[1] as! NSNumber
+        let menoy = client.resultArray[2] as! NSNumber
+        
+        timeLable.text = NSString(format: "%d分钟", time.integerValue) as String
+        flowLable.text = NSString(format: "%d MByte", flow.integerValue) as String
+        feeLable.text = NSString(format: "%d元", menoy.integerValue) as String
+    }
+    
+    
+    // < Call Back >
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+        if keyPath == "autoKey" {
+            print("====")
+        }
+    }
 }
+
