@@ -17,9 +17,14 @@ class CCMediaSelectView: UIScrollView {
     let buttonWidth: CGFloat = 70.0
     /** 按钮的当前索引 */
     var selectedIndex = 0
+    /** 动画时间 */
+    let annimateDur: NSTimeInterval = 0.4
     /** 得到当前的Margin */
     var buttonMargin: CGFloat {
-        return (SCREEN_BOUNDS.width - buttonWidth * CGFloat(buttonCount)) / CGFloat(buttonCount)
+        return (SCREEN_BOUNDS.width - buttonWidth * CGFloat(buttonCount)) / CGFloat(buttonCount + 1)
+    }
+    var mathParma: CGFloat {
+        return (SCREEN_BOUNDS.width - 4 * buttonMargin - 3 * buttonWidth) / 2
     }
     /** 数据源 */
     var dataArray: NSArray? {
@@ -100,7 +105,7 @@ class CCMediaSelectView: UIScrollView {
         
         let count = Int((dataArray?.count)!)
         
-        let totalWidth: CGFloat = buttonMargin * CGFloat(count) + buttonWidth * CGFloat(count)
+        let totalWidth: CGFloat = buttonMargin * CGFloat(count + 1) + buttonWidth * CGFloat(count)
         
         contentSize = CGSizeMake(totalWidth, frame.size.height)
         
@@ -126,6 +131,24 @@ class CCMediaSelectView: UIScrollView {
         sender.selected = true
         //根据tag设置新的index
         selectedIndex = sender.tag
+        //自动中间显示
+        if selectedIndex < 2 {
+            UIView.animateWithDuration(annimateDur, animations: { () -> Void in
+                self.contentOffset = CGPointMake(0, 0)
+            })
+        }else if selectedIndex > (dataArray?.count)! - 3 {
+            UIView.animateWithDuration(annimateDur, animations: { () -> Void in
+                self.contentOffset = CGPointMake(self.buttonMargin * CGFloat((self.dataArray?.count)! + 1) + self.buttonWidth * CGFloat((self.dataArray?.count)!) - SCREEN_BOUNDS.width, 0)
+            })
+        }else {
+            UIView.animateWithDuration(annimateDur, animations: { () -> Void in
+                
+                let totalW = self.buttonMargin * CGFloat(self.selectedIndex + 3) + self.buttonWidth * CGFloat(self.selectedIndex + 2) + self.mathParma
+                self.contentOffset = CGPointMake(totalW - SCREEN_BOUNDS.width, 0)
+            })
+        }
+        
+        
 
     }
     
