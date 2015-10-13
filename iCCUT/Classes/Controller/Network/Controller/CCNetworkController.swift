@@ -129,15 +129,23 @@ class CCNetworkController: UIViewController {
         
         print("======刷新数据=======")
         
-        //更新数据
-        client.updateQueryLoginPage()
-        
-        //检测数据正确性
-        if client.resultArray.count > 0 {
-            showLatestFlowData()
-        }else {
-            showDefaultLlowData()
+        client.operationManager.GET("http://222.28.211.100", parameters: nil, success: { (operation, operObj) -> Void in
+            //更新数据
+            self.client.updateQueryLoginPage()
+            
+            //检测数据正确性
+            if self.client.resultArray.count > 0 {
+                self.showLatestFlowData()
+            }else {
+                self.showDefaultLlowData()
+            }
+            }) { (operation, operError) -> Void in
+                
+                //获取页面失败，提示检测网络
+                MBProgressHUD.showError("出现错误!", toView: self.view)
+                print(operError)
         }
+        
     }
     
     func autoLoginOrNot() {
