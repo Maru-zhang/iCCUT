@@ -15,6 +15,8 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
     let headerH: CGFloat = 150
     /** 图片数组 */
     var imgArray = NSMutableArray()
+    /** 新闻数组 */
+    var newsArray = NSArray()
     /** 标记 */
     let identifer = "newsCell"
 
@@ -26,6 +28,10 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        setupView()
+        
+        setupData()
+        
         setupSetting()
     }
     
@@ -34,6 +40,16 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
     }
     
     /* Private Method */
+    func setupView() {
+        
+        tableView.header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
+            self.loadMoreData()
+        })
+        
+        tableView.header.beginRefreshing()
+        
+    }
+    
     func setupSetting() {
         
         //设置控制器标题
@@ -45,6 +61,21 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         tableView.showsVerticalScrollIndicator = false
     }
     
+    func setupData() {
+        
+        let testDataURL = NSBundle.mainBundle().URLForResource("NewsPlist", withExtension: "plist")
+        let testData = NSArray(contentsOfURL: testDataURL!)
+        newsArray = testData!
+    }
+    
+    /* Action */
+    func loadMoreData() {
+        
+        NSThread.sleepForTimeInterval(1)
+        
+        tableView.header.endRefreshing()
+    }
+    
     
     /* <Tableview Datasource> */
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -52,17 +83,22 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return newsArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(identifer)
+        var cell: CCNewsTableViewCell? = tableView.dequeueReusableCellWithIdentifier(identifer) as? CCNewsTableViewCell
+        
         
         if cell == nil {
             cell = CCNewsTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifer)
         }
         
+        let dic = newsArray[indexPath.row]
+        
+        cell?.title.text = dic["title"] as? String
+        cell?.time.text = dic["time"] as? String
         
         return cell!
     }
@@ -90,7 +126,9 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         
         let webController: CCShowNewsController = UIStoryboard(name: "Common", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("webBrowse") as! CCShowNewsController
         
-        webController.contentURL = NSURL(string: "http://news.ccut.edu.cn/article.php?/4728.html")
+        let dic = newsArray[indexPath.row]
+        
+        webController.contentURL = NSURL(string: (dic["url"] as? String)!)
 
         navigationController?.pushViewController(webController, animated: true)
         

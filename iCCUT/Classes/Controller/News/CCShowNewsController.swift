@@ -12,13 +12,17 @@ class CCShowNewsController: UIViewController {
 
     
     var contentURL: NSURL?
-
-    @IBOutlet weak var displayView: UIWebView!
+    var webView: UIWebView = UIWebView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //配置视图
+        setupView()
+        
+        //配置设置
         setupSetting()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,18 +33,31 @@ class CCShowNewsController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        constrain(webView, view) { (view1, view2) -> () in
+            
+            view1.top == view2.top + STATUS_FRAME.height + 44
+            view1.left == view2.left
+            view1.right == view2.right
+            view1.bottom == view2.bottom
+        }
 
     }
     
 
     /* Private Methpd */
+    func setupView() {
+        view.addSubview(webView)
+    }
+    
     func setupSetting() {
         
         //生成请求，并加载
         let request = NSURLRequest(URL: contentURL!)
-        displayView.loadRequest(request)
+        webView.loadRequest(request)
         //设置constrains
-        displayView.translatesAutoresizingMaskIntoConstraints = false
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        //设置伸缩
+        webView.scalesPageToFit = true
     }
 
 }

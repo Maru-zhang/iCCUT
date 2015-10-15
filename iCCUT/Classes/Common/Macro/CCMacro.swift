@@ -11,6 +11,7 @@ import Foundation
 
 /** Frame */
 let SCREEN_BOUNDS: CGRect = UIScreen.mainScreen().bounds
+let STATUS_FRAME = UIApplication.sharedApplication().statusBarFrame
 
 /** Color */
 let NAV_COLOR: UIColor = UIColor(red: 20.0/255.0, green: 178.0/255.0, blue: 208.0/255.0, alpha: 1)

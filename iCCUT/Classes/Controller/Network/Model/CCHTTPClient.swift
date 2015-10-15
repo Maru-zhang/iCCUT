@@ -93,14 +93,8 @@ class CCHTTPClient: NSObject {
         
         var result: Bool = true
         
-//        //配置超时
-//        operationManager.requestSerializer.timeoutInterval = 3
-//        
-//        //配置响应类型
-//        operationManager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
-        
         //开始请求
-        operationManager.GET(parser.pageURL, parameters: nil, success: { (operation, operationObject) -> Void in
+        operationManager.GET("http://222.28.211.100/F.htm", parameters: nil, success: { (operation, operationObject) -> Void in
         
             print("注销成功")
             

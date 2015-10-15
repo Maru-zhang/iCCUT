@@ -34,6 +34,7 @@ class CCMediaListController: UITableViewController {
         setupData()
         
         setupView()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
