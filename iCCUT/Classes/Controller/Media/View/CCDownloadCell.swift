@@ -11,8 +11,8 @@ import UIKit
 class CCDownloadCell: UITableViewCell {
 
     
+    @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var videoName: UILabel!
-    @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var progressLable: UILabel!
 
     // Life Cycyle

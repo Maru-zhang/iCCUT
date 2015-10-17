@@ -556,6 +556,9 @@
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                 <animations/>
                                 <color key="onTintColor" red="0.078431372550000003" green="0.69803921570000005" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="loginSwitch:" destination="FrC-cY-yAV" eventType="valueChanged" id="6E7-lJ-sg6"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自动登陆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIS-LC-1Vh">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -802,6 +805,7 @@
         <!--我-->
         <scene sceneID="Yff-d8-jPP">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVr-iN-Yjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="8yQ-aK-bjV" customClass="CCMoreTableController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="XSB-H6-4tN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1013,13 +1017,13 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="我" id="amk-Wv-ENN"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qVr-iN-Yjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="190.5" y="1377"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="YHq-fP-PtC">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ItF-fx-geA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="olW-AP-xFY" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Btp-6Z-JIS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1093,13 +1097,13 @@
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ItF-fx-geA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="916.5" y="1377"/>
         </scene>
         <!--Download Controller-->
         <scene sceneID="egW-rm-svr">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndn-eY-KEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="vuT-ny-hpv" customClass="CCDownloadController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="28" sectionFooterHeight="28" id="tVP-Rd-ZQa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1161,7 +1165,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="PVI-hB-j9J"/>
                                                 <constraint firstAttribute="width" constant="42" id="lCQ-an-WOT"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -1220,7 +1224,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="progressBar" destination="e69-ce-YWE" id="MeI-zl-ljr"/>
+                                    <outlet property="progressBar" destination="q18-25-tH3" id="51x-Ys-cqv"/>
                                     <outlet property="progressLable" destination="Mpe-lE-Way" id="vMd-zC-Qih"/>
                                     <outlet property="videoName" destination="f0N-yp-LBj" id="5zz-ht-sGb"/>
                                 </connections>
@@ -1232,7 +1236,6 @@
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ndn-eY-KEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="904.5" y="2138"/>
         </scene>

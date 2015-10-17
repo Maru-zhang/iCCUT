@@ -46,8 +46,6 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
             self.loadMoreData()
         })
         
-        tableView.header.beginRefreshing()
-        
     }
     
     func setupSetting() {

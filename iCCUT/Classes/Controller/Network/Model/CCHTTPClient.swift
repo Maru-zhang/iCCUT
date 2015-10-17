@@ -6,12 +6,13 @@
 //  Copyright © 2015年 Alloc. All rights reserved.
 //
 
-enum CCUserLoginType: NSString {
+import Alamofire
 
+enum CCUserLoginType: NSInteger {
     //自动登陆
-    case AutoLogin
+    case AutoLogin = 1
     //手动登陆
-    case ManuLogin
+    case ManuLogin = 0
 }
 
 class CCHTTPClient: NSObject {
@@ -19,7 +20,16 @@ class CCHTTPClient: NSObject {
     /** 单例对象 */
     static let client = CCHTTPClient()
     /** 是否成功登陆 */
-    var userType: CCUserLoginType = CCUserLoginType.AutoLogin
+    var userType: CCUserLoginType {
+        let user = NSUserDefaults.standardUserDefaults()
+        if (user.objectForKey(KAUTO_LOGIN) != nil) {
+            let num = user.objectForKey(KAUTO_LOGIN) as! NSInteger
+            return CCUserLoginType(rawValue: num)!
+        }else {
+            user.setObject(1, forKey: KAUTO_LOGIN)
+            return CCUserLoginType(rawValue: 1)!
+        }
+    }
     /** 网络类型监控 */
     let networkManager: AFNetworkReachabilityManager = AFNetworkReachabilityManager.sharedManager()
     /** 网页分析器 */
@@ -86,6 +96,7 @@ class CCHTTPClient: NSObject {
         }
         
         return result
+        
     }
     
     //登出操作

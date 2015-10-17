@@ -121,7 +121,7 @@ class CCMediaListController: UITableViewController {
         playerController.downloadBlock = ({() in
             print("开始下载")
             
-            let path = DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
+            DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
         })
         
         presentViewController(playerController, animated: true, completion: nil)
@@ -134,11 +134,8 @@ class CCMediaListController: UITableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            
             let headView: CCMediaSelectView = CCMediaSelectView(frame: CGRectMake(0, 0,SCREEN_BOUNDS.width, sectionHeight))
-            
             headView.dataArray = ["纪录片","学习","影视","动漫","学习","直播","原创"]
-            
             return headView
         }else {
             return nil

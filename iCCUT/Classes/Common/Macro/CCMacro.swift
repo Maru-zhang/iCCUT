@@ -27,3 +27,4 @@ let KCodeGB2312 = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFS
 let KACCOUNT = "account"
 let KPASSWORD = "password"
 let KUSER_TYPE = "userType"
+let KAUTO_LOGIN = "isAutoLogin"

@@ -28,6 +28,7 @@ class CCShowNewsController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,6 +40,7 @@ class CCShowNewsController: UIViewController {
             view1.left == view2.left
             view1.right == view2.right
             view1.bottom == view2.bottom
+            
         }
 
     }

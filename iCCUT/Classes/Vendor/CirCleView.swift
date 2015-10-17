@@ -104,7 +104,7 @@ class CirCleView: UIView, UIScrollViewDelegate {
         self.currentImageView = UIImageView()
         currentImageView.frame = CGRectMake(self.frame.size.width, 0, self.frame.size.width, 200)
         currentImageView.userInteractionEnabled = true
-        currentImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        currentImageView.contentMode = UIViewContentMode.ScaleToFill
         currentImageView.clipsToBounds = true
         contentScrollView.addSubview(currentImageView)
         
@@ -114,13 +114,13 @@ class CirCleView: UIView, UIScrollViewDelegate {
         
         self.lastImageView = UIImageView()
         lastImageView.frame = CGRectMake(0, 0, self.frame.size.width, 200)
-        lastImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        lastImageView.contentMode = UIViewContentMode.ScaleToFill
         lastImageView.clipsToBounds = true
         contentScrollView.addSubview(lastImageView)
         
         self.nextImageView = UIImageView()
         nextImageView.frame = CGRectMake(self.frame.size.width * 2, 0, self.frame.size.width, 200)
-        nextImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        nextImageView.contentMode = UIViewContentMode.ScaleToFill
         nextImageView.clipsToBounds = true
         contentScrollView.addSubview(nextImageView)
         

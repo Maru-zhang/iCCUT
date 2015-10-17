@@ -73,6 +73,16 @@ class CCNetworkController: UIViewController {
     }
     
     // < Action >
+    @IBAction func loginSwitch(sender: AnyObject) {
+        let loginSwitch: UISwitch = sender as! UISwitch
+        let user = NSUserDefaults.standardUserDefaults()
+        
+        if loginSwitch.on {
+            user.setInteger(1, forKey: "isAutoLogin")
+        }else {
+            user.setInteger(0, forKey: "isAutoLogin")
+        }
+    }
     @IBAction func refreshClick(sender: AnyObject) {
         updateFlowData()
     }
@@ -111,6 +121,14 @@ class CCNetworkController: UIViewController {
     
     // <Private Method>
     func setupView() {
+        
+        //根据client的自动登录设置来显示Switch
+        if client.userType.rawValue == 1 {
+            autoSwitch.on = true
+        }else {
+            autoSwitch.on = false
+        }
+        
         self.cancelButton.setTitle("登陆", forState: UIControlState.Selected)
         self.cancelButton.setTitle("注销", forState: UIControlState.Normal)
     }
