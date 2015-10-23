@@ -28,7 +28,7 @@ class CCMediaListController: UITableViewController {
     }
 
 
-    // Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         
         setupData()
@@ -43,7 +43,7 @@ class CCMediaListController: UITableViewController {
         setupSetting()
     }
     
-    // Private Method
+    // MARK: -  Private Method
     private func setupView() {
         
         //不显示垂直指示器
@@ -65,12 +65,12 @@ class CCMediaListController: UITableViewController {
         tabBarController?.navigationItem.rightBarButtonItem = downloadItem
     }
     
-    // Action
+    // MARK: - Action
     func downloadButtonClick() {
         
     }
     
-    // <TableView DataSource>
+    // MARK: - TableView DataSource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -100,7 +100,7 @@ class CCMediaListController: UITableViewController {
         return cell!
     }
     
-    // <TableView Delegate>
+    // MARK: - TableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         

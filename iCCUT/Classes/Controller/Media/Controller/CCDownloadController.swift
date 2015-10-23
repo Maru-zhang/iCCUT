@@ -17,7 +17,7 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     /** Cell唯一标示 */
     let identifier = "downloadCell"
     
-    // Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -25,9 +25,10 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
         setupView()
         
         setupSetting()
+        
     }
     
-    // <Private Method>
+    // MARK: - Private Method
     private func setupView() {
         
         navigationController?.navigationItem.title = "缓存视频"
@@ -37,7 +38,7 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
         downloadTool.delegate = self
     }
     
-    // <UITableview Datasource>
+    // MARK: - UITableview Datasource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -58,29 +59,56 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
         let model = dataSource[indexPath.row] as! CCVideoDownModel
         (cell as! CCDownloadCell).progressBar.progress = model.precent
         (cell as! CCDownloadCell).progressLable.text = "\(Int(model.precent * 100))%"
-        (cell as! CCDownloadCell).videoName.text = model.name as? String
+        (cell as! CCDownloadCell).videoName.text = model.name as String
         
         return cell!
     }
     
-    /**
-    *  UITableView Delegate
-    */
+
+    // MARK: - UITableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let model: CCVideoDownModel = dataSource[indexPath.row] as! CCVideoDownModel
+        
         guard model.isFinish else {
             return
         }
         
         let player = MRVLCMediaController()
-        player.mediaURL = NSURL(string: model.url! as String)
+        player.mediaURL = DIR_PATH.URLByAppendingPathComponent(model.urlString as! String)
         presentViewController(player, animated: true, completion: nil)
     }
     
-    /**
-    *  DownloadProtocol
-    */
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .Delete
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let model = downloadTool.videoQueue[indexPath.row] as! CCVideoDownModel
+            //删除本地视频
+            if model.isFinish {
+                do {
+                    try NSFileManager.defaultManager().removeItemAtURL(DIR_PATH.URLByAppendingPathComponent(model.urlString as! String))
+                }catch {
+                    if DEBUG_LOG {print("删除失败!")}
+                }
+            }
+            //从队列中删除
+            downloadTool.videoQueue.removeObjectAtIndex(indexPath.row)
+            //本地化队列
+            downloadTool.writeData()
+            tableView.reloadData()
+            if DEBUG_LOG {print(downloadTool.videoQueue)}
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "删除视频"
+    }
+    
+
+    // MARK: - DownloadProtocol
     func downloadTooldidReceiveData() {
         /* 异步队列主线程 */
         dispatch_async(dispatch_get_main_queue()) { () -> Void in

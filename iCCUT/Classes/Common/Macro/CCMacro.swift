@@ -28,3 +28,26 @@ let KACCOUNT = "account"
 let KPASSWORD = "password"
 let KUSER_TYPE = "userType"
 let KAUTO_LOGIN = "isAutoLogin"
+let KLOCAL_VIDEO = "local_video"
+
+/** Dedug */
+let DEBUG_LOG = true
+
+/** Path */
+var DIR_PATH: NSURL {
+    var temp: NSURL?
+        do {
+            temp = try NSFileManager().URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true)
+        }catch {
+            
+        }
+    return temp!
+}
+
+/** Time */
+var CUR_TIME: NSString {
+    let formmatter = NSDateFormatter()
+    formmatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let time = formmatter.stringFromDate(NSDate()) as NSString
+    return time
+}

@@ -46,6 +46,10 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
             self.loadMoreData()
         })
         
+        tableView.footer = MJRefreshFooter(refreshingBlock: { () -> Void in
+            self.loadMoreData()
+        })
+        
     }
     
     func setupSetting() {
@@ -133,7 +137,9 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
     }
     
     /* CirCleViewDelegate */
-
+    func clickCurrentImage(currentIndxe: Int) {
+        print("当前点击了第\(currentIndxe)张图片！")
+    }
     
 
 }
