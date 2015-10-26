@@ -74,7 +74,7 @@
                                     <constraint firstAttribute="width" constant="297" id="I6Z-sk-fif"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Ffa-cq-fa7"/>
@@ -805,7 +805,6 @@
         <!--我-->
         <scene sceneID="Yff-d8-jPP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qVr-iN-Yjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="8yQ-aK-bjV" customClass="CCMoreTableController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="XSB-H6-4tN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1017,13 +1016,13 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="我" id="amk-Wv-ENN"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVr-iN-Yjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="190.5" y="1377"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="YHq-fP-PtC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ItF-fx-geA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="olW-AP-xFY" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Btp-6Z-JIS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1097,13 +1096,13 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ItF-fx-geA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="916.5" y="1377"/>
         </scene>
         <!--Download Controller-->
         <scene sceneID="egW-rm-svr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ndn-eY-KEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="vuT-ny-hpv" customClass="CCDownloadController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="28" sectionFooterHeight="28" id="tVP-Rd-ZQa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1236,6 +1235,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndn-eY-KEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="904.5" y="2138"/>
         </scene>

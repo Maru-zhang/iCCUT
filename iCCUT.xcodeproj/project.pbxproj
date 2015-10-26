@@ -92,7 +92,6 @@
 		42A26D301BB69021007821E7 /* CCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A26D2F1BB69021007821E7 /* CCLoginViewController.swift */; };
 		42A26D331BB6A351007821E7 /* CCTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A26D321BB6A351007821E7 /* CCTextFiled.swift */; };
 		42A3151C1BAE93A100A1F1F7 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */; };
-		42C648CF1BAEDB8C000D5764 /* 1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 42C648CE1BAEDB8C000D5764 /* 1.mov */; };
 		42C648DA1BAEDCDC000D5764 /* KRVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C648D71BAEDCDC000D5764 /* KRVideoPlayerControlView.m */; };
 		42C648DF1BAEE336000D5764 /* CCMediaListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C648DE1BAEE336000D5764 /* CCMediaListController.swift */; };
 		42C648E21BAFBA7B000D5764 /* CCMediaSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C648E11BAFBA7B000D5764 /* CCMediaSelectView.swift */; };
@@ -198,7 +197,6 @@
 		42A26D2F1BB69021007821E7 /* CCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCLoginViewController.swift; path = ../Main/CCLoginViewController.swift; sourceTree = "<group>"; };
 		42A26D321BB6A351007821E7 /* CCTextFiled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTextFiled.swift; sourceTree = "<group>"; };
 		42A3151B1BAE93A100A1F1F7 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = ../../../../../../Resources/SDK/MobileVLCKit.framework; sourceTree = "<group>"; };
-		42C648CE1BAEDB8C000D5764 /* 1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 1.mov; sourceTree = "<group>"; };
 		42C648D61BAEDCDC000D5764 /* KRVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerControlView.h; sourceTree = "<group>"; };
 		42C648D71BAEDCDC000D5764 /* KRVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRVideoPlayerControlView.m; sourceTree = "<group>"; };
 		42C648DD1BAEDD79000D5764 /* Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Bridging_Header.h; path = ../Vendor/Classes/Bridging_Header.h; sourceTree = "<group>"; };
@@ -386,7 +384,6 @@
 			children = (
 				42A0EEAD1BCCC5180092C16F /* Assets.xcassets */,
 				42890BD41BB2B37E0044519A /* Plist */,
-				42C648CE1BAEDB8C000D5764 /* 1.mov */,
 			);
 			name = Resource;
 			path = /Users/maru/Documents/Projective/iCCUT/iCCUT/Classes/Resource;
@@ -729,7 +726,6 @@
 				42A0EEB01BCCFE850092C16F /* Common.storyboard in Resources */,
 				4286B26C1BAD407E0015EDDA /* kr-video-player-close@3x.png in Resources */,
 				4286B26F1BAD407E0015EDDA /* kr-video-player-pause@2x.png in Resources */,
-				42C648CF1BAEDB8C000D5764 /* 1.mov in Resources */,
 				4286B2731BAD407E0015EDDA /* kr-video-player-point@2x.png in Resources */,
 				4286B26E1BAD407E0015EDDA /* kr-video-player-fullscreen@3x.png in Resources */,
 				427A65981BAD0D8A004A0627 /* Main.storyboard in Resources */,
