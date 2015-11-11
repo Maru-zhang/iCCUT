@@ -56,7 +56,14 @@ class DownloadTool: NSObject {
                         return
                     }
                     self.delegate!.downloadTooldidReceiveData()
-            }
+            }.response(completionHandler: { (request, respones, data, resError) -> Void in
+                
+                if let error = resError {
+                    if DEBUG_LOG {print("下载出错\(error)")}
+                }else {
+                    if DEBUG_LOG {print("下载成功！")}
+                }
+            })
         }
 
     }

@@ -15,8 +15,21 @@ class CCMediaListController: UITableViewController {
     let identifier = "mediaListCell"
     
     var dataArray: NSArray?
-    
-    private let sectionHeight: CGFloat = 35.0
+    /** 选择视图 */
+    var sortView: CCSortView = CCSortView()
+    /** 标题视图 */
+    var sortButton: UIButton {
+        //配置导航栏中间的titleView
+        let s = UIButton(type: .System)
+        s.adjustsImageWhenHighlighted = false
+        s.userInteractionEnabled = true
+        s.backgroundColor = UIColor.clearColor()
+        s.setTitle("分类", forState: .Normal)
+        s.setTitle("分类", forState: .Selected)
+        s.frame = CGRectMake(0, 0, 60, 40)
+        s.addTarget(self, action: Selector("sortViewAction:"), forControlEvents: UIControlEvents.TouchDown)
+        return s
+    }
     /** 下载item */
     var downloadItem: UIBarButtonItem {
         
@@ -48,7 +61,10 @@ class CCMediaListController: UITableViewController {
         
         //不显示垂直指示器
         tableView.showsVerticalScrollIndicator = false
-        
+        //添加分类按钮
+        self.navigationItem.titleView = sortButton
+        //添加选择视图
+        sortView.frame = CGRectMake(0, 0, SCREEN_BOUNDS.width, 300)
         
     }
     
@@ -69,6 +85,24 @@ class CCMediaListController: UITableViewController {
     func downloadButtonClick() {
         
     }
+    
+    
+    func sortViewAction(sender: UIButton) {
+        
+        if sender.selected == true {
+            sender.selected = false
+            sortView.removeFromSuperview()
+            tableView.userInteractionEnabled = true
+            sortView.userInteractionEnabled = true
+            
+        }else {
+            sender.selected = true
+            tableView.addSubview(sortView)
+            tableView.userInteractionEnabled = true
+            sortView.userInteractionEnabled = true
+        }
+    }
+    
     
     // MARK: - TableView DataSource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -96,9 +130,9 @@ class CCMediaListController: UITableViewController {
         cell?.textLabel?.text = name
         cell?.detailTextLabel?.text = url
         
-        
         return cell!
     }
+    
     
     // MARK: - TableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -106,17 +140,17 @@ class CCMediaListController: UITableViewController {
         
         let playerController: MRVLCMediaController = MRVLCMediaController()
         
+        //取出模型字典
         let dic: NSDictionary = (dataArray?.objectAtIndex(indexPath.row))! as! NSDictionary
         
-        let urlString: NSString = dic["url"] as! NSString
+        //创建一个模型
+        let model: CCVideoModel = CCVideoModel()
         
-        playerController.mediaURL = NSURL(string: urlString as String)
+        //配置一个模型
+        model.configureWithDic(dic)
         
-        let model = CCVideoModel()
-        model.name = "测试"
-        model.url = urlString as String
-        model.sorOne = "1"
-        model.sortTwo = "2"
+        //从模型中取出数据赋值
+        playerController.mediaURL = NSURL(string: model.url!)
         
         playerController.downloadBlock = ({() in
             print("开始下载")
@@ -127,20 +161,12 @@ class CCMediaListController: UITableViewController {
         presentViewController(playerController, animated: true, completion: nil)
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return sectionHeight
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if section == 0 {
-            let headView: CCMediaSelectView = CCMediaSelectView(frame: CGRectMake(0, 0,SCREEN_BOUNDS.width, sectionHeight))
-            headView.dataArray = ["纪录片","学习","影视","动漫","学习","直播","原创"]
-            return headView
-        }else {
-            return nil
-        }
-        
-    }
     
 }

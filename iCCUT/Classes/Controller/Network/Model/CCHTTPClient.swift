@@ -133,8 +133,6 @@ class CCHTTPClient: NSObject {
         parser.parseHTMLWithPageString(htmlContent!)
         
         resultArray = parser.resultArray
- 
-        print(resultArray)
         
     }
 

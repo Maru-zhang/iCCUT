@@ -49,17 +49,18 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+        var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? CCDownloadCell
         
         if cell == nil {
             
             cell = CCDownloadCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifier)
         }
         
+        //获取模型
         let model = dataSource[indexPath.row] as! CCVideoDownModel
-        (cell as! CCDownloadCell).progressBar.progress = model.precent
-        (cell as! CCDownloadCell).progressLable.text = "\(Int(model.precent * 100))%"
-        (cell as! CCDownloadCell).videoName.text = model.name as String
+        
+        //配置模型
+        cell!.configureCellWithModel(model)
         
         return cell!
     }
@@ -105,6 +106,16 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     
     override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
         return "删除视频"
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
 

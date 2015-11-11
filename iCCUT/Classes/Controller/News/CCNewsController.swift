@@ -58,7 +58,6 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         tabBarController?.navigationItem.title = tabBarItem.title
         //item消失
         tabBarController?.navigationItem.rightBarButtonItem = nil
-        
         //隐藏滚动条
         tableView.showsVerticalScrollIndicator = false
     }

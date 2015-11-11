@@ -80,7 +80,7 @@ class CCLoginViewController: UIViewController {
                 MBProgressHUD.showError("登陆出错！", toView: self.view)
             }else {
                 progressView.hide(true)
-                print(client.parser.loginStatusInfo)
+                MBProgressHUD.showError(client.parser.loginStatusInfo as? String, toView: self.view)
             }
             
             
@@ -97,10 +97,6 @@ class CCLoginViewController: UIViewController {
         
     }
     @IBAction func guestLoginClick(sender: AnyObject) {
-        
-        let client = CCHTTPClient.getInstance()
-        
-        client
         
         dismissViewControllerAnimated(true, completion: nil)
     }

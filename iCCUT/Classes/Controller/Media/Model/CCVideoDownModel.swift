@@ -10,6 +10,7 @@ import UIKit
 
 class CCVideoDownModel: NSObject,NSCoding {
     
+    // MARK: - Property
     var name: NSString!
     var bytesRead: Int64!
     var totalBytesRead: Int64!
