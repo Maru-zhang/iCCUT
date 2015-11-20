@@ -13,7 +13,7 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
     
     
     /** 数据源 */
-    let dataSource: NSMutableArray = ["纪录片","学习","影视","动漫"]
+    let dataSource: NSMutableArray = ["纪录片","动漫频道","影视","学习"]
     /** 布局 */
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     /** 唯一标识 */
@@ -43,21 +43,18 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
         //设置Tabbar文字
         tabBarController?.navigationItem.title = tabBarItem.title
         
-        print(tabBarItem.title)
-        
         self.collectionView?.backgroundColor = UIColor.whiteColor()
         
     }
+    
 
     // MARK: - UICollectionViewDataSource
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return dataSource.count
     }
 
@@ -65,10 +62,27 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CCListViewCell
         
-        cell.configureCell(indexPath)
-    
+        cell.configureCell(indexPath, dataSource: dataSource)
+        
         return cell
     }
 
     // MARK: UICollectionViewDelegate
+    
+    
+    // MARK: - Storyboard segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let sortList = NSArray(contentsOfURL: NSBundle.mainBundle().URLForResource("MediaListName", withExtension: "plist")!)
+        
+        let indexPath = collectionView?.indexPathForCell(sender as! CCListViewCell)
+        
+        let vc = segue.destinationViewController as! CCMediaListController
+        
+        vc.leve1 = dataSource[(indexPath?.row)!] as? String
+        
+        vc.sortList = sortList![(indexPath?.row)!] as? NSArray;
+        
+    }
+    
 }

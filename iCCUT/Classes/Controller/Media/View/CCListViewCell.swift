@@ -20,25 +20,10 @@ class CCListViewCell: UICollectionViewCell {
     }
     
     
-    func configureCell(indexPath: NSIndexPath) {
+    func configureCell(indexPath: NSIndexPath, dataSource: NSArray) {
         
         bgImage.image = UIImage(named: "channel_button_\(indexPath.row)")
-        
-        var title: String?
-        
-        switch indexPath.row {
-        case 0:
-            title = "纪录片"
-        case 1:
-            title = "影视"
-        case 2:
-            title = "动漫"
-        case 3:
-            title = "学习"
-        default: break
-        }
-        
-        imageTitle.text = title!
+        imageTitle.text = dataSource[indexPath.row] as? String
         
     }
 

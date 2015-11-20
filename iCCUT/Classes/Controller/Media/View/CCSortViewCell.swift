@@ -27,11 +27,15 @@ class CCSortViewCell: UICollectionViewCell {
     
     // MARK: - Private Method
     private func setupView() {
+        alpha = 0.7
         backgroundColor = UIColor.clearColor()
         
         textLableL.frame = CGRectMake(0, 0, bounds.width, bounds.height)
+        textLableL.font = UIFont(name: "Helvetica", size: 10)
+        textLableL.textColor = UIColor.whiteColor()
+        textLableL.numberOfLines = 0
+        textLableL.lineBreakMode = .ByClipping
         textLableL.textAlignment = .Center
-        textLableL.text = "Test"
         addSubview(textLableL)
     }
 }

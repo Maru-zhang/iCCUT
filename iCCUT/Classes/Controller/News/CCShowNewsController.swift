@@ -48,6 +48,8 @@ class CCShowNewsController: UIViewController {
 
     /* Private Methpd */
     func setupView() {
+        title = "资讯"
+        
         view.addSubview(webView)
     }
     

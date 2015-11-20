@@ -34,8 +34,6 @@ class CCHTMLParser: NSObject {
         
         let msg: NSString = page.substringWithRange(NSMakeRange(313, 2))
         
-        print(msg)
-        
         if msg.isEqualToString("'w") || msg.isEqualToString("cr") {
             //成功登陆
             self.loginStatus = CCUTLoginStatus.Sucess
@@ -62,14 +60,12 @@ class CCHTMLParser: NSObject {
                     
                     self.loginStatusInfo = msgDic[info as! String] as? NSString
                     
-                    print("==========\(loginStatusInfo)")
                 }
             }
             if !isInCCUT {
                 self.loginStatus = CCUTLoginStatus.Out
             }
         }
-        print("==========\(loginStatus)")
     }
     
     //获取数据
@@ -109,7 +105,5 @@ class CCHTMLParser: NSObject {
         
         //传送结果
         self.resultArray = NSArray(array: [NSNumber(integer: time),NSNumber(integer: flow),NSNumber(integer: fee)])
-        
-        print(resultArray)
     }
 }

@@ -111,7 +111,7 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView: CirCleView = CirCleView(frame: CGRectMake(0, 0, SCREEN_BOUNDS.width, headerH), imageArray: [UIImage(named: "1"),UIImage(named: "2"),UIImage(named: "3")])
+        let headerView: CirCleView = CirCleView(frame: CGRectMake(0, 0, SCREEN_BOUNDS.width, headerH), imageArray: [UIImage(named: "banner-1"),UIImage(named: "banner-2"),UIImage(named: "banner-3")])
         
         headerView.delegate = self
         

@@ -9,31 +9,37 @@
 
 import Foundation
 
-/** Frame */
+//****** Frame *****************************
+/** 屏幕Bounds */
 let SCREEN_BOUNDS: CGRect = UIScreen.mainScreen().bounds
+/** 状态栏的Frame */
 let STATUS_FRAME = UIApplication.sharedApplication().statusBarFrame
 
-/** Color */
+//****** Color *****************************
+/** 导航栏颜色 */
 let NAV_COLOR: UIColor = UIColor(red: 20.0/255.0, green: 178.0/255.0, blue: 208.0/255.0, alpha: 1)
+/** 导航栏字体颜色 */
 let NAV_FONT_COLOR: UIColor = UIColor.whiteColor()
 
-/** Name */
+//****** Name *****************************
+/** TabbarItem文字数组 */
 let NAV_NAME_ARRAY: NSArray = ["主页","网络","视频","我"]
 
-/** Codeing */
+//****** Codeing *****************************
 let KCodeGB2312 = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue))
 
-/** Key */
+//****** Key *****************************
 let KACCOUNT = "account"
 let KPASSWORD = "password"
 let KUSER_TYPE = "userType"
 let KAUTO_LOGIN = "isAutoLogin"
 let KLOCAL_VIDEO = "local_video"
 
-/** Dedug */
+//****** Dedug *****************************
 let DEBUG_LOG = true
 
-/** Path */
+//****** Path *****************************
+/** 沙盒文档路径 */
 var DIR_PATH: NSURL {
     var temp: NSURL?
         do {
@@ -44,7 +50,8 @@ var DIR_PATH: NSURL {
     return temp!
 }
 
-/** Time */
+//****** Time *****************************
+/** 当前系统时间 */
 var CUR_TIME: NSString {
     let formmatter = NSDateFormatter()
     formmatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

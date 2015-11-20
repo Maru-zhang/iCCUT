@@ -74,6 +74,13 @@ class CCHTTPClient: NSObject {
         //配置POST参数
         let parameters: NSDictionary = ["DDDDD": act,"upass": pwd,"0MKKey": "登录 Login"]
         
+        Alamofire.request(.GET, parser.pageURL, parameters: parameters as? [String : AnyObject])
+            .responseData { response in
+                print(response.response)
+//                print(response.response)
+//                print(response.result)
+        }
+        
         //开始POST请求
         operationManager.POST(parser.pageURL, parameters: parameters, success: { (operation: AFHTTPRequestOperation, operationObject) -> Void in
             

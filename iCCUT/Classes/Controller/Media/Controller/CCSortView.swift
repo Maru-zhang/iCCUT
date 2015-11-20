@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol CCSortViewProtocol: NSObjectProtocol {
+    func sortView(sortView sortview: CCSortView,indexPath: NSIndexPath)
+}
+
 class CCSortView: UICollectionView,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     // MARK: - Property
-    var data: NSMutableArray?
+    var data: NSArray?
     /** 边距 */
     var edgeInset: UIEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
     /** 最小行间隔 */
@@ -22,11 +26,11 @@ class CCSortView: UICollectionView,UICollectionViewDataSource,UICollectionViewDe
     var isHaveMask: Bool = true
     /** 遮挡视图 */
     var mkView: UIView = UIView()
+    /** 代理 */
+    weak var sortDelegate: CCSortViewProtocol?
 
     /** 缓存标识 */
     private let reuseIdentifier = "CCSortCell"
-    
-    
     
     // MARK: - Life Cycle
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -73,27 +77,32 @@ class CCSortView: UICollectionView,UICollectionViewDataSource,UICollectionViewDe
             return
         }
         
-        //如果是scorlView那么就禁止它的滚动
-        if let superView = newSuperview as? UIScrollView {
-            superView.scrollEnabled = false
+        guard let _ = newSuperview?.isKindOfClass(UIScrollView) else {
+            return
         }
+        
+        guard isHaveMask else {
+            return
+        }
+        
+        //如果是scorlView那么就禁止它的滚动
+        let scrolSuperView = newSuperview as! UIScrollView
+        scrolSuperView.scrollEnabled = false
         
         let width = newSuperview?.bounds.width
         let height = newSuperview?.bounds.height
         let targetH = bounds.height
-        frame = CGRectMake(0, 0, frame.width, 0)
-
+        frame = CGRectMake(0, scrolSuperView.contentOffset.y + scrolSuperView.contentInset.top, frame.width, 0)
         
-        if isHaveMask {
-            mkView.userInteractionEnabled = true
-            mkView.backgroundColor = UIColor.blackColor()
-            mkView.alpha = 0.2;
-            mkView.frame = CGRectMake(0, bounds.height, width!,height!)
-            newSuperview!.addSubview(mkView)
-        }
+        mkView.userInteractionEnabled = true
+        mkView.backgroundColor = UIColor.blackColor()
+        mkView.alpha = 0.2;
+        mkView.frame = CGRectMake(0, bounds.height + scrolSuperView.contentOffset.y, width!,height!)
+        newSuperview!.addSubview(mkView)
+        
         View.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: UIViewAnimationOptions.LayoutSubviews, animations: { () -> Void in
-            self.frame = CGRectMake(0, 0, self.frame.width, targetH)
-            self.mkView.frame = CGRectMake(0, self.bounds.height, width!,height! - self.bounds.height)
+            self.frame = CGRectMake(0, scrolSuperView.contentOffset.y + scrolSuperView.contentInset.top, self.frame.width, targetH)
+            self.mkView.frame = CGRectMake(0, self.bounds.height + scrolSuperView.contentOffset.y, width!,height! - self.bounds.height)
             }) { (bool) -> Void in
         }
         
@@ -115,14 +124,19 @@ class CCSortView: UICollectionView,UICollectionViewDataSource,UICollectionViewDe
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(20)
+        guard (data != nil) else {
+            return 0
+        }
+        return (data?.count)!
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CCSortViewCell
         
-        print(cell)
+        cell.backgroundColor = NAV_COLOR;
+        cell.layer.cornerRadius = 5;
+        cell.textLableL.text = data![indexPath.row] as? String
         
         return cell
     }
@@ -138,5 +152,12 @@ class CCSortView: UICollectionView,UICollectionViewDataSource,UICollectionViewDe
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return itemSize
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if((sortDelegate) != nil) {
+            sortDelegate!.sortView(sortView: self, indexPath: indexPath)
+        }
+        removeFromSuperview()
     }
 }
