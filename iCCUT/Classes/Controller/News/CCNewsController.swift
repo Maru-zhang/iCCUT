@@ -42,13 +42,6 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
     /* Private Method */
     func setupView() {
         
-        tableView.header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
-            self.loadMoreData()
-        })
-        
-        tableView.footer = MJRefreshFooter(refreshingBlock: { () -> Void in
-            self.loadMoreData()
-        })
         
     }
     
@@ -74,7 +67,6 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         
         NSThread.sleepForTimeInterval(1)
         
-        tableView.header.endRefreshing()
     }
     
     

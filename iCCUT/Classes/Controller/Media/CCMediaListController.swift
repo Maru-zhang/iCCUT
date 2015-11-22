@@ -54,7 +54,6 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         
         setupView()
         
-        tableView.header.beginRefreshing()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,7 +61,10 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         
         setupSetting()
         
+        tableView.mj_header.beginRefreshing()
+        
     }
+    
     
     // MARK: -  Private Method
     private func setupView() {
@@ -75,13 +77,16 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         sortView.frame = CGRectMake(0, 0, SCREEN_BOUNDS.width, 300)
         sortView.data = sortList
         sortView.sortDelegate = self
-        // 添加刷新
-        tableView.header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
+
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
             self.loadData(true)
-        })
-        tableView.footer = MJRefreshBackNormalFooter(refreshingBlock: { () -> Void in
+        });
+        
+        // MJ上拉刷新
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { () -> Void in
             self.loadData(false)
-        })
+        });
         
     }
     
@@ -125,8 +130,8 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                 self.tableView.reloadData()
                 
                 //停止刷新
-                self.tableView.header.endRefreshing()
-                self.tableView.footer.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                self.tableView.mj_header.endRefreshing()
         }
         
     }

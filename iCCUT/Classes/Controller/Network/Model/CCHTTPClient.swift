@@ -30,29 +30,13 @@ class CCHTTPClient: NSObject {
             return CCUserLoginType(rawValue: 1)!
         }
     }
-    /** 网络类型监控 */
-    let networkManager: AFNetworkReachabilityManager = AFNetworkReachabilityManager.sharedManager()
     /** 网页分析器 */
     let parser: CCHTMLParser = CCHTMLParser()
     /** 账号密码本地化 */
     let userDefault: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     /** 登陆结果 */
     var resultArray: NSArray = NSArray()
-    /** HTTP操作管理 */
-    var operationManager: AFHTTPRequestOperationManager {
-        get {
-            let httpManageer = AFHTTPRequestOperationManager()
-            //配置超时
-            httpManageer.requestSerializer.timeoutInterval = 1.0
-            //配置响应类型
-            httpManageer.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
-            return httpManageer
-        }
-        set {
-            
-        }
-    }
-    
+
     
     
     //< Life Cycle >
@@ -71,57 +55,44 @@ class CCHTTPClient: NSObject {
         
         var result: Bool = false
         
-        //配置POST参数
-        let parameters: NSDictionary = ["DDDDD": act,"upass": pwd,"0MKKey": "登录 Login"]
-        
-        Alamofire.request(.GET, parser.pageURL, parameters: parameters as? [String : AnyObject])
-            .responseData { response in
-                print(response.response)
-//                print(response.response)
-//                print(response.result)
-        }
-        
-        //开始POST请求
-        operationManager.POST(parser.pageURL, parameters: parameters, success: { (operation: AFHTTPRequestOperation, operationObject) -> Void in
-            
-            //更新状态,获取最新的数据
-            self.updateQueryLoginPage()
-            
-            if self.parser.loginStatus == CCUTLoginStatus.Sucess {
-                print("成功登陆!")
-                //结果为成功登陆
-                result = true
-            }else if self.parser.loginStatus == CCUTLoginStatus.UnLogin {
-                print("未登陆!")
-            }else if self.parser.loginStatus == CCUTLoginStatus.Error {
-            }
-                print("登陆失败!")
-            })
-            { (operation, operationError) -> Void in
-                print("POST失败!")
-                print(operationError)
+        Alamofire.request(.POST, parser.pageURL, parameters: ["DDDDD": act,"upass": pwd,"0MKKey": "登录 Login"])
+            .response { request, response, data, error in
+                //更新状态,获取最新的数据
+                self.updateQueryLoginPage()
+                
+                if self.parser.loginStatus == CCUTLoginStatus.Sucess {
+                    print("成功登陆!")
+                    //结果为成功登陆
+                    result = true
+                }else if self.parser.loginStatus == CCUTLoginStatus.UnLogin {
+                    print("未登陆!")
+                }else if self.parser.loginStatus == CCUTLoginStatus.Error {
+                    print("登陆失败!")
+                }
+     
         }
         
         return result
-        
     }
     
     //登出操作
     func logout() -> Bool {
         
         var result: Bool = true
-        
-        //开始请求
-        operationManager.GET("http://222.28.211.100/F.htm", parameters: nil, success: { (operation, operationObject) -> Void in
-        
-            print("注销成功")
-            
-            })
-        { (operation, operationError) -> Void in
-            print(operationError)
-            result = false
+
+        // 开始请求
+        Alamofire.request(.GET, "http://222.28.211.100/F.htm", parameters: nil)
+            .response { request, response, data, error in
+                //更新状态,获取最新的数据
+                
+                if (error != nil) {
+                    print(error)
+                    result = false
+                }else {
+                    debugPrint("注销成功")
+                }
+                
         }
-        
         //返回结果
         return result
     }
@@ -140,7 +111,6 @@ class CCHTTPClient: NSObject {
         parser.parseHTMLWithPageString(htmlContent!)
         
         resultArray = parser.resultArray
-        
     }
 
 }

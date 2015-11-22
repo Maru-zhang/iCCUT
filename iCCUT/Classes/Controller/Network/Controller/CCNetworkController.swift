@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CCNetworkController: UIViewController {
     
@@ -47,27 +48,22 @@ class CCNetworkController: UIViewController {
         //获取22.28.211.100的页面
         var pageContent: NSString?
         
-        
-        client.operationManager.GET("http://222.28.211.100", parameters: nil, success: { (operation, operObj) -> Void in
-            pageContent = NSString(data:operation.responseData! , encoding: KCodeGB2312)
-            //成功获取页面
-            //检查是已经登陆还是还没有登陆
-            self.client.parser.parseHTMLWithPageString(pageContent!)
-            
-            if self.client.parser.loginStatus == CCUTLoginStatus.UnLogin {
-                //还没有登陆
-                self.autoLoginOrNot()
-            }else {
-                //已经登陆
-                self.client.parser.loginStatus == CCUTLoginStatus.Sucess
-                self.updateFlowData()
-            }
-            
-            }) { (operation, operError) -> Void in
+        Alamofire.request(.GET, "http://222.28.211.100", parameters: nil)
+            .response { request, response, data, error in
+
+                pageContent = NSString(data: data!, encoding: KCodeGB2312)
                 
-                //获取页面失败，提示检测网络
-                MBProgressHUD.showError("出现错误!", toView: self.view)
-                print(operError)
+                //检查是已经登陆还是还没有登陆
+                self.client.parser.parseHTMLWithPageString(pageContent!)
+                
+                if self.client.parser.loginStatus == CCUTLoginStatus.UnLogin {
+                    //还没有登陆
+                    self.autoLoginOrNot()
+                }else if self.client.parser.loginStatus == CCUTLoginStatus.Sucess {
+                    //已经登陆
+                    self.updateFlowData()
+                }
+                
         }
   
     }
@@ -110,7 +106,6 @@ class CCNetworkController: UIViewController {
                 
             }else {
                 print("注销失败")
-                progressView.mode = MBProgressHUDMode.Text
                 progressView.labelText = "注销失败!"
                 self.cancelButton.selected = false
             }
@@ -147,21 +142,26 @@ class CCNetworkController: UIViewController {
         
         print("======刷新数据=======")
         
-        client.operationManager.GET("http://222.28.211.100", parameters: nil, success: { (operation, operObj) -> Void in
-            //更新数据
-            self.client.updateQueryLoginPage()
-            
-            //检测数据正确性
-            if self.client.resultArray.count > 0 {
-                self.showLatestFlowData()
-            }else {
-                self.showDefaultLlowData()
-            }
-            }) { (operation, operError) -> Void in
+        Alamofire.request(.GET, "http://222.28.211.100", parameters: nil)
+            .response { request, response, data, error in
                 
-                //获取页面失败，提示检测网络
-                MBProgressHUD.showError("出现错误!", toView: self.view)
-                print(operError)
+                if error != nil {
+                    // 网络访问出错的情况
+                    debugPrint("error=========")
+                }else {
+                    // 网络访问正常的情况
+                    //更新数据
+                    self.client.updateQueryLoginPage()
+                    
+                    //检测数据正确性
+                    if self.client.resultArray.count > 0 {
+                        self.showLatestFlowData()
+                    }else {
+                        self.showDefaultLlowData()
+                        
+                    }
+                }
+  
         }
         
     }
