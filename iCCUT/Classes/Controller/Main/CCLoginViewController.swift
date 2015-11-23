@@ -51,8 +51,8 @@ class CCLoginViewController: UIViewController {
     @IBAction func loginClick(sender: AnyObject) {
         
         //配置等候界面
-        let progressView = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        progressView.labelText = "正在登录"
+        let alertViewResponder: SCLAlertViewResponder = SCLAlertView().showWait("正在登录...", subTitle: "")
+        alertViewResponder.alertview.showCloseButton = false
         
         if rememberSwitch.on {
             //如果是记住密码
@@ -71,16 +71,16 @@ class CCLoginViewController: UIViewController {
                 //退出控制器
                 dismissViewControllerAnimated(true, completion: { () -> Void in
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        progressView.hide(true)
+                        alertViewResponder.close()
                     })
                 })
                 
             }else if client.parser.loginStatus == CCUTLoginStatus.Error {
-                progressView.hide(true)
-                MBProgressHUD.showError("登陆出错！", toView: self.view)
+                alertViewResponder.close()
+                SCLAlertView().showError("登陆出错！", subTitle: "")
             }else {
-                progressView.hide(true)
-                MBProgressHUD.showError(client.parser.loginStatusInfo as? String, toView: self.view)
+                alertViewResponder.close()
+                SCLAlertView().showError((client.parser.loginStatusInfo as? String)!, subTitle: "")
             }
             
             

@@ -14,8 +14,10 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     
     
     let identifier = "mediaListCell"
-    
-    var leve1: String?
+    /// 第一分类
+    var leve1: String!
+    /// 第二分类
+    var leve2: String?
     /// 当前的页码
     var currentIndex: NSInteger = 0
     /// 影视分类列表
@@ -54,6 +56,8 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         
         setupView()
         
+        tableView.mj_header.beginRefreshing()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -61,7 +65,6 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         
         setupSetting()
         
-        tableView.mj_header.beginRefreshing()
         
     }
     
@@ -97,7 +100,19 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
             currentIndex = 0
         }
         
-        Alamofire.request(.POST, "http://127.0.0.1:8080/iCCUT/servlet/MediaList", parameters: ["index": "\(currentIndex)","leve1": leve1!], encoding: .URL)
+        // 请求参数
+        var parmeter: [String: String] = ["index": "\(currentIndex)","leve1": leve1!]
+        
+        
+        // 是否有leve2然后生成不同的参数
+        if leve2 != nil {
+            parmeter["leve2"] = leve2
+        }
+        
+        debugPrint(parmeter)
+        
+        // 发送请求
+        Alamofire.request(.POST, "http://127.0.0.1:8080/iCCUT/servlet/MediaList", parameters:parmeter, encoding: .URL)
             .responseJSON { response in
                 
                 switch response.result {
@@ -108,14 +123,29 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                         self.dataArray.removeAllObjects()
                     }
                     
+                    
                     if let value = response.result.value {
+                        
                         let json = JSON(value)
+                        
+                        //如果success不为1那么就相关处理
+                        guard json["success"].boolValue else {
+                            SCLAlertView().showInfo("温馨提示", subTitle: json["msg"].stringValue)
+                            //停止刷新
+                            self.tableView.mj_footer.endRefreshing()
+                            self.tableView.mj_header.endRefreshing()
+                            return
+                        }
+                        
+                        debugPrint(json.rawString())
                         for (_,subJson): (String,JSON) in json["datas"] {
                             let videoItem: CCVideoModel = CCVideoModel()
                             videoItem.name = subJson["title"].stringValue
                             videoItem.url = subJson["url"].stringValue
                             self.dataArray.addObject(videoItem)
                         }
+                        
+                        
                     }
                     break
                 case .Failure:
@@ -186,6 +216,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         let model: CCVideoModel = dataArray[indexPath.row] as! CCVideoModel
         
         cell?.textLabel?.text = model.name
+        cell?.textLabel?.adjustsFontSizeToFitWidth = true
         
         return cell!
     }
@@ -204,7 +235,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         playerController.mediaURL = NSURL(string: model.url!)
         
         playerController.downloadBlock = ({() in
-            print("开始下载")
+            debugPrint("开始下载")
             
             DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
         })
@@ -225,7 +256,11 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     // MARK: - CCSortViewProtocol
     func sortView(sortView sortview: CCSortView, indexPath: NSIndexPath) {
         
+        currentIndex = 0
+        
+        self.leve2 = sortList![indexPath.row] as? String
+        
+        tableView.mj_header.beginRefreshing()
     }
-    
     
 }

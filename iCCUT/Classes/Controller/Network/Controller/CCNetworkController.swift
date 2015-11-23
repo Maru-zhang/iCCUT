@@ -93,20 +93,16 @@ class CCNetworkController: UIViewController {
             cancelButton.selected = false
             
         }else {
-            let progressView = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            
-            progressView.labelText = "正在注销"
-            
+            let alerView = SCLAlertView()
+            alerView.showCloseButton = false
             //登出成功和登出失败
             if client.logout() {
-                
-                progressView.hide(true)
+                alerView.showError("注销成功!", subTitle: "",duration: 0.6)
                 self.cancelButton.selected = true
                 showDefaultLlowData()
                 
             }else {
-                print("注销失败")
-                progressView.labelText = "注销失败!"
+                alerView.showError("注销失败!", subTitle: "",duration: 0.6)
                 self.cancelButton.selected = false
             }
         }
@@ -185,7 +181,9 @@ class CCNetworkController: UIViewController {
                 self.cancelButton.selected = false
             }else {
                 //登陆失败
-                MBProgressHUD.showError("登陆失败！", toView: self.view)
+                let alerView = SCLAlertView()
+                alerView.showCloseButton = false
+                alerView.showError("登陆失败！", subTitle: "",duration: 0.6)
                 self.cancelButton.selected = true
             }
             

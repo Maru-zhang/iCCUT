@@ -30,9 +30,9 @@
 		420D5E291C01C3A9004B9AAC /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D5E151C01C3A9004B9AAC /* UIScrollView+MJRefresh.m */; };
 		420D5E2A1C01C3A9004B9AAC /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D5E171C01C3A9004B9AAC /* UIView+MJExtension.m */; };
 		4218FD861BF2CCF70036FE1A /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4218FD851BF2CCF70036FE1A /* Common.storyboard */; };
+		421A6FB71C02F3A000A29E09 /* UpdateNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421A6FB61C02F3A000A29E09 /* UpdateNews.swift */; };
 		4222BD901BD24439006C1EFC /* CCVideoDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222BD8F1BD24439006C1EFC /* CCVideoDownModel.swift */; };
 		422AF8EC1BF9A5F2001E39A6 /* MediaListName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422AF8EB1BF9A5F2001E39A6 /* MediaListName.plist */; };
-		426B64471BD0BB96004077B0 /* VideoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 426B64451BD0BB96004077B0 /* VideoModel.xcdatamodeld */; };
 		426B644B1BD0BCBF004077B0 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B644A1BD0BCBF004077B0 /* DataBaseManager.swift */; };
 		426B644D1BD0BE38004077B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426B644C1BD0BE38004077B0 /* CoreData.framework */; };
 		427A65931BAD0D8A004A0627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427A65921BAD0D8A004A0627 /* AppDelegate.swift */; };
@@ -65,10 +65,7 @@
 		4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116B1BAEB67200A89536 /* CoreAudio.framework */; };
 		4287116E1BAEB67800A89536 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116D1BAEB67800A89536 /* AVFoundation.framework */; };
 		428711701BAEB67F00A89536 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116F1BAEB67F00A89536 /* CoreGraphics.framework */; };
-		428711721BAEB70B00A89536 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711711BAEB70B00A89536 /* libstdc++.6.dylib */; };
 		42890BD81BB2BC6D0044519A /* CCDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890BD71BB2BC6D0044519A /* CCDownloadController.swift */; };
-		42895F8C1BBA446300B593F7 /* MBProgressHUD+HM.m in Sources */ = {isa = PBXBuildFile; fileRef = 42895F8B1BBA446300B593F7 /* MBProgressHUD+HM.m */; };
-		42895F8E1BBA7C2800B593F7 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42895F8D1BBA7C2800B593F7 /* MBProgressHUD.bundle */; };
 		428C09C81BFED8AF00B1C486 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C09C71BFED8AF00B1C486 /* SwiftyJSON.swift */; };
 		428C09D41BFEE35100B1C486 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C09D21BFEE35100B1C486 /* SCLAlertView.swift */; };
 		42A0EEA91BCCBF680092C16F /* CirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A0EEA81BCCBF680092C16F /* CirCleView.swift */; };
@@ -111,7 +108,6 @@
 		42D67D431BB25F3900B1C81D /* MRVLCMediaController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 42D67D421BB25F3900B1C81D /* MRVLCMediaController.mm */; };
 		42D67D661BB267C300B1C81D /* CCLaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D67D651BB267C300B1C81D /* CCLaunchController.swift */; };
 		42D67D681BB267E700B1C81D /* CCMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D67D671BB267E700B1C81D /* CCMacro.swift */; };
-		42EA9B6E1BFF0B0400ADC8D6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9B6D1BFF0B0400ADC8D6 /* MBProgressHUD.m */; };
 		42EA9BB01BFF0D2600ADC8D6 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BAF1BFF0D2600ADC8D6 /* UITableViewExtension.swift */; };
 		42EA9BDF1BFF196E00ADC8D6 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD11BFF196E00ADC8D6 /* Alamofire.swift */; };
 		42EA9BE01BFF196E00ADC8D6 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD21BFF196E00ADC8D6 /* Download.swift */; };
@@ -181,9 +177,9 @@
 		420D5E161C01C3A9004B9AAC /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		420D5E171C01C3A9004B9AAC /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		4218FD851BF2CCF70036FE1A /* Common.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
+		421A6FB61C02F3A000A29E09 /* UpdateNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateNews.swift; sourceTree = "<group>"; };
 		4222BD8F1BD24439006C1EFC /* CCVideoDownModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoDownModel.swift; sourceTree = "<group>"; };
 		422AF8EB1BF9A5F2001E39A6 /* MediaListName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MediaListName.plist; path = iCCUT/Classes/Resource/Plist/MediaListName.plist; sourceTree = SOURCE_ROOT; };
-		426B64461BD0BB96004077B0 /* VideoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VideoModel.xcdatamodel; sourceTree = "<group>"; };
 		426B644A1BD0BCBF004077B0 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		426B644C1BD0BE38004077B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		427A658F1BAD0D8A004A0627 /* iCCUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCCUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,11 +214,7 @@
 		4287116B1BAEB67200A89536 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		4287116D1BAEB67800A89536 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4287116F1BAEB67F00A89536 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		428711711BAEB70B00A89536 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		42890BD71BB2BC6D0044519A /* CCDownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadController.swift; sourceTree = "<group>"; };
-		42895F8A1BBA446300B593F7 /* MBProgressHUD+HM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HM.h"; sourceTree = "<group>"; };
-		42895F8B1BBA446300B593F7 /* MBProgressHUD+HM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HM.m"; sourceTree = "<group>"; };
-		42895F8D1BBA7C2800B593F7 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		428C09C71BFED8AF00B1C486 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		428C09D21BFEE35100B1C486 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		42A0EEA81BCCBF680092C16F /* CirCleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirCleView.swift; sourceTree = "<group>"; };
@@ -269,8 +261,6 @@
 		42D67D421BB25F3900B1C81D /* MRVLCMediaController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MRVLCMediaController.mm; sourceTree = "<group>"; };
 		42D67D651BB267C300B1C81D /* CCLaunchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLaunchController.swift; sourceTree = "<group>"; };
 		42D67D671BB267E700B1C81D /* CCMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMacro.swift; sourceTree = "<group>"; };
-		42EA9B6C1BFF0B0400ADC8D6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		42EA9B6D1BFF0B0400ADC8D6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		42EA9BAF1BFF0D2600ADC8D6 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		42EA9BD01BFF196E00ADC8D6 /* Alamofire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alamofire.h; sourceTree = "<group>"; };
 		42EA9BD11BFF196E00ADC8D6 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
@@ -300,7 +290,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				426B644D1BD0BE38004077B0 /* CoreData.framework in Frameworks */,
-				428711721BAEB70B00A89536 /* libstdc++.6.dylib in Frameworks */,
 				428711701BAEB67F00A89536 /* CoreGraphics.framework in Frameworks */,
 				4287116E1BAEB67800A89536 /* AVFoundation.framework in Frameworks */,
 				4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */,
@@ -323,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				426B644C1BD0BE38004077B0 /* CoreData.framework */,
-				428711711BAEB70B00A89536 /* libstdc++.6.dylib */,
 				4287116F1BAEB67F00A89536 /* CoreGraphics.framework */,
 				4287116D1BAEB67800A89536 /* AVFoundation.framework */,
 				4287116B1BAEB67200A89536 /* CoreAudio.framework */,
@@ -354,6 +342,7 @@
 				42A26D291BB675CB007821E7 /* CCHTTPClient.swift */,
 				420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */,
 				426B644A1BD0BCBF004077B0 /* DataBaseManager.swift */,
+				421A6FB61C02F3A000A29E09 /* UpdateNews.swift */,
 			);
 			path = ToolKit;
 			sourceTree = "<group>";
@@ -461,7 +450,6 @@
 		426B64441BD0BB76004077B0 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				426B64451BD0BB96004077B0 /* VideoModel.xcdatamodeld */,
 			);
 			name = DataBase;
 			sourceTree = "<group>";
@@ -603,7 +591,6 @@
 				428C09C61BFED88800B1C486 /* SwiftyJSON */,
 				42A0EEB31BCD11860092C16F /* Cartography */,
 				42A0EEA71BCCBF580092C16F /* CricleView */,
-				42895F891BBA443C00B593F7 /* MBProgressHUD */,
 				4286B2791BAD40D70015EDDA /* MobileVLC */,
 				4286B2581BAD40690015EDDA /* MRVLCPlayer */,
 			);
@@ -686,18 +673,6 @@
 				42890BD71BB2BC6D0044519A /* CCDownloadController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		42895F891BBA443C00B593F7 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				42EA9B6C1BFF0B0400ADC8D6 /* MBProgressHUD.h */,
-				42EA9B6D1BFF0B0400ADC8D6 /* MBProgressHUD.m */,
-				42895F8A1BBA446300B593F7 /* MBProgressHUD+HM.h */,
-				42895F8B1BBA446300B593F7 /* MBProgressHUD+HM.m */,
-				42895F8D1BBA7C2800B593F7 /* MBProgressHUD.bundle */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		428C09C61BFED88800B1C486 /* SwiftyJSON */ = {
@@ -948,7 +923,6 @@
 				420D5E261C01C3A9004B9AAC /* MJRefresh.bundle in Resources */,
 				4286B2761BAD407E0015EDDA /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				4286B2751BAD407E0015EDDA /* kr-video-player-shrinkscreen@2x.png in Resources */,
-				42895F8E1BBA7C2800B593F7 /* MBProgressHUD.bundle in Resources */,
 				4286B26C1BAD407E0015EDDA /* kr-video-player-close@3x.png in Resources */,
 				4286B26F1BAD407E0015EDDA /* kr-video-player-pause@2x.png in Resources */,
 				4286B2731BAD407E0015EDDA /* kr-video-player-point@2x.png in Resources */,
@@ -1041,13 +1015,11 @@
 				42A0EECF1BCD11860092C16F /* ConstraintGroup.swift in Sources */,
 				42A0EED61BCD11860092C16F /* Extensions.swift in Sources */,
 				42EA9BE21BFF196E00ADC8D6 /* Manager.swift in Sources */,
-				42EA9B6E1BFF0B0400ADC8D6 /* MBProgressHUD.m in Sources */,
 				42890BD81BB2BC6D0044519A /* CCDownloadController.swift in Sources */,
 				420D5E1E1C01C3A9004B9AAC /* MJRefreshAutoNormalFooter.m in Sources */,
 				42D67D431BB25F3900B1C81D /* MRVLCMediaController.mm in Sources */,
 				420D5E1D1C01C3A9004B9AAC /* MJRefreshAutoGifFooter.m in Sources */,
 				42A0EED91BCD11860092C16F /* Point.swift in Sources */,
-				42895F8C1BBA446300B593F7 /* MBProgressHUD+HM.m in Sources */,
 				42EA9BE51BFF196E00ADC8D6 /* Request.swift in Sources */,
 				42A0EEAC1BCCC3120092C16F /* CCNewsTableViewCell.swift in Sources */,
 				42A0EED11BCD11860092C16F /* Dimension.swift in Sources */,
@@ -1056,6 +1028,7 @@
 				42D67D681BB267E700B1C81D /* CCMacro.swift in Sources */,
 				42A0EEB21BCCFEE60092C16F /* CCShowNewsController.swift in Sources */,
 				420D5E211C01C3A9004B9AAC /* MJRefreshBackNormalFooter.m in Sources */,
+				421A6FB71C02F3A000A29E09 /* UpdateNews.swift in Sources */,
 				42D67D661BB267C300B1C81D /* CCLaunchController.swift in Sources */,
 				42C648DF1BAEE336000D5764 /* CCMediaListController.swift in Sources */,
 				428C09C81BFED8AF00B1C486 /* SwiftyJSON.swift in Sources */,
@@ -1076,7 +1049,6 @@
 				428C09D41BFEE35100B1C486 /* SCLAlertView.swift in Sources */,
 				420D5E291C01C3A9004B9AAC /* UIScrollView+MJRefresh.m in Sources */,
 				42EA9BEC1BFF196E00ADC8D6 /* Validation.swift in Sources */,
-				426B64471BD0BB96004077B0 /* VideoModel.xcdatamodeld in Sources */,
 				42A0EECE1BCD11860092C16F /* Constraint.swift in Sources */,
 				42CEBA671BE32EF500645427 /* CCSortViewCell.swift in Sources */,
 				42FB6D4F1BB1130C00AFA95D /* CCNewsController.swift in Sources */,
@@ -1292,19 +1264,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		426B64451BD0BB96004077B0 /* VideoModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				426B64461BD0BB96004077B0 /* VideoModel.xcdatamodel */,
-			);
-			currentVersion = 426B64461BD0BB96004077B0 /* VideoModel.xcdatamodel */;
-			path = VideoModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 427A65871BAD0D8A004A0627 /* Project object */;
 }

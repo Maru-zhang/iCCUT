@@ -13,7 +13,7 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
     
     
     /** 数据源 */
-    let dataSource: NSMutableArray = ["纪录片","动漫频道","影视","学习"]
+    let dataSource: NSMutableArray = ["纪录片","学习","动漫频道","影视"]
     /** 布局 */
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     /** 唯一标识 */
