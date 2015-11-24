@@ -109,20 +109,6 @@
 		42D67D661BB267C300B1C81D /* CCLaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D67D651BB267C300B1C81D /* CCLaunchController.swift */; };
 		42D67D681BB267E700B1C81D /* CCMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D67D671BB267E700B1C81D /* CCMacro.swift */; };
 		42EA9BB01BFF0D2600ADC8D6 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BAF1BFF0D2600ADC8D6 /* UITableViewExtension.swift */; };
-		42EA9BDF1BFF196E00ADC8D6 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD11BFF196E00ADC8D6 /* Alamofire.swift */; };
-		42EA9BE01BFF196E00ADC8D6 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD21BFF196E00ADC8D6 /* Download.swift */; };
-		42EA9BE11BFF196E00ADC8D6 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD31BFF196E00ADC8D6 /* Error.swift */; };
-		42EA9BE21BFF196E00ADC8D6 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD41BFF196E00ADC8D6 /* Manager.swift */; };
-		42EA9BE31BFF196E00ADC8D6 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD51BFF196E00ADC8D6 /* MultipartFormData.swift */; };
-		42EA9BE41BFF196E00ADC8D6 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD61BFF196E00ADC8D6 /* ParameterEncoding.swift */; };
-		42EA9BE51BFF196E00ADC8D6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD71BFF196E00ADC8D6 /* Request.swift */; };
-		42EA9BE61BFF196E00ADC8D6 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD81BFF196E00ADC8D6 /* Response.swift */; };
-		42EA9BE71BFF196E00ADC8D6 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BD91BFF196E00ADC8D6 /* ResponseSerialization.swift */; };
-		42EA9BE81BFF196E00ADC8D6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BDA1BFF196E00ADC8D6 /* Result.swift */; };
-		42EA9BE91BFF196E00ADC8D6 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BDB1BFF196E00ADC8D6 /* ServerTrustPolicy.swift */; };
-		42EA9BEA1BFF196E00ADC8D6 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BDC1BFF196E00ADC8D6 /* Stream.swift */; };
-		42EA9BEB1BFF196E00ADC8D6 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BDD1BFF196E00ADC8D6 /* Upload.swift */; };
-		42EA9BEC1BFF196E00ADC8D6 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA9BDE1BFF196E00ADC8D6 /* Validation.swift */; };
 		42FB6D4D1BB1105200AFA95D /* CCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D4C1BB1105200AFA95D /* CCBaseNavigationController.swift */; };
 		42FB6D4F1BB1130C00AFA95D /* CCNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D4E1BB1130C00AFA95D /* CCNewsController.swift */; };
 		42FB6D531BB13BAD00AFA95D /* CCNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D521BB13BAD00AFA95D /* CCNetworkController.swift */; };
@@ -262,21 +248,6 @@
 		42D67D651BB267C300B1C81D /* CCLaunchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLaunchController.swift; sourceTree = "<group>"; };
 		42D67D671BB267E700B1C81D /* CCMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMacro.swift; sourceTree = "<group>"; };
 		42EA9BAF1BFF0D2600ADC8D6 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		42EA9BD01BFF196E00ADC8D6 /* Alamofire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alamofire.h; sourceTree = "<group>"; };
-		42EA9BD11BFF196E00ADC8D6 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
-		42EA9BD21BFF196E00ADC8D6 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
-		42EA9BD31BFF196E00ADC8D6 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		42EA9BD41BFF196E00ADC8D6 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		42EA9BD51BFF196E00ADC8D6 /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
-		42EA9BD61BFF196E00ADC8D6 /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
-		42EA9BD71BFF196E00ADC8D6 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		42EA9BD81BFF196E00ADC8D6 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		42EA9BD91BFF196E00ADC8D6 /* ResponseSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerialization.swift; sourceTree = "<group>"; };
-		42EA9BDA1BFF196E00ADC8D6 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		42EA9BDB1BFF196E00ADC8D6 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		42EA9BDC1BFF196E00ADC8D6 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
-		42EA9BDD1BFF196E00ADC8D6 /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
-		42EA9BDE1BFF196E00ADC8D6 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		42FB6D4C1BB1105200AFA95D /* CCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBaseNavigationController.swift; sourceTree = "<group>"; };
 		42FB6D4E1BB1130C00AFA95D /* CCNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNewsController.swift; sourceTree = "<group>"; };
 		42FB6D521BB13BAD00AFA95D /* CCNetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNetworkController.swift; sourceTree = "<group>"; };
@@ -586,7 +557,6 @@
 			isa = PBXGroup;
 			children = (
 				420D5DEB1C01C3A9004B9AAC /* MJRefresh */,
-				42EA9BCF1BFF196E00ADC8D6 /* Alamofire */,
 				428C09D01BFEE35100B1C486 /* SCLAlertView */,
 				428C09C61BFED88800B1C486 /* SwiftyJSON */,
 				42A0EEB31BCD11860092C16F /* Cartography */,
@@ -822,28 +792,6 @@
 			path = Extension/Extension;
 			sourceTree = "<group>";
 		};
-		42EA9BCF1BFF196E00ADC8D6 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				42EA9BD01BFF196E00ADC8D6 /* Alamofire.h */,
-				42EA9BD11BFF196E00ADC8D6 /* Alamofire.swift */,
-				42EA9BD21BFF196E00ADC8D6 /* Download.swift */,
-				42EA9BD31BFF196E00ADC8D6 /* Error.swift */,
-				42EA9BD41BFF196E00ADC8D6 /* Manager.swift */,
-				42EA9BD51BFF196E00ADC8D6 /* MultipartFormData.swift */,
-				42EA9BD61BFF196E00ADC8D6 /* ParameterEncoding.swift */,
-				42EA9BD71BFF196E00ADC8D6 /* Request.swift */,
-				42EA9BD81BFF196E00ADC8D6 /* Response.swift */,
-				42EA9BD91BFF196E00ADC8D6 /* ResponseSerialization.swift */,
-				42EA9BDA1BFF196E00ADC8D6 /* Result.swift */,
-				42EA9BDB1BFF196E00ADC8D6 /* ServerTrustPolicy.swift */,
-				42EA9BDC1BFF196E00ADC8D6 /* Stream.swift */,
-				42EA9BDD1BFF196E00ADC8D6 /* Upload.swift */,
-				42EA9BDE1BFF196E00ADC8D6 /* Validation.swift */,
-			);
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -990,7 +938,6 @@
 				42FB6D531BB13BAD00AFA95D /* CCNetworkController.swift in Sources */,
 				42FB6D4D1BB1105200AFA95D /* CCBaseNavigationController.swift in Sources */,
 				42A0EEDE1BCD11860092C16F /* ViewUtils.swift in Sources */,
-				42EA9BEB1BFF196E00ADC8D6 /* Upload.swift in Sources */,
 				42A26D301BB69021007821E7 /* CCLoginViewController.swift in Sources */,
 				42A0EEDA1BCD11860092C16F /* Priority.swift in Sources */,
 				420D5E201C01C3A9004B9AAC /* MJRefreshBackGifFooter.m in Sources */,
@@ -1014,17 +961,14 @@
 				420C75D91BB4108F0025E1D8 /* CCDownloadCell.swift in Sources */,
 				42A0EECF1BCD11860092C16F /* ConstraintGroup.swift in Sources */,
 				42A0EED61BCD11860092C16F /* Extensions.swift in Sources */,
-				42EA9BE21BFF196E00ADC8D6 /* Manager.swift in Sources */,
 				42890BD81BB2BC6D0044519A /* CCDownloadController.swift in Sources */,
 				420D5E1E1C01C3A9004B9AAC /* MJRefreshAutoNormalFooter.m in Sources */,
 				42D67D431BB25F3900B1C81D /* MRVLCMediaController.mm in Sources */,
 				420D5E1D1C01C3A9004B9AAC /* MJRefreshAutoGifFooter.m in Sources */,
 				42A0EED91BCD11860092C16F /* Point.swift in Sources */,
-				42EA9BE51BFF196E00ADC8D6 /* Request.swift in Sources */,
 				42A0EEAC1BCCC3120092C16F /* CCNewsTableViewCell.swift in Sources */,
 				42A0EED11BCD11860092C16F /* Dimension.swift in Sources */,
 				42A0EEDC1BCD11860092C16F /* Size.swift in Sources */,
-				42EA9BDF1BFF196E00ADC8D6 /* Alamofire.swift in Sources */,
 				42D67D681BB267E700B1C81D /* CCMacro.swift in Sources */,
 				42A0EEB21BCCFEE60092C16F /* CCShowNewsController.swift in Sources */,
 				420D5E211C01C3A9004B9AAC /* MJRefreshBackNormalFooter.m in Sources */,
@@ -1034,8 +978,6 @@
 				428C09C81BFED8AF00B1C486 /* SwiftyJSON.swift in Sources */,
 				42A0EED81BCD11860092C16F /* LayoutProxy.swift in Sources */,
 				42EA9BB01BFF0D2600ADC8D6 /* UITableViewExtension.swift in Sources */,
-				42EA9BE31BFF196E00ADC8D6 /* MultipartFormData.swift in Sources */,
-				42EA9BE11BFF196E00ADC8D6 /* Error.swift in Sources */,
 				420D5E1F1C01C3A9004B9AAC /* MJRefreshAutoStateFooter.m in Sources */,
 				427A67A01BE216AA002EE275 /* CCListViewController.swift in Sources */,
 				42A0EED31BCD11860092C16F /* Edge.swift in Sources */,
@@ -1043,12 +985,10 @@
 				420D5E181C01C3A9004B9AAC /* MJRefreshAutoFooter.m in Sources */,
 				420C75DE1BB421900025E1D8 /* CCVideoModel.swift in Sources */,
 				427A65AE1BAD1061004A0627 /* CCMainTabbarController.swift in Sources */,
-				42EA9BE91BFF196E00ADC8D6 /* ServerTrustPolicy.swift in Sources */,
 				42A0EED21BCD11860092C16F /* Distribute.swift in Sources */,
 				420D5E251C01C3A9004B9AAC /* MJRefreshStateHeader.m in Sources */,
 				428C09D41BFEE35100B1C486 /* SCLAlertView.swift in Sources */,
 				420D5E291C01C3A9004B9AAC /* UIScrollView+MJRefresh.m in Sources */,
-				42EA9BEC1BFF196E00ADC8D6 /* Validation.swift in Sources */,
 				42A0EECE1BCD11860092C16F /* Constraint.swift in Sources */,
 				42CEBA671BE32EF500645427 /* CCSortViewCell.swift in Sources */,
 				42FB6D4F1BB1130C00AFA95D /* CCNewsController.swift in Sources */,
@@ -1057,21 +997,15 @@
 				427A67E31BE25358002EE275 /* CCSortView.swift in Sources */,
 				42A0EECC1BCD11860092C16F /* Compound.swift in Sources */,
 				42A0EF571BCD362B0092C16F /* NewsModel.swift in Sources */,
-				42EA9BEA1BFF196E00ADC8D6 /* Stream.swift in Sources */,
-				42EA9BE81BFF196E00ADC8D6 /* Result.swift in Sources */,
 				42C648DA1BAEDCDC000D5764 /* KRVideoPlayerControlView.m in Sources */,
 				4222BD901BD24439006C1EFC /* CCVideoDownModel.swift in Sources */,
 				420D5E281C01C3A9004B9AAC /* UIScrollView+MJExtension.m in Sources */,
-				42EA9BE61BFF196E00ADC8D6 /* Response.swift in Sources */,
 				42A0EECB1BCD11860092C16F /* Coefficients.swift in Sources */,
-				42EA9BE01BFF196E00ADC8D6 /* Download.swift in Sources */,
 				42A0EEDB1BCD11860092C16F /* Property.swift in Sources */,
-				42EA9BE41BFF196E00ADC8D6 /* ParameterEncoding.swift in Sources */,
 				420D5E1B1C01C3A9004B9AAC /* MJRefreshFooter.m in Sources */,
 				420D5E1C1C01C3A9004B9AAC /* MJRefreshHeader.m in Sources */,
 				42CEBA691BE32F0600645427 /* CCSortViewLayout.swift in Sources */,
 				427A65931BAD0D8A004A0627 /* AppDelegate.swift in Sources */,
-				42EA9BE71BFF196E00ADC8D6 /* ResponseSerialization.swift in Sources */,
 				42A26D2C1BB67786007821E7 /* CCHTMLParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1200,6 +1134,7 @@
 				INFOPLIST_FILE = iCCUT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "$(inherited)";
 				PODS_ROOT = "$(inherited)";
@@ -1231,6 +1166,7 @@
 				INFOPLIST_FILE = iCCUT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "$(inherited)";
 				PODS_ROOT = "$(inherited)";
