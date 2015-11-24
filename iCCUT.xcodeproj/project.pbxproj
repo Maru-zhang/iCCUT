@@ -114,12 +114,10 @@
 		42FB6D531BB13BAD00AFA95D /* CCNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D521BB13BAD00AFA95D /* CCNetworkController.swift */; };
 		42FB6D551BB13C5400AFA95D /* CCMoreTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB6D541BB13C5400AFA95D /* CCMoreTableController.swift */; };
 		9760FDF947B68EC8A47122C9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3875419AAA0CAE666E598E27 /* Pods.framework */; };
-		FA30EAFA0313F283D9625F11 /* Pods_iCCUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1697C7D4E300EE34B85A9D5A /* Pods_iCCUT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E1DFF7DE1B2A0ADC402D36B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		1697C7D4E300EE34B85A9D5A /* Pods_iCCUT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCCUT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3875419AAA0CAE666E598E27 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		420C75D81BB4108F0025E1D8 /* CCDownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadCell.swift; sourceTree = "<group>"; };
 		420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTool.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 				428711621BAEB64E00A89536 /* libc++.dylib in Frameworks */,
 				428711601BAEB64300A89536 /* libbz2.dylib in Frameworks */,
 				42A3151C1BAE93A100A1F1F7 /* MobileVLCKit.framework in Frameworks */,
-				FA30EAFA0313F283D9625F11 /* Pods_iCCUT.framework in Frameworks */,
 				9760FDF947B68EC8A47122C9 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +289,6 @@
 				428711631BAEB65600A89536 /* libiconv.dylib */,
 				428711611BAEB64E00A89536 /* libc++.dylib */,
 				4287115F1BAEB64300A89536 /* libbz2.dylib */,
-				1697C7D4E300EE34B85A9D5A /* Pods_iCCUT.framework */,
 				3875419AAA0CAE666E598E27 /* Pods.framework */,
 			);
 			name = Frameworks;
