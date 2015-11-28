@@ -58,3 +58,12 @@ var CUR_TIME: NSString {
     let time = formmatter.stringFromDate(NSDate()) as NSString
     return time
 }
+
+//****** Network *****************************
+ /// 服务器地址
+let HOST: String = "http://10.73.5.140:8080"
+//let HOST: String = "http://127.0.0.1:8080"
+ /// 学校登录地址
+let SCHOOL_GATE: String = "http://222.28.211.100"
+ /// 学校登出地址
+let SCHOOL_OUTGATE: String = "http://222.28.211.100/F.htm"

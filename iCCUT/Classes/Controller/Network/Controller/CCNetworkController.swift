@@ -24,12 +24,15 @@ class CCNetworkController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     /** 自动登陆开关 */
     @IBOutlet weak var autoSwitch: UISwitch!
+    /** 约束 */
+    @IBOutlet weak var loginButtonConstraints: NSLayoutConstraint!
     /** 默认属性 */
     let defaultText = "暂无数据"
     
-    // < Life Cycle>
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     }
     
@@ -45,25 +48,29 @@ class CCNetworkController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        //获取22.28.211.100的页面
-        var pageContent: NSString?
-        
-        Alamofire.request(.GET, "http://222.28.211.100", parameters: nil)
+        Alamofire.request(.GET, SCHOOL_GATE)
             .response { request, response, data, error in
-
-                pageContent = NSString(data: data!, encoding: KCodeGB2312)
                 
-                //检查是已经登陆还是还没有登陆
-                self.client.parser.parseHTMLWithPageString(pageContent!)
-                
-                if self.client.parser.loginStatus == CCUTLoginStatus.UnLogin {
-                    //还没有登陆
-                    self.autoLoginOrNot()
-                }else if self.client.parser.loginStatus == CCUTLoginStatus.Sucess {
-                    //已经登陆
-                    self.updateFlowData()
+                if error == nil {
+                    // 成功
+                    let pageContent = NSString(data: data!, encoding: KCodeGB2312)
+                    
+                    //检查是已经登陆还是还没有登陆
+                    self.client.parser.parseHTMLWithPageString(pageContent!)
+                    
+                    if self.client.parser.loginStatus == CCUTLoginStatus.UnLogin {
+                        //还没有登陆
+                        self.autoLoginOrNot()
+                    }else if self.client.parser.loginStatus == CCUTLoginStatus.Sucess {
+                        //已经登陆
+                        self.updateFlowData()
+                    }
+                    
+                }else {
+                    // 失败
+                    SCLAlertView.showNetworkErrorView()
+                    
                 }
-                
         }
   
     }
@@ -96,15 +103,22 @@ class CCNetworkController: UIViewController {
             let alerView = SCLAlertView()
             alerView.showCloseButton = false
             //登出成功和登出失败
-            if client.logout() {
-                alerView.showError("注销成功!", subTitle: "",duration: 0.6)
-                self.cancelButton.selected = true
-                showDefaultLlowData()
+            
+            client.logout({ (isSuccess) -> Void in
                 
-            }else {
-                alerView.showError("注销失败!", subTitle: "",duration: 0.6)
-                self.cancelButton.selected = false
-            }
+                if isSuccess {
+                    alerView.showError("注销成功!", subTitle: "",duration: 0.6)
+                    self.cancelButton.selected = true
+                    self.showDefaultLlowData()
+                    
+                }else {
+                    alerView.showError("注销失败!", subTitle: "",duration: 0.6)
+                    self.cancelButton.selected = false
+                    
+                }
+            })
+            
+            
         }
         
     }
@@ -112,6 +126,13 @@ class CCNetworkController: UIViewController {
     
     // <Private Method>
     func setupView() {
+        
+        //检测当前手机的类型
+        if SCREEN_BOUNDS.size.height == 568 {
+            // iPhone5/5S
+            loginButtonConstraints.constant = 20
+            view.layoutIfNeeded()
+        }
         
         //根据client的自动登录设置来显示Switch
         if client.userType.rawValue == 1 {
@@ -136,28 +157,23 @@ class CCNetworkController: UIViewController {
     
     func updateFlowData() {
         
-        print("======刷新数据=======")
-        
-        Alamofire.request(.GET, "http://222.28.211.100", parameters: nil)
-            .response { request, response, data, error in
+        // 更新数据
+        client.updateQueryLoginPage { (isConnect) -> Void in
+            
+            guard isConnect else {
+                SCLAlertView.showNetworkErrorView()
+                return
+            }
+            
+            // 检测数据正确性
+            if self.client.resultArray != nil {
                 
-                if error != nil {
-                    // 网络访问出错的情况
-                    debugPrint("error=========")
-                }else {
-                    // 网络访问正常的情况
-                    //更新数据
-                    self.client.updateQueryLoginPage()
-                    
-                    //检测数据正确性
-                    if self.client.resultArray.count > 0 {
-                        self.showLatestFlowData()
-                    }else {
-                        self.showDefaultLlowData()
-                        
-                    }
-                }
-  
+                self.showLatestFlowData()
+            }else {
+                
+                self.showDefaultLlowData()
+                
+            }
         }
         
     }
@@ -171,28 +187,22 @@ class CCNetworkController: UIViewController {
         
         if (client.userType == CCUserLoginType.AutoLogin) && (account != nil){
             //可以自动登陆
-            client.loginWithAccountAndPassword(account as! NSString, pwd: password as! NSString)
+            client.loginWithAccountAndPassword(account as! NSString, pwd: password as! NSString, completeHandler: { (isSuccess) -> Void in
+                //查看是否登陆成功
+                if self.client.parser.loginStatus ==  CCUTLoginStatus.Sucess {
+                    //刷新
+                    self.updateFlowData()
+                    self.cancelButton.selected = false
+                }else {
+                    //登陆失败
+                    let alerView = SCLAlertView()
+                    alerView.showCloseButton = false
+                    alerView.showError("登陆失败！", subTitle: "",duration: 0.6)
+                    self.cancelButton.selected = true
+                }
+            })
             
             
-            //查看是否登陆成功
-            if client.parser.loginStatus ==  CCUTLoginStatus.Sucess {
-                //刷新
-                updateFlowData()
-                self.cancelButton.selected = false
-            }else {
-                //登陆失败
-                let alerView = SCLAlertView()
-                alerView.showCloseButton = false
-                alerView.showError("登陆失败！", subTitle: "",duration: 0.6)
-                self.cancelButton.selected = true
-            }
-            
-            
-            
-        }else {
-            //显示登陆界面
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("login")
-            presentViewController(loginVC, animated: true, completion: nil)
         }
     }
     
@@ -206,9 +216,9 @@ class CCNetworkController: UIViewController {
     
     private func showLatestFlowData() {
         //获取对印的数值
-        let time = client.resultArray[0] as! NSNumber
-        let flow = client.resultArray[1] as! NSNumber
-        let menoy = client.resultArray[2] as! NSNumber
+        let time = client.resultArray![0] as! NSNumber
+        let flow = client.resultArray![1] as! NSNumber
+        let menoy = client.resultArray![2] as! NSNumber
         
         timeLable.text = NSString(format: "%d分钟", time.integerValue) as String
         flowLable.text = NSString(format: "%d MByte", flow.integerValue) as String
@@ -216,7 +226,7 @@ class CCNetworkController: UIViewController {
     }
     
     
-    // < Call Back >
+    // MARK: - Call Back
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if keyPath == "autoKey" {

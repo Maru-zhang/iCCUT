@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import Alamofire
 
 class CCNewsController: UITableViewController,CirCleViewDelegate {
 
-    
+    /// 分页页码
+    var pageIndex: NSInteger = 1
+    /// 新闻数据源
+    let dataSource = NSMutableArray()
     /** header高度 */
     let headerH: CGFloat = 150
     /** 图片数组 */
     var imgArray = NSMutableArray()
-    /** 新闻数组 */
-    var newsArray = NSArray()
     /** 标记 */
     let identifer = "newsCell"
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,10 +42,15 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         super.viewDidAppear(animated)
     }
     
-    /* Private Method */
+    // MARK: - Private Method
     func setupView() {
         
-        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
+            self.loadMoreData(true)
+        })
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { () -> Void in
+            self.loadMoreData(false)
+        })
     }
     
     func setupSetting() {
@@ -57,41 +65,81 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
     
     func setupData() {
         
-        let testDataURL = NSBundle.mainBundle().URLForResource("NewsPlist", withExtension: "plist")
-        let testData = NSArray(contentsOfURL: testDataURL!)
-        newsArray = testData!
+        self.loadMoreData(true)
     }
     
-    /* Action */
-    func loadMoreData() {
+    // MARK: - Action
+    func loadMoreData(isSetup: Bool) {
         
-        NSThread.sleepForTimeInterval(1)
+        // 是否需要初始化
+        if isSetup {
+            dataSource.removeAllObjects()
+            pageIndex = 1
+        }
+        
+        let parmeter = ["index": pageIndex]
+        
+        Alamofire.request(.POST, "\(HOST)/iCCUT/servlet/NewsList",parameters:parmeter)
+            .responseJSON { (response) -> Void in
+            
+                switch response.result {
+                    
+                case .Success:
+                    let json = JSON(response.result.value!)
+                    for (_,itemJson) in json["datas"] {
+                        // 遍历添加数据
+                        let newsModel: NewsModel = NewsModel()
+                        newsModel.title = itemJson["title"].stringValue
+                        newsModel.url = itemJson["url"].stringValue
+                        newsModel.time = itemJson["time"].stringValue
+                        self.dataSource.addObject(newsModel)
+                        
+                    }
+                    
+                    // 刷新
+                    self.tableView.reloadData()
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.endRefreshing()
+                    
+                    self.pageIndex++
+                    
+                    break
+                case .Failure:
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.endRefreshing()
+                    break
+                }
+        }
+        
+        
         
     }
     
     
-    /* <Tableview Datasource> */
+    // MARK: - Tableview Datasource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsArray.count
+        tableView.tableViewDisplay(emptyMessage: "没有更多的通知哦，刷新试试看！", count: dataSource.count)
+        return dataSource.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell: CCNewsTableViewCell? = tableView.dequeueReusableCellWithIdentifier(identifer) as? CCNewsTableViewCell
         
-        
         if cell == nil {
-            cell = CCNewsTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifer)
+            cell = CCNewsTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: identifer)
         }
         
-        let dic = newsArray[indexPath.row]
+        let model: NewsModel = dataSource[indexPath.row] as! NewsModel
         
-        cell?.title.text = dic["title"] as? String
-        cell?.time.text = dic["time"] as? String
+        debugPrint(model.time)
+        
+        cell?.title.text = model.title
+        cell?.time.text = model.time
         
         return cell!
     }
@@ -119,9 +167,9 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         
         let webController: CCShowNewsController = UIStoryboard(name: "Common", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("webBrowse") as! CCShowNewsController
         
-        let dic = newsArray[indexPath.row]
+        let model: NewsModel = (dataSource[indexPath.row] as? NewsModel)!
         
-        webController.contentURL = NSURL(string: (dic["url"] as? String)!)
+        webController.contentURL = NSURL(string: model.url)
 
         navigationController?.pushViewController(webController, animated: true)
         

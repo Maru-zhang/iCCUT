@@ -31,8 +31,11 @@
 		420D5E2A1C01C3A9004B9AAC /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D5E171C01C3A9004B9AAC /* UIView+MJExtension.m */; };
 		4218FD861BF2CCF70036FE1A /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4218FD851BF2CCF70036FE1A /* Common.storyboard */; };
 		421A6FB71C02F3A000A29E09 /* UpdateNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421A6FB61C02F3A000A29E09 /* UpdateNews.swift */; };
+		421F94751C0706D70073777E /* SCLAlertViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F94741C0706D70073777E /* SCLAlertViewExtension.swift */; };
 		4222BD901BD24439006C1EFC /* CCVideoDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222BD8F1BD24439006C1EFC /* CCVideoDownModel.swift */; };
 		422AF8EC1BF9A5F2001E39A6 /* MediaListName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422AF8EB1BF9A5F2001E39A6 /* MediaListName.plist */; };
+		424E7E311C08288000CF0A1F /* CCVideoSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424E7E301C08288000CF0A1F /* CCVideoSearchController.swift */; };
+		424E7E471C083DD500CF0A1F /* ServerOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424E7E461C083DD500CF0A1F /* ServerOperator.swift */; };
 		426B644B1BD0BCBF004077B0 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B644A1BD0BCBF004077B0 /* DataBaseManager.swift */; };
 		426B644D1BD0BE38004077B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426B644C1BD0BE38004077B0 /* CoreData.framework */; };
 		427A65931BAD0D8A004A0627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427A65921BAD0D8A004A0627 /* AppDelegate.swift */; };
@@ -162,8 +165,11 @@
 		420D5E171C01C3A9004B9AAC /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		4218FD851BF2CCF70036FE1A /* Common.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
 		421A6FB61C02F3A000A29E09 /* UpdateNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateNews.swift; sourceTree = "<group>"; };
+		421F94741C0706D70073777E /* SCLAlertViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertViewExtension.swift; sourceTree = "<group>"; };
 		4222BD8F1BD24439006C1EFC /* CCVideoDownModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoDownModel.swift; sourceTree = "<group>"; };
 		422AF8EB1BF9A5F2001E39A6 /* MediaListName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MediaListName.plist; path = iCCUT/Classes/Resource/Plist/MediaListName.plist; sourceTree = SOURCE_ROOT; };
+		424E7E301C08288000CF0A1F /* CCVideoSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoSearchController.swift; sourceTree = "<group>"; };
+		424E7E461C083DD500CF0A1F /* ServerOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerOperator.swift; sourceTree = "<group>"; };
 		426B644A1BD0BCBF004077B0 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		426B644C1BD0BE38004077B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		427A658F1BAD0D8A004A0627 /* iCCUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCCUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,7 +236,7 @@
 		42A0EF561BCD362B0092C16F /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		42A0EF581BCD36760092C16F /* NewsPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NewsPlist.plist; sourceTree = "<group>"; };
 		42A26D291BB675CB007821E7 /* CCHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCHTTPClient.swift; path = ../Controller/Network/Model/CCHTTPClient.swift; sourceTree = "<group>"; };
-		42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCHTMLParser.swift; sourceTree = "<group>"; };
+		42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCHTMLParser.swift; path = ../Controller/Network/Model/CCHTMLParser.swift; sourceTree = "<group>"; };
 		42A26D2D1BB6783A007821E7 /* Msg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Msg.plist; sourceTree = "<group>"; };
 		42A26D2F1BB69021007821E7 /* CCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCLoginViewController.swift; path = ../Main/CCLoginViewController.swift; sourceTree = "<group>"; };
 		42A26D321BB6A351007821E7 /* CCTextFiled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTextFiled.swift; sourceTree = "<group>"; };
@@ -306,6 +312,8 @@
 		420C75DA1BB41A6A0025E1D8 /* ToolKit */ = {
 			isa = PBXGroup;
 			children = (
+				424E7E451C083D3F00CF0A1F /* Operation */,
+				42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */,
 				42A26D291BB675CB007821E7 /* CCHTTPClient.swift */,
 				420C75DB1BB41AB50025E1D8 /* DownloadTool.swift */,
 				426B644A1BD0BCBF004077B0 /* DataBaseManager.swift */,
@@ -412,6 +420,14 @@
 				420D5E0D1C01C3A9004B9AAC /* MJRefreshStateHeader.m */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		424E7E451C083D3F00CF0A1F /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				424E7E461C083DD500CF0A1F /* ServerOperator.swift */,
+			);
+			name = Operation;
 			sourceTree = "<group>";
 		};
 		426B64441BD0BB76004077B0 /* DataBase */ = {
@@ -637,6 +653,7 @@
 				427A679F1BE216AA002EE275 /* CCListViewController.swift */,
 				42C648DE1BAEE336000D5764 /* CCMediaListController.swift */,
 				42890BD71BB2BC6D0044519A /* CCDownloadController.swift */,
+				424E7E301C08288000CF0A1F /* CCVideoSearchController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -767,7 +784,6 @@
 		42DE72BF1BAD3682002FFA94 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				42A26D2B1BB67786007821E7 /* CCHTMLParser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -783,6 +799,7 @@
 			isa = PBXGroup;
 			children = (
 				42EA9BAF1BFF0D2600ADC8D6 /* UITableViewExtension.swift */,
+				421F94741C0706D70073777E /* SCLAlertViewExtension.swift */,
 			);
 			name = Extension;
 			path = Extension/Extension;
@@ -936,6 +953,7 @@
 				42A0EEDE1BCD11860092C16F /* ViewUtils.swift in Sources */,
 				42A26D301BB69021007821E7 /* CCLoginViewController.swift in Sources */,
 				42A0EEDA1BCD11860092C16F /* Priority.swift in Sources */,
+				421F94751C0706D70073777E /* SCLAlertViewExtension.swift in Sources */,
 				420D5E201C01C3A9004B9AAC /* MJRefreshBackGifFooter.m in Sources */,
 				42A0EECA1BCD11860092C16F /* Align.swift in Sources */,
 				420D5E1A1C01C3A9004B9AAC /* MJRefreshComponent.m in Sources */,
@@ -951,11 +969,13 @@
 				420D5E241C01C3A9004B9AAC /* MJRefreshNormalHeader.m in Sources */,
 				420C75DC1BB41AB50025E1D8 /* DownloadTool.swift in Sources */,
 				42A0EED41BCD11860092C16F /* Edges.swift in Sources */,
+				424E7E311C08288000CF0A1F /* CCVideoSearchController.swift in Sources */,
 				42A0EEDD1BCD11860092C16F /* View.swift in Sources */,
 				420D5E231C01C3A9004B9AAC /* MJRefreshGifHeader.m in Sources */,
 				42A0EED51BCD11860092C16F /* Expression.swift in Sources */,
 				420C75D91BB4108F0025E1D8 /* CCDownloadCell.swift in Sources */,
 				42A0EECF1BCD11860092C16F /* ConstraintGroup.swift in Sources */,
+				424E7E471C083DD500CF0A1F /* ServerOperator.swift in Sources */,
 				42A0EED61BCD11860092C16F /* Extensions.swift in Sources */,
 				42890BD81BB2BC6D0044519A /* CCDownloadController.swift in Sources */,
 				420D5E1E1C01C3A9004B9AAC /* MJRefreshAutoNormalFooter.m in Sources */,

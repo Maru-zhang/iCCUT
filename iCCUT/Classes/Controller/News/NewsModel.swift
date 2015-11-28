@@ -10,8 +10,11 @@ import UIKit
 
 class NewsModel: NSObject {
     
-    var title: NSString?
-    var time: NSString?
-    var url: NSString?
+    /// 新闻标题
+    var title: String!
+    /// 新闻发布时间
+    var time: String!
+    /// 新闻地址
+    var url: String!
 
 }

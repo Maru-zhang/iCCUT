@@ -54,50 +54,57 @@ class CCLoginViewController: UIViewController {
         let alertViewResponder: SCLAlertViewResponder = SCLAlertView().showWait("正在登录...", subTitle: "")
         alertViewResponder.alertview.showCloseButton = false
         
-        if rememberSwitch.on {
-            //如果是记住密码
-            let account = self.accountText.text
-            let password = self.passwordText.text
+        
+        //如果是记住密码
+        let account = self.accountText.text
+        let password = self.passwordText.text
+        
+        //开始登录操作
+        client.loginWithAccountAndPassword(account!, pwd: password!, completeHandler: { (isSuccess) -> Void in
             
-            //开始登录操作
-            client.loginWithAccountAndPassword(account!, pwd: password!)
-            
-            if client.parser.loginStatus == CCUTLoginStatus.Sucess {
+            if isSuccess {
+                // 登录联网成功
                 
-                //开始存储密码
-                userDefault.setObject(account, forKey: KACCOUNT)
-                userDefault.setObject(password, forKey: KPASSWORD)
-                
-                //退出控制器
-                dismissViewControllerAnimated(true, completion: { () -> Void in
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        alertViewResponder.close()
+                if self.client.parser.loginStatus == CCUTLoginStatus.Sucess {
+                    
+                    //判断开关
+                    if self.rememberSwitch.on {
+                        //开始存储密码
+                        self.userDefault.setObject(account, forKey: KACCOUNT)
+                        self.userDefault.setObject(password, forKey: KPASSWORD)
+                    }
+                    
+                    
+                    //退出控制器
+                    self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            alertViewResponder.close()
+                        })
                     })
-                })
-                
-            }else if client.parser.loginStatus == CCUTLoginStatus.Error {
-                alertViewResponder.close()
-                SCLAlertView().showError("登陆出错！", subTitle: "")
+                    
+                }else {
+                    alertViewResponder.close()
+                    SCLAlertView().showError("温馨提示", subTitle: self.client.parser.loginStatusInfo as! String)
+                }
             }else {
+                
+                // 联网失败
                 alertViewResponder.close()
-                SCLAlertView().showError((client.parser.loginStatusInfo as? String)!, subTitle: "")
+                SCLAlertView.showNetworkErrorView()
             }
-            
-            
-        }else {
-            //如果是不记住密码
-            let account = self.accountText.text
-            let password = self.passwordText.text
-            
-            //开始登录操作
-            client.loginWithAccountAndPassword(account!, pwd: password!)
-            
-        }
+        })
 
         
     }
     @IBAction func guestLoginClick(sender: AnyObject) {
         
+        NSUserDefaults.standardUserDefaults().setObject(0, forKey: KAUTO_LOGIN)
+        
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        UIApplication.sharedApplication().keyWindow?.endEditing(true)
     }
 }

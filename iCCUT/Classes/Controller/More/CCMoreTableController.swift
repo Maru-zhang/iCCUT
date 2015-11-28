@@ -30,4 +30,11 @@ class CCMoreTableController: UITableViewController {
         
         tabBarController?.navigationItem.rightBarButtonItem = nil
     }
+    
+    
+    // MARK: - TableView Delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.selected = false
+    }
 }

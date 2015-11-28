@@ -44,6 +44,7 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.tableViewDisplay(emptyMessage: "暂时没有任何的缓存视频！", count: dataSource.count)
         return dataSource.count
     }
     
@@ -69,6 +70,10 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     // MARK: - UITableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        cell?.selected = false
+        
         let model: CCVideoDownModel = dataSource[indexPath.row] as! CCVideoDownModel
         
         guard model.isFinish else {
@@ -76,6 +81,11 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
         }
         
         let player = MRVLCMediaController()
+        
+        player.downloadBlock = { () -> Void in
+            SCLAlertView.showPromptView("本视频已经下载!")
+        }
+        
         player.mediaURL = DIR_PATH.URLByAppendingPathComponent(model.urlString as! String)
         presentViewController(player, animated: true, completion: nil)
     }
@@ -99,7 +109,8 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
             downloadTool.videoQueue.removeObjectAtIndex(indexPath.row)
             //本地化队列
             downloadTool.writeData()
-            tableView.reloadData()
+            //删除动画
+            tableView.deleteRowsAtIndexPaths(NSArray(object: indexPath) as! [NSIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             if DEBUG_LOG {print(downloadTool.videoQueue)}
         }
     }
@@ -115,7 +126,13 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     }
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        let maskView = UIView()
+        maskView.backgroundColor = UIColor.lightGrayColor()
+        return maskView
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.5
     }
     
 

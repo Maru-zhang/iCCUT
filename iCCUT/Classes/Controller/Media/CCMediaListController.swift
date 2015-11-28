@@ -112,7 +112,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         debugPrint(parmeter)
         
         // 发送请求
-        Alamofire.request(.POST, "http://127.0.0.1:8080/iCCUT/servlet/MediaList", parameters:parmeter, encoding: .URL)
+        Alamofire.request(.POST, "\(HOST)/iCCUT/servlet/MediaList", parameters:parmeter, encoding: .URL)
             .responseJSON { response in
                 
                 switch response.result {
@@ -147,18 +147,18 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                         
                         
                     }
+                    
+                    // 累加
+                    self.currentIndex++
+                    
+                    // 刷新
+                    self.tableView.reloadData()
+                    
                     break
                 case .Failure:
-                    SCLAlertView().showError("温馨提示", subTitle: "连接服务器失败，请检查您的网络！")
+                    SCLAlertView.showNetworkErrorView()
                     break
                 }
-                
-                // 累加
-                self.currentIndex++
-                
-                // 刷新
-                self.tableView.reloadData()
-                
                 //停止刷新
                 self.tableView.mj_footer.endRefreshing()
                 self.tableView.mj_header.endRefreshing()

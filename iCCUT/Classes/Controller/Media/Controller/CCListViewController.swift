@@ -12,12 +12,23 @@ import UIKit
 class CCListViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     
-    /** 数据源 */
+    /// 数据源
     let dataSource: NSMutableArray = ["纪录片","学习","动漫频道","影视"]
-    /** 布局 */
+    /// 布局
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-    /** 唯一标识 */
+    /// Cell列数
+    let cellColum = 2
+    /// Cell和边框之间的距离
+    let cellEdge: UIEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+    /// Cell之间的距离
+    let cellSpacing: CGFloat = 20
+    ///  唯一标识
+    var cellLength: CGFloat {
+        let length = (SCREEN_BOUNDS.size.width - (2 * cellEdge.left) - (CGFloat(cellColum - 1) * cellSpacing)) / 2
+        return length
+    }
     private let reuseIdentifier = "ListCell"
+    
 
     // MARK: - Life Cycle
     
@@ -40,10 +51,13 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
     // MARK: - Private Method
     private func setupView() {
         
-        //设置Tabbar文字
+        // 设置Tabbar文字
         tabBarController?.navigationItem.title = tabBarItem.title
         
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.backgroundColor = UIColor.whiteColor()
+        
+        // 搜索item
+        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: Selector("searchButtonClick"))
         
     }
     
@@ -64,10 +78,21 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
         
         cell.configureCell(indexPath, dataSource: dataSource)
         
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        
         return cell
     }
 
     // MARK: UICollectionViewDelegate
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return cellEdge
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        return CGSizeMake(cellLength, cellLength * 0.7)
+    }
     
     
     // MARK: - Storyboard segue
@@ -83,6 +108,14 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
         
         vc.sortList = sortList![(indexPath?.row)!] as? NSArray;
         
+    }
+    
+    // MARK: - Action
+    func searchButtonClick() {
+        
+        let searchVC = UIStoryboard(name: "Common", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("searchVC")
+        
+        navigationController?.pushViewController(searchVC, animated: true)
     }
     
 }
