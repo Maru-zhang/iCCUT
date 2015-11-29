@@ -26,6 +26,7 @@ class CCLoginViewController: UIViewController {
 
         //配置界面
         setupView()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +34,7 @@ class CCLoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //< Private Method >
+    // MARK: - Private Method
     private func setupView() {
         
         //检测是不是有本地化数据，如果有就显示到登陆界面上面来

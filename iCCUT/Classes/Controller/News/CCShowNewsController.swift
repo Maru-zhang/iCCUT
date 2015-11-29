@@ -36,10 +36,10 @@ class CCShowNewsController: UIViewController {
         
         constrain(webView, view) { (view1, view2) -> () in
             
-            view1.top == view2.top
-            view1.left == view2.left
-            view1.right == view2.right
-            view1.bottom == view2.bottom
+            view1.top      ==   view2.top
+            view1.left     ==   view2.left
+            view1.right    ==   view2.right
+            view1.bottom   ==   view2.bottom
             
         }
 

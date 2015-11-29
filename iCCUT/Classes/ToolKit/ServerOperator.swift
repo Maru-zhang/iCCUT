@@ -14,6 +14,9 @@ class ServerOperator: NSObject {
     
     /// 搜索的地址
     static let searchAddress = "\(HOST)/iCCUT/servlet/SearchList"
+    /// 视频列表的地址
+    static let videoListAddress = "\(HOST)/iCCUT/servlet/MediaList"
+    
 
     
     /**

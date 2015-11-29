@@ -51,6 +51,8 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { () -> Void in
             self.loadMoreData(false)
         })
+        
+        tableView.backgroundView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("clearAction")))
     }
     
     func setupSetting() {
@@ -110,9 +112,11 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
                     break
                 }
         }
-        
-        
-        
+
+    }
+    
+    func clearAction() {
+        UIApplication.sharedApplication().keyWindow?.endEditing(true)
     }
     
     
