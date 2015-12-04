@@ -63,9 +63,9 @@ var CUR_TIME: NSString {
  /// 服务器地址
 var HOST: String {
     if TARGET_OS_SIMULATOR == 1 {
-        return "http://127.0.0.1:8080"
+        return "http://127.0.0.1:5000"
     }else {
-        return "http://10.73.5.140:8080"
+        return "http://10.73.5.140:5000"
     }
 }
  /// 学校登录地址

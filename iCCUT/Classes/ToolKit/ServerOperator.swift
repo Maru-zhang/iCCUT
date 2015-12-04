@@ -13,9 +13,9 @@ class ServerOperator: NSObject {
     
     
     /// 搜索的地址
-    static let searchAddress = "\(HOST)/iCCUT/servlet/SearchList"
+    static let searchAddress = "\(HOST)/iCCUT/SearchList"
     /// 视频列表的地址
-    static let videoListAddress = "\(HOST)/iCCUT/servlet/MediaList"
+    static let videoListAddress = "\(HOST)/iCCUT/MediaList"
     
 
     
@@ -63,7 +63,7 @@ class ServerOperator: NSObject {
     static func basicOperator(url: String,parameters: [String: String],
         completeHandler: (isSuccess: Bool,response: Response<AnyObject, NSError>) -> Void) {
         
-        Alamofire.request(.POST, url,parameters: parameters)
+        Alamofire.request(.POST, url,parameters: parameters,encoding: .URLEncodedInURL)
             .responseJSON { (response) -> Void in
                 switch response.result {
                 case .Success:

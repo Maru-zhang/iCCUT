@@ -12,7 +12,7 @@ import Alamofire
 class CCNewsController: UITableViewController,CirCleViewDelegate {
 
     /// 分页页码
-    var pageIndex: NSInteger = 1
+    var pageIndex: NSInteger = 0
     /// 新闻数据源
     let dataSource = NSMutableArray()
     /** header高度 */
@@ -75,19 +75,26 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         
         // 是否需要初始化
         if isSetup {
-            dataSource.removeAllObjects()
-            pageIndex = 1
+            self.pageIndex = 0
         }
         
         let parmeter = ["index": pageIndex]
         
-        Alamofire.request(.POST, "\(HOST)/iCCUT/servlet/NewsList",parameters:parmeter)
+        Alamofire.request(.POST, "\(HOST)/iCCUT/NewsList",parameters:parmeter,encoding: .URLEncodedInURL)
             .responseJSON { (response) -> Void in
+                
+                if isSetup {
+                    self.dataSource.removeAllObjects()
+                }
             
                 switch response.result {
                     
                 case .Success:
+                    
                     let json = JSON(response.result.value!)
+                    
+                    debugPrint(json)
+                    
                     for (_,itemJson) in json["datas"] {
                         // 遍历添加数据
                         let newsModel: NewsModel = NewsModel()

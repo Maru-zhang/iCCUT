@@ -101,7 +101,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         }
         
         // 请求参数
-        var parmeter: [String: String] = ["index": "\(currentIndex)","leve1": leve1!]
+        var parmeter: [String: String] = ["index": "\(currentIndex)","leve1": leve1!,"leve2":""]
         
         
         // 是否有leve2然后生成不同的参数
@@ -109,10 +109,8 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
             parmeter["leve2"] = leve2
         }
         
-        debugPrint(parmeter)
-        
         // 发送请求
-        Alamofire.request(.POST, "\(HOST)/iCCUT/servlet/MediaList", parameters:parmeter, encoding: .URL)
+        Alamofire.request(.POST, "\(HOST)/iCCUT/MediaList", parameters:parmeter,encoding: .URLEncodedInURL)
             .responseJSON { response in
                 
                 switch response.result {
@@ -128,6 +126,8 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                         
                         let json = JSON(value)
                         
+                        debugPrint(json["datas"])
+                        
                         //如果success不为1那么就相关处理
                         guard json["success"].boolValue else {
                             SCLAlertView().showInfo("温馨提示", subTitle: json["msg"].stringValue)
@@ -137,7 +137,6 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                             return
                         }
                         
-                        debugPrint(json.rawString())
                         for (_,subJson): (String,JSON) in json["datas"] {
                             let videoItem: CCVideoModel = CCVideoModel()
                             videoItem.name = subJson["title"].stringValue
