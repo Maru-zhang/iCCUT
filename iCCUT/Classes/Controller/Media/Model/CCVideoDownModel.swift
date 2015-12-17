@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CCVideoDownModel: NSObject,NSCoding {
     
@@ -15,11 +16,13 @@ class CCVideoDownModel: NSObject,NSCoding {
     var bytesRead: Int64!
     var totalBytesRead: Int64!
     var totalBytesExpectedToRead: Int64!
+    var request: Request?
     var urlString: NSString?
     var precent: Float {
         let precent: Float = Float(totalBytesRead!) / Float(totalBytesExpectedToRead!)
         return precent
     }
+    var isDownloading: Bool = true
     var isFinish: Bool = false
     
     // MARK: - Life Cycyle
@@ -34,6 +37,7 @@ class CCVideoDownModel: NSObject,NSCoding {
         aCoder.encodeInt64(totalBytesExpectedToRead, forKey: "totalexpect")
         aCoder.encodeObject(urlString, forKey: "url")
         aCoder.encodeBool(isFinish, forKey: "isfinish")
+//        aCoder.encodeObject(request, forKey: "request")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,5 +47,6 @@ class CCVideoDownModel: NSObject,NSCoding {
         self.totalBytesExpectedToRead = aDecoder.decodeInt64ForKey("totalexpect")
         self.urlString = aDecoder.decodeObjectForKey("url") as? NSString
         self.isFinish = aDecoder.decodeBoolForKey("isfinish")
+//        self.request = aDecoder.decodeObjectForKey("request") as? Request
     }
 }

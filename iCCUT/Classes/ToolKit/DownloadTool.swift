@@ -29,6 +29,13 @@ class DownloadTool: NSObject {
     // MARK: - Public Method
     func downloadResourceToPath(model: CCVideoModel,index: NSIndexPath) {
         
+        // 排除重复下载
+        for item in videoQueue {
+            if item.name == model.name {
+                return
+            }
+        }
+        
         //创建一个模型实体
         let mdl = CCVideoDownModel()
         mdl.name = model.name
@@ -36,7 +43,7 @@ class DownloadTool: NSObject {
         
         //一个后台线程
         dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
-            Alamofire.download(.GET, (model.url)!) { (temporaryURL, response) -> NSURL in
+            let download_request = Alamofire.download(.GET, (model.url)!) { (temporaryURL, response) -> NSURL in
                 let temp = (CUR_TIME as String) + "-" +  response.suggestedFilename!
                 let finalPath: NSURL = DIR_PATH.URLByAppendingPathComponent(temp)
                 mdl.urlString = temp
@@ -63,7 +70,10 @@ class DownloadTool: NSObject {
                 }else {
                     if DEBUG_LOG {print("下载成功！")}
                 }
+                
             })
+            
+            mdl.request = download_request
         }
 
     }

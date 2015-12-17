@@ -8,13 +8,15 @@
 
 import UIKit
 
-class CCMainTabbarController: UITabBarController {
+class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
 
     //Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        
+        setupSetting()
         
     }
     
@@ -55,6 +57,22 @@ class CCMainTabbarController: UITabBarController {
         //赋值字体颜色
         UITabBarItem.appearance().setTitleTextAttributes(attributesN, forState: UIControlState.Normal)
         UITabBarItem.appearance().setTitleTextAttributes(attributesH, forState: UIControlState.Selected)
+    }
+    
+    private func setupSetting() {
+        delegate = self
+    }
+    
+    
+    // MARK: - Tabbar Controller Delegate
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        let animation = CATransition()
+        animation.type = kCATransitionFade
+        animation.duration = 0.25
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        self.view.window?.layer.addAnimation(animation, forKey: "fadeTransition")
+        
+        return true
     }
     
 

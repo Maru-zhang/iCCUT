@@ -7,6 +7,7 @@
 //  http://202.198.176.113/video/v8/jlp/zjkx/0901.rmvb
 
 import UIKit
+import Alamofire
 
 class CCDownloadController: UITableViewController,DownloadToolProtocol {
 
@@ -70,13 +71,24 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     // MARK: - UITableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CCDownloadCell
+        cell.selected = false
         
-        cell?.selected = false
-        
+        // 获取离线视频模型
         let model: CCVideoDownModel = dataSource[indexPath.row] as! CCVideoDownModel
         
         guard model.isFinish else {
+
+            if model.isDownloading {
+                model.request!.suspend()
+                model.isDownloading = false
+                cell.setStatus(CCDownloadCellStatus.Pause)
+            }else {
+                model.request!.resume()
+                model.isDownloading = true
+                cell.setStatus(CCDownloadCellStatus.Loading)
+            }
+            
             return
         }
         
@@ -145,7 +157,11 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
                 let tempModel = model as! CCVideoDownModel
                 cell.progressBar.progress = tempModel.precent
                 cell.progressLable.text = "\(Int(tempModel.precent * 100))%"
+                if tempModel.precent == 1 {
+                    cell.setStatus(CCDownloadCellStatus.Finish)
+                }
             }
         }
     }
+    
 }
