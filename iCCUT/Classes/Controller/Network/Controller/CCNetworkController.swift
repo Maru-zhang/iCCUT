@@ -201,8 +201,6 @@ class CCNetworkController: UIViewController {
                     self.cancelButton.selected = true
                 }
             })
-            
-            
         }
     }
     

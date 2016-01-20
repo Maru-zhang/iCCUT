@@ -163,7 +163,7 @@
 		420D5E151C01C3A9004B9AAC /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		420D5E161C01C3A9004B9AAC /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		420D5E171C01C3A9004B9AAC /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		4218FD851BF2CCF70036FE1A /* Common.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
+		4218FD851BF2CCF70036FE1A /* Common.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Common.storyboard; path = ../Common/Common.storyboard; sourceTree = "<group>"; };
 		421A6FB61C02F3A000A29E09 /* UpdateNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateNews.swift; sourceTree = "<group>"; };
 		421F94741C0706D70073777E /* SCLAlertViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertViewExtension.swift; sourceTree = "<group>"; };
 		4222BD8F1BD24439006C1EFC /* CCVideoDownModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoDownModel.swift; sourceTree = "<group>"; };
@@ -466,6 +466,7 @@
 		427A65A61BAD0E91004A0627 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4298462C1C327BE700485F36 /* Interface */,
 				42EA9B691BFEE5C500ADC8D6 /* Extension */,
 				420C75DA1BB41A6A0025E1D8 /* ToolKit */,
 				427A65AB1BAD0F37004A0627 /* Resource */,
@@ -498,9 +499,6 @@
 				42C648E31BAFC655000D5764 /* Macro */,
 				42C648DD1BAEDD79000D5764 /* Bridging_Header.h */,
 				427A65921BAD0D8A004A0627 /* AppDelegate.swift */,
-				427A65961BAD0D8A004A0627 /* Main.storyboard */,
-				4218FD851BF2CCF70036FE1A /* Common.storyboard */,
-				427A659B1BAD0D8A004A0627 /* LaunchScreen.storyboard */,
 				427A659E1BAD0D8A004A0627 /* Info.plist */,
 			);
 			path = Common;
@@ -672,6 +670,16 @@
 				428C09D21BFEE35100B1C486 /* SCLAlertView.swift */,
 			);
 			path = SCLAlertView;
+			sourceTree = "<group>";
+		};
+		4298462C1C327BE700485F36 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				427A65961BAD0D8A004A0627 /* Main.storyboard */,
+				4218FD851BF2CCF70036FE1A /* Common.storyboard */,
+				427A659B1BAD0D8A004A0627 /* LaunchScreen.storyboard */,
+			);
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		42A0EEA71BCCBF580092C16F /* CricleView */ = {
