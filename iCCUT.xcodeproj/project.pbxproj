@@ -1132,8 +1132,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../Resource/SDK\"",
-					"\"$(SRCROOT)/../../build\"",
+					"\"$(SRCROOT)/../../../Desktop/build\"",
 				);
 				INFOPLIST_FILE = iCCUT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1165,8 +1164,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../Resource/SDK\"",
-					"\"$(SRCROOT)/../../build\"",
+					"\"$(SRCROOT)/../../../Desktop/build\"",
 				);
 				INFOPLIST_FILE = iCCUT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
