@@ -36,6 +36,7 @@
 		182208FA1C821FBA00BA0F7B /* CCShowNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182208E21C821FBA00BA0F7B /* CCShowNewsController.swift */; };
 		182208FB1C821FBA00BA0F7B /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182208E31C821FBA00BA0F7B /* NewsModel.swift */; };
 		182208FE1C821FCD00BA0F7B /* CCMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182208FD1C821FCD00BA0F7B /* CCMacro.swift */; };
+		182209001C82201000BA0F7B /* VideoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 182208FF1C82201000BA0F7B /* VideoModel.xcdatamodeld */; };
 		18D627461C7DA6FD00DDA9E7 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D6273A1C7DA6FD00DDA9E7 /* libbz2.1.0.dylib */; };
 		18D627471C7DA6FD00DDA9E7 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D6273B1C7DA6FD00DDA9E7 /* libz.1.dylib */; };
 		18D627481C7DA6FD00DDA9E7 /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D6273C1C7DA6FD00DDA9E7 /* libc++.1.dylib */; };
@@ -600,6 +601,7 @@
 		426B64441BD0BB76004077B0 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				182208FF1C82201000BA0F7B /* VideoModel.xcdatamodeld */,
 			);
 			name = DataBase;
 			path = Common;
@@ -971,6 +973,7 @@
 				42A0EEDC1BCD11860092C16F /* Size.swift in Sources */,
 				420D5E211C01C3A9004B9AAC /* MJRefreshBackNormalFooter.m in Sources */,
 				182208F01C821FBA00BA0F7B /* CCDownloadCell.swift in Sources */,
+				182209001C82201000BA0F7B /* VideoModel.xcdatamodeld in Sources */,
 				421A6FB71C02F3A000A29E09 /* UpdateNews.swift in Sources */,
 				182208F91C821FBA00BA0F7B /* CCNewsTableViewCell.swift in Sources */,
 				182208EB1C821FBA00BA0F7B /* CCListViewController.swift in Sources */,
@@ -1183,6 +1186,18 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		182208FF1C82201000BA0F7B /* VideoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+			);
+			name = VideoModel.xcdatamodeld;
+			path = ../DataBase/VideoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 427A65871BAD0D8A004A0627 /* Project object */;
 }
