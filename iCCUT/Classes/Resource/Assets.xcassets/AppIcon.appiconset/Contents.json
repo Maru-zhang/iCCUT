@@ -23,12 +23,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "AppIcon.png",
+      "filename" : "SEO@1x-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "SEO@1x.png",
       "scale" : "3x"
     }
   ],

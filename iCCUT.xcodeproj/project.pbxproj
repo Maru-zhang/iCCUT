@@ -1113,10 +1113,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../build\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../Resource/SDK/LatestVLC\"";
 				INFOPLIST_FILE = iCCUT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1127,7 +1124,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Alloc.iCCUT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Documents/Project/iCCUT/iCCUT/Classes/Vendor/Classes/Bridging_Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/Maru/Documents/Projective/iCCUT/iCCUT/Classes/Vendor/Classes/Bridging_Header.h;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1145,10 +1142,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../build\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../Resource/SDK/LatestVLC\"";
 				INFOPLIST_FILE = iCCUT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1159,7 +1153,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Alloc.iCCUT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Documents/Project/iCCUT/iCCUT/Classes/Vendor/Classes/Bridging_Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/Maru/Documents/Projective/iCCUT/iCCUT/Classes/Vendor/Classes/Bridging_Header.h;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 			};
 			name = Release;
