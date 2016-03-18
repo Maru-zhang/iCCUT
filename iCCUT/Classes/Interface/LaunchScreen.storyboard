@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="oRO-8d-MDJ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="xJT-c7-3js">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome" id="blh-ns-gyu">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8re-QW-oTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="oRO-8d-MDJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DF0-Mr-zZ7"/>
+                        <viewControllerLayoutGuide type="bottom" id="aWq-Tx-LxQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8iZ-90-7Cd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <animations/>
-                    </imageView>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_BG" translatesAutoresizingMaskIntoConstraints="NO" id="rew-Gh-l3H">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rew-Gh-l3H" firstAttribute="leading" secondItem="8iZ-90-7Cd" secondAttribute="leading" id="Uga-jE-i3g"/>
+                            <constraint firstAttribute="trailing" secondItem="rew-Gh-l3H" secondAttribute="trailing" id="V9k-x8-Kak"/>
+                            <constraint firstItem="rew-Gh-l3H" firstAttribute="bottom" secondItem="aWq-Tx-LxQ" secondAttribute="top" id="spp-Wi-MGN"/>
+                            <constraint firstItem="rew-Gh-l3H" firstAttribute="top" secondItem="8iZ-90-7Cd" secondAttribute="top" id="zoh-Hn-oae"/>
+                        </constraints>
+                    </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="-6" y="272"/>
         </scene>
     </scenes>
     <resources>
-        <image name="welcome" width="375" height="667"/>
+        <image name="launch_BG" width="250" height="444"/>
     </resources>
 </document>

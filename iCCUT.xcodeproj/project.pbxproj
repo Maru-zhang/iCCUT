@@ -44,11 +44,9 @@
 		18D6274A1C7DA6FD00DDA9E7 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D6273E1C7DA6FD00DDA9E7 /* libstdc++.6.0.9.dylib */; };
 		18D6274B1C7DA6FD00DDA9E7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D6273F1C7DA6FD00DDA9E7 /* MediaPlayer.framework */; };
 		18D6274C1C7DA6FD00DDA9E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627401C7DA6FD00DDA9E7 /* AVFoundation.framework */; };
-		18D6274D1C7DA6FD00DDA9E7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627411C7DA6FD00DDA9E7 /* CoreAudio.framework */; };
 		18D6274E1C7DA6FD00DDA9E7 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627421C7DA6FD00DDA9E7 /* CoreVideo.framework */; };
 		18D6274F1C7DA6FD00DDA9E7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627431C7DA6FD00DDA9E7 /* CoreMedia.framework */; };
 		18D627501C7DA6FD00DDA9E7 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627441C7DA6FD00DDA9E7 /* VideoToolbox.framework */; };
-		18D627511C7DA6FD00DDA9E7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627451C7DA6FD00DDA9E7 /* AudioToolbox.framework */; };
 		18D627581C7DA73E00DDA9E7 /* DocDir.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D627531C7DA73E00DDA9E7 /* DocDir.plist */; };
 		18D627591C7DA73E00DDA9E7 /* localPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D627541C7DA73E00DDA9E7 /* localPlist.plist */; };
 		18D6275A1C7DA73E00DDA9E7 /* MediaListName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D627551C7DA73E00DDA9E7 /* MediaListName.plist */; };
@@ -94,7 +92,6 @@
 		4286B2761BAD407E0015EDDA /* kr-video-player-shrinkscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4286B2651BAD407E0015EDDA /* kr-video-player-shrinkscreen@3x.png */; };
 		4287116A1BAEB66A00A89536 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711691BAEB66A00A89536 /* AudioToolbox.framework */; };
 		4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116B1BAEB67200A89536 /* CoreAudio.framework */; };
-		4287116E1BAEB67800A89536 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116D1BAEB67800A89536 /* AVFoundation.framework */; };
 		428711701BAEB67F00A89536 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116F1BAEB67F00A89536 /* CoreGraphics.framework */; };
 		428C09C81BFED8AF00B1C486 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C09C71BFED8AF00B1C486 /* SwiftyJSON.swift */; };
 		428C09D41BFEE35100B1C486 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C09D21BFEE35100B1C486 /* SCLAlertView.swift */; };
@@ -284,11 +281,9 @@
 				428711701BAEB67F00A89536 /* CoreGraphics.framework in Frameworks */,
 				18D627471C7DA6FD00DDA9E7 /* libz.1.dylib in Frameworks */,
 				18D6274C1C7DA6FD00DDA9E7 /* AVFoundation.framework in Frameworks */,
-				4287116E1BAEB67800A89536 /* AVFoundation.framework in Frameworks */,
 				4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */,
 				4287116A1BAEB66A00A89536 /* AudioToolbox.framework in Frameworks */,
 				18D6274A1C7DA6FD00DDA9E7 /* libstdc++.6.0.9.dylib in Frameworks */,
-				18D627511C7DA6FD00DDA9E7 /* AudioToolbox.framework in Frameworks */,
 				18D627491C7DA6FD00DDA9E7 /* libiconv.2.dylib in Frameworks */,
 				18D6274F1C7DA6FD00DDA9E7 /* CoreMedia.framework in Frameworks */,
 				18D6274E1C7DA6FD00DDA9E7 /* CoreVideo.framework in Frameworks */,
@@ -296,7 +291,6 @@
 				18D627481C7DA6FD00DDA9E7 /* libc++.1.dylib in Frameworks */,
 				18D627461C7DA6FD00DDA9E7 /* libbz2.1.0.dylib in Frameworks */,
 				18D6274B1C7DA6FD00DDA9E7 /* MediaPlayer.framework in Frameworks */,
-				18D6274D1C7DA6FD00DDA9E7 /* CoreAudio.framework in Frameworks */,
 				9760FDF947B68EC8A47122C9 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,7 +819,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Alloc;
 				TargetAttributes = {
 					427A658E1BAD0D8A004A0627 = {

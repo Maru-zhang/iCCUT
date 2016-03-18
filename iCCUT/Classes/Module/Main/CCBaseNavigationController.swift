@@ -9,12 +9,8 @@
 import UIKit
 
 class CCBaseNavigationController: UINavigationController {
-
     
     override func viewDidLoad() {
-        
-        //线程休眠
-        NSThread.sleepForTimeInterval(1)
         
         setupSetting()
     }
