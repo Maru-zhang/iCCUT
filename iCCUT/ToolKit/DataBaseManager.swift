@@ -19,8 +19,5 @@ class DataBaseManager: NSObject {
         return manager
     }
     
-    override init() {
-        super.init()
-    }
     
 }

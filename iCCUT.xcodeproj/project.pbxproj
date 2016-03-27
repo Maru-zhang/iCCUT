@@ -100,8 +100,22 @@
 		428B016B1CA556B4003C1D03 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00F81CA556B4003C1D03 /* SCLAlertView.swift */; };
 		428B01701CA558AF003C1D03 /* CirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B016F1CA558AF003C1D03 /* CirCleView.swift */; };
 		428B01721CA55BCB003C1D03 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428B01711CA55BCB003C1D03 /* MobileVLCKit.framework */; };
+		428B01751CA55EF7003C1D03 /* CCMediaAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01741CA55EF7003C1D03 /* CCMediaAnimation.swift */; };
+		428B01771CA56576003C1D03 /* CCMediaTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01761CA56576003C1D03 /* CCMediaTransition.swift */; };
+		428B01791CA56C69003C1D03 /* CCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01781CA56C69003C1D03 /* CCSortViewController.swift */; };
+		428B01811CA69C8B003C1D03 /* iCCUTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01801CA69C8B003C1D03 /* iCCUTTests.swift */; };
 		9760FDF947B68EC8A47122C9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3875419AAA0CAE666E598E27 /* Pods.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		428B01831CA69C8B003C1D03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 427A65871BAD0D8A004A0627 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 427A658E1BAD0D8A004A0627;
+			remoteInfo = iCCUT;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0E1DFF7DE1B2A0ADC402D36B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,7 +151,7 @@
 		428B005E1CA556B4003C1D03 /* CCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBaseNavigationController.swift; sourceTree = "<group>"; };
 		428B005F1CA556B4003C1D03 /* CCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLoginViewController.swift; sourceTree = "<group>"; };
 		428B00601CA556B4003C1D03 /* CCMainTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMainTabbarController.swift; sourceTree = "<group>"; };
-		428B00621CA556B4003C1D03 /* CCMediaListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMediaListController.swift; sourceTree = "<group>"; };
+		428B00621CA556B4003C1D03 /* CCMediaListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCMediaListController.swift; path = ../CCMediaListController.swift; sourceTree = "<group>"; };
 		428B00641CA556B4003C1D03 /* CCDownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadController.swift; sourceTree = "<group>"; };
 		428B00651CA556B4003C1D03 /* CCListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCListViewController.swift; sourceTree = "<group>"; };
 		428B00661CA556B4003C1D03 /* CCSortView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSortView.swift; sourceTree = "<group>"; };
@@ -225,6 +239,12 @@
 		428B016D1CA55747003C1D03 /* Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
 		428B016F1CA558AF003C1D03 /* CirCleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirCleView.swift; sourceTree = "<group>"; };
 		428B01711CA55BCB003C1D03 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = ../../Resource/SDK/MobileVLCKit.framework; sourceTree = "<group>"; };
+		428B01741CA55EF7003C1D03 /* CCMediaAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMediaAnimation.swift; sourceTree = "<group>"; };
+		428B01761CA56576003C1D03 /* CCMediaTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMediaTransition.swift; sourceTree = "<group>"; };
+		428B01781CA56C69003C1D03 /* CCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSortViewController.swift; sourceTree = "<group>"; };
+		428B017E1CA69C8B003C1D03 /* iCCUTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCCUTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		428B01801CA69C8B003C1D03 /* iCCUTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCCUTTests.swift; sourceTree = "<group>"; };
+		428B01821CA69C8B003C1D03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF23A94C6BA301B4E5079EC1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +269,13 @@
 				18D627461C7DA6FD00DDA9E7 /* libbz2.1.0.dylib in Frameworks */,
 				18D6274B1C7DA6FD00DDA9E7 /* MediaPlayer.framework in Frameworks */,
 				9760FDF947B68EC8A47122C9 /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		428B017B1CA69C8B003C1D03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				427A65911BAD0D8A004A0627 /* iCCUT */,
+				428B017F1CA69C8B003C1D03 /* iCCUTTests */,
 				427A65901BAD0D8A004A0627 /* Products */,
 				3518C6FF5B92F85DA0B079FE /* Pods */,
 				33E5060F3617C30258A25902 /* Frameworks */,
@@ -304,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				427A658F1BAD0D8A004A0627 /* iCCUT.app */,
+				428B017E1CA69C8B003C1D03 /* iCCUTTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -420,7 +449,7 @@
 		428B00611CA556B4003C1D03 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				428B00621CA556B4003C1D03 /* CCMediaListController.swift */,
+				428B01731CA55ED6003C1D03 /* Animation */,
 				428B00631CA556B4003C1D03 /* Controller */,
 				428B00681CA556B4003C1D03 /* Model */,
 				428B006B1CA556B4003C1D03 /* View */,
@@ -431,10 +460,12 @@
 		428B00631CA556B4003C1D03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				428B00621CA556B4003C1D03 /* CCMediaListController.swift */,
 				428B00641CA556B4003C1D03 /* CCDownloadController.swift */,
 				428B00651CA556B4003C1D03 /* CCListViewController.swift */,
 				428B00661CA556B4003C1D03 /* CCSortView.swift */,
 				428B00671CA556B4003C1D03 /* CCVideoSearchController.swift */,
+				428B01781CA56C69003C1D03 /* CCSortViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -704,6 +735,24 @@
 			path = CirCleView;
 			sourceTree = "<group>";
 		};
+		428B01731CA55ED6003C1D03 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				428B01761CA56576003C1D03 /* CCMediaTransition.swift */,
+				428B01741CA55EF7003C1D03 /* CCMediaAnimation.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		428B017F1CA69C8B003C1D03 /* iCCUTTests */ = {
+			isa = PBXGroup;
+			children = (
+				428B01801CA69C8B003C1D03 /* iCCUTTests.swift */,
+				428B01821CA69C8B003C1D03 /* Info.plist */,
+			);
+			path = iCCUTTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -727,19 +776,43 @@
 			productReference = 427A658F1BAD0D8A004A0627 /* iCCUT.app */;
 			productType = "com.apple.product-type.application";
 		};
+		428B017D1CA69C8B003C1D03 /* iCCUTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 428B01851CA69C8B003C1D03 /* Build configuration list for PBXNativeTarget "iCCUTTests" */;
+			buildPhases = (
+				428B017A1CA69C8B003C1D03 /* Sources */,
+				428B017B1CA69C8B003C1D03 /* Frameworks */,
+				428B017C1CA69C8B003C1D03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				428B01841CA69C8B003C1D03 /* PBXTargetDependency */,
+			);
+			name = iCCUTTests;
+			productName = iCCUTTests;
+			productReference = 428B017E1CA69C8B003C1D03 /* iCCUTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		427A65871BAD0D8A004A0627 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				CLASSPREFIX = CC;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Alloc;
 				TargetAttributes = {
 					427A658E1BAD0D8A004A0627 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 678WD436L9;
+					};
+					428B017D1CA69C8B003C1D03 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 678WD436L9;
+						TestTargetID = 427A658E1BAD0D8A004A0627;
 					};
 				};
 			};
@@ -757,6 +830,7 @@
 			projectRoot = "";
 			targets = (
 				427A658E1BAD0D8A004A0627 /* iCCUT */,
+				428B017D1CA69C8B003C1D03 /* iCCUTTests */,
 			);
 		};
 /* End PBXProject section */
@@ -788,6 +862,13 @@
 				428B011D1CA556B4003C1D03 /* Assets.xcassets in Resources */,
 				428B011F1CA556B4003C1D03 /* MediaListName.plist in Resources */,
 				428B011E1CA556B4003C1D03 /* localPlist.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		428B017C1CA69C8B003C1D03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,6 +931,7 @@
 				428B015D1CA556B4003C1D03 /* MJRefreshAutoGifFooter.m in Sources */,
 				428B01621CA556B4003C1D03 /* MJRefreshBackStateFooter.m in Sources */,
 				428B011C1CA556B4003C1D03 /* TableModelType.swift in Sources */,
+				428B01791CA56C69003C1D03 /* CCSortViewController.swift in Sources */,
 				428B011A1CA556B4003C1D03 /* NewsModel.swift in Sources */,
 				428B01701CA558AF003C1D03 /* CirCleView.swift in Sources */,
 				428B01121CA556B4003C1D03 /* CCSortViewLayout.swift in Sources */,
@@ -878,10 +960,12 @@
 				428B00FE1CA556B4003C1D03 /* UITableViewExtension.swift in Sources */,
 				428B01181CA556B4003C1D03 /* CCNewsTableViewCell.swift in Sources */,
 				428B01191CA556B4003C1D03 /* CCShowNewsController.swift in Sources */,
+				428B01751CA55EF7003C1D03 /* CCMediaAnimation.swift in Sources */,
 				428B01251CA556B4003C1D03 /* UpdateNews.swift in Sources */,
 				428B01031CA556B4003C1D03 /* CCLaunchController.swift in Sources */,
 				428B01061CA556B4003C1D03 /* CCLoginViewController.swift in Sources */,
 				428B010E1CA556B4003C1D03 /* CCVideoModel.swift in Sources */,
+				428B01771CA56576003C1D03 /* CCMediaTransition.swift in Sources */,
 				428B01171CA556B4003C1D03 /* CCNewsController.swift in Sources */,
 				428B01681CA556B4003C1D03 /* UIScrollView+MJExtension.m in Sources */,
 				428B010F1CA556B4003C1D03 /* CCDownloadCell.swift in Sources */,
@@ -905,7 +989,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		428B017A1CA69C8B003C1D03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				428B01811CA69C8B003C1D03 /* iCCUTTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		428B01841CA69C8B003C1D03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 427A658E1BAD0D8A004A0627 /* iCCUT */;
+			targetProxy = 428B01831CA69C8B003C1D03 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		427A659F1BAD0D8A004A0627 /* Debug */ = {
@@ -1046,6 +1146,34 @@
 			};
 			name = Release;
 		};
+		428B01861CA69C8B003C1D03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = iCCUTTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alloc.iCCUTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iCCUT.app/iCCUT";
+			};
+			name = Debug;
+		};
+		428B01871CA69C8B003C1D03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = iCCUTTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alloc.iCCUTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iCCUT.app/iCCUT";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1066,6 +1194,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		428B01851CA69C8B003C1D03 /* Build configuration list for PBXNativeTarget "iCCUTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				428B01861CA69C8B003C1D03 /* Debug */,
+				428B01871CA69C8B003C1D03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

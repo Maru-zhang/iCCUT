@@ -19,7 +19,6 @@ class CCListViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    
     func configureCell(indexPath: NSIndexPath, dataSource: NSArray) {
         
         bgImage.image = UIImage(named: "channel_button_\(indexPath.row)")
