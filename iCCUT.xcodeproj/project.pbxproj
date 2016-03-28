@@ -37,7 +37,6 @@
 		428B01081CA556B4003C1D03 /* CCMediaListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00621CA556B4003C1D03 /* CCMediaListController.swift */; };
 		428B01091CA556B4003C1D03 /* CCDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00641CA556B4003C1D03 /* CCDownloadController.swift */; };
 		428B010A1CA556B4003C1D03 /* CCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00651CA556B4003C1D03 /* CCListViewController.swift */; };
-		428B010B1CA556B4003C1D03 /* CCSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00661CA556B4003C1D03 /* CCSortView.swift */; };
 		428B010C1CA556B4003C1D03 /* CCVideoSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00671CA556B4003C1D03 /* CCVideoSearchController.swift */; };
 		428B010D1CA556B4003C1D03 /* CCVideoDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00691CA556B4003C1D03 /* CCVideoDownModel.swift */; };
 		428B010E1CA556B4003C1D03 /* CCVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B006A1CA556B4003C1D03 /* CCVideoModel.swift */; };
@@ -154,7 +153,6 @@
 		428B00621CA556B4003C1D03 /* CCMediaListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCMediaListController.swift; path = ../CCMediaListController.swift; sourceTree = "<group>"; };
 		428B00641CA556B4003C1D03 /* CCDownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadController.swift; sourceTree = "<group>"; };
 		428B00651CA556B4003C1D03 /* CCListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCListViewController.swift; sourceTree = "<group>"; };
-		428B00661CA556B4003C1D03 /* CCSortView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSortView.swift; sourceTree = "<group>"; };
 		428B00671CA556B4003C1D03 /* CCVideoSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoSearchController.swift; sourceTree = "<group>"; };
 		428B00691CA556B4003C1D03 /* CCVideoDownModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoDownModel.swift; sourceTree = "<group>"; };
 		428B006A1CA556B4003C1D03 /* CCVideoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCVideoModel.swift; sourceTree = "<group>"; };
@@ -460,10 +458,9 @@
 		428B00631CA556B4003C1D03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				428B00651CA556B4003C1D03 /* CCListViewController.swift */,
 				428B00621CA556B4003C1D03 /* CCMediaListController.swift */,
 				428B00641CA556B4003C1D03 /* CCDownloadController.swift */,
-				428B00651CA556B4003C1D03 /* CCListViewController.swift */,
-				428B00661CA556B4003C1D03 /* CCSortView.swift */,
 				428B00671CA556B4003C1D03 /* CCVideoSearchController.swift */,
 				428B01781CA56C69003C1D03 /* CCSortViewController.swift */,
 			);
@@ -937,7 +934,6 @@
 				428B01121CA556B4003C1D03 /* CCSortViewLayout.swift in Sources */,
 				428B01231CA556B4003C1D03 /* DownloadTool.swift in Sources */,
 				428B010D1CA556B4003C1D03 /* CCVideoDownModel.swift in Sources */,
-				428B010B1CA556B4003C1D03 /* CCSortView.swift in Sources */,
 				428B01691CA556B4003C1D03 /* UIScrollView+MJRefresh.m in Sources */,
 				428B016A1CA556B4003C1D03 /* UIView+MJExtension.m in Sources */,
 				428B01651CA556B4003C1D03 /* MJRefreshStateHeader.m in Sources */,
@@ -1202,6 +1198,7 @@
 				428B01871CA69C8B003C1D03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

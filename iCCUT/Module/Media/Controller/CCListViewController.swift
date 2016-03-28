@@ -14,8 +14,6 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
     
     /// 数据源
     let dataSource: NSMutableArray = ["纪录片","学习","动漫频道","影视"]
-    /// 布局
-    let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     /// Cell列数
     let cellColum = 2
     /// Cell和边框之间的距离

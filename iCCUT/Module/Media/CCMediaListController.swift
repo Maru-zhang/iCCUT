@@ -13,7 +13,11 @@ import SwiftyJSON
 
 class CCMediaListController: UITableViewController,CCSortViewProtocol {
     
-    
+    /// 类别选择控制器
+    lazy var sortVC: CCSortViewController = CCSortViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    /// 转场控制
+    lazy var customPresentationController: CCMediaTransition = CCMediaTransition(presentedViewController: self.sortVC, presentingViewController: self)
+    /// 标示
     let identifier = "mediaListCell"
     /// 第一分类
     var leve1: String!
@@ -25,8 +29,6 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     var sortList: NSArray?
     /// 数据源
     var dataArray: NSMutableArray = NSMutableArray()
-    /** 选择视图 */
-    let sortView: CCSortView = CCSortView()
     /** 标题视图 */
     var sortButton: UIButton {
         //配置导航栏中间的titleView
@@ -37,20 +39,19 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         s.setTitle("分类", forState: .Normal)
         s.setTitle("分类", forState: .Selected)
         s.frame = CGRectMake(0, 0, 60, 40)
-        s.addTarget(self, action: Selector("sortViewAction:"), forControlEvents: UIControlEvents.TouchDown)
+        s.addTarget(self, action: #selector(CCMediaListController.sortViewAction(_:)), forControlEvents: UIControlEvents.TouchDown)
         return s
         
     }
     /** 下载item */
     var downloadItem: UIBarButtonItem {
         
-        let item: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "media_download")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("downloadButtonClick"))
+        let item: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "media_download")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CCMediaListController.downloadButtonClick))
         
         item.imageInsets = UIEdgeInsets(top: 12, left: 10, bottom: 12, right: 10)
         
         return item
     }
-
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -77,11 +78,6 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         tableView.showsVerticalScrollIndicator = false
         // 添加分类按钮
         self.navigationItem.titleView = sortButton
-        // 添加选择视图
-        sortView.frame = CGRectMake(0, 0, SCREEN_BOUNDS.width, 300)
-        sortView.data = sortList
-        sortView.sortDelegate = self
-
         // 下拉刷新
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
             self.loadData(true)
@@ -91,6 +87,11 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { () -> Void in
             self.loadData(false)
         });
+        
+        // 配置转场代理
+        sortVC.transitioningDelegate = customPresentationController
+        // 配置选择代理
+        sortVC.sortDelegate = self
         
     }
     
@@ -127,8 +128,6 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                         
                         let json = JSON(value)
                         
-                        debugPrint(json["datas"])
-                        
                         //如果success不为1那么就相关处理
                         guard json["success"].boolValue else {
                             SCLAlertView().showInfo("温馨提示", subTitle: json["msg"].stringValue)
@@ -149,7 +148,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                     }
                     
                     // 累加
-                    self.currentIndex++
+                    self.currentIndex += 1
                     
                     // 刷新
                     self.tableView.reloadData()
@@ -182,16 +181,8 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     
     func sortViewAction(sender: UIButton) {
 
-        guard let _ = sortView.superview else {
-            view.addSubview(sortView)
-            tableView.userInteractionEnabled = true
-            sortView.userInteractionEnabled = true
-            return
-        }
-        
-        sortView.removeFromSuperview()
-        tableView.userInteractionEnabled = true
-        sortView.userInteractionEnabled = true
+        sortVC.data = sortList
+        presentViewController(sortVC, animated: true, completion: nil)
     }
     
     
@@ -254,7 +245,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     }
     
     // MARK: - CCSortViewProtocol
-    func sortView(sortView sortview: CCSortView, indexPath: NSIndexPath) {
+    func sortView(indexPath: NSIndexPath) {
         
         currentIndex = 0
         

@@ -39,8 +39,9 @@ class CCMediaAnimation: NSObject,UIViewControllerAnimatedTransitioning {
             containerView?.addSubview(toView!)
         }
         
+        // 转场开始前的视图位置
         if isPresenting {
-            toViewInitialFrame.origin = CGPointMake(CGRectGetMinX(containerView!.bounds), CGRectGetMaxY(containerView!.bounds))
+            toViewInitialFrame.origin = CGPointMake(CGRectGetMinX(containerView!.bounds),-CGRectGetHeight((toView?.frame)!))
             toViewInitialFrame.size = toViewFinalFrame.size
             toView?.frame = toViewInitialFrame
         } else {
@@ -53,7 +54,7 @@ class CCMediaAnimation: NSObject,UIViewControllerAnimatedTransitioning {
                 toView?.frame = toViewFinalFrame
             }
             else {
-                fromView?.frame = fromViewFinalFrame
+                fromView?.frame = CGRectMake(0, -CGRectGetHeight(fromViewFinalFrame), fromViewFinalFrame.size.width, fromViewFinalFrame.size.height)
             }
             
         }) { (finished: Bool) -> Void in
