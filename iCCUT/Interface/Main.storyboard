@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Yc5-bq-liW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -286,7 +286,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pti-Ki-b8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120.5" y="-130.5"/>
+            <point key="canvasLocation" x="-1304.25" y="-516.5"/>
+        </scene>
+        <!--主页-->
+        <scene sceneID="VKN-FX-JhK">
+            <objects>
+                <navigationController storyboardIdentifier="Home" title="主页" hidesBottomBarWhenPushed="YES" id="rbj-dy-4P7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhq-dn-SR4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1sN-wN-oFK" kind="relationship" relationship="rootViewController" id="2Ox-1o-eXn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3aM-kv-Xdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3157.5" y="-511"/>
         </scene>
         <!--主页-->
         <scene sceneID="Bmc-dj-ziU">
@@ -299,7 +315,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CCNewsTableViewCell" rowHeight="60" id="Nej-YL-KHu" customClass="CCNewsTableViewCell" customModule="iCCUT" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nej-YL-KHu" id="lVS-nq-fK7">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
@@ -381,15 +397,32 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="主页" id="o2g-qm-rpr"/>
+                    <navigationItem key="navigationItem" title="主页" id="ofc-GE-btL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7h-36-DHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-751.5" y="587"/>
+            <point key="canvasLocation" x="-2326.5" y="-511"/>
         </scene>
         <!--网络-->
+        <scene sceneID="eZQ-Jd-Fx9">
+            <objects>
+                <navigationController storyboardIdentifier="Network" title="网络" hidesBottomBarWhenPushed="YES" id="Pjg-2y-xl1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ur-fP-Nkn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FrC-cY-yAV" kind="relationship" relationship="rootViewController" id="urw-C6-W8Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGA-XH-1KZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3118.5" y="325"/>
+        </scene>
+        <!--主页-->
         <scene sceneID="thT-9F-VKD">
             <objects>
-                <viewController id="FrC-cY-yAV" customClass="CCNetworkController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="主页" id="FrC-cY-yAV" customClass="CCNetworkController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bzT-Eu-Va2"/>
                         <viewControllerLayoutGuide type="bottom" id="dXP-5w-Hu8"/>
@@ -410,7 +443,8 @@
                                         <exclude reference="k8g-6r-e9Z"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="131" y="96" width="138" height="138"/>
                                     <mask key="constraints">
                                         <include reference="8kG-Yb-84U"/>
                                         <include reference="k8g-6r-e9Z"/>
@@ -419,6 +453,9 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_time" highlightedImage="detail_time _high" translatesAutoresizingMaskIntoConstraints="NO" id="9sQ-VI-gkC">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="63" y="271" width="40" height="40"/>
+                                </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_data" highlightedImage="detail_data _high" translatesAutoresizingMaskIntoConstraints="NO" id="YQ2-Cq-bTm">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -432,7 +469,8 @@
                                         <exclude reference="smU-bC-hgl"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="180" y="271" width="40" height="40"/>
                                     <mask key="constraints">
                                         <include reference="hOH-gU-JZ2"/>
                                         <include reference="smU-bC-hgl"/>
@@ -441,18 +479,27 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_money" highlightedImage="detail_money _high" translatesAutoresizingMaskIntoConstraints="NO" id="e8q-sV-pqp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="306" y="271" width="40" height="40"/>
+                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrA-4f-PDy">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.69019607843137254" green="0.83921568627450982" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="49" y="325" width="68" height="30"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK4-34-NJ3">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.69019607839999997" green="0.83921568629999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="292" y="325" width="68" height="30"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q7-Yc-MHm">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -467,7 +514,8 @@
                                         <exclude reference="v35-KF-qfn"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="121" y="325" width="158" height="30"/>
                                     <mask key="constraints">
                                         <include reference="v35-KF-qfn"/>
                                     </mask>
@@ -514,7 +562,8 @@
                                         <exclude reference="f6c-Ub-Mdh"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="340" y="28" width="51" height="31"/>
                                     <mask key="constraints">
                                         <include reference="5jy-9q-v0c"/>
                                         <include reference="f6c-Ub-Mdh"/>
@@ -539,7 +588,8 @@
                                         <exclude reference="GWA-qT-nhR"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="331" y="72" width="67" height="15"/>
                                     <mask key="constraints">
                                         <include reference="Fxi-dn-BjB"/>
                                         <include reference="GWA-qT-nhR"/>
@@ -562,7 +612,8 @@
                                         <exclude reference="jak-k9-dlp"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="11" y="25" width="48" height="38"/>
                                     <mask key="constraints">
                                         <include reference="em1-70-6GM"/>
                                         <include reference="jak-k9-dlp"/>
@@ -708,6 +759,7 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="网络" id="FqU-Ri-9Rp"/>
+                    <navigationItem key="navigationItem" title="网络" id="Hsu-yu-1sf"/>
                     <connections>
                         <outlet property="autoSwitch" destination="idE-3f-K0x" id="tjB-YV-Hrr"/>
                         <outlet property="cancelButton" destination="3QU-o6-0vt" id="Rzt-4t-s0P"/>
@@ -719,23 +771,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGe-HU-hNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="168" y="661"/>
-        </scene>
-        <!--Base Navigation Controller-->
-        <scene sceneID="bcN-Q3-vN8">
-            <objects>
-                <navigationController id="Yc5-bq-liW" customClass="CCBaseNavigationController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S7h-sC-gPL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="mRx-fA-eJn" kind="relationship" relationship="rootViewController" id="HMi-kO-Uw7"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q1n-bL-AfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2703" y="1027"/>
+            <point key="canvasLocation" x="-2326.5" y="325"/>
         </scene>
         <!--视频-->
         <scene sceneID="T1F-pL-TKQ">
@@ -757,12 +793,28 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHW-a4-LfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-838.5" y="2282"/>
+            <point key="canvasLocation" x="-1516.5" y="1125"/>
+        </scene>
+        <!--视频-->
+        <scene sceneID="PaO-hf-0es">
+            <objects>
+                <navigationController storyboardIdentifier="Media" title="视频" hidesBottomBarWhenPushed="YES" id="X0p-WO-If7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcG-FQ-WFH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fiz-lI-qzR" kind="relationship" relationship="rootViewController" id="QHo-wl-dkm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t3a-p8-72s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3118.5" y="1125"/>
         </scene>
         <!--视频-->
         <scene sceneID="Rul-hj-FuB">
             <objects>
-                <collectionViewController id="fiz-lI-qzR" customClass="CCListViewController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="CCListViewController" id="fiz-lI-qzR" customClass="CCListViewController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="yAe-v7-xFa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -774,7 +826,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="ListCell" id="ol0-T5-pCR" customClass="CCListViewCell" customModule="iCCUT" customModuleProvider="target">
-                                <rect key="frame" x="30" y="94" width="145" height="98"/>
+                                <rect key="frame" x="30" y="30" width="145" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="145" height="98"/>
@@ -859,10 +911,27 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="视频" id="iaf-ld-V5S"/>
+                    <navigationItem key="navigationItem" title="视频" id="0LC-m1-fed"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sdp-YH-btQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-838.5" y="1563"/>
+            <point key="canvasLocation" x="-2326.5" y="1125"/>
+        </scene>
+        <!--我-->
+        <scene sceneID="KeA-xk-Kyp">
+            <objects>
+                <navigationController storyboardIdentifier="More" title="我" hidesBottomBarWhenPushed="YES" id="ghO-67-H8d" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FT6-hA-UTb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8yQ-aK-bjV" kind="relationship" relationship="rootViewController" id="FyW-FG-t2w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fl7-HE-bIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3118.5" y="1983"/>
         </scene>
         <!--我-->
         <scene sceneID="Yff-d8-jPP">
@@ -876,7 +945,7 @@
                             <tableViewSection id="idF-Ig-lu2">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ffM-5T-IoZ">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="35" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ffM-5T-IoZ" id="XAj-XK-2Df">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -921,7 +990,7 @@
                             <tableViewSection id="cnr-V1-UrC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="e3Q-mv-EH9">
-                                        <rect key="frame" x="0.0" y="179" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="115" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e3Q-mv-EH9" id="iRw-G2-i8R">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -970,15 +1039,16 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="我" id="amk-Wv-ENN"/>
+                    <navigationItem key="navigationItem" title="我" id="B5D-hI-wzM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVr-iN-Yjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="190.5" y="1377"/>
+            <point key="canvasLocation" x="-2326.5" y="1983"/>
         </scene>
-        <!--View Controller-->
+        <!--关于我们-->
         <scene sceneID="2a2-4U-pCi">
             <objects>
-                <viewController id="xUi-1V-7cG" sceneMemberID="viewController">
+                <viewController title="关于我们" id="xUi-1V-7cG" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Uc-pC-THs"/>
                         <viewControllerLayoutGuide type="bottom" id="1qY-nw-Udw"/>
@@ -1009,7 +1079,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CCUTImage" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-oy-eWa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contact_us" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-oy-eWa">
                                 <rect key="frame" x="20" y="20" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="mkV-kj-mBF"/>
@@ -1035,7 +1105,7 @@
                                     <constraint firstAttribute="width" constant="150" id="L5U-Ck-VuJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1080,7 +1150,7 @@
                             <constraint firstItem="1qY-nw-Udw" firstAttribute="top" secondItem="g1D-6s-k1B" secondAttribute="bottom" constant="42" id="dWS-0i-pVT"/>
                             <constraint firstItem="EWh-Ej-oLG" firstAttribute="centerX" secondItem="bGZ-J9-VGQ" secondAttribute="centerX" id="eXB-M8-9V4"/>
                             <constraint firstItem="fo3-UL-tOa" firstAttribute="centerX" secondItem="bGZ-J9-VGQ" secondAttribute="centerX" id="enr-zN-DYB"/>
-                            <constraint firstItem="wNC-oy-eWa" firstAttribute="top" secondItem="2Uc-pC-THs" secondAttribute="bottom" constant="49" id="iYs-Bx-E4H"/>
+                            <constraint firstItem="wNC-oy-eWa" firstAttribute="top" secondItem="2Uc-pC-THs" secondAttribute="bottom" constant="200" id="iYs-Bx-E4H"/>
                             <constraint firstItem="fo3-UL-tOa" firstAttribute="top" secondItem="wNC-oy-eWa" secondAttribute="bottom" constant="20" id="kEg-Sb-jaZ"/>
                             <constraint firstItem="g1D-6s-k1B" firstAttribute="centerX" secondItem="bGZ-J9-VGQ" secondAttribute="centerX" id="wiZ-m9-4bi"/>
                         </constraints>
@@ -1124,12 +1194,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVx-E9-UrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="190.5" y="2095"/>
+            <point key="canvasLocation" x="-1285.5" y="2789"/>
         </scene>
-        <!--Download Controller-->
+        <!--本地缓存-->
         <scene sceneID="egW-rm-svr">
             <objects>
-                <tableViewController id="vuT-ny-hpv" customClass="CCDownloadController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="本地缓存" id="vuT-ny-hpv" customClass="CCDownloadController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="69" sectionHeaderHeight="28" sectionFooterHeight="28" id="tVP-Rd-ZQa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1137,7 +1207,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="downloadCell" rowHeight="69" id="8ze-rZ-6n5" customClass="CCDownloadCell" customModule="iCCUT" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="69"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8ze-rZ-6n5" id="e69-ce-YWE">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="68.5"/>
@@ -1314,35 +1384,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndn-eY-KEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967.5" y="1377"/>
-        </scene>
-        <!--Main Tabbar Controller-->
-        <scene sceneID="gqq-Ji-jZc">
-            <objects>
-                <tabBarController id="mRx-fA-eJn" customClass="CCMainTabbarController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="doh-qu-rf7"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="ib3-V3-S0Q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="1sN-wN-oFK" kind="relationship" relationship="viewControllers" id="GP6-OK-EfE"/>
-                        <segue destination="FrC-cY-yAV" kind="relationship" relationship="viewControllers" id="8Qu-Ux-8rt"/>
-                        <segue destination="fiz-lI-qzR" kind="relationship" relationship="viewControllers" id="oRh-6p-60O"/>
-                        <segue destination="8yQ-aK-bjV" kind="relationship" relationship="viewControllers" id="fHk-LD-YbB"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lzH-M6-tn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1725" y="1027"/>
+            <point key="canvasLocation" x="-1285.5" y="1983"/>
         </scene>
     </scenes>
     <resources>
-        <image name="CCUTImage" width="74" height="74"/>
         <image name="Login_BG" width="750" height="1334"/>
         <image name="channel_button_0" width="145" height="98"/>
+        <image name="contact_us" width="180" height="180"/>
         <image name="detail_button" width="450" height="84"/>
         <image name="detail_data" width="40" height="80"/>
         <image name="detail_data _high" width="40" height="80"/>

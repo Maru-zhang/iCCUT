@@ -95,7 +95,7 @@ class DownloadTool: NSObject {
     
     func readData() {
         
-        if DEBUG_LOG {print("readData")}
+        if DEBUG_LOG { print("readData") }
         
         guard let readArray = NSUserDefaults.standardUserDefaults().objectForKey(KLOCAL_VIDEO) as? NSArray else {
             return

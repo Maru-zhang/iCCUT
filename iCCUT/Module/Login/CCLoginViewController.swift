@@ -75,7 +75,7 @@ class CCLoginViewController: UIViewController {
                         self.userDefault.setObject(password, forKey: KPASSWORD)
                     }
                     
-                    
+                    UIApplication.sharedApplication().keyWindow?.endEditing(true)
                     //退出控制器
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in

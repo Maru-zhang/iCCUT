@@ -30,6 +30,10 @@ class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
     //Private Method
     private func setupView() {
         
+        preferredStatusBarStyle()
+        
+        viewControllers = [UIStoryboard.mainBoard("Home"),UIStoryboard.mainBoard("Network"),UIStoryboard.mainBoard("Media"),UIStoryboard.mainBoard("More")]
+        
         let tabbarItems: [UITabBarItem] = self.tabBar.items!
         
         let item_0 = tabbarItems[0]
@@ -40,15 +44,19 @@ class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
         
         //加载图片
         item_0.image = UIImage(named: "tabbar_home")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        item_0.title = "主页"
         item_0.selectedImage = UIImage(named: "tabbar_home_selected")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         item_1.image = UIImage(named:"tabbar_network")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        item_1.title = "网络"
         item_1.selectedImage = UIImage(named: "tabbar_network_selected")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         item_2.image = UIImage(named: "tabbar_video")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        item_2.title = "视频"
         item_2.selectedImage = UIImage(named:"tabbar_video_selected")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         item_3.image = UIImage(named: "tabbar_profile")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        item_3.title = "我"
         item_3.selectedImage = UIImage(named: "tabbar_profile_selected")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         //设置字体颜色
@@ -74,6 +82,11 @@ class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
         
         return true
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     
 
     /*

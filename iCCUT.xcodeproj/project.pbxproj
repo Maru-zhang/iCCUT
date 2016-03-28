@@ -17,6 +17,13 @@
 		18D6274E1C7DA6FD00DDA9E7 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627421C7DA6FD00DDA9E7 /* CoreVideo.framework */; };
 		18D6274F1C7DA6FD00DDA9E7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627431C7DA6FD00DDA9E7 /* CoreMedia.framework */; };
 		18D627501C7DA6FD00DDA9E7 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D627441C7DA6FD00DDA9E7 /* VideoToolbox.framework */; };
+		424CE84A1CA94C3400943290 /* CCNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CE8421CA94C3400943290 /* CCNewsController.swift */; };
+		424CE84B1CA94C3400943290 /* CCShowNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CE8431CA94C3400943290 /* CCShowNewsController.swift */; };
+		424CE84C1CA94C3400943290 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CE8451CA94C3400943290 /* NewsModel.swift */; };
+		424CE84D1CA94C3400943290 /* CCNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CE8471CA94C3400943290 /* CCNewsTableViewCell.swift */; };
+		424CE84E1CA94C3400943290 /* NewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CE8491CA94C3400943290 /* NewViewModel.swift */; };
+		424CE8501CA94CF000943290 /* CCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CE84F1CA94CF000943290 /* CCLoginViewController.swift */; };
+		4260669D1CA955A700093A0B /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4260669C1CA955A700093A0B /* UIStoryboard+Extension.swift */; };
 		426B644D1BD0BE38004077B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426B644C1BD0BE38004077B0 /* CoreData.framework */; };
 		4287116A1BAEB66A00A89536 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711691BAEB66A00A89536 /* AudioToolbox.framework */; };
 		4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116B1BAEB67200A89536 /* CoreAudio.framework */; };
@@ -29,10 +36,7 @@
 		428B01001CA556B4003C1D03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428B00541CA556B4003C1D03 /* LaunchScreen.storyboard */; };
 		428B01011CA556B4003C1D03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428B00551CA556B4003C1D03 /* Main.storyboard */; };
 		428B01021CA556B4003C1D03 /* CCMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00571CA556B4003C1D03 /* CCMacro.swift */; };
-		428B01031CA556B4003C1D03 /* CCLaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B005A1CA556B4003C1D03 /* CCLaunchController.swift */; };
 		428B01041CA556B4003C1D03 /* CCTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B005C1CA556B4003C1D03 /* CCTextFiled.swift */; };
-		428B01051CA556B4003C1D03 /* CCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B005E1CA556B4003C1D03 /* CCBaseNavigationController.swift */; };
-		428B01061CA556B4003C1D03 /* CCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B005F1CA556B4003C1D03 /* CCLoginViewController.swift */; };
 		428B01071CA556B4003C1D03 /* CCMainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00601CA556B4003C1D03 /* CCMainTabbarController.swift */; };
 		428B01081CA556B4003C1D03 /* CCMediaListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00621CA556B4003C1D03 /* CCMediaListController.swift */; };
 		428B01091CA556B4003C1D03 /* CCDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00641CA556B4003C1D03 /* CCDownloadController.swift */; };
@@ -48,11 +52,6 @@
 		428B01141CA556B4003C1D03 /* CCNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00741CA556B4003C1D03 /* CCNetworkController.swift */; };
 		428B01151CA556B4003C1D03 /* CCHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00761CA556B4003C1D03 /* CCHTMLParser.swift */; };
 		428B01161CA556B4003C1D03 /* CCHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00771CA556B4003C1D03 /* CCHTTPClient.swift */; };
-		428B01171CA556B4003C1D03 /* CCNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00791CA556B4003C1D03 /* CCNewsController.swift */; };
-		428B01181CA556B4003C1D03 /* CCNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B007A1CA556B4003C1D03 /* CCNewsTableViewCell.swift */; };
-		428B01191CA556B4003C1D03 /* CCShowNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B007B1CA556B4003C1D03 /* CCShowNewsController.swift */; };
-		428B011A1CA556B4003C1D03 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B007C1CA556B4003C1D03 /* NewsModel.swift */; };
-		428B011B1CA556B4003C1D03 /* NewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B007E1CA556B4003C1D03 /* NewViewModel.swift */; };
 		428B011C1CA556B4003C1D03 /* TableModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B00801CA556B4003C1D03 /* TableModelType.swift */; };
 		428B011D1CA556B4003C1D03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428B00821CA556B4003C1D03 /* Assets.xcassets */; };
 		428B011E1CA556B4003C1D03 /* localPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 428B00841CA556B4003C1D03 /* localPlist.plist */; };
@@ -131,6 +130,13 @@
 		18D627441C7DA6FD00DDA9E7 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		18D627451C7DA6FD00DDA9E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3875419AAA0CAE666E598E27 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		424CE8421CA94C3400943290 /* CCNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNewsController.swift; sourceTree = "<group>"; };
+		424CE8431CA94C3400943290 /* CCShowNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCShowNewsController.swift; sourceTree = "<group>"; };
+		424CE8451CA94C3400943290 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		424CE8471CA94C3400943290 /* CCNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNewsTableViewCell.swift; sourceTree = "<group>"; };
+		424CE8491CA94C3400943290 /* NewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewModel.swift; sourceTree = "<group>"; };
+		424CE84F1CA94CF000943290 /* CCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLoginViewController.swift; sourceTree = "<group>"; };
+		4260669C1CA955A700093A0B /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		426B644C1BD0BE38004077B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		427A658F1BAD0D8A004A0627 /* iCCUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCCUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428711691BAEB66A00A89536 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -145,10 +151,7 @@
 		428B00541CA556B4003C1D03 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		428B00551CA556B4003C1D03 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		428B00571CA556B4003C1D03 /* CCMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMacro.swift; sourceTree = "<group>"; };
-		428B005A1CA556B4003C1D03 /* CCLaunchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLaunchController.swift; sourceTree = "<group>"; };
 		428B005C1CA556B4003C1D03 /* CCTextFiled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTextFiled.swift; sourceTree = "<group>"; };
-		428B005E1CA556B4003C1D03 /* CCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBaseNavigationController.swift; sourceTree = "<group>"; };
-		428B005F1CA556B4003C1D03 /* CCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLoginViewController.swift; sourceTree = "<group>"; };
 		428B00601CA556B4003C1D03 /* CCMainTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMainTabbarController.swift; sourceTree = "<group>"; };
 		428B00621CA556B4003C1D03 /* CCMediaListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCMediaListController.swift; path = ../CCMediaListController.swift; sourceTree = "<group>"; };
 		428B00641CA556B4003C1D03 /* CCDownloadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCDownloadController.swift; sourceTree = "<group>"; };
@@ -164,11 +167,6 @@
 		428B00741CA556B4003C1D03 /* CCNetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNetworkController.swift; sourceTree = "<group>"; };
 		428B00761CA556B4003C1D03 /* CCHTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCHTMLParser.swift; sourceTree = "<group>"; };
 		428B00771CA556B4003C1D03 /* CCHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCHTTPClient.swift; sourceTree = "<group>"; };
-		428B00791CA556B4003C1D03 /* CCNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNewsController.swift; sourceTree = "<group>"; };
-		428B007A1CA556B4003C1D03 /* CCNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNewsTableViewCell.swift; sourceTree = "<group>"; };
-		428B007B1CA556B4003C1D03 /* CCShowNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCShowNewsController.swift; sourceTree = "<group>"; };
-		428B007C1CA556B4003C1D03 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
-		428B007E1CA556B4003C1D03 /* NewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewModel.swift; sourceTree = "<group>"; };
 		428B00801CA556B4003C1D03 /* TableModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableModelType.swift; sourceTree = "<group>"; };
 		428B00821CA556B4003C1D03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		428B00841CA556B4003C1D03 /* localPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = localPlist.plist; sourceTree = "<group>"; };
@@ -315,6 +313,39 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		424CE8411CA94C3400943290 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				424CE8421CA94C3400943290 /* CCNewsController.swift */,
+				424CE8431CA94C3400943290 /* CCShowNewsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		424CE8441CA94C3400943290 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				424CE8451CA94C3400943290 /* NewsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		424CE8461CA94C3400943290 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				424CE8471CA94C3400943290 /* CCNewsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		424CE8481CA94C3400943290 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				424CE8491CA94C3400943290 /* NewViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		427A65861BAD0D8A004A0627 = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +413,7 @@
 			children = (
 				428B00501CA556B4003C1D03 /* SCLAlertViewExtension.swift */,
 				428B00511CA556B4003C1D03 /* UITableViewExtension.swift */,
+				4260669C1CA955A700093A0B /* UIStoryboard+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -407,7 +439,6 @@
 		428B00581CA556B4003C1D03 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				428B00591CA556B4003C1D03 /* Launch */,
 				428B005B1CA556B4003C1D03 /* Login */,
 				428B005D1CA556B4003C1D03 /* Main */,
 				428B00611CA556B4003C1D03 /* Media */,
@@ -418,17 +449,10 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
-		428B00591CA556B4003C1D03 /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-				428B005A1CA556B4003C1D03 /* CCLaunchController.swift */,
-			);
-			path = Launch;
-			sourceTree = "<group>";
-		};
 		428B005B1CA556B4003C1D03 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				424CE84F1CA94CF000943290 /* CCLoginViewController.swift */,
 				428B005C1CA556B4003C1D03 /* CCTextFiled.swift */,
 			);
 			path = Login;
@@ -437,8 +461,6 @@
 		428B005D1CA556B4003C1D03 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				428B005E1CA556B4003C1D03 /* CCBaseNavigationController.swift */,
-				428B005F1CA556B4003C1D03 /* CCLoginViewController.swift */,
 				428B00601CA556B4003C1D03 /* CCMainTabbarController.swift */,
 			);
 			path = Main;
@@ -460,9 +482,9 @@
 			children = (
 				428B00651CA556B4003C1D03 /* CCListViewController.swift */,
 				428B00621CA556B4003C1D03 /* CCMediaListController.swift */,
-				428B00641CA556B4003C1D03 /* CCDownloadController.swift */,
 				428B00671CA556B4003C1D03 /* CCVideoSearchController.swift */,
 				428B01781CA56C69003C1D03 /* CCSortViewController.swift */,
+				428B00641CA556B4003C1D03 /* CCDownloadController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -524,21 +546,12 @@
 		428B00781CA556B4003C1D03 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				428B00791CA556B4003C1D03 /* CCNewsController.swift */,
-				428B007A1CA556B4003C1D03 /* CCNewsTableViewCell.swift */,
-				428B007B1CA556B4003C1D03 /* CCShowNewsController.swift */,
-				428B007C1CA556B4003C1D03 /* NewsModel.swift */,
-				428B007D1CA556B4003C1D03 /* ViewModel */,
+				424CE8411CA94C3400943290 /* Controller */,
+				424CE8441CA94C3400943290 /* Model */,
+				424CE8461CA94C3400943290 /* View */,
+				424CE8481CA94C3400943290 /* ViewModel */,
 			);
 			path = News;
-			sourceTree = "<group>";
-		};
-		428B007D1CA556B4003C1D03 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				428B007E1CA556B4003C1D03 /* NewViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		428B007F1CA556B4003C1D03 /* Protocol */ = {
@@ -924,12 +937,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				424CE84C1CA94C3400943290 /* NewsModel.swift in Sources */,
 				428B015A1CA556B4003C1D03 /* MJRefreshComponent.m in Sources */,
 				428B015D1CA556B4003C1D03 /* MJRefreshAutoGifFooter.m in Sources */,
 				428B01621CA556B4003C1D03 /* MJRefreshBackStateFooter.m in Sources */,
 				428B011C1CA556B4003C1D03 /* TableModelType.swift in Sources */,
 				428B01791CA56C69003C1D03 /* CCSortViewController.swift in Sources */,
-				428B011A1CA556B4003C1D03 /* NewsModel.swift in Sources */,
 				428B01701CA558AF003C1D03 /* CirCleView.swift in Sources */,
 				428B01121CA556B4003C1D03 /* CCSortViewLayout.swift in Sources */,
 				428B01231CA556B4003C1D03 /* DownloadTool.swift in Sources */,
@@ -943,41 +956,40 @@
 				428B01101CA556B4003C1D03 /* CCListViewCell.swift in Sources */,
 				428B010C1CA556B4003C1D03 /* CCVideoSearchController.swift in Sources */,
 				428B01631CA556B4003C1D03 /* MJRefreshGifHeader.m in Sources */,
-				428B011B1CA556B4003C1D03 /* NewViewModel.swift in Sources */,
 				428B01591CA556B4003C1D03 /* MJRefreshBackFooter.m in Sources */,
 				428B01221CA556B4003C1D03 /* DataBaseManager.swift in Sources */,
+				424CE8501CA94CF000943290 /* CCLoginViewController.swift in Sources */,
 				428B01131CA556B4003C1D03 /* CCMoreTableController.swift in Sources */,
 				428B01081CA556B4003C1D03 /* CCMediaListController.swift in Sources */,
 				428B01021CA556B4003C1D03 /* CCMacro.swift in Sources */,
+				424CE84B1CA94C3400943290 /* CCShowNewsController.swift in Sources */,
 				428B01561CA556B4003C1D03 /* KRVideoPlayerControlView.m in Sources */,
+				424CE84A1CA94C3400943290 /* CCNewsController.swift in Sources */,
 				428B010A1CA556B4003C1D03 /* CCListViewController.swift in Sources */,
 				428B01091CA556B4003C1D03 /* CCDownloadController.swift in Sources */,
 				428B01041CA556B4003C1D03 /* CCTextFiled.swift in Sources */,
 				428B00FE1CA556B4003C1D03 /* UITableViewExtension.swift in Sources */,
-				428B01181CA556B4003C1D03 /* CCNewsTableViewCell.swift in Sources */,
-				428B01191CA556B4003C1D03 /* CCShowNewsController.swift in Sources */,
 				428B01751CA55EF7003C1D03 /* CCMediaAnimation.swift in Sources */,
 				428B01251CA556B4003C1D03 /* UpdateNews.swift in Sources */,
-				428B01031CA556B4003C1D03 /* CCLaunchController.swift in Sources */,
-				428B01061CA556B4003C1D03 /* CCLoginViewController.swift in Sources */,
+				424CE84E1CA94C3400943290 /* NewViewModel.swift in Sources */,
 				428B010E1CA556B4003C1D03 /* CCVideoModel.swift in Sources */,
 				428B01771CA56576003C1D03 /* CCMediaTransition.swift in Sources */,
-				428B01171CA556B4003C1D03 /* CCNewsController.swift in Sources */,
 				428B01681CA556B4003C1D03 /* UIScrollView+MJExtension.m in Sources */,
 				428B010F1CA556B4003C1D03 /* CCDownloadCell.swift in Sources */,
 				428B01071CA556B4003C1D03 /* CCMainTabbarController.swift in Sources */,
+				4260669D1CA955A700093A0B /* UIStoryboard+Extension.swift in Sources */,
 				428B015F1CA556B4003C1D03 /* MJRefreshAutoStateFooter.m in Sources */,
 				428B00FD1CA556B4003C1D03 /* SCLAlertViewExtension.swift in Sources */,
 				428B01161CA556B4003C1D03 /* CCHTTPClient.swift in Sources */,
 				428B01641CA556B4003C1D03 /* MJRefreshNormalHeader.m in Sources */,
 				428B01601CA556B4003C1D03 /* MJRefreshBackGifFooter.m in Sources */,
 				428B00FB1CA556B4003C1D03 /* AppDelegate.swift in Sources */,
-				428B01051CA556B4003C1D03 /* CCBaseNavigationController.swift in Sources */,
 				428B01141CA556B4003C1D03 /* CCNetworkController.swift in Sources */,
 				428B01241CA556B4003C1D03 /* ServerOperator.swift in Sources */,
 				428B015E1CA556B4003C1D03 /* MJRefreshAutoNormalFooter.m in Sources */,
 				428B01571CA556B4003C1D03 /* MRVLCMediaController.mm in Sources */,
 				428B01151CA556B4003C1D03 /* CCHTMLParser.swift in Sources */,
+				424CE84D1CA94C3400943290 /* CCNewsTableViewCell.swift in Sources */,
 				428B01111CA556B4003C1D03 /* CCSortViewCell.swift in Sources */,
 				428B01671CA556B4003C1D03 /* MJRefreshConst.m in Sources */,
 				428B01581CA556B4003C1D03 /* MJRefreshAutoFooter.m in Sources */,

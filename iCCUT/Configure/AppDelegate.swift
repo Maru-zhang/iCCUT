@@ -17,7 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        DownloadTool.shareDownloadTool().readData()
+        
+        dispatch_async(dispatch_get_main_queue()) { 
+            DownloadTool.shareDownloadTool().readData()
+        }
+        
+        // 设置全局样式
+        setupAppearence()
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.rootViewController = CCMainTabbarController()
+        window?.makeKeyAndVisible()
         return true
     }
 
@@ -41,6 +51,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    /*
+     响应3DTouch的相关操作
+     */
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        
+        let tabbarVC = UIApplication.sharedApplication().keyWindow?.rootViewController as! CCMainTabbarController
+        
+        if shortcutItem.type == "Fast" {
+            tabbarVC.selectedIndex = 1
+        }else if shortcutItem.type == "Search" {
+            tabbarVC.selectedIndex = 2
+            let movie_vc = tabbarVC.selectedViewController as! CCListViewController
+            movie_vc.searchButtonClick()
+        }
+    }
+    
+    
+    // MARK: - Private Method
+    private func setupAppearence() {
+        
+        //导航栏背景颜色
+        UINavigationBar.appearance().barTintColor = NAV_COLOR
+        //导航栏字体颜色
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: NAV_FONT_COLOR]
+        //设置返回颜色
+        UINavigationBar.appearance().tintColor = NAV_FONT_COLOR
     }
 
 
