@@ -24,6 +24,7 @@
 		424CE84E1CA94C3400943290 /* NewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CE8491CA94C3400943290 /* NewViewModel.swift */; };
 		424CE8501CA94CF000943290 /* CCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CE84F1CA94CF000943290 /* CCLoginViewController.swift */; };
 		4260669D1CA955A700093A0B /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4260669C1CA955A700093A0B /* UIStoryboard+Extension.swift */; };
+		4260669F1CAA1E3800093A0B /* CCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4260669E1CAA1E3800093A0B /* CCNavigationController.swift */; };
 		426B644D1BD0BE38004077B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426B644C1BD0BE38004077B0 /* CoreData.framework */; };
 		4287116A1BAEB66A00A89536 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711691BAEB66A00A89536 /* AudioToolbox.framework */; };
 		4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116B1BAEB67200A89536 /* CoreAudio.framework */; };
@@ -137,6 +138,7 @@
 		424CE8491CA94C3400943290 /* NewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewModel.swift; sourceTree = "<group>"; };
 		424CE84F1CA94CF000943290 /* CCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLoginViewController.swift; sourceTree = "<group>"; };
 		4260669C1CA955A700093A0B /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		4260669E1CAA1E3800093A0B /* CCNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNavigationController.swift; sourceTree = "<group>"; };
 		426B644C1BD0BE38004077B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		427A658F1BAD0D8A004A0627 /* iCCUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCCUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428711691BAEB66A00A89536 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				428B00601CA556B4003C1D03 /* CCMainTabbarController.swift */,
+				4260669E1CAA1E3800093A0B /* CCNavigationController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -938,6 +941,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				424CE84C1CA94C3400943290 /* NewsModel.swift in Sources */,
+				4260669F1CAA1E3800093A0B /* CCNavigationController.swift in Sources */,
 				428B015A1CA556B4003C1D03 /* MJRefreshComponent.m in Sources */,
 				428B015D1CA556B4003C1D03 /* MJRefreshAutoGifFooter.m in Sources */,
 				428B01621CA556B4003C1D03 /* MJRefreshBackStateFooter.m in Sources */,

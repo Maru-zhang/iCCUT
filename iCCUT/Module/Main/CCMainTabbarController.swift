@@ -83,9 +83,7 @@ class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
         return true
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
+
     
     
 

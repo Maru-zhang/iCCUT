@@ -289,25 +289,9 @@
             <point key="canvasLocation" x="-1304.25" y="-516.5"/>
         </scene>
         <!--主页-->
-        <scene sceneID="VKN-FX-JhK">
-            <objects>
-                <navigationController storyboardIdentifier="Home" title="主页" hidesBottomBarWhenPushed="YES" id="rbj-dy-4P7" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhq-dn-SR4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="1sN-wN-oFK" kind="relationship" relationship="rootViewController" id="2Ox-1o-eXn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3aM-kv-Xdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3157.5" y="-511"/>
-        </scene>
-        <!--主页-->
         <scene sceneID="Bmc-dj-ziU">
             <objects>
-                <tableViewController title="主页" id="1sN-wN-oFK" customClass="CCNewsController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Home" title="主页" id="1sN-wN-oFK" customClass="CCNewsController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" id="Le1-tp-gih">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -403,26 +387,10 @@
             </objects>
             <point key="canvasLocation" x="-2326.5" y="-511"/>
         </scene>
-        <!--网络-->
-        <scene sceneID="eZQ-Jd-Fx9">
-            <objects>
-                <navigationController storyboardIdentifier="Network" title="网络" hidesBottomBarWhenPushed="YES" id="Pjg-2y-xl1" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ur-fP-Nkn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="FrC-cY-yAV" kind="relationship" relationship="rootViewController" id="urw-C6-W8Q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DGA-XH-1KZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3118.5" y="325"/>
-        </scene>
         <!--主页-->
         <scene sceneID="thT-9F-VKD">
             <objects>
-                <viewController title="主页" id="FrC-cY-yAV" customClass="CCNetworkController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Network" title="主页" id="FrC-cY-yAV" customClass="CCNetworkController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bzT-Eu-Va2"/>
                         <viewControllerLayoutGuide type="bottom" id="dXP-5w-Hu8"/>
@@ -443,8 +411,7 @@
                                         <exclude reference="k8g-6r-e9Z"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="131" y="96" width="138" height="138"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="8kG-Yb-84U"/>
                                         <include reference="k8g-6r-e9Z"/>
@@ -453,9 +420,6 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_time" highlightedImage="detail_time _high" translatesAutoresizingMaskIntoConstraints="NO" id="9sQ-VI-gkC">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="63" y="271" width="40" height="40"/>
-                                </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_data" highlightedImage="detail_data _high" translatesAutoresizingMaskIntoConstraints="NO" id="YQ2-Cq-bTm">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -469,8 +433,7 @@
                                         <exclude reference="smU-bC-hgl"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="180" y="271" width="40" height="40"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="hOH-gU-JZ2"/>
                                         <include reference="smU-bC-hgl"/>
@@ -479,27 +442,18 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_money" highlightedImage="detail_money _high" translatesAutoresizingMaskIntoConstraints="NO" id="e8q-sV-pqp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="306" y="271" width="40" height="40"/>
-                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrA-4f-PDy">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.69019607843137254" green="0.83921568627450982" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="49" y="325" width="68" height="30"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK4-34-NJ3">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.69019607839999997" green="0.83921568629999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="292" y="325" width="68" height="30"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q7-Yc-MHm">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -514,8 +468,7 @@
                                         <exclude reference="v35-KF-qfn"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="121" y="325" width="158" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="v35-KF-qfn"/>
                                     </mask>
@@ -562,8 +515,7 @@
                                         <exclude reference="f6c-Ub-Mdh"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="340" y="28" width="51" height="31"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="5jy-9q-v0c"/>
                                         <include reference="f6c-Ub-Mdh"/>
@@ -588,8 +540,7 @@
                                         <exclude reference="GWA-qT-nhR"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="331" y="72" width="67" height="15"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Fxi-dn-BjB"/>
                                         <include reference="GWA-qT-nhR"/>
@@ -612,8 +563,7 @@
                                         <exclude reference="jak-k9-dlp"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="11" y="25" width="48" height="38"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="em1-70-6GM"/>
                                         <include reference="jak-k9-dlp"/>
@@ -796,25 +746,9 @@
             <point key="canvasLocation" x="-1516.5" y="1125"/>
         </scene>
         <!--视频-->
-        <scene sceneID="PaO-hf-0es">
-            <objects>
-                <navigationController storyboardIdentifier="Media" title="视频" hidesBottomBarWhenPushed="YES" id="X0p-WO-If7" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcG-FQ-WFH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="fiz-lI-qzR" kind="relationship" relationship="rootViewController" id="QHo-wl-dkm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t3a-p8-72s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3118.5" y="1125"/>
-        </scene>
-        <!--视频-->
         <scene sceneID="Rul-hj-FuB">
             <objects>
-                <collectionViewController storyboardIdentifier="CCListViewController" id="fiz-lI-qzR" customClass="CCListViewController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="Media" id="fiz-lI-qzR" customClass="CCListViewController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="yAe-v7-xFa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -918,25 +852,9 @@
             <point key="canvasLocation" x="-2326.5" y="1125"/>
         </scene>
         <!--我-->
-        <scene sceneID="KeA-xk-Kyp">
-            <objects>
-                <navigationController storyboardIdentifier="More" title="我" hidesBottomBarWhenPushed="YES" id="ghO-67-H8d" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FT6-hA-UTb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="8yQ-aK-bjV" kind="relationship" relationship="rootViewController" id="FyW-FG-t2w"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fl7-HE-bIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3118.5" y="1983"/>
-        </scene>
-        <!--我-->
         <scene sceneID="Yff-d8-jPP">
             <objects>
-                <tableViewController id="8yQ-aK-bjV" customClass="CCMoreTableController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="More" id="8yQ-aK-bjV" customClass="CCMoreTableController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="XSB-H6-4tN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

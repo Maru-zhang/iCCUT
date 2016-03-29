@@ -115,5 +115,9 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         print("当前点击了第\(currentIndxe)张图片！")
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
 
 }

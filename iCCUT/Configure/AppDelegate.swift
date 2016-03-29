@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupAppearence()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = CCMainTabbarController()
+        window?.rootViewController = CCNavigationController(rootViewController: CCMainTabbarController())
         window?.makeKeyAndVisible()
         return true
     }
@@ -64,7 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabbarVC.selectedIndex = 1
         }else if shortcutItem.type == "Search" {
             tabbarVC.selectedIndex = 2
-            let movie_vc = tabbarVC.selectedViewController as! CCListViewController
+            let movie_nav = tabbarVC.selectedViewController as! UINavigationController
+            let movie_vc = movie_nav.topViewController as! CCListViewController
             movie_vc.searchButtonClick()
         }
     }
