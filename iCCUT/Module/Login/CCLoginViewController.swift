@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class CCLoginViewController: UIViewController {
     
@@ -53,7 +54,7 @@ class CCLoginViewController: UIViewController {
         
         //配置等候界面
         let alertViewResponder: SCLAlertViewResponder = SCLAlertView().showWait("正在登录...", subTitle: "")
-        alertViewResponder.alertview.showCloseButton = false
+//        alertViewResponder.alertview.showCloseButton = false
         
         
         //如果是记住密码

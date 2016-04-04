@@ -51,7 +51,7 @@ class CirCleView: UIView, UIScrollViewDelegate {
         }
     }
 
-    var delegate: CirCleViewDelegate?
+    weak var delegate: CirCleViewDelegate?
     
     var indexOfCurrentImage: Int!  {                // 当前显示的第几张图片
         //监听显示的第几张图片，来更新分页指示器
@@ -109,7 +109,7 @@ class CirCleView: UIView, UIScrollViewDelegate {
         contentScrollView.addSubview(currentImageView)
         
         //添加点击事件
-        let imageTap = UITapGestureRecognizer(target: self, action: Selector("imageTapAction:"))
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(CirCleView.imageTapAction(_:)))
         currentImageView.addGestureRecognizer(imageTap)
         
         self.lastImageView = UIImageView()
@@ -135,7 +135,7 @@ class CirCleView: UIView, UIScrollViewDelegate {
         self.addSubview(pageIndicator)
         
         //设置计时器
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(TimeInterval, target: self, selector: "timerAction", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(TimeInterval, target: self, selector: #selector(CirCleView.timerAction), userInfo: nil, repeats: true)
     }
     
     //MARK:- 设置图片
@@ -206,7 +206,7 @@ class CirCleView: UIView, UIScrollViewDelegate {
         
         //重置计时器
         if timer == nil {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(TimeInterval, target: self, selector: "timerAction", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(TimeInterval, target: self, selector: #selector(CirCleView.timerAction), userInfo: nil, repeats: true)
         }
     }
     

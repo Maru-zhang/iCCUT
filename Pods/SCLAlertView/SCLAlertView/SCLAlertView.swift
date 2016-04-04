@@ -12,6 +12,27 @@ import UIKit
 // Pop Up Styles
 public enum SCLAlertViewStyle {
     case Success, Error, Notice, Warning, Info, Edit, Wait
+    
+    var defaultColorInt: UInt {
+        switch self {
+        case Success:
+            return 0x22B573
+        case Error:
+            return 0xC1272D
+        case Notice:
+            return 0x727375
+        case Warning:
+            return 0xFFD110
+        case Info:
+            return 0x2866BF
+        case Edit:
+            return 0xA429FF
+        case Wait:
+            return 0xD62DA5
+        }
+        
+    }
+
 }
 
 // Action Types
@@ -309,7 +330,8 @@ public class SCLAlertView: UIViewController {
         } else {
             print("Unknow action type for button")
         }
-        hideView()
+        
+        if(self.view.alpha != 0.0){ hideView() }
     }
     
     
@@ -366,46 +388,46 @@ public class SCLAlertView: UIViewController {
     }
     
     // showSuccess(view, title, subTitle)
-    public func showSuccess(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=0x22B573, colorTextButton: UInt=0xFFFFFF) -> SCLAlertViewResponder {
-        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Success, colorStyle: colorStyle, colorTextButton: colorTextButton)
+    public func showSuccess(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=SCLAlertViewStyle.Success.defaultColorInt, colorTextButton: UInt=0xFFFFFF, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
+        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Success, colorStyle: colorStyle, colorTextButton: colorTextButton, circleIconImage: circleIconImage)
     }
     
     // showError(view, title, subTitle)
-    public func showError(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=0xC1272D, colorTextButton: UInt=0xFFFFFF) -> SCLAlertViewResponder {
-        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Error, colorStyle: colorStyle, colorTextButton: colorTextButton)
+    public func showError(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=SCLAlertViewStyle.Error.defaultColorInt, colorTextButton: UInt=0xFFFFFF, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
+        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Error, colorStyle: colorStyle, colorTextButton: colorTextButton, circleIconImage: circleIconImage)
     }
     
     // showNotice(view, title, subTitle)
-    public func showNotice(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=0x727375, colorTextButton: UInt=0xFFFFFF) -> SCLAlertViewResponder {
-        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Notice, colorStyle: colorStyle, colorTextButton: colorTextButton)
+    public func showNotice(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=SCLAlertViewStyle.Notice.defaultColorInt, colorTextButton: UInt=0xFFFFFF, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
+        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Notice, colorStyle: colorStyle, colorTextButton: colorTextButton, circleIconImage: circleIconImage)
     }
     
     // showWarning(view, title, subTitle)
-    public func showWarning(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=0xFFD110, colorTextButton: UInt=0x000000) -> SCLAlertViewResponder {
-        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Warning, colorStyle: colorStyle, colorTextButton: colorTextButton)
+    public func showWarning(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=SCLAlertViewStyle.Warning.defaultColorInt, colorTextButton: UInt=0x000000, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
+        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Warning, colorStyle: colorStyle, colorTextButton: colorTextButton, circleIconImage: circleIconImage)
     }
     
     // showInfo(view, title, subTitle)
-    public func showInfo(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=0x2866BF, colorTextButton: UInt=0xFFFFFF) -> SCLAlertViewResponder {
-        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Info, colorStyle: colorStyle, colorTextButton: colorTextButton)
+    public func showInfo(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=SCLAlertViewStyle.Info.defaultColorInt, colorTextButton: UInt=0xFFFFFF, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
+        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Info, colorStyle: colorStyle, colorTextButton: colorTextButton, circleIconImage: circleIconImage)
     }
     
     // showWait(view, title, subTitle)
-    public func showWait(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt?=0xD62DA5, colorTextButton: UInt=0xFFFFFF) -> SCLAlertViewResponder {
-        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Wait, colorStyle: colorStyle, colorTextButton: colorTextButton)
+    public func showWait(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt?=SCLAlertViewStyle.Wait.defaultColorInt, colorTextButton: UInt=0xFFFFFF, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
+        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Wait, colorStyle: colorStyle, colorTextButton: colorTextButton, circleIconImage: circleIconImage)
     }
     
-    public func showEdit(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=0xA429FF, colorTextButton: UInt=0xFFFFFF) -> SCLAlertViewResponder {
-        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Edit, colorStyle: colorStyle, colorTextButton: colorTextButton)
+    public func showEdit(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt=SCLAlertViewStyle.Edit.defaultColorInt, colorTextButton: UInt=0xFFFFFF, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
+        return showTitle(title, subTitle: subTitle, duration: duration, completeText:closeButtonTitle, style: .Edit, colorStyle: colorStyle, colorTextButton: colorTextButton, circleIconImage: circleIconImage)
     }
     
     // showTitle(view, title, subTitle, style)
-    public func showTitle(title: String, subTitle: String, style: SCLAlertViewStyle, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt?, colorTextButton: UInt=0xFFFFFF) -> SCLAlertViewResponder {
-        return showTitle(title, subTitle: subTitle, duration:duration, completeText:closeButtonTitle, style: style, colorStyle: colorStyle, colorTextButton: colorTextButton)
+    public func showTitle(title: String, subTitle: String, style: SCLAlertViewStyle, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0, colorStyle: UInt?=0x000000, colorTextButton: UInt=0xFFFFFF, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
+        return showTitle(title, subTitle: subTitle, duration:duration, completeText:closeButtonTitle, style: style, colorStyle: colorStyle, colorTextButton: colorTextButton, circleIconImage: circleIconImage)
     }
     
     // showTitle(view, title, subTitle, duration, style)
-    public func showTitle(title: String, subTitle: String, duration: NSTimeInterval?, completeText: String?, style: SCLAlertViewStyle, colorStyle: UInt?, colorTextButton: UInt?) -> SCLAlertViewResponder {
+    public func showTitle(title: String, subTitle: String, duration: NSTimeInterval?, completeText: String?, style: SCLAlertViewStyle, colorStyle: UInt?=0x000000, colorTextButton: UInt?=0xFFFFFF, circleIconImage: UIImage? = nil) -> SCLAlertViewResponder {
         selfReference = self
         view.alpha = 0
         let rv = UIApplication.sharedApplication().keyWindow! as UIWindow
@@ -416,35 +438,36 @@ public class SCLAlertView: UIViewController {
         // Alert colour/icon
         viewColor = UIColor()
         var iconImage: UIImage?
-        
+        let colorInt = colorStyle ?? style.defaultColorInt
+        viewColor = UIColorFromRGB(colorInt)
         // Icon style
         switch style {
         case .Success:
-            viewColor = UIColorFromRGB(colorStyle!)
-            iconImage = SCLAlertViewStyleKit.imageOfCheckmark
+            
+            iconImage = checkCircleIconImage(circleIconImage, defaultImage: SCLAlertViewStyleKit.imageOfCheckmark)
             
         case .Error:
-            viewColor = UIColorFromRGB(colorStyle!)
-            iconImage = SCLAlertViewStyleKit.imageOfCross
+            
+            iconImage = checkCircleIconImage(circleIconImage, defaultImage: SCLAlertViewStyleKit.imageOfCross)
             
         case .Notice:
-            viewColor = UIColorFromRGB(colorStyle!)
-            iconImage = SCLAlertViewStyleKit.imageOfNotice
+            
+            iconImage = checkCircleIconImage(circleIconImage, defaultImage:SCLAlertViewStyleKit.imageOfNotice)
             
         case .Warning:
-            viewColor = UIColorFromRGB(colorStyle!)
-            iconImage = SCLAlertViewStyleKit.imageOfWarning
+            
+            iconImage = checkCircleIconImage(circleIconImage, defaultImage:SCLAlertViewStyleKit.imageOfWarning)
             
         case .Info:
-            viewColor = UIColorFromRGB(colorStyle!)
-            iconImage = SCLAlertViewStyleKit.imageOfInfo
+            
+            iconImage = checkCircleIconImage(circleIconImage, defaultImage:SCLAlertViewStyleKit.imageOfInfo)
             
         case .Edit:
-            viewColor = UIColorFromRGB(colorStyle!)
-            iconImage = SCLAlertViewStyleKit.imageOfEdit
+            
+            iconImage = checkCircleIconImage(circleIconImage, defaultImage:SCLAlertViewStyleKit.imageOfEdit)
             
         case .Wait:
-            viewColor = UIColorFromRGB(colorStyle!)
+            iconImage = nil
         }
         
         // Title
@@ -497,7 +520,7 @@ public class SCLAlertView: UIViewController {
         }
         for btn in buttons {
             btn.backgroundColor = viewColor
-            btn.setTitleColor(UIColorFromRGB(colorTextButton!), forState:UIControlState.Normal)
+            btn.setTitleColor(UIColorFromRGB(colorTextButton ?? 0xFFFFFF), forState:UIControlState.Normal)
         }
         
         // Adding duration
@@ -531,9 +554,24 @@ public class SCLAlertView: UIViewController {
                     self.dismissBlock!()
                 }
                 
+                // This is necessary for SCLAlertView to be de-initialized, preventing a strong reference cycle with the viewcontroller calling SCLAlertView.
+                for button in self.buttons {
+                    button.action = nil
+                    button.target = nil
+                    button.selector = nil
+                }
+                
                 self.view.removeFromSuperview()
                 self.selfReference = nil
         })
+    }
+    
+    func checkCircleIconImage(circleIconImage: UIImage?, defaultImage: UIImage) -> UIImage {
+        if let image = circleIconImage {
+            return image
+        } else {
+            return defaultImage
+        }
     }
     
     // Helper function to convert from RGB to UIColor

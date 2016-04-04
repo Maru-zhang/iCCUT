@@ -7,11 +7,13 @@
 //  搜索资源控制器
 
 
-class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate {
+class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate {
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+
     /// 唯一标识
     let identifier = "searchCell"
     /// 数据源
@@ -29,12 +31,14 @@ class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewD
     // MARK: - Private Method
     private func setupView() {
         
+        searchBar.tintColor = UIColor.whiteColor()
+
+        self.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: identifier)
+
     }
     
     private func setupSetting() {
-        searchBar.delegate = self
-        tableView.dataSource = self
-        tableView.delegate = self
+        
     }
     
     // MARK: - UITableView Datasource
@@ -44,13 +48,19 @@ class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+        
+        if cell == nil {
+            
+            cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
+        }
         
         let model: CCVideoModel = dataSource[indexPath.row] as! CCVideoModel
         
-        cell.textLabel?.text = model.name
+        cell!.textLabel?.text = model.name
         
-        return cell
+        return cell!
     }
     
     // MARK: - Tableview Delegate
@@ -76,6 +86,8 @@ class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewD
         
     }
     
+    
+    
     // MARK: - UISearchBar Delegate
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -83,17 +95,10 @@ class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewD
         ServerOperator.getSearchVideoList(searchText) { (videoArray) -> Void in
             
             self.dataSource = videoArray
+            
             self.tableView.reloadData()
         }
     }
     
-    // MARK: - UIScrolView Delegate
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        UIApplication.sharedApplication().keyWindow?.endEditing(true)
-    }
     
-    // MARK: - Event
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        UIApplication.sharedApplication().keyWindow?.endEditing(true)
-    }
 }

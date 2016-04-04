@@ -6,6 +6,7 @@
 //  Copyright © 2015年 Alloc. All rights reserved.
 //
 
+import SCLAlertView
 
 extension SCLAlertView {
     

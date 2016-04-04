@@ -58,14 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      */
     func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         
-        let tabbarVC = UIApplication.sharedApplication().keyWindow?.rootViewController as! CCMainTabbarController
+        let navVC = UIApplication.sharedApplication().keyWindow?.rootViewController as! CCNavigationController
+        let tabbarVC = navVC.topViewController as! CCMainTabbarController
         
         if shortcutItem.type == "Fast" {
             tabbarVC.selectedIndex = 1
         }else if shortcutItem.type == "Search" {
             tabbarVC.selectedIndex = 2
-            let movie_nav = tabbarVC.selectedViewController as! UINavigationController
-            let movie_vc = movie_nav.topViewController as! CCListViewController
+            let movie_vc = tabbarVC.selectedViewController as! CCListViewController
             movie_vc.searchButtonClick()
         }
     }

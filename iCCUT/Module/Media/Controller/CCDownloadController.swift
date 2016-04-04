@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SCLAlertView
 
 class CCDownloadController: UITableViewController,DownloadToolProtocol {
 

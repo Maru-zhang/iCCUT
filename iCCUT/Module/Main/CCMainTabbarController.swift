@@ -30,35 +30,22 @@ class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
     //Private Method
     private func setupView() {
         
-        preferredStatusBarStyle()
-        
         viewControllers = [UIStoryboard.mainBoard("Home"),UIStoryboard.mainBoard("Network"),UIStoryboard.mainBoard("Media"),UIStoryboard.mainBoard("More")]
         
         let tabbarItems: [UITabBarItem] = self.tabBar.items!
         
-        let item_0 = tabbarItems[0]
-        let item_1 = tabbarItems[1]
-        let item_2 = tabbarItems[2]
-        let item_3 = tabbarItems[3]
-        
-        
         //加载图片
-        item_0.image = UIImage(named: "tabbar_home")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        item_0.title = "主页"
-        item_0.selectedImage = UIImage(named: "tabbar_home_selected")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        func configItem(imgName: String,title: String,item: UITabBarItem) {
+            item.image = UIImage(named: imgName)?.imageWithRenderingMode(.AlwaysOriginal)
+            item.selectedImage = UIImage(named: imgName + "_selected")?.imageWithRenderingMode(.AlwaysOriginal)
+            item.title = title
+        }
         
-        item_1.image = UIImage(named:"tabbar_network")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        item_1.title = "网络"
-        item_1.selectedImage = UIImage(named: "tabbar_network_selected")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        
-        item_2.image = UIImage(named: "tabbar_video")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        item_2.title = "视频"
-        item_2.selectedImage = UIImage(named:"tabbar_video_selected")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        
-        item_3.image = UIImage(named: "tabbar_profile")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        item_3.title = "我"
-        item_3.selectedImage = UIImage(named: "tabbar_profile_selected")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        
+        configItem("tabbar_home", title: "主页", item: tabbarItems[0])
+        configItem("tabbar_network", title: "网络", item: tabbarItems[1])
+        configItem("tabbar_video", title: "视频", item: tabbarItems[2])
+        configItem("tabbar_profile", title: "我", item: tabbarItems[3])
+
         //设置字体颜色
         let attributesN =  [NSForegroundColorAttributeName: UIColor.grayColor()]
         let attributesH = [NSForegroundColorAttributeName: NAV_COLOR]
@@ -86,15 +73,5 @@ class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
 
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

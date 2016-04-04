@@ -1,16 +1,19 @@
 PODS:
   - Alamofire (3.3.0)
   - Cartography (0.6.0)
+  - SCLAlertView (0.5.1)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - Cartography (~> 0.6.0)
+  - SCLAlertView
   - SwiftyJSON (~> 2.3.2)
 
 SPEC CHECKSUMS:
   Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
+  SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

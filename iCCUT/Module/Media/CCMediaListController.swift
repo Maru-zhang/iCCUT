@@ -10,6 +10,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SCLAlertView
 
 class CCMediaListController: UITableViewController,CCSortViewProtocol {
     

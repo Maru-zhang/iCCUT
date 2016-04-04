@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import Alamofire
 
 class CCShowNewsController: UIViewController {
 
@@ -52,8 +53,10 @@ class CCShowNewsController: UIViewController {
         title = "资讯"
         view.addSubview(webView)
     }
-    
+
     func setupSetting() {
+        
+
         
         //生成请求，并加载
         let request = NSURLRequest(URL: contentURL!)

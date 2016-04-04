@@ -16,89 +16,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="输入您所要搜索的片名（如：走近科学，“ZJKX”）" translatesAutoresizingMaskIntoConstraints="NO" id="TqB-C4-Uyf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="OQL-Ib-bh0"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="OQL-Ib-bh0"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="OQL-Ib-bh0"/>
-                                    </mask>
-                                </variation>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zNb-2F-H3b">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nnb-eA-wN0">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="Uzj-mS-gvQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uzj-mS-gvQ" id="FVU-pE-AU9">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cgE-mO-242" id="sGK-O6-c8q"/>
+                                    <outlet property="delegate" destination="cgE-mO-242" id="pmF-VI-T1d"/>
+                                </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="请输入视频关键字" translatesAutoresizingMaskIntoConstraints="NO" id="L9c-jD-4m5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>取消</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="cgE-mO-242" id="1rL-uB-cYf"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zNb-2F-H3b" firstAttribute="top" secondItem="TqB-C4-Uyf" secondAttribute="bottom" id="1jU-Vn-zgq"/>
-                            <constraint firstAttribute="trailing" secondItem="TqB-C4-Uyf" secondAttribute="trailing" id="7ZQ-lK-liP"/>
-                            <constraint firstItem="zNb-2F-H3b" firstAttribute="trailing" secondItem="TqB-C4-Uyf" secondAttribute="trailing" id="Ddu-kR-ll2"/>
-                            <constraint firstItem="TqB-C4-Uyf" firstAttribute="leading" secondItem="8eM-xP-CQA" secondAttribute="leading" id="ORU-nM-SL6"/>
-                            <constraint firstItem="zNb-2F-H3b" firstAttribute="leading" secondItem="TqB-C4-Uyf" secondAttribute="leading" id="ban-cK-xc5"/>
-                            <constraint firstItem="TqB-C4-Uyf" firstAttribute="top" secondItem="8eM-xP-CQA" secondAttribute="top" id="l5F-2M-BqA"/>
-                            <constraint firstItem="zNb-2F-H3b" firstAttribute="bottom" secondItem="xuL-YX-KA6" secondAttribute="top" id="z3n-iT-M01"/>
+                            <constraint firstItem="L9c-jD-4m5" firstAttribute="trailing" secondItem="nnb-eA-wN0" secondAttribute="trailing" id="Rcp-gr-ltz"/>
+                            <constraint firstItem="L9c-jD-4m5" firstAttribute="leading" secondItem="nnb-eA-wN0" secondAttribute="leading" id="T3M-bm-3v2"/>
+                            <constraint firstItem="L9c-jD-4m5" firstAttribute="top" secondItem="8eM-xP-CQA" secondAttribute="top" id="U2H-Mo-LGU"/>
+                            <constraint firstAttribute="trailing" secondItem="L9c-jD-4m5" secondAttribute="trailing" id="b0Z-9A-Pv9"/>
+                            <constraint firstItem="nnb-eA-wN0" firstAttribute="top" secondItem="L9c-jD-4m5" secondAttribute="bottom" id="o3d-HQ-F2T"/>
+                            <constraint firstItem="nnb-eA-wN0" firstAttribute="bottom" secondItem="xuL-YX-KA6" secondAttribute="top" id="q9m-QE-BIX"/>
+                            <constraint firstItem="L9c-jD-4m5" firstAttribute="leading" secondItem="8eM-xP-CQA" secondAttribute="leading" id="wRJ-ve-trb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="TqB-C4-Uyf"/>
-                                <exclude reference="zNb-2F-H3b"/>
+                                <exclude reference="nnb-eA-wN0"/>
+                                <exclude reference="L9c-jD-4m5"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="7ZQ-lK-liP"/>
-                                <exclude reference="ORU-nM-SL6"/>
-                                <exclude reference="l5F-2M-BqA"/>
-                                <exclude reference="1jU-Vn-zgq"/>
-                                <exclude reference="Ddu-kR-ll2"/>
-                                <exclude reference="ban-cK-xc5"/>
-                                <exclude reference="z3n-iT-M01"/>
+                                <exclude reference="Rcp-gr-ltz"/>
+                                <exclude reference="T3M-bm-3v2"/>
+                                <exclude reference="U2H-Mo-LGU"/>
+                                <exclude reference="b0Z-9A-Pv9"/>
+                                <exclude reference="wRJ-ve-trb"/>
+                                <exclude reference="o3d-HQ-F2T"/>
+                                <exclude reference="q9m-QE-BIX"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="TqB-C4-Uyf"/>
-                                <include reference="zNb-2F-H3b"/>
+                                <include reference="nnb-eA-wN0"/>
+                                <include reference="L9c-jD-4m5"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="7ZQ-lK-liP"/>
-                                <include reference="ORU-nM-SL6"/>
-                                <include reference="l5F-2M-BqA"/>
-                                <include reference="1jU-Vn-zgq"/>
-                                <include reference="Ddu-kR-ll2"/>
-                                <include reference="ban-cK-xc5"/>
-                                <include reference="z3n-iT-M01"/>
+                                <include reference="Rcp-gr-ltz"/>
+                                <include reference="T3M-bm-3v2"/>
+                                <include reference="U2H-Mo-LGU"/>
+                                <include reference="b0Z-9A-Pv9"/>
+                                <include reference="wRJ-ve-trb"/>
+                                <include reference="o3d-HQ-F2T"/>
+                                <include reference="q9m-QE-BIX"/>
                             </mask>
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="searchBar" destination="TqB-C4-Uyf" id="SnH-K5-W1a"/>
-                        <outlet property="tableView" destination="zNb-2F-H3b" id="a0u-pt-KqS"/>
+                        <outlet property="searchBar" destination="L9c-jD-4m5" id="Lfp-TH-PXW"/>
+                        <outlet property="searchDisplayController" destination="yz3-UG-ejV" id="RWy-qV-8NE"/>
+                        <outlet property="tableView" destination="nnb-eA-wN0" id="7ZW-q7-p7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTP-aq-xw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="yz3-UG-ejV">
+                    <connections>
+                        <outlet property="delegate" destination="cgE-mO-242" id="qwC-XF-jMQ"/>
+                        <outlet property="searchBar" destination="L9c-jD-4m5" id="nSn-nz-PVI"/>
+                        <outlet property="searchContentsController" destination="cgE-mO-242" id="POi-fK-EQb"/>
+                        <outlet property="searchResultsDataSource" destination="cgE-mO-242" id="3ap-7z-hB6"/>
+                        <outlet property="searchResultsDelegate" destination="cgE-mO-242" id="hy1-Ee-O21"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-63" y="365"/>
+            <point key="canvasLocation" x="-54" y="845"/>
         </scene>
         <!--Show News Controller-->
         <scene sceneID="YMn-c1-eEb">
