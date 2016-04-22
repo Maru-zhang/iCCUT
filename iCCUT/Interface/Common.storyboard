@@ -5,97 +5,29 @@
     </dependencies>
     <scenes>
         <!--搜索-->
-        <scene sceneID="y2Q-vL-WzE">
+        <scene sceneID="v7H-wD-Z3x">
             <objects>
-                <viewController storyboardIdentifier="searchVC" title="搜索" id="cgE-mO-242" customClass="CCVideoSearchController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rcy-9D-r8t"/>
-                        <viewControllerLayoutGuide type="bottom" id="xuL-YX-KA6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8eM-xP-CQA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <tableViewController storyboardIdentifier="searchVC" title="搜索" id="Zdi-BB-nDY" customClass="CCVideoSearchController" customModule="iCCUT" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XWi-VX-uKp">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nnb-eA-wN0">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="cgE-mO-242" id="sGK-O6-c8q"/>
-                                    <outlet property="delegate" destination="cgE-mO-242" id="pmF-VI-T1d"/>
-                                </connections>
-                            </tableView>
-                            <searchBar contentMode="redraw" placeholder="请输入视频关键字" translatesAutoresizingMaskIntoConstraints="NO" id="L9c-jD-4m5">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>取消</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="cgE-mO-242" id="1rL-uB-cYf"/>
-                                </connections>
-                            </searchBar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="L9c-jD-4m5" firstAttribute="trailing" secondItem="nnb-eA-wN0" secondAttribute="trailing" id="Rcp-gr-ltz"/>
-                            <constraint firstItem="L9c-jD-4m5" firstAttribute="leading" secondItem="nnb-eA-wN0" secondAttribute="leading" id="T3M-bm-3v2"/>
-                            <constraint firstItem="L9c-jD-4m5" firstAttribute="top" secondItem="8eM-xP-CQA" secondAttribute="top" id="U2H-Mo-LGU"/>
-                            <constraint firstAttribute="trailing" secondItem="L9c-jD-4m5" secondAttribute="trailing" id="b0Z-9A-Pv9"/>
-                            <constraint firstItem="nnb-eA-wN0" firstAttribute="top" secondItem="L9c-jD-4m5" secondAttribute="bottom" id="o3d-HQ-F2T"/>
-                            <constraint firstItem="nnb-eA-wN0" firstAttribute="bottom" secondItem="xuL-YX-KA6" secondAttribute="top" id="q9m-QE-BIX"/>
-                            <constraint firstItem="L9c-jD-4m5" firstAttribute="leading" secondItem="8eM-xP-CQA" secondAttribute="leading" id="wRJ-ve-trb"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="nnb-eA-wN0"/>
-                                <exclude reference="L9c-jD-4m5"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="Rcp-gr-ltz"/>
-                                <exclude reference="T3M-bm-3v2"/>
-                                <exclude reference="U2H-Mo-LGU"/>
-                                <exclude reference="b0Z-9A-Pv9"/>
-                                <exclude reference="wRJ-ve-trb"/>
-                                <exclude reference="o3d-HQ-F2T"/>
-                                <exclude reference="q9m-QE-BIX"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="nnb-eA-wN0"/>
-                                <include reference="L9c-jD-4m5"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="Rcp-gr-ltz"/>
-                                <include reference="T3M-bm-3v2"/>
-                                <include reference="U2H-Mo-LGU"/>
-                                <include reference="b0Z-9A-Pv9"/>
-                                <include reference="wRJ-ve-trb"/>
-                                <include reference="o3d-HQ-F2T"/>
-                                <include reference="q9m-QE-BIX"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="searchBar" destination="L9c-jD-4m5" id="Lfp-TH-PXW"/>
-                        <outlet property="searchDisplayController" destination="yz3-UG-ejV" id="RWy-qV-8NE"/>
-                        <outlet property="tableView" destination="nnb-eA-wN0" id="7ZW-q7-p7R"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WTP-aq-xw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="yz3-UG-ejV">
-                    <connections>
-                        <outlet property="delegate" destination="cgE-mO-242" id="qwC-XF-jMQ"/>
-                        <outlet property="searchBar" destination="L9c-jD-4m5" id="nSn-nz-PVI"/>
-                        <outlet property="searchContentsController" destination="cgE-mO-242" id="POi-fK-EQb"/>
-                        <outlet property="searchResultsDataSource" destination="cgE-mO-242" id="3ap-7z-hB6"/>
-                        <outlet property="searchResultsDelegate" destination="cgE-mO-242" id="hy1-Ee-O21"/>
-                    </connections>
-                </searchDisplayController>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="v6j-RL-dWO">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v6j-RL-dWO" id="XsY-MD-D1r">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Zdi-BB-nDY" id="gtc-iy-sMW"/>
+                            <outlet property="delegate" destination="Zdi-BB-nDY" id="3Tq-aU-E4A"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kh6-TW-hpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-54" y="845"/>
+            <point key="canvasLocation" x="-34.5" y="438"/>
         </scene>
         <!--Show News Controller-->
         <scene sceneID="YMn-c1-eEb">

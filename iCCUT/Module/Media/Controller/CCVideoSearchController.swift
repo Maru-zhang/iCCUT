@@ -6,13 +6,12 @@
 //  Copyright © 2015年 Alloc. All rights reserved.
 //  搜索资源控制器
 
+import Cartography
 
-class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate {
+class CCVideoSearchController: UITableViewController,UISearchBarDelegate,UISearchResultsUpdating,UISearchControllerDelegate {
     
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
-    
+    var resultVC: UITableViewController!
+    let searchController = UISearchController(searchResultsController: UITableViewController(style: .Plain))
 
     /// 唯一标识
     let identifier = "searchCell"
@@ -31,10 +30,20 @@ class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewD
     // MARK: - Private Method
     private func setupView() {
         
-        searchBar.tintColor = UIColor.whiteColor()
-
         self.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: identifier)
-
+        
+        tableView.tableHeaderView = searchController.searchBar
+        
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.placeholder = "请输入视频名称/关键字"
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        
+        resultVC = searchController.searchResultsController as! UITableViewController
+        resultVC.tableView.delegate = self
+        resultVC.tableView.dataSource = self
+        
     }
     
     private func setupSetting() {
@@ -42,36 +51,46 @@ class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewD
     }
     
     // MARK: - UITableView Datasource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active {
+            return dataSource.count
+        }else {
+            return 0
+        }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
-        
-        if cell == nil {
+        if searchController.active {
             
-            cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
+            var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+            
+            if cell == nil {
+                
+                cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
+            }
+            
+            let model: CCVideoModel = dataSource[indexPath.row] as! CCVideoModel
+            
+            cell!.textLabel?.text = model.name
+            
+            return cell!
         }
         
-        let model: CCVideoModel = dataSource[indexPath.row] as! CCVideoModel
+        return UITableViewCell()
         
-        cell!.textLabel?.text = model.name
-        
-        return cell!
     }
     
     // MARK: - Tableview Delegate
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         
         UIApplication.sharedApplication().keyWindow?.endEditing(true)
+        
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let model: CCVideoModel = dataSource[indexPath.row] as! CCVideoModel
         let player = MRVLCMediaController()
@@ -80,12 +99,20 @@ class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewD
         player.downloadBlock = ({() in
             DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
         })
-        presentViewController(player, animated: true) { () -> Void in
+        
+        dispatch_async(dispatch_get_main_queue()) { 
             
+            self.searchController.presentViewController(player, animated: true, completion: nil)
         }
         
     }
     
+    // MARK: - UISearchController
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+//        dispatch_async(dispatch_get_main_queue()) { 
+//            self.resultVC.tableView.reloadData()
+//        }
+    }
     
     
     // MARK: - UISearchBar Delegate
@@ -96,7 +123,7 @@ class CCVideoSearchController: UIViewController,UISearchBarDelegate,UITableViewD
             
             self.dataSource = videoArray
             
-            self.tableView.reloadData()
+            self.resultVC.tableView.reloadData()
         }
     }
     

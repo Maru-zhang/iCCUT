@@ -61,11 +61,6 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
     
 
     // MARK: - UICollectionViewDataSource
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
@@ -81,6 +76,7 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
         
         return cell
     }
+    
 
     // MARK: UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
@@ -92,6 +88,9 @@ class CCListViewController: UICollectionViewController,UICollectionViewDelegateF
         return CGSizeMake(cellLength, cellLength * 0.7)
     }
     
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "search_header", forIndexPath: indexPath)
+    }
     
     // MARK: - Storyboard segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
