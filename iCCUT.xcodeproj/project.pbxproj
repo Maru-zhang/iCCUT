@@ -26,6 +26,8 @@
 		4260669D1CA955A700093A0B /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4260669C1CA955A700093A0B /* UIStoryboard+Extension.swift */; };
 		4260669F1CAA1E3800093A0B /* CCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4260669E1CAA1E3800093A0B /* CCNavigationController.swift */; };
 		426B644D1BD0BE38004077B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426B644C1BD0BE38004077B0 /* CoreData.framework */; };
+		4284D55E1CCA4A5600998D4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4284D5601CCA4A5600998D4B /* InfoPlist.strings */; };
+		4284D5621CCA4A9800998D4B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4284D5611CCA4A9800998D4B /* Localizable.strings */; };
 		4287116A1BAEB66A00A89536 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428711691BAEB66A00A89536 /* AudioToolbox.framework */; };
 		4287116C1BAEB67200A89536 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116B1BAEB67200A89536 /* CoreAudio.framework */; };
 		428711701BAEB67F00A89536 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287116F1BAEB67F00A89536 /* CoreGraphics.framework */; };
@@ -139,6 +141,9 @@
 		4260669E1CAA1E3800093A0B /* CCNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNavigationController.swift; sourceTree = "<group>"; };
 		426B644C1BD0BE38004077B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		427A658F1BAD0D8A004A0627 /* iCCUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCCUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4284D55F1CCA4A5600998D4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4284D5611CCA4A9800998D4B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		4284D5631CCA4B2D00998D4B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		428711691BAEB66A00A89536 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4287116B1BAEB67200A89536 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		4287116D1BAEB67800A89536 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -565,6 +570,8 @@
 		428B00811CA556B4003C1D03 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				4284D5611CCA4A9800998D4B /* Localizable.strings */,
+				4284D5601CCA4A5600998D4B /* InfoPlist.strings */,
 				428B00821CA556B4003C1D03 /* Assets.xcassets */,
 				428B00831CA556B4003C1D03 /* Plist */,
 			);
@@ -832,6 +839,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 427A65861BAD0D8A004A0627;
 			productRefGroup = 427A65901BAD0D8A004A0627 /* Products */;
@@ -851,6 +859,7 @@
 			files = (
 				42FAE5141CB22F8100495273 /* kr-video-player-point@3x.png in Resources */,
 				42FAE5101CB22F8100495273 /* kr-video-player-pause@3x.png in Resources */,
+				4284D5621CCA4A9800998D4B /* Localizable.strings in Resources */,
 				42FAE5151CB22F8100495273 /* kr-video-player-shrinkscreen@2x.png in Resources */,
 				428B01001CA556B4003C1D03 /* LaunchScreen.storyboard in Resources */,
 				428B01661CA556B4003C1D03 /* MJRefresh.bundle in Resources */,
@@ -858,6 +867,7 @@
 				42FAE5111CB22F8100495273 /* kr-video-player-play@2x.png in Resources */,
 				428B01211CA556B4003C1D03 /* NewsPlist.plist in Resources */,
 				42FAE50C1CB22F8100495273 /* kr-video-player-close@3x.png in Resources */,
+				4284D55E1CCA4A5600998D4B /* InfoPlist.strings in Resources */,
 				428B01201CA556B4003C1D03 /* Msg.plist in Resources */,
 				42FAE50D1CB22F8100495273 /* kr-video-player-fullscreen@2x.png in Resources */,
 				428B00FF1CA556B4003C1D03 /* Common.storyboard in Resources */,
@@ -1012,6 +1022,18 @@
 			targetProxy = 428B01831CA69C8B003C1D03 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4284D5601CCA4A5600998D4B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4284D55F1CCA4A5600998D4B /* Base */,
+				4284D5631CCA4B2D00998D4B /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		427A659F1BAD0D8A004A0627 /* Debug */ = {
@@ -1190,7 +1212,7 @@
 				427A65A01BAD0D8A004A0627 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		427A65A11BAD0D8A004A0627 /* Build configuration list for PBXNativeTarget "iCCUT" */ = {
 			isa = XCConfigurationList;
@@ -1199,7 +1221,7 @@
 				427A65A31BAD0D8A004A0627 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		428B01851CA69C8B003C1D03 /* Build configuration list for PBXNativeTarget "iCCUTTests" */ = {
 			isa = XCConfigurationList;
@@ -1208,7 +1230,7 @@
 				428B01871CA69C8B003C1D03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

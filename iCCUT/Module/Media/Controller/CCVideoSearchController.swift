@@ -35,6 +35,7 @@ class CCVideoSearchController: UITableViewController,UISearchBarDelegate,UISearc
         tableView.tableHeaderView = searchController.searchBar
         
         searchController.searchBar.sizeToFit()
+        searchController.searchBar.tintColor = UIColor.whiteColor()
         searchController.searchBar.placeholder = "请输入视频名称/关键字"
         searchController.delegate = self
         searchController.searchResultsUpdater = self
