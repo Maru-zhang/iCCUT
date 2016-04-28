@@ -94,12 +94,10 @@ class CCVideoSearchController: UITableViewController,UISearchBarDelegate,UISearc
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let model: CCVideoModel = dataSource[indexPath.row] as! CCVideoModel
-        let player = MRVLCMediaController()
         cell?.selected = false
-        player.mediaURL =  NSURL(string: model.url!)
-        player.downloadBlock = ({() in
-            DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
-        })
+
+        let player = CCPlayerViewController()
+        player.resource = NSURL(string: model.url!)
         
         dispatch_async(dispatch_get_main_queue()) { 
             

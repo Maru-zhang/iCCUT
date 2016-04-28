@@ -6,5 +6,5 @@
 //  Copyright © 2015年 Alloc. All rights reserved.
 //
 
-#import "MRVLCMediaController.h"
+#import "MRVLCPlayer.h"
 #import "MJRefresh.h"

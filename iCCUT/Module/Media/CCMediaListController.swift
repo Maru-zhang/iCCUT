@@ -218,21 +218,30 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         
-        let playerController: MRVLCMediaController = MRVLCMediaController()
-    
-        //创建一个模型
-        let model: CCVideoModel = dataArray[indexPath.row] as! CCVideoModel
+//        let playerController: MRVLCMediaController = MRVLCMediaController()
+//    
+//        //创建一个模型
+//        let model: CCVideoModel = dataArray[indexPath.row] as! CCVideoModel
+//        
+//        //从模型中取出数据赋值
+//        playerController.mediaURL = NSURL(string: model.url!)
+//        
+//        playerController.downloadBlock = ({() in
+//            debugPrint("开始下载")
+//            
+//            DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
+//        })
+//        
+//        presentViewController(playerController, animated: true, completion: nil)
         
-        //从模型中取出数据赋值
-        playerController.mediaURL = NSURL(string: model.url!)
+        let playerVC = CCPlayerViewController()
         
-        playerController.downloadBlock = ({() in
-            debugPrint("开始下载")
-            
-            DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
-        })
+        let model = dataArray[indexPath.row] as! CCVideoModel
         
-        presentViewController(playerController, animated: true, completion: nil)
+        playerVC.resource = NSURL(string: model.url!)
+        
+        self.navigationController?.pushViewController(playerVC, animated: true)
+        
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

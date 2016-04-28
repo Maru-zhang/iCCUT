@@ -93,14 +93,6 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
             return
         }
         
-        let player = MRVLCMediaController()
-        
-        player.downloadBlock = { () -> Void in
-            SCLAlertView.showPromptView("本视频已经下载!")
-        }
-        
-        player.mediaURL = DIR_PATH.URLByAppendingPathComponent(model.urlString as! String)
-        presentViewController(player, animated: true, completion: nil)
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
