@@ -760,7 +760,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="ListCell" id="ol0-T5-pCR" customClass="CCListViewCell" customModule="iCCUT" customModuleProvider="target">
-                                <rect key="frame" x="30" y="74" width="145" height="98"/>
+                                <rect key="frame" x="30" y="30" width="145" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="145" height="98"/>

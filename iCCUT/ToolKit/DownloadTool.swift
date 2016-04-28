@@ -42,7 +42,7 @@ class DownloadTool: NSObject {
         videoQueue.addObject(mdl)
         
         //一个后台线程
-        dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) { () -> Void in
             let download_request = Alamofire.download(.GET, (model.url)!) { (temporaryURL, response) -> NSURL in
                 let temp = (CUR_TIME as String) + "-" +  response.suggestedFilename!
                 let finalPath: NSURL = DIR_PATH.URLByAppendingPathComponent(temp)
@@ -75,6 +75,7 @@ class DownloadTool: NSObject {
             
             mdl.videoRequest = download_request
         }
+
 
     }
     

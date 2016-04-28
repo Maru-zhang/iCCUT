@@ -89,6 +89,7 @@
 		428B01771CA56576003C1D03 /* CCMediaTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01761CA56576003C1D03 /* CCMediaTransition.swift */; };
 		428B01791CA56C69003C1D03 /* CCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01781CA56C69003C1D03 /* CCSortViewController.swift */; };
 		428B01811CA69C8B003C1D03 /* iCCUTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01801CA69C8B003C1D03 /* iCCUTTests.swift */; };
+		42D2F9831CCE409E007A4B67 /* CheetahDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D2F9821CCE409E007A4B67 /* CheetahDownload.swift */; };
 		42FAE50B1CB22F8100495273 /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FAE4FA1CB22F8100495273 /* kr-video-player-close@2x.png */; };
 		42FAE50C1CB22F8100495273 /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FAE4FB1CB22F8100495273 /* kr-video-player-close@3x.png */; };
 		42FAE50D1CB22F8100495273 /* kr-video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FAE4FC1CB22F8100495273 /* kr-video-player-fullscreen@2x.png */; };
@@ -229,6 +230,7 @@
 		428B017E1CA69C8B003C1D03 /* iCCUTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCCUTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		428B01801CA69C8B003C1D03 /* iCCUTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCCUTTests.swift; sourceTree = "<group>"; };
 		428B01821CA69C8B003C1D03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42D2F9821CCE409E007A4B67 /* CheetahDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahDownload.swift; sourceTree = "<group>"; };
 		42FAE4FA1CB22F8100495273 /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
 		42FAE4FB1CB22F8100495273 /* kr-video-player-close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@3x.png"; sourceTree = "<group>"; };
 		42FAE4FC1CB22F8100495273 /* kr-video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 				428B008A1CA556B4003C1D03 /* DownloadTool.swift */,
 				428B008B1CA556B4003C1D03 /* ServerOperator.swift */,
 				428B008C1CA556B4003C1D03 /* UpdateNews.swift */,
+				42D2F9821CCE409E007A4B67 /* CheetahDownload.swift */,
 			);
 			name = Service;
 			path = ToolKit;
@@ -959,6 +962,7 @@
 				428B01691CA556B4003C1D03 /* UIScrollView+MJRefresh.m in Sources */,
 				428B016A1CA556B4003C1D03 /* UIView+MJExtension.m in Sources */,
 				428B01651CA556B4003C1D03 /* MJRefreshStateHeader.m in Sources */,
+				42D2F9831CCE409E007A4B67 /* CheetahDownload.swift in Sources */,
 				428B01611CA556B4003C1D03 /* MJRefreshBackNormalFooter.m in Sources */,
 				428B015C1CA556B4003C1D03 /* MJRefreshHeader.m in Sources */,
 				42FAE5181CB22F8100495273 /* MRVLCMediaController.mm in Sources */,
