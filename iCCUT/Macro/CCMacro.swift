@@ -59,6 +59,9 @@ var CUR_TIME: NSString {
     return time
 }
 
+//****** Time *****************************
+let AutoLoginKey = "isAutoLogin"
+
 //****** Network *****************************
  /// 服务器地址
 var HOST: String {

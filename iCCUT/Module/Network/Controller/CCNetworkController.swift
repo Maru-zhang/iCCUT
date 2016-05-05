@@ -23,11 +23,10 @@ class CCNetworkController: UIViewController {
     @IBOutlet weak var feeLable: UILabel!
     /** 注销按钮 */
     @IBOutlet weak var cancelButton: UIButton!
-    /** 自动登陆开关 */
-    @IBOutlet weak var autoSwitch: UISwitch!
     /** 约束 */
     @IBOutlet weak var loginButtonConstraints: NSLayoutConstraint!
     /** 默认属性 */
+    @IBOutlet weak var wifiLogo: UIImageView!
     let defaultText = "暂无数据"
     
     // MARK: - Life Cycle
@@ -77,20 +76,6 @@ class CCNetworkController: UIViewController {
     }
     
     // < Action >
-    @IBAction func loginSwitch(sender: AnyObject) {
-        let loginSwitch: UISwitch = sender as! UISwitch
-        let user = NSUserDefaults.standardUserDefaults()
-        
-        if loginSwitch.on {
-            user.setInteger(1, forKey: "isAutoLogin")
-        }else {
-            user.setInteger(0, forKey: "isAutoLogin")
-        }
-    }
-    @IBAction func refreshClick(sender: AnyObject) {
-        updateFlowData()
-    }
-    
     @IBAction func cancelClick(sender: AnyObject) {
         
         if cancelButton.selected {
@@ -135,13 +120,6 @@ class CCNetworkController: UIViewController {
             view.layoutIfNeeded()
         }
         
-        //根据client的自动登录设置来显示Switch
-        if client.userType.rawValue == 1 {
-            autoSwitch.on = true
-        }else {
-            autoSwitch.on = false
-        }
-        
         self.cancelButton.setTitle("登陆", forState: UIControlState.Selected)
         self.cancelButton.setTitle("注销", forState: UIControlState.Normal)
     }
@@ -153,7 +131,7 @@ class CCNetworkController: UIViewController {
         tabBarController?.navigationItem.title = tabBarItem.title
         tabBarController?.navigationItem.rightBarButtonItem = nil
         
-        autoSwitch.addObserver(self, forKeyPath: "autoKey", options: NSKeyValueObservingOptions.New, context: nil)
+        wifiLogo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(updateFlowData)))
     }
     
     func updateFlowData() {
@@ -186,7 +164,7 @@ class CCNetworkController: UIViewController {
         let account = userDefault.objectForKey(KACCOUNT)
         let password = userDefault.objectForKey(KPASSWORD)
         
-        if (client.userType == CCUserLoginType.AutoLogin) && (account != nil){
+        if (NSUserDefaults.standardUserDefaults().boolForKey(AutoLoginKey)) && (account != nil){
             //可以自动登陆
             client.loginWithAccountAndPassword(account as! NSString, pwd: password as! NSString, completeHandler: { (isSuccess) -> Void in
                 //查看是否登陆成功
@@ -225,12 +203,5 @@ class CCNetworkController: UIViewController {
     }
     
     
-    // MARK: - Call Back
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        
-        if keyPath == "autoKey" {
-            print("====")
-        }
-    }
 }
 

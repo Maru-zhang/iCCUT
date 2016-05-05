@@ -6,22 +6,47 @@
 //  Copyright © 2016年 Alloc. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import RealmSwift
 
-public class CheetahDownload: NSObject,NSURLSessionDownloadDelegate {
+public class CheetahDownload: NSObject {
     
+    /// 最大并发下载数量
     public var maxWork: NSInteger!
+    /// 下载进度回调闭包
+    public var progressBlock: ((NSURLSessionDownloadTask,Float) -> Void)?
+    /// 下载本地目录
     private let downloadFile: NSURL!
     private let fileManager: NSFileManager!
-    private let userDefault: NSUserDefaults!
     private static let cheetahDownload =  CheetahDownload()
     
-    
     /// 任务列表
-    lazy var taskQueue: [NSURLSessionDownloadTask] = []
-    /// 缓存列表
-    var cacheQueue: [String: NSData] = [:]
+    private var taskQueue: [NSURLSessionDownloadTask]
     
+    /// 缓存列表
+    public var itemQueue = [AnyObject]() {
+        didSet {
+            taskQueue.removeAll()
+            for item in itemQueue {
+                var task: NSURLSessionDownloadTask? = nil
+                let itemObect = item as! Video
+                
+                if let resumeData = itemObect.resumeData {
+                    task = sesstion.downloadTaskWithResumeData(resumeData)
+                }else {
+                    task = sesstion.downloadTaskWithURL(NSURL(string: itemObect.url!)!)
+                };
+                
+                defer {
+                    if !taskQueue.contains(task!) && task != nil {
+                        taskQueue.append(task!)
+                    }
+                }
+            }
+            debugPrint("同步了。。")
+        }
+    }
+
     private var sesstion: NSURLSession! {
         get {
             let config = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -33,7 +58,7 @@ public class CheetahDownload: NSObject,NSURLSessionDownloadDelegate {
     override init() {
         
         maxWork = 3
-        userDefault = NSUserDefaults.standardUserDefaults()
+        taskQueue = [NSURLSessionDownloadTask]()
         fileManager = NSFileManager.defaultManager()
         downloadFile = fileManager.URLsForDirectory(NSSearchPathDirectory.DownloadsDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first
         do {
@@ -41,8 +66,16 @@ public class CheetahDownload: NSObject,NSURLSessionDownloadDelegate {
         }catch let error as NSError {
             debugPrint(error)
         }
+        
         super.init()
         
+        // setup notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeFromDisk), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeToDisk), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: - Public Method
@@ -51,18 +84,56 @@ public class CheetahDownload: NSObject,NSURLSessionDownloadDelegate {
         return cheetahDownload
     }
     
-    public func beginDownloadWithModel(model: [String: String]) {
+    /**
+     添加一个下载任务
+     
+     - parameter model:	下载信息模型
+     */
+    public func appendDownloadTaskWithModel(model: AnyObject) {
         
-        // 解包
-        if let downloadURL = model["url"] {
-            
-            let downloadTask = sesstion.downloadTaskWithURL(NSURL(string: downloadURL)!)
-            
-            taskQueue.append(downloadTask)
-            
-            downloadTask.resume()
+        let newModel = model as! Video
+        
+        for task in taskQueue {
+            if task.currentRequest?.URL?.absoluteString == newModel.url {
+                debugPrint("Have same task url in taskQueue!")
+                return
+            }
         }
         
+        itemQueue.append(newModel)
+    }
+    
+    /**
+     弹出栈顶下载任务
+     */
+    public func popCanceledDownloadTask() {
+        
+        deleteDownloadTask(atIndex: itemQueue.count - 1)
+    }
+    
+    /**
+     删除某一个位置的下载任务
+     
+     - parameter index:	下载任务的位置
+     */
+    public func deleteDownloadTask(atIndex index: NSInteger) {
+        
+        let task = taskQueue[index]
+        task.cancel()
+        itemQueue.popLast()
+        
+    }
+    
+    
+    
+    /**
+     开始所有的下载任务
+     */
+    public func startAllTask() {
+        
+        for task in taskQueue {
+            task.resume();
+        }
     }
     
     /**
@@ -71,25 +142,51 @@ public class CheetahDownload: NSObject,NSURLSessionDownloadDelegate {
     public func pauseAllTask() {
         
         for task in taskQueue {
-            task.cancelByProducingResumeData({ (resumeData) in
-                if let request = task.originalRequest {
-                    self.cacheQueue[(request.URL?.absoluteString)!] = resumeData
-                }
-            })
+            task.suspend()
         }
+        
+        
+    }
+    
+    /**
+     重置所有的设置任务
+     */
+    public func resetAllTask() {
+        
+        for task in taskQueue {
+            task.cancel()
+        }
+        
+        itemQueue.removeAll()
+        synchronizeToDisk()
     }
     
 
     
-    // MARK: - NSURLSessionDownloadDelegate
+}
+
+// MARK: - NSURLSessionDownloadDelegate
+extension CheetahDownload: NSURLSessionDelegate {
+    
     public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
         do {
-            try self.fileManager.moveItemAtURL(location, toURL: self.downloadFile)
+            try self.fileManager.moveItemAtURL(location, toURL: self.downloadFile.URLByAppendingPathComponent((downloadTask.response?.suggestedFilename)!))
+            debugPrint("Download Success!\(location)")
         }catch let error as NSError {
             debugPrint(error)
         }
     }
     
+    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        
+        if let configProgress = progressBlock {
+            dispatch_async(dispatch_get_main_queue(), {
+                let precent = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+                configProgress(downloadTask, precent)
+                debugPrint(precent)
+            })
+        }
+    }
 }
 
 extension CheetahDownload {
@@ -101,24 +198,55 @@ extension CheetahDownload {
     /**
      保存所有的下载信息到本地
      */
-    private func saveToCache() {
-        dispatch_async(dispatch_get_global_queue(0, 0)) {
+    public func synchronizeToDisk() {
+        
+        debugPrint("save to disk!")
+
+        /*******************************************/
+        
+    
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             
-            self.userDefault.setObject(self.cacheQueue, forKey: CheetahDownload.cacheKey)
+            for task in self.taskQueue {
+                task.cancelByProducingResumeData({ (resumeData) in
+                    
+                    if let data = resumeData {
+                        
+                        let realm = try! Realm()
+                        
+                        let newItem = Video()
+                        newItem.url = (task.originalRequest?.URL?.absoluteString)!
+                        newItem.resumeData = data
+                        
+                        try! realm.write({
+                            realm.add(newItem, update: true)
+                        })
+                    }
+                })
+                
+            }
         }
+
     }
     
     /**
      从本地读取所有的下载信息
      */
-    private func readFromCache() {
+    public func synchronizeFromDisk() {
         
-        dispatch_async(dispatch_get_global_queue(0, 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
-            if let temp = self.userDefault.objectForKey(CheetahDownload.cacheKey) {
-                self.cacheQueue = temp as! [String: NSData]
+            debugPrint(self.downloadFile)
+            
+            let realm = try! Realm()
+            
+            let videos = realm.objects(Video)
+
+            self.itemQueue.removeAll()
+            
+            for video in videos {
+                self.itemQueue.append(video)
             }
-            
             
         }
     }

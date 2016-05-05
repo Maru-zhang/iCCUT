@@ -1,19 +1,29 @@
 PODS:
   - Alamofire (3.3.0)
   - Cartography (0.6.0)
+  - Realm (0.100.0):
+    - Realm/Headers (= 0.100.0)
+  - Realm/Headers (0.100.0)
+  - RealmSwift (0.100.0):
+    - Realm (= 0.100.0)
   - SCLAlertView (0.5.1)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - Cartography (~> 0.6.0)
+  - RealmSwift
   - SCLAlertView
   - SwiftyJSON (~> 2.3.2)
 
 SPEC CHECKSUMS:
   Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
+  Realm: b13b548e712d28a66678970c45cd245ebb94ba3b
+  RealmSwift: 1bb0ba2ceaa06b65d740b4f91bfa06e3fd1b805c
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: c47532e59dd5c370fd955ee480c4922a13b5dd4a
+
+COCOAPODS: 1.0.0.rc.1
