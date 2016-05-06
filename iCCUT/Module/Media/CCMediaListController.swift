@@ -217,28 +217,9 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     // MARK: - TableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        
-//        let playerController: MRVLCMediaController = MRVLCMediaController()
-//    
-//        //创建一个模型
-//        let model: CCVideoModel = dataArray[indexPath.row] as! CCVideoModel
-//        
-//        //从模型中取出数据赋值
-//        playerController.mediaURL = NSURL(string: model.url!)
-//        
-//        playerController.downloadBlock = ({() in
-//            debugPrint("开始下载")
-//            
-//            DownloadTool.shareDownloadTool().downloadResourceToPath(model, index: indexPath)
-//        })
-//        
-//        presentViewController(playerController, animated: true, completion: nil)
-        
         let playerVC = CCPlayerViewController()
-        
-        let model = dataArray[indexPath.row] as! CCVideoModel
-        
-        playerVC.resource = NSURL(string: model.url!)
+
+        playerVC.mediaModel = dataArray[indexPath.row] as? CCVideoModel
         
         self.navigationController?.pushViewController(playerVC, animated: true)
         
@@ -252,6 +233,10 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
     
     // MARK: - CCSortViewProtocol

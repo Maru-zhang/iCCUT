@@ -93,11 +93,10 @@ class CCVideoSearchController: UITableViewController,UISearchBarDelegate,UISearc
         UIApplication.sharedApplication().keyWindow?.endEditing(true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        let model: CCVideoModel = dataSource[indexPath.row] as! CCVideoModel
         cell?.selected = false
 
         let player = CCPlayerViewController()
-        player.resource = NSURL(string: model.url!)
+        player.mediaModel = dataSource[indexPath.row] as? CCVideoModel
         
         dispatch_async(dispatch_get_main_queue()) { 
             

@@ -91,6 +91,12 @@
 		428B01791CA56C69003C1D03 /* CCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01781CA56C69003C1D03 /* CCSortViewController.swift */; };
 		428B01811CA69C8B003C1D03 /* iCCUTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B01801CA69C8B003C1D03 /* iCCUTTests.swift */; };
 		42BB500F1CDAD4FC00F7B94E /* TSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB500E1CDAD4FC00F7B94E /* TSModel.swift */; };
+		42BB50141CDC9F3D00F7B94E /* CCTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB50131CDC9F3D00F7B94E /* CCTextView.swift */; };
+		42BB501D1CDCB22E00F7B94E /* CCCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB501B1CDCB22E00F7B94E /* CCCommentCell.swift */; };
+		42BB501E1CDCB22E00F7B94E /* CCCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BB501C1CDCB22E00F7B94E /* CCCommentCell.xib */; };
+		42BB50211CDCBE2500F7B94E /* CCMediaInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB501F1CDCBE2500F7B94E /* CCMediaInfoCell.swift */; };
+		42BB50221CDCBE2500F7B94E /* CCMediaInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BB50201CDCBE2500F7B94E /* CCMediaInfoCell.xib */; };
+		42BB50261CDCC62D00F7B94E /* CCEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB50251CDCC62D00F7B94E /* CCEditViewController.swift */; };
 		42D2F9CB1CD1D119007A4B67 /* Full Screen Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D2F9AC1CD1D119007A4B67 /* Full Screen Icon.png */; };
 		42D2F9CC1CD1D119007A4B67 /* Full Screen Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D2F9AD1CD1D119007A4B67 /* Full Screen Icon@2x.png */; };
 		42D2F9CD1CD1D119007A4B67 /* Full Screen Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D2F9AE1CD1D119007A4B67 /* Full Screen Icon@3x.png */; };
@@ -246,6 +252,12 @@
 		428B01801CA69C8B003C1D03 /* iCCUTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCCUTTests.swift; sourceTree = "<group>"; };
 		428B01821CA69C8B003C1D03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42BB500E1CDAD4FC00F7B94E /* TSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSModel.swift; sourceTree = "<group>"; };
+		42BB50131CDC9F3D00F7B94E /* CCTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTextView.swift; sourceTree = "<group>"; };
+		42BB501B1CDCB22E00F7B94E /* CCCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCommentCell.swift; sourceTree = "<group>"; };
+		42BB501C1CDCB22E00F7B94E /* CCCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCCommentCell.xib; sourceTree = "<group>"; };
+		42BB501F1CDCBE2500F7B94E /* CCMediaInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMediaInfoCell.swift; sourceTree = "<group>"; };
+		42BB50201CDCBE2500F7B94E /* CCMediaInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCMediaInfoCell.xib; sourceTree = "<group>"; };
+		42BB50251CDCC62D00F7B94E /* CCEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCEditViewController.swift; sourceTree = "<group>"; };
 		42D2F9AC1CD1D119007A4B67 /* Full Screen Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Full Screen Icon.png"; sourceTree = "<group>"; };
 		42D2F9AD1CD1D119007A4B67 /* Full Screen Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Full Screen Icon@2x.png"; sourceTree = "<group>"; };
 		42D2F9AE1CD1D119007A4B67 /* Full Screen Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Full Screen Icon@3x.png"; sourceTree = "<group>"; };
@@ -460,6 +472,7 @@
 		428B00581CA556B4003C1D03 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				42BB50231CDCC5DB00F7B94E /* Component */,
 				428B005B1CA556B4003C1D03 /* Login */,
 				428B005D1CA556B4003C1D03 /* Main */,
 				428B00611CA556B4003C1D03 /* Media */,
@@ -528,6 +541,11 @@
 				428B006D1CA556B4003C1D03 /* CCListViewCell.swift */,
 				428B006E1CA556B4003C1D03 /* CCSortViewCell.swift */,
 				428B006F1CA556B4003C1D03 /* CCSortViewLayout.swift */,
+				42BB50131CDC9F3D00F7B94E /* CCTextView.swift */,
+				42BB501B1CDCB22E00F7B94E /* CCCommentCell.swift */,
+				42BB501F1CDCBE2500F7B94E /* CCMediaInfoCell.swift */,
+				42BB50201CDCBE2500F7B94E /* CCMediaInfoCell.xib */,
+				42BB501C1CDCB22E00F7B94E /* CCCommentCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -750,6 +768,22 @@
 			path = iCCUTTests;
 			sourceTree = "<group>";
 		};
+		42BB50231CDCC5DB00F7B94E /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				42BB50241CDCC5F100F7B94E /* Views */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		42BB50241CDCC5F100F7B94E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				42BB50251CDCC62D00F7B94E /* CCEditViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		42D2F9AB1CD1D119007A4B67 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
@@ -914,9 +948,11 @@
 				42D2F9D81CD1D119007A4B67 /* Player close@3x.png in Resources */,
 				42D2F9E01CD1D119007A4B67 /* Video Bg@2x.png in Resources */,
 				42D2F9CF1CD1D119007A4B67 /* Min. Icon@2x.png in Resources */,
+				42BB501E1CDCB22E00F7B94E /* CCCommentCell.xib in Resources */,
 				428B00FF1CA556B4003C1D03 /* Common.storyboard in Resources */,
 				42D2F9DB1CD1D119007A4B67 /* Player Control Nob@3x.png in Resources */,
 				42D2F9DA1CD1D119007A4B67 /* Player Control Nob@2x.png in Resources */,
+				42BB50221CDCBE2500F7B94E /* CCMediaInfoCell.xib in Resources */,
 				42D2F9DD1CD1D119007A4B67 /* Sound Icon@2x.png in Resources */,
 				42D2F9D71CD1D119007A4B67 /* Player close@2x.png in Resources */,
 				428B01011CA556B4003C1D03 /* Main.storyboard in Resources */,
@@ -1024,6 +1060,7 @@
 				424CE8501CA94CF000943290 /* CCLoginViewController.swift in Sources */,
 				428B01131CA556B4003C1D03 /* CCMoreTableController.swift in Sources */,
 				428B01081CA556B4003C1D03 /* CCMediaListController.swift in Sources */,
+				42BB50141CDC9F3D00F7B94E /* CCTextView.swift in Sources */,
 				428B01021CA556B4003C1D03 /* CCMacro.swift in Sources */,
 				424CE84B1CA94C3400943290 /* CCShowNewsController.swift in Sources */,
 				42D2F9E21CD1D119007A4B67 /* MRVideoControlView.m in Sources */,
@@ -1032,6 +1069,7 @@
 				421BA4621CD8A0DD00EA3788 /* CheetahDownload.swift in Sources */,
 				424CE84A1CA94C3400943290 /* CCNewsController.swift in Sources */,
 				428B010A1CA556B4003C1D03 /* CCListViewController.swift in Sources */,
+				42BB50211CDCBE2500F7B94E /* CCMediaInfoCell.swift in Sources */,
 				428B01091CA556B4003C1D03 /* CCDownloadController.swift in Sources */,
 				428B01041CA556B4003C1D03 /* CCTextFiled.swift in Sources */,
 				428B01751CA55EF7003C1D03 /* CCMediaAnimation.swift in Sources */,
@@ -1039,9 +1077,11 @@
 				424CE84E1CA94C3400943290 /* NewViewModel.swift in Sources */,
 				428B010E1CA556B4003C1D03 /* CCVideoModel.swift in Sources */,
 				428B01771CA56576003C1D03 /* CCMediaTransition.swift in Sources */,
+				42BB50261CDCC62D00F7B94E /* CCEditViewController.swift in Sources */,
 				428B01681CA556B4003C1D03 /* UIScrollView+MJExtension.m in Sources */,
 				428B010F1CA556B4003C1D03 /* CCDownloadCell.swift in Sources */,
 				428B01071CA556B4003C1D03 /* CCMainTabbarController.swift in Sources */,
+				42BB501D1CDCB22E00F7B94E /* CCCommentCell.swift in Sources */,
 				428B015F1CA556B4003C1D03 /* MJRefreshAutoStateFooter.m in Sources */,
 				42BB500F1CDAD4FC00F7B94E /* TSModel.swift in Sources */,
 				428B01161CA556B4003C1D03 /* CCHTTPClient.swift in Sources */,

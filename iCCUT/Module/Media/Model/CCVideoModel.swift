@@ -8,10 +8,10 @@
 
 class CCVideoModel: NSObject {
     
-    var name: String?
-    var url: String?
-    var sorOne: String?
-    var sortTwo: String?
+    var name: String!
+    var url: String!
+    var sorOne: String!
+    var sortTwo: String!
     
     
     func configureWithDic(dic: NSDictionary) {

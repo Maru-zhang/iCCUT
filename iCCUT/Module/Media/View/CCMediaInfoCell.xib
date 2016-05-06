@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="KGk-i7-Jjw" customClass="CCMediaInfoCell" customModule="iCCUT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="332" height="55"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="332" height="54.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4P-oy-avV">
+                        <rect key="frame" x="293" y="15" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="a6r-Ti-R3y"/>
+                            <constraint firstAttribute="width" constant="25" id="mYQ-il-zhy"/>
+                        </constraints>
+                        <state key="normal" image="media_download"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rE-JR-8Dz">
+                        <rect key="frame" x="8" y="17" width="277" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="GoZ-kh-6io"/>
+                            <constraint firstAttribute="width" constant="277" id="KVb-wS-FKu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KVb-wS-FKu"/>
+                            </mask>
+                        </variation>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="0rE-JR-8Dz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4Q7-Vu-QBH"/>
+                    <constraint firstItem="L4P-oy-avV" firstAttribute="leading" secondItem="0rE-JR-8Dz" secondAttribute="trailing" constant="8" id="87r-Ob-O7K"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="L4P-oy-avV" secondAttribute="trailing" constant="6" id="Vb3-FI-Syk"/>
+                    <constraint firstItem="0rE-JR-8Dz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bj9-GR-HwY"/>
+                    <constraint firstItem="L4P-oy-avV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="q3b-uA-pPQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="download" destination="L4P-oy-avV" id="OXu-1O-M0O"/>
+                <outlet property="mediaName" destination="0rE-JR-8Dz" id="R5F-xx-QJO"/>
+            </connections>
+            <point key="canvasLocation" x="416" y="558.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="media_download" width="890" height="779"/>
+    </resources>
+</document>
