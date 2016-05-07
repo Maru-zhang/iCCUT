@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 
+
 public class CheetahDownload: NSObject {
     
     /// 最大并发下载数量
@@ -19,9 +20,13 @@ public class CheetahDownload: NSObject {
     private let downloadFile: NSURL!
     private let fileManager: NSFileManager!
     private static let cheetahDownload =  CheetahDownload()
+    private struct Model_Key {
+        static let data = "mar_data"
+        static let url  = "mar_url"
+    }
     
     /// 任务列表
-    private var taskQueue: [NSURLSessionDownloadTask]
+    var taskQueue: [NSURLSessionDownloadTask]
     
     /// 缓存列表
     public var itemQueue = [AnyObject]() {
@@ -29,12 +34,11 @@ public class CheetahDownload: NSObject {
             taskQueue.removeAll()
             for item in itemQueue {
                 var task: NSURLSessionDownloadTask? = nil
-                let itemObect = item as! Video
-                
-                if let resumeData = itemObect.resumeData {
+
+                if let resumeData = item.valueForKey(Model_Key.data) as? NSData {
                     task = sesstion.downloadTaskWithResumeData(resumeData)
                 }else {
-                    task = sesstion.downloadTaskWithURL(NSURL(string: itemObect.url!)!)
+                    task = sesstion.downloadTaskWithURL(NSURL(string: item.valueForKey(Model_Key.url) as! String)!)
                 };
                 
                 defer {
@@ -89,18 +93,18 @@ public class CheetahDownload: NSObject {
      
      - parameter model:	下载信息模型
      */
-    public func appendDownloadTaskWithModel(model: AnyObject) {
+    public func appendDownloadTaskWithModel<T: Object>(model: T) {
         
-        let newModel = model as! Video
-        
-        for task in taskQueue {
-            if task.currentRequest?.URL?.absoluteString == newModel.url {
-                debugPrint("Have same task url in taskQueue!")
-                return
+        if let newURL = model.valueForKey("mar_url") as? String {
+            for task in taskQueue {
+                if task.currentRequest?.URL?.absoluteString == newURL {
+                    debugPrint("Have same task url in taskQueue!")
+                    return
+                }
             }
         }
         
-        itemQueue.append(newModel)
+        itemQueue.append(model)
     }
     
     /**
@@ -204,7 +208,6 @@ extension CheetahDownload {
 
         /*******************************************/
         
-    
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             
             for task in self.taskQueue {
@@ -214,9 +217,9 @@ extension CheetahDownload {
                         
                         let realm = try! Realm()
                         
-                        let newItem = Video()
-                        newItem.url = (task.originalRequest?.URL?.absoluteString)!
-                        newItem.resumeData = data
+                        let newItem = CCVideoDownModel()
+                        newItem.mar_url = (task.originalRequest?.URL?.absoluteString)!
+                        newItem.mar_data = data
                         
                         try! realm.write({
                             realm.add(newItem, update: true)
@@ -240,7 +243,7 @@ extension CheetahDownload {
             
             let realm = try! Realm()
             
-            let videos = realm.objects(Video)
+            let videos = realm.objects(CCVideoDownModel)
 
             self.itemQueue.removeAll()
             

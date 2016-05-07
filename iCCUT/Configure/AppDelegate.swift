@@ -11,15 +11,16 @@ import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
 
     var window: UIWindow?
+    /// 下载组件
+    var downloader: CheetahDownload!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         dispatch_async(dispatch_get_global_queue(0, 0)) {
-            DownloadTool.shareDownloadTool().readData()
+            self.downloader = CheetahDownload.shareInstance()
         }
         
         // 设置全局样式

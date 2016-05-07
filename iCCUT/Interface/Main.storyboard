@@ -809,10 +809,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Npu-Wv-Oi1">
-                                        <rect key="frame" x="0.0" y="35" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="79" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Npu-Wv-Oi1" id="ag4-kg-uHc">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自动登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wM-3D-fka">
@@ -840,10 +840,10 @@
                                                     <exclude reference="iBh-fM-dZv"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="7lu-hS-Hl7"/>
-                                                    <exclude reference="v2v-Cz-Srq"/>
                                                     <exclude reference="bpz-8b-55M"/>
                                                     <exclude reference="yVf-Js-1aC"/>
+                                                    <exclude reference="7lu-hS-Hl7"/>
+                                                    <exclude reference="v2v-Cz-Srq"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -852,10 +852,10 @@
                                                     <include reference="iBh-fM-dZv"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="7lu-hS-Hl7"/>
-                                                    <include reference="v2v-Cz-Srq"/>
                                                     <include reference="bpz-8b-55M"/>
                                                     <include reference="yVf-Js-1aC"/>
+                                                    <include reference="7lu-hS-Hl7"/>
+                                                    <include reference="v2v-Cz-Srq"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -865,7 +865,7 @@
                             <tableViewSection id="cnr-V1-UrC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="e3Q-mv-EH9">
-                                        <rect key="frame" x="0.0" y="115" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="159" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e3Q-mv-EH9" id="iRw-G2-i8R">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>

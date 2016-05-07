@@ -14,6 +14,8 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var mediaModel: CCVideoModel?
     let mr_player: MRVLCPlayer = MRVLCPlayer()
     let comment: UITableView = UITableView()
+    
+    private lazy var downloader = CheetahDownload.shareInstance()
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -64,6 +66,22 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
     }
 
+    // MARK: - Private Method
+    func addNewDownloadTask() {
+        
+        debugPrint("添加新的任务")
+        
+        let model = CCVideoDownModel()
+        
+        model.name = mediaModel?.name
+        model.mar_url = mediaModel?.url
+        model.mar_data = nil
+        model.sorOne = mediaModel?.sorOne
+        model.sortTwo = mediaModel?.sortTwo
+        
+        downloader.appendDownloadTaskWithModel(model)
+        
+    }
     
     // MARK: - Event
     @objc private func exit() {
@@ -89,6 +107,7 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(String(CCMediaInfoCell), forIndexPath: indexPath) as! CCMediaInfoCell
             cell.mediaName.text = "视频名称:\(mediaModel!.name)"
+            cell.download.addTarget(self, action: #selector(addNewDownloadTask), forControlEvents: .TouchUpInside)
             
             return cell
         }else {
@@ -108,16 +127,13 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let containView = UIView()
-        let textField = UITextField()
-        textField.borderStyle = .RoundedRect
-        textField.placeholder = "我来说几句"
-        textField.delegate = self
-        textField.center = CGPointMake(tableView.bounds.width / 2, 20)
-        textField.bounds = CGRectMake(0, 0, tableView.bounds.width - 10, 30)
-        containView.backgroundColor = UIColor.whiteColor()
-        containView.addSubview(textField)
-        return containView
+        
+        let editView = CCEditView(frame: CGRectMake(0, 0, tableView.frame.width, 40))
+        editView.commentBlock = { textFiled in
+            debugPrint("提交评论")
+        }
+
+        return editView
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -139,15 +155,15 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         return section == 0 ? 0 : 40
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        UIApplication.sharedApplication().keyWindow?.endEditing(true)
+    }
+    
     
     // MARK: - TextFiled Delegate
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        
-        let editVC = UIStoryboard(name: "Common", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(String(CCEditViewController))
-        
-        presentViewController(editVC, animated: true, completion: nil)
-        
-        return false
+
+        return true
     }
     
     

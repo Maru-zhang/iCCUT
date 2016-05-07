@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Edit View Controller-->
@@ -15,13 +16,57 @@
                     <view key="view" contentMode="scaleToFill" id="gq1-hz-emA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TbY-qL-jUy">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHl-kQ-Vy2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1ek-lq-Dse"/>
+                                </constraints>
+                                <textAttributes key="titleTextAttributes">
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="评论" id="za2-4X-NbZ">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="TcH-Jv-eyb">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="closeAction:" destination="SGn-e0-WVD" id="pW4-sh-Jf4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="提交" id="cVw-uV-7jO">
+                                            <connections>
+                                                <action selector="submitAction:" destination="SGn-e0-WVD" id="egc-ae-br3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TbY-qL-jUy" firstAttribute="leading" secondItem="oHl-kQ-Vy2" secondAttribute="leading" id="CUR-qA-IED"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oHl-kQ-Vy2" secondAttribute="trailing" constant="-20" id="MYE-1p-xmd"/>
+                            <constraint firstItem="TbY-qL-jUy" firstAttribute="bottom" secondItem="nGm-fs-cZw" secondAttribute="top" id="Pow-qk-U8b"/>
+                            <constraint firstItem="oHl-kQ-Vy2" firstAttribute="top" secondItem="gq1-hz-emA" secondAttribute="topMargin" id="QkT-wZ-9AC"/>
+                            <constraint firstItem="TbY-qL-jUy" firstAttribute="top" secondItem="oHl-kQ-Vy2" secondAttribute="bottom" id="Yiz-y2-k9I"/>
+                            <constraint firstItem="TbY-qL-jUy" firstAttribute="trailing" secondItem="oHl-kQ-Vy2" secondAttribute="trailing" id="cbL-GS-UdI"/>
+                            <constraint firstItem="oHl-kQ-Vy2" firstAttribute="leading" secondItem="gq1-hz-emA" secondAttribute="leadingMargin" constant="-20" id="kdH-X4-dXn"/>
+                        </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="textView" destination="TbY-qL-jUy" id="ygQ-L9-eS4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fd-5D-s4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-27.5" y="-399"/>
+            <point key="canvasLocation" x="-28" y="-399"/>
         </scene>
         <!--搜索-->
         <scene sceneID="v7H-wD-Z3x">

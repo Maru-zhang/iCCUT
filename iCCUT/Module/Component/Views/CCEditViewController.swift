@@ -10,26 +10,24 @@ import UIKit
 
 class CCEditViewController: UIViewController {
 
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        textView.becomeFirstResponder()
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - Action
+    @IBAction func closeAction(sender: AnyObject) {
+        
+        dismissViewControllerAnimated(false, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func submitAction(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
-    */
 
 }

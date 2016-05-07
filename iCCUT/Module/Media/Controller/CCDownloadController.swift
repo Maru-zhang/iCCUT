@@ -10,12 +10,12 @@ import UIKit
 import Alamofire
 import SCLAlertView
 
-class CCDownloadController: UITableViewController,DownloadToolProtocol {
+class CCDownloadController: UITableViewController {
 
-    /** downloadTool单例 */
-    let downloadTool = DownloadTool.shareDownloadTool()
+    /** 下载器 */
+    let downloader = CheetahDownload.shareInstance()
     /** 数据源 */
-    var dataSource: NSMutableArray = DownloadTool.shareDownloadTool().videoQueue
+    var dataSource: NSMutableArray = NSMutableArray()
     /** Cell唯一标示 */
     let identifier = "downloadCell"
     
@@ -37,17 +37,28 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     }
     
     private func setupSetting() {
-        downloadTool.delegate = self
+        
+        downloader.progressBlock = { [unowned self] task,progress in
+            
+            let index = self.downloader.taskQueue.indexOf(task)
+            
+            let cell  = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0)) as! CCDownloadCell
+            
+            if task.state == .Completed {
+                cell.setStatus(.Finish)
+            }else {
+                cell.progressLable.text = String(progress)
+                cell.progressBar.progress = progress
+            }
+            
+        }
     }
     
     // MARK: - UITableview Datasource
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.tableViewDisplay(emptyMessage: "暂时没有任何的缓存视频！", count: dataSource.count)
-        return dataSource.count
+        tableView.tableViewDisplay(emptyMessage: "暂时没有任何的缓存视频！", count: downloader.itemQueue.count)
+        return downloader.itemQueue.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -60,10 +71,10 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
         }
         
         //获取模型
-        let model = dataSource[indexPath.row] as! CCVideoDownModel
+        let model = downloader.itemQueue[indexPath.row] as! CCVideoDownModel
         
         //配置模型
-        cell!.configureCellWithModel(model)
+        cell!.videoName.text = model.name
         
         return cell!
     }
@@ -75,23 +86,11 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! CCDownloadCell
         cell.selected = false
         
-        // 获取离线视频模型
-        let model: CCVideoDownModel = dataSource[indexPath.row] as! CCVideoDownModel
+//        // 获取离线视频模型
+//        let model: CCVideoDownModel = dataSource[indexPath.row] as! CCVideoDownModel
         
-        guard model.isFinish else {
-
-            if model.isDownloading {
-                model.videoRequest!.suspend()
-                model.isDownloading = false
-                cell.setStatus(CCDownloadCellStatus.Pause)
-            }else {
-                model.videoRequest!.resume()
-                model.isDownloading = true
-                cell.setStatus(CCDownloadCellStatus.Loading)
-            }
-            
-            return
-        }
+        downloader.startAllTask()
+        
         
     }
     
@@ -100,24 +99,7 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let model = downloadTool.videoQueue[indexPath.row] as! CCVideoDownModel
-            //删除本地视频
-            if model.isFinish {
-                do {
-                    try NSFileManager.defaultManager().removeItemAtURL(DIR_PATH.URLByAppendingPathComponent(model.urlString as! String))
-                }catch {
-                    if DEBUG_LOG {print("删除失败!")}
-                }
-            }
-            //从队列中删除
-            downloadTool.videoQueue.removeObjectAtIndex(indexPath.row)
-            //本地化队列
-            downloadTool.writeData()
-            //删除动画
-            tableView.deleteRowsAtIndexPaths(NSArray(object: indexPath) as! [NSIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            if DEBUG_LOG {print(downloadTool.videoQueue)}
-        }
+
     }
     
     override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
@@ -141,20 +123,5 @@ class CCDownloadController: UITableViewController,DownloadToolProtocol {
     }
     
 
-    // MARK: - DownloadProtocol
-    func downloadTooldidReceiveData() {
-        /* 异步队列主线程 */
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            for (index,model) in self.dataSource.enumerate() {
-                let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as! CCDownloadCell
-                let tempModel = model as! CCVideoDownModel
-                cell.progressBar.progress = tempModel.precent
-                cell.progressLable.text = "\(Int(tempModel.precent * 100))%"
-                if tempModel.precent == 1 {
-                    cell.setStatus(CCDownloadCellStatus.Finish)
-                }
-            }
-        }
-    }
     
 }
