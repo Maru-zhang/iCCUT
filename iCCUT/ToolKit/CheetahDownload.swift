@@ -9,22 +9,55 @@
 import UIKit
 import RealmSwift
 
+/**
+ 下载器的下载设置状态
+ 
+ - AllDownloading:	全部开始下载
+ - AllPausing:		全部一直暂停
+ */
+enum CheetahState {
+    /// 全部开始
+    case AllDownloading
+    /// 全部暂停
+    case AllPausing
+}
+
+/**
+ *	下载进度更新的模型
+ *
+ *	@since 1.0
+ */
+public struct MARProgressInfo {
+    var progress: Float = 0.0
+    var speed   : Float = 0.0
+}
+
+/**
+ *	基类所有的属性
+ *
+ *	@since 1.0
+ */
+private struct Model_Key {
+    static let data = "mar_data"
+    static let url  = "mar_url"
+}
+
+public protocol CheetahDownloadDelegate: NSObjectProtocol {
+    func cheetahDownloadDidUpdate(task: MARProgressInfo,index: Int64)
+}
 
 public class CheetahDownload: NSObject {
     
+    /// 更新代理
+    public weak var delegate: CheetahDownloadDelegate?
     /// 最大并发下载数量
     public var maxWork: NSInteger!
-    /// 下载进度回调闭包
-    public var progressBlock: ((NSURLSessionDownloadTask,Float) -> Void)?
     /// 下载本地目录
-    private let downloadFile: NSURL!
+    public let downloadFile: NSURL!
+    /// 文件管理器
     private let fileManager: NSFileManager!
+    /// 单例对象
     private static let cheetahDownload =  CheetahDownload()
-    private struct Model_Key {
-        static let data = "mar_data"
-        static let url  = "mar_url"
-    }
-    
     /// 任务列表
     var taskQueue: [NSURLSessionDownloadTask]
     
@@ -41,6 +74,8 @@ public class CheetahDownload: NSObject {
                     task = sesstion.downloadTaskWithURL(NSURL(string: item.valueForKey(Model_Key.url) as! String)!)
                 };
                 
+                task?.resume()
+
                 defer {
                     if !taskQueue.contains(task!) && task != nil {
                         taskQueue.append(task!)
@@ -89,22 +124,23 @@ public class CheetahDownload: NSObject {
     }
     
     /**
-     添加一个下载任务
+     添加一个下载任务,添加成功返回True，失败返回False
      
      - parameter model:	下载信息模型
      */
-    public func appendDownloadTaskWithModel<T: Object>(model: T) {
+    public func appendDownloadTaskWithModel<T: Object>(model: T) -> Bool {
         
         if let newURL = model.valueForKey("mar_url") as? String {
             for task in taskQueue {
                 if task.currentRequest?.URL?.absoluteString == newURL {
                     debugPrint("Have same task url in taskQueue!")
-                    return
+                    return false
                 }
             }
         }
         
         itemQueue.append(model)
+        return true
     }
     
     /**
@@ -183,13 +219,23 @@ extension CheetahDownload: NSURLSessionDelegate {
     
     public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         
-        if let configProgress = progressBlock {
-            dispatch_async(dispatch_get_main_queue(), {
-                let precent = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-                configProgress(downloadTask, precent)
-                debugPrint(precent)
-            })
+        for (index,task) in taskQueue.enumerate() {
+            if task.isEqual(downloadTask) {
+                
+                // 计算下载百分比
+                let receivedBytesCount = Double(downloadTask.countOfBytesReceived)
+                let totalBytesCount = Double(downloadTask.countOfBytesExpectedToReceive)
+                let progress = Float(receivedBytesCount / totalBytesCount)
+                
+                // 计算下载速度
+                let speed = Float(bytesWritten)
+                
+                let info = MARProgressInfo(progress: progress, speed: speed)
+                
+                delegate?.cheetahDownloadDidUpdate(info, index: Int64(index))
+            }
         }
+        
     }
 }
 
@@ -204,31 +250,28 @@ extension CheetahDownload {
      */
     public func synchronizeToDisk() {
         
-        debugPrint("save to disk!")
+        debugPrint("\(CheetahUtility.LogForword):save to disk!")
 
         /*******************************************/
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            
-            for task in self.taskQueue {
-                task.cancelByProducingResumeData({ (resumeData) in
-                    
-                    if let data = resumeData {
-                        
-                        let realm = try! Realm()
-                        
-                        let newItem = CCVideoDownModel()
-                        newItem.mar_url = (task.originalRequest?.URL?.absoluteString)!
-                        newItem.mar_data = data
-                        
-                        try! realm.write({
-                            realm.add(newItem, update: true)
-                        })
-                    }
+        for (index,task) in self.taskQueue.enumerate() {
+            task.cancelByProducingResumeData({ (resumeData) in
+                
+                let newItem = self.itemQueue[index] as! CCVideoDownModel
+                let realm = try! Realm()
+                
+                if let data = resumeData {
+                    newItem.mar_data = data
+                }
+                
+                try! realm.write({
+                    realm.add(newItem, update: true)
                 })
                 
-            }
+            })
+            
         }
+        
 
     }
     
@@ -237,21 +280,20 @@ extension CheetahDownload {
      */
     public func synchronizeFromDisk() {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            
-            debugPrint(self.downloadFile)
-            
-            let realm = try! Realm()
-            
-            let videos = realm.objects(CCVideoDownModel)
+        debugPrint(self.downloadFile)
+        
+        let realm = try! Realm()
+        
+        let videos = realm.objects(CCVideoDownModel)
+        
+        self.itemQueue.removeAll()
 
-            self.itemQueue.removeAll()
-            
-            for video in videos {
-                self.itemQueue.append(video)
-            }
-            
+        for video in videos {
+            self.itemQueue.append(video)
         }
+        
     }
     
 }
+
+

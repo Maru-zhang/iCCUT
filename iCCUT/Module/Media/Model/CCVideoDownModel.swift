@@ -7,17 +7,10 @@
 //
 
 import UIKit
-import RealmSwift
 
-public class CCVideoDownModel: Object {
+public class CCVideoDownModel: CheetahBaseModel {
     
-    dynamic var mar_url: String? = nil
-    dynamic var mar_data: NSData? = nil
-    dynamic var name: String? = nil
     dynamic var sorOne: String? = nil
     dynamic var sortTwo: String? = nil
     
-    override public static func primaryKey() -> String? {
-        return "mar_url"
-    }
 }

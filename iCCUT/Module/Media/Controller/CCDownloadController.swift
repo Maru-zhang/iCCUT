@@ -4,16 +4,15 @@
 //
 //  Created by Maru on 15/9/23.
 //  Copyright © 2015年 Alloc. All rights reserved.
-//  http://202.198.176.113/video/v8/jlp/zjkx/0901.rmvb
 
 import UIKit
 import Alamofire
 import SCLAlertView
 
-class CCDownloadController: UITableViewController {
+class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
 
-    /** 下载器 */
     let downloader = CheetahDownload.shareInstance()
+
     /** 数据源 */
     var dataSource: NSMutableArray = NSMutableArray()
     /** Cell唯一标示 */
@@ -30,6 +29,10 @@ class CCDownloadController: UITableViewController {
         
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        
+    }
+    
     // MARK: - Private Method
     private func setupView() {
         
@@ -38,20 +41,7 @@ class CCDownloadController: UITableViewController {
     
     private func setupSetting() {
         
-        downloader.progressBlock = { [unowned self] task,progress in
-            
-            let index = self.downloader.taskQueue.indexOf(task)
-            
-            let cell  = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0)) as! CCDownloadCell
-            
-            if task.state == .Completed {
-                cell.setStatus(.Finish)
-            }else {
-                cell.progressLable.text = String(progress)
-                cell.progressBar.progress = progress
-            }
-            
-        }
+        CheetahDownload.shareInstance().delegate = self
     }
     
     // MARK: - UITableview Datasource
@@ -70,11 +60,22 @@ class CCDownloadController: UITableViewController {
             cell = CCDownloadCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifier)
         }
         
-        //获取模型
+        cell?.selectionStyle = .None
+
+        // 获取模型
         let model = downloader.itemQueue[indexPath.row] as! CCVideoDownModel
+        let task  = downloader.taskQueue[indexPath.row]
         
-        //配置模型
+        
+        // 配置模型
         cell!.videoName.text = model.name
+        if task.state == .Completed {
+            cell?.progressLable.text = "100%"
+            cell?.progressBar.progress = 1.0
+        }else {
+            cell?.progressLable.text = "正在计算中"
+            cell?.progressBar.progress = 0.0
+        }
         
         return cell!
     }
@@ -83,13 +84,22 @@ class CCDownloadController: UITableViewController {
     // MARK: - UITableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CCDownloadCell
-        cell.selected = false
+        let task = downloader.taskQueue[indexPath.row]
         
-//        // 获取离线视频模型
-//        let model: CCVideoDownModel = dataSource[indexPath.row] as! CCVideoDownModel
-        
-        downloader.startAllTask()
+        switch task.state {
+        case .Completed:
+            
+            break
+            
+        case .Running:
+            task.suspend()
+            break
+        case .Suspended:
+            task.resume()
+            break
+        default:
+            break
+        }
         
         
     }
@@ -122,6 +132,14 @@ class CCDownloadController: UITableViewController {
         return 0.5
     }
     
+    // MARK: - CheetahDownload Delegate
+    func cheetahDownloadDidUpdate(task: MARProgressInfo,index: Int64) {
+        
+        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: Int(index), inSection: 0)) as! CCDownloadCell
+        cell.progressLable.text = String(format: "%.2f%%",task.progress)
+        cell.progressBar.progress = task.progress
+        debugPrint("正在下载:\(task.progress)")
+    }
 
     
 }

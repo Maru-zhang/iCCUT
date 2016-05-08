@@ -123,6 +123,8 @@
 		42D2F9E31CD1D119007A4B67 /* MRVideoHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D2F9C81CD1D119007A4B67 /* MRVideoHUDView.m */; };
 		42D2F9E41CD1D119007A4B67 /* MRVLCPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 42D2F9CA1CD1D119007A4B67 /* MRVLCPlayer.mm */; };
 		42D2F9E61CD1D173007A4B67 /* CCPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D2F9E51CD1D173007A4B67 /* CCPlayerViewController.swift */; };
+		42D747761CDF24A2006F1565 /* CheetahBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D747751CDF24A2006F1565 /* CheetahBaseModel.swift */; };
+		42D747791CDF4C8F006F1565 /* CheetahUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D747781CDF4C8F006F1565 /* CheetahUtility.swift */; };
 		9C78F7316A146CF656EDA46D /* Pods_iCCUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3DC1A2A42F94AF4CF1FDE4F /* Pods_iCCUT.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,7 +156,7 @@
 		421BA45B1CD8A0AF00EA3788 /* SCLAlertViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertViewExtension.swift; sourceTree = "<group>"; };
 		421BA45C1CD8A0AF00EA3788 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		421BA45D1CD8A0AF00EA3788 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		421BA4611CD8A0DD00EA3788 /* CheetahDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahDownload.swift; sourceTree = "<group>"; };
+		421BA4611CD8A0DD00EA3788 /* CheetahDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheetahDownload.swift; path = iCCUT/ToolKit/CheetahDownload.swift; sourceTree = SOURCE_ROOT; };
 		424CE8421CA94C3400943290 /* CCNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCNewsController.swift; sourceTree = "<group>"; };
 		424CE8431CA94C3400943290 /* CCShowNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCShowNewsController.swift; sourceTree = "<group>"; };
 		424CE8451CA94C3400943290 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
@@ -287,6 +289,8 @@
 		42D2F9C91CD1D119007A4B67 /* MRVLCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRVLCPlayer.h; sourceTree = "<group>"; };
 		42D2F9CA1CD1D119007A4B67 /* MRVLCPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MRVLCPlayer.mm; sourceTree = "<group>"; };
 		42D2F9E51CD1D173007A4B67 /* CCPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlayerViewController.swift; sourceTree = "<group>"; };
+		42D747751CDF24A2006F1565 /* CheetahBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheetahBaseModel.swift; path = iCCUT/ToolKit/CheetahBaseModel.swift; sourceTree = SOURCE_ROOT; };
+		42D747781CDF4C8F006F1565 /* CheetahUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahUtility.swift; sourceTree = "<group>"; };
 		D3A6E1819F2E40EB8645B44E /* Pods-iCCUT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCCUT.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCCUT/Pods-iCCUT.release.xcconfig"; sourceTree = "<group>"; };
 		D3DC1A2A42F94AF4CF1FDE4F /* Pods_iCCUT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCCUT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -626,8 +630,8 @@
 		428B00881CA556B4003C1D03 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				42D747771CDF4C3D006F1565 /* Cheetah */,
 				428B00891CA556B4003C1D03 /* DataBaseManager.swift */,
-				421BA4611CD8A0DD00EA3788 /* CheetahDownload.swift */,
 				428B008B1CA556B4003C1D03 /* ServerOperator.swift */,
 				428B008C1CA556B4003C1D03 /* UpdateNews.swift */,
 			);
@@ -823,6 +827,16 @@
 				42D2F9CA1CD1D119007A4B67 /* MRVLCPlayer.mm */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		42D747771CDF4C3D006F1565 /* Cheetah */ = {
+			isa = PBXGroup;
+			children = (
+				42D747751CDF24A2006F1565 /* CheetahBaseModel.swift */,
+				421BA4611CD8A0DD00EA3788 /* CheetahDownload.swift */,
+				42D747781CDF4C8F006F1565 /* CheetahUtility.swift */,
+			);
+			path = Cheetah;
 			sourceTree = "<group>";
 		};
 		42FAE4F81CB22F4D00495273 /* MRVideoPlayer */ = {
@@ -1077,11 +1091,13 @@
 				42BB50261CDCC62D00F7B94E /* CCEditViewController.swift in Sources */,
 				428B01681CA556B4003C1D03 /* UIScrollView+MJExtension.m in Sources */,
 				428B010F1CA556B4003C1D03 /* CCDownloadCell.swift in Sources */,
+				42D747761CDF24A2006F1565 /* CheetahBaseModel.swift in Sources */,
 				428B01071CA556B4003C1D03 /* CCMainTabbarController.swift in Sources */,
 				42BB501D1CDCB22E00F7B94E /* CCCommentCell.swift in Sources */,
 				428B015F1CA556B4003C1D03 /* MJRefreshAutoStateFooter.m in Sources */,
 				428B01161CA556B4003C1D03 /* CCHTTPClient.swift in Sources */,
 				428B01641CA556B4003C1D03 /* MJRefreshNormalHeader.m in Sources */,
+				42D747791CDF4C8F006F1565 /* CheetahUtility.swift in Sources */,
 				42D2F9E41CD1D119007A4B67 /* MRVLCPlayer.mm in Sources */,
 				421BA45F1CD8A0AF00EA3788 /* UIStoryboard+Extension.swift in Sources */,
 				428B01601CA556B4003C1D03 /* MJRefreshBackGifFooter.m in Sources */,

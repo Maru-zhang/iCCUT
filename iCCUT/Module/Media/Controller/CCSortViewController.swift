@@ -37,7 +37,7 @@ class CCSortViewController: UICollectionViewController,UICollectionViewDelegateF
     
     // MARK: - Private Method
     private func setupView() {
-        
+                
         collectionView?.backgroundColor = UIColor.whiteColor()
         
     }

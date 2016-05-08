@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import SCLAlertView
 
 class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
     
@@ -15,8 +16,6 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     let mr_player: MRVLCPlayer = MRVLCPlayer()
     let comment: UITableView = UITableView()
     
-    private lazy var downloader = CheetahDownload.shareInstance()
-
     // MARK: - Life Cycle
     override func viewDidLoad() {
         
@@ -71,6 +70,7 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         debugPrint("添加新的任务")
         
+        let downloader = CheetahDownload.shareInstance()
         let model = CCVideoDownModel()
         
         model.name = mediaModel?.name
@@ -79,7 +79,12 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         model.sorOne = mediaModel?.sorOne
         model.sortTwo = mediaModel?.sortTwo
         
-        downloader.appendDownloadTaskWithModel(model)
+        
+        if downloader.appendDownloadTaskWithModel(model) {
+            SCLAlertView.showPromptView("已添加到下载队列..")
+        }else {
+            SCLAlertView.showPromptView("该任务正在下载中..")
+        }
         
     }
     
