@@ -217,9 +217,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
     // MARK: - TableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let playerVC = CCPlayerViewController()
-
-        playerVC.mediaModel = dataArray[indexPath.row] as? CCVideoModel
+        let playerVC = CCPlayerViewController(mediaModel: dataArray[indexPath.row] as! CCVideoModel)
         
         self.navigationController?.pushViewController(playerVC, animated: true)
         

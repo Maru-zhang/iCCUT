@@ -12,16 +12,20 @@ import SCLAlertView
 
 class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
     
-    var mediaURL: NSURL! {
-        if let model = mediaModel {
-            return NSURL(string: model.url)
-        }else {
-            return self.mediaURL
-        }
-    }
-    var mediaModel: CCVideoModel?
+
+    /// 视频模型
+    var mediaModel: CCVideoModel!
+    /// 播放器
     let mr_player: MRVLCPlayer = MRVLCPlayer()
+    /// 评论
     let comment: UITableView = UITableView()
+
+    
+    // MARK: - Initialize
+    init(mediaModel: CCVideoModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.mediaModel = mediaModel
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -37,13 +41,7 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         mr_player.dismiss()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    init(videoURL: String) {
-        super.init(nibName: nil, bundle: nil)
-    }
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -62,7 +60,8 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         comment.registerNib(UINib(nibName: String(CCCommentCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(CCCommentCell))
         view.addSubview(comment)
         
-        mr_player.mediaURL = NSURL(string: (mediaModel?.url)!)!
+
+        mr_player.mediaURL = NSURL(string: (mediaModel.url)!)!
         mr_player.showInView(view)
         mr_player.exitBlock = { self.exit() }
         

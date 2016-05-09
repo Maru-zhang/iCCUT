@@ -92,9 +92,6 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
             task.suspend()
             dispatch_async(dispatch_get_main_queue(), { 
                 cell.setStatus(.Pause)
-                let player = CCPlayerViewController()
-                let model  = CCVideoModel()
-                model
             })
         }else if task.state == .Suspended {
             task.resume()
@@ -103,8 +100,16 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
             })
         }else {
             dispatch_async(dispatch_get_main_queue(), {
-                cell.setStatus(.Finish)
+                let url = self.downloader.downloadFile.URLByAppendingPathComponent(task.response!.suggestedFilename!)
+                let model = self.downloader.itemQueue[indexPath.row] as! CCVideoDownModel
+                let newModek = CCVideoModel()
+                newModek.name = model.name
+                newModek.url = url.absoluteString
+                newModek.sorOne = model.sorOne
+                newModek.sortTwo = model.sortTwo
+                self.navigationController?.pushViewController(CCPlayerViewController(mediaModel: newModek), animated: true)
             })
+            
         }
         
     }

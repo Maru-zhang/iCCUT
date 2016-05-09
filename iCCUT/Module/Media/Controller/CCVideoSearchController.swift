@@ -95,8 +95,7 @@ class CCVideoSearchController: UITableViewController,UISearchBarDelegate,UISearc
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.selected = false
 
-        let player = CCPlayerViewController()
-        player.mediaModel = dataSource[indexPath.row] as? CCVideoModel
+        let player = CCPlayerViewController(mediaModel: (dataSource[indexPath.row] as? CCVideoModel)!)
         
         dispatch_async(dispatch_get_main_queue()) { 
             
