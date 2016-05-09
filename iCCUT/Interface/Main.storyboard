@@ -1185,7 +1185,9 @@
                                         </constraint>
                                         <constraint firstItem="XPw-1r-9Ki" firstAttribute="leading" secondItem="q18-25-tH3" secondAttribute="leading" id="7V0-YP-KhX"/>
                                         <constraint firstItem="Mpe-lE-Way" firstAttribute="trailing" secondItem="q18-25-tH3" secondAttribute="trailing" id="Jr3-6c-JVk"/>
-                                        <constraint firstItem="Mpe-lE-Way" firstAttribute="leading" secondItem="XPw-1r-9Ki" secondAttribute="trailing" constant="71" id="KLy-p4-4f0"/>
+                                        <constraint firstItem="Mpe-lE-Way" firstAttribute="leading" secondItem="XPw-1r-9Ki" secondAttribute="trailing" constant="71" id="KLy-p4-4f0">
+                                            <variation key="widthClass=compact" constant="47"/>
+                                        </constraint>
                                         <constraint firstItem="tUH-kA-LwT" firstAttribute="centerY" secondItem="e69-ce-YWE" secondAttribute="centerY" id="Nib-9c-4BQ"/>
                                         <constraint firstItem="Mpe-lE-Way" firstAttribute="top" secondItem="XPw-1r-9Ki" secondAttribute="top" id="Z5y-Z1-DZB"/>
                                         <constraint firstItem="f0N-yp-LBj" firstAttribute="centerY" secondItem="e69-ce-YWE" secondAttribute="centerY" id="bCK-04-jb3"/>

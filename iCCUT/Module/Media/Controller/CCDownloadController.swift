@@ -72,6 +72,7 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
         if task.state == .Completed {
             cell?.progressLable.text = "100%"
             cell?.progressBar.progress = 1.0
+            cell?.setStatus(.Finish)
         }else {
             cell?.progressLable.text = "正在计算中"
             cell?.progressBar.progress = 0.0
@@ -85,22 +86,26 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let task = downloader.taskQueue[indexPath.row]
-        
-        switch task.state {
-        case .Completed:
-            
-            break
-            
-        case .Running:
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CCDownloadCell
+
+        if task.state == .Running {
             task.suspend()
-            break
-        case .Suspended:
+            dispatch_async(dispatch_get_main_queue(), { 
+                cell.setStatus(.Pause)
+                let player = CCPlayerViewController()
+                let model  = CCVideoModel()
+                model
+            })
+        }else if task.state == .Suspended {
             task.resume()
-            break
-        default:
-            break
+            dispatch_async(dispatch_get_main_queue(), {
+                cell.setStatus(.Loading)
+            })
+        }else {
+            dispatch_async(dispatch_get_main_queue(), {
+                cell.setStatus(.Finish)
+            })
         }
-        
         
     }
     
@@ -113,6 +118,8 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
     }
     
     override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        CheetahDownload.shareInstance().itemQueue.removeAtIndex(indexPath.row)
+        CheetahDownload.shareInstance().synchronizeToDisk()
         return "删除视频"
     }
     
@@ -135,11 +142,30 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
     // MARK: - CheetahDownload Delegate
     func cheetahDownloadDidUpdate(task: MARProgressInfo,index: Int64) {
         
-        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: Int(index), inSection: 0)) as! CCDownloadCell
-        cell.progressLable.text = String(format: "%.2f%%",task.progress)
-        cell.progressBar.progress = task.progress
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: Int(index), inSection: 0)) as? CCDownloadCell {
+                cell.progressLable.text = String(format: "%.2f%%",task.progress)
+                cell.progressBar.progress = task.progress
+            }
+        }
+        
         debugPrint("正在下载:\(task.progress)")
     }
+    
+    func cheetahDownloadDidFinishDownloading(task: NSURLSessionDownloadTask, index: Int64) {
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: Int(index), inSection: 0)) as? CCDownloadCell {
+                cell.progressLable.text = "100%"
+                cell.progressBar.progress = 1.0
+                cell.setStatus(.Finish)
+            }
+        }
+    }
+    
+
 
     
 }

@@ -9,6 +9,16 @@
 
 import Foundation
 
+struct Platform {
+    static let isSimulator: Bool = {
+        var isSim = false
+        #if arch(i386) || arch(x86_64)
+            isSim = true
+        #endif
+        return isSim
+    }()
+}
+
 //****** Frame *****************************
 /** 屏幕Bounds */
 let SCREEN_BOUNDS: CGRect = UIScreen.mainScreen().bounds
@@ -65,7 +75,11 @@ let AutoLoginKey = "isAutoLogin"
 //****** Network *****************************
  /// 服务器地址
 var HOST: String {
-    return "http://10.73.5.55:5000"
+    if Platform.isSimulator {
+        return "http://127.0.0.1:5060"
+    }else {
+        return "http://10.73.5.140:5060"
+    }
 }
  /// 学校登录地址
 let SCHOOL_GATE: String = "http://222.28.211.100"

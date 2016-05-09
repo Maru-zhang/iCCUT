@@ -12,6 +12,13 @@ import SCLAlertView
 
 class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
     
+    var mediaURL: NSURL! {
+        if let model = mediaModel {
+            return NSURL(string: model.url)
+        }else {
+            return self.mediaURL
+        }
+    }
     var mediaModel: CCVideoModel?
     let mr_player: MRVLCPlayer = MRVLCPlayer()
     let comment: UITableView = UITableView()
@@ -28,6 +35,18 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         navigationController?.setNavigationBarHidden(false, animated: true)
         
         mr_player.dismiss()
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    init(videoURL: String) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Private Method
@@ -126,7 +145,6 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     // MARK: - TableView Delegate
-    
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }

@@ -31,13 +31,7 @@ class CCDownloadCell: UITableViewCell {
     }
     
     // MARK: - Public Method
-    func configureCellWithModel(model: CCVideoDownModel) {
-//        self.progressBar.progress = model.precent
-//        self.progressLable.text = "\(Int(model.precent * 100))%"
-//        self.videoName.text = model.name as String
-        self.videoName.adjustsFontSizeToFitWidth = true
-    }
-    
+
     func setStatus(status: CCDownloadCellStatus) {
         
         switch status {

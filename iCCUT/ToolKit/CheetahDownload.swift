@@ -44,6 +44,7 @@ private struct Model_Key {
 
 public protocol CheetahDownloadDelegate: NSObjectProtocol {
     func cheetahDownloadDidUpdate(task: MARProgressInfo,index: Int64)
+    func cheetahDownloadDidFinishDownloading(task: NSURLSessionDownloadTask,index: Int64)
 }
 
 public class CheetahDownload: NSObject {
@@ -206,9 +207,14 @@ public class CheetahDownload: NSObject {
 }
 
 // MARK: - NSURLSessionDownloadDelegate
-extension CheetahDownload: NSURLSessionDelegate {
+extension CheetahDownload: NSURLSessionDownloadDelegate {
     
     public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+
+        // 响应代理
+        delegate?.cheetahDownloadDidFinishDownloading(downloadTask, index: Int64(taskQueue.indexOf(downloadTask)!))
+        
+        // 移动下载结果至指定目录
         do {
             try self.fileManager.moveItemAtURL(location, toURL: self.downloadFile.URLByAppendingPathComponent((downloadTask.response?.suggestedFilename)!))
             debugPrint("Download Success!\(location)")
@@ -237,6 +243,9 @@ extension CheetahDownload: NSURLSessionDelegate {
         }
         
     }
+
+    
+    
 }
 
 extension CheetahDownload {
@@ -258,15 +267,19 @@ extension CheetahDownload {
             task.cancelByProducingResumeData({ (resumeData) in
                 
                 let newItem = self.itemQueue[index] as! CCVideoDownModel
-                let realm = try! Realm()
-                
+
                 if let data = resumeData {
                     newItem.mar_data = data
                 }
                 
-                try! realm.write({
-                    realm.add(newItem, update: true)
-                })
+                do {
+                    let realm = try Realm()
+                    try realm.write({
+                        realm.add(newItem, update: true)
+                    })
+                }catch let error as NSError {
+                    debugPrint(error.description)
+                }
                 
             })
             
@@ -282,14 +295,19 @@ extension CheetahDownload {
         
         debugPrint(self.downloadFile)
         
-        let realm = try! Realm()
-        
-        let videos = realm.objects(CCVideoDownModel)
-        
-        self.itemQueue.removeAll()
-
-        for video in videos {
-            self.itemQueue.append(video)
+        do {
+            let realm = try Realm()
+            
+            let videos = realm.objects(CCVideoDownModel)
+            
+            self.itemQueue.removeAll()
+            
+            for video in videos {
+                self.itemQueue.append(video)
+            }
+            
+        }catch let error as NSError {
+            debugPrint(error.description)
         }
         
     }
