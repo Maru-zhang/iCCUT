@@ -47,6 +47,7 @@ public protocol CheetahDownloadDelegate: NSObjectProtocol {
     func cheetahDownloadDidFinishDownloading(task: NSURLSessionDownloadTask,index: Int64)
 }
 
+
 public class CheetahDownload: NSObject {
     
     /// 更新代理
@@ -61,6 +62,8 @@ public class CheetahDownload: NSObject {
     private static let cheetahDownload =  CheetahDownload()
     /// 任务列表
     var taskQueue: [NSURLSessionDownloadTask]
+    /// 统一的realm线程，所有的存储相关都在这里操作
+    static let realmQueue = dispatch_queue_create("com.iCCUT.MainQueue", dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_UTILITY, 0))
     
     /// 缓存列表
     public var itemQueue = [AnyObject]() {
@@ -83,7 +86,7 @@ public class CheetahDownload: NSObject {
                     }
                 }
             }
-            debugPrint("同步了。。")
+            debugPrint("同步...")
         }
     }
 
@@ -110,13 +113,15 @@ public class CheetahDownload: NSObject {
         super.init()
         
         // setup notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeFromDisk), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeFromDisk), name: UIApplicationDidFinishLaunchingNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeToDisk), name: UIApplicationWillTerminateNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeToDisk), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+    
     
     // MARK: - Public Method
     public static func shareInstance() -> CheetahDownload {
@@ -259,33 +264,40 @@ extension CheetahDownload {
      */
     public func synchronizeToDisk() {
         
-        debugPrint("\(CheetahUtility.LogForword):save to disk!")
-
         /*******************************************/
         
-        for (index,task) in self.taskQueue.enumerate() {
-            task.cancelByProducingResumeData({ (resumeData) in
+        dispatch_sync(CheetahDownload.realmQueue, {
+            
+            debugPrint("\(CheetahUtility.LogForword):save to disk!")
+            
+            for (index,task) in self.taskQueue.enumerate() {
+                task.cancelByProducingResumeData({ (resumeData) in
+                    
+                    let newItem = self.itemQueue[index] as! CCVideoDownModel
+                    
+                    if let data = resumeData {
+                        newItem.mar_data = data
+                    }
+                    
+                    do {
+                        let realm = try Realm()
+                        try realm.write({
+                            realm.add(newItem, update: true)
+                        })
+                    }catch let error as NSError {
+                        debugPrint(error.description)
+                    }
+                    
+                })
                 
-                let newItem = self.itemQueue[index] as! CCVideoDownModel
+            }
+        })
 
-                if let data = resumeData {
-                    newItem.mar_data = data
-                }
-                
-                do {
-                    let realm = try Realm()
-                    try realm.write({
-                        realm.add(newItem, update: true)
-                    })
-                }catch let error as NSError {
-                    debugPrint(error.description)
-                }
-                
-            })
+        let _ = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler {
+            
             
         }
         
-
     }
     
     /**
@@ -293,21 +305,26 @@ extension CheetahDownload {
      */
     public func synchronizeFromDisk() {
         
-        debugPrint(self.downloadFile)
-        
-        do {
-            let realm = try Realm()
+        dispatch_async(CheetahDownload.realmQueue) {
             
-            let videos = realm.objects(CCVideoDownModel)
+            debugPrint("\(CheetahUtility.LogForword):Read from disk!")
             
-            self.itemQueue.removeAll()
+            debugPrint(self.downloadFile)
             
-            for video in videos {
-                self.itemQueue.append(video)
+            do {
+                let realm = try Realm()
+                
+                let videos = realm.objects(CCVideoDownModel)
+                
+                self.itemQueue.removeAll()
+                
+                for video in videos {
+                    self.itemQueue.append(video)
+                }
+                
+            }catch let error as NSError {
+                debugPrint(error.description)
             }
-            
-        }catch let error as NSError {
-            debugPrint(error.description)
         }
         
     }
