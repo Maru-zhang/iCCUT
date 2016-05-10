@@ -12,12 +12,12 @@ import Alamofire
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let downloader = CheetahDownload.shareInstance()
     var window: UIWindow?
     /// 下载组件
-    let downloader = CheetahDownload.shareInstance()
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
 
         // 设置全局样式
         setupAppearence()

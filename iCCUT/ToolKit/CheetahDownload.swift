@@ -47,6 +47,9 @@ public protocol CheetahDownloadDelegate: NSObjectProtocol {
     func cheetahDownloadDidFinishDownloading(task: NSURLSessionDownloadTask,index: Int64)
 }
 
+/// 统一的realm线程，所有的存储相关都在这里操作
+//let mar_RealmQueue = dispatch_queue_create("com.iCCUT.MainQueue", dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_UTILITY, 0))
+let mar_RealmQueue = dispatch_get_main_queue()
 
 public class CheetahDownload: NSObject {
     
@@ -62,8 +65,7 @@ public class CheetahDownload: NSObject {
     private static let cheetahDownload =  CheetahDownload()
     /// 任务列表
     var taskQueue: [NSURLSessionDownloadTask]
-    /// 统一的realm线程，所有的存储相关都在这里操作
-    static let realmQueue = dispatch_queue_create("com.iCCUT.MainQueue", dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_UTILITY, 0))
+
     
     /// 缓存列表
     public var itemQueue = [AnyObject]() {
@@ -266,37 +268,36 @@ extension CheetahDownload {
         
         /*******************************************/
         
-        dispatch_sync(CheetahDownload.realmQueue, {
+        dispatch_async(mar_RealmQueue, {
             
-            debugPrint("\(CheetahUtility.LogForword):save to disk!")
-            
-            for (index,task) in self.taskQueue.enumerate() {
-                task.cancelByProducingResumeData({ (resumeData) in
-                    
-                    let newItem = self.itemQueue[index] as! CCVideoDownModel
-                    
-                    if let data = resumeData {
-                        newItem.mar_data = data
-                    }
-                    
-                    do {
-                        let realm = try Realm()
-                        try realm.write({
-                            realm.add(newItem, update: true)
-                        })
-                    }catch let error as NSError {
-                        debugPrint(error.description)
-                    }
-                    
-                })
-                
-            }
-        })
 
-        let _ = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler {
-            
+        })
+        
+        debugPrint("\(CheetahUtility.LogForword):save to disk!")
+        
+        for (index,task) in self.taskQueue.enumerate() {
+            task.cancelByProducingResumeData({ (resumeData) in
+                
+                let newItem = self.itemQueue[index] as! CCVideoDownModel
+                
+                if let data = resumeData {
+                    newItem.mar_data = data
+                }
+                
+                do {
+                    let realm = try Realm()
+                    
+                    try realm.write({
+                        realm.add(newItem, update: true)
+                    })
+                }catch let error as NSError {
+                    debugPrint(error.description)
+                }
+                
+            })
             
         }
+
         
     }
     
@@ -305,27 +306,30 @@ extension CheetahDownload {
      */
     public func synchronizeFromDisk() {
         
-        dispatch_async(CheetahDownload.realmQueue) {
+        dispatch_async(mar_RealmQueue) {
             
-            debugPrint("\(CheetahUtility.LogForword):Read from disk!")
-            
-            debugPrint(self.downloadFile)
-            
-            do {
-                let realm = try Realm()
-                
-                let videos = realm.objects(CCVideoDownModel)
-                
-                self.itemQueue.removeAll()
-                
-                for video in videos {
-                    self.itemQueue.append(video)
-                }
-                
-            }catch let error as NSError {
-                debugPrint(error.description)
-            }
+
         }
+        
+        debugPrint("\(CheetahUtility.LogForword):Read from disk!")
+        
+        debugPrint(self.downloadFile)
+        
+        do {
+            let realm = try Realm()
+                        
+            let videos = realm.objects(CCVideoDownModel)
+            
+            self.itemQueue.removeAll()
+            
+            for video in videos {
+                self.itemQueue.append(video)
+            }
+            
+        }catch let error as NSError {
+            debugPrint(error.description)
+        }
+        
         
     }
     
