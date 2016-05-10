@@ -34,11 +34,8 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        
-        mr_player.dismiss()
+    override func viewDidDisappear(animated: Bool) {
+        self.mr_player.dismiss()
     }
     
 
@@ -108,11 +105,14 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     // MARK: - Event
     @objc private func exit() {
+        
         if let _ = self.navigationController {
             self.navigationController?.popViewControllerAnimated(true)
         }else {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
         
     }
     

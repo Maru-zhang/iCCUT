@@ -62,20 +62,20 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
 
 - (void)dismiss {
     
-    [self.player stop];
-    self.player.delegate = nil;
-    self.player.drawable = nil;
-    self.player = nil;
-    
-    // 注销通知
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         
         if (self.exitBlock) {
             self.exitBlock();
         }
+        
+        [self.player stop];
+        self.player.delegate = nil;
+        self.player.drawable = nil;
+        self.player = nil;
+        
+        // 注销通知
+        [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
         
         [self removeFromSuperview];
 

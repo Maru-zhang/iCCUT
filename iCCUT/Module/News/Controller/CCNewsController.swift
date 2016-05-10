@@ -8,8 +8,9 @@
 
 import UIKit
 
-class CCNewsController: UITableViewController,CirCleViewDelegate {
 
+class CCNewsController: UITableViewController,CirCleViewDelegate {
+    
     /** 视图模型 */
     let viewModel = NewsViewModel()
     /** 图片数组 */
@@ -24,6 +25,7 @@ class CCNewsController: UITableViewController,CirCleViewDelegate {
         setupView()
         
         setupSetting()
+
     }
     
     // MARK: - Private Method
