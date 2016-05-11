@@ -17,6 +17,8 @@ public class CheetahBaseModel: Object {
     dynamic var mar_data: NSData? = nil
     /// 资源的名称
     dynamic var name: String? = nil
+    /// 是否已经下载完毕
+    dynamic var complete: Bool = false
     
     override public static func primaryKey() -> String? {
         return "mar_url"

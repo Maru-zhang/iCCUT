@@ -66,28 +66,59 @@ public class CheetahDownload: NSObject {
     /// 任务列表
     var taskQueue: [NSURLSessionDownloadTask]
     /// 缓存列表
-    public var itemQueue = [AnyObject]() {
+    public var modelQueue = [AnyObject]() {
+        
+        
         didSet {
+            
             taskQueue.removeAll()
-            for item in itemQueue {
-                var task: NSURLSessionDownloadTask? = nil
-
-                if let resumeData = item.valueForKey(Model_Key.data) as? NSData {
-                    task = sesstion.downloadTaskWithResumeData(resumeData)
-                }else {
-                    task = sesstion.downloadTaskWithURL(NSURL(string: item.valueForKey(Model_Key.url) as! String)!)
-                };
+            
+            for item in modelQueue {
                 
-                task?.resume()
-
+                var newTask: NSURLSessionDownloadTask? = nil
+                
+                let model = item as! CCVideoDownModel
+                
+                // 判断该模型是否已经下载完毕
+                if !model.complete {
+                    
+                    if self.resumeTask != nil {
+                        
+                        for task  in self.resumeTask! {
+                            if task.originalRequest?.URL?.absoluteString == model.mar_url {
+                                // 之前下载过
+                                newTask = task
+                            }else {
+                                // 全新的下载任务
+                                newTask = sesstion.downloadTaskWithURL(NSURL(string: model.mar_url!)!)
+                            }
+                        }
+                    }
+                    
+                    
+                }
+                
                 defer {
-                    if !taskQueue.contains(task!) && task != nil {
-                        taskQueue.append(task!)
+                    if !taskQueue.contains(newTask!) && newTask != nil {
+                        taskQueue.append(newTask!)
                     }
                 }
+                
+                
             }
             debugPrint("同步...")
         }
+    }
+    
+    var resumeTask: [NSURLSessionDownloadTask]? {
+        let semaphore : dispatch_semaphore_t = dispatch_semaphore_create(0)
+        var tasks: [NSURLSessionDownloadTask]?
+        sesstion.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) in
+            tasks = downloadTasks
+            dispatch_semaphore_signal(semaphore)
+        }
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        return tasks
     }
 
     private var sesstion: NSURLSession! {
@@ -96,42 +127,6 @@ public class CheetahDownload: NSObject {
             return NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
         }
     }
-    
-    private func downloadTasks() -> NSArray {
-        
-        let semaphore : dispatch_semaphore_t = dispatch_semaphore_create(0)
-        
-        sesstion.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) -> Void in
-            
-            debugPrint("ALL--------------")
-            
-            for t in downloadTasks {
-                debugPrint(t)
-                debugPrint(t.state.rawValue)
-            }
-            
-            debugPrint("END--------------")
-            
-            dispatch_semaphore_signal(semaphore)
-        }
-        
-        sesstion.getAllTasksWithCompletionHandler { (task) in
-            
-            debugPrint("ALL--------------")
-            
-            for t in task {
-                debugPrint(t)
-                debugPrint(t.state.rawValue)
-            }
-            
-            debugPrint("END--------------")
-        }
-        
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-        
-        return NSArray()
-    }
-    
     
     // MARK: - Life Cycle
     override init() {
@@ -151,11 +146,10 @@ public class CheetahDownload: NSObject {
         // setup notification
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeFromDisk), name: UIApplicationDidFinishLaunchingNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeToDisk), name: UIApplicationWillTerminateNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeToDisk), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(test), name: UIApplicationWillTerminateNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeToDisk), name: UIApplicationDidEnterBackgroundNotification, object: nil)
  
         
-        debugPrint(downloadTasks())
     }
     
     deinit {
@@ -185,16 +179,17 @@ public class CheetahDownload: NSObject {
             }
         }
         
-        itemQueue.append(model)
+        modelQueue.append(model)
         return true
     }
+    
     
     /**
      弹出栈顶下载任务
      */
     public func popCanceledDownloadTask() {
         
-        deleteDownloadTask(atIndex: itemQueue.count - 1)
+        deleteDownloadTask(atIndex: modelQueue.count - 1)
     }
     
     /**
@@ -206,7 +201,7 @@ public class CheetahDownload: NSObject {
         
         let task = taskQueue[index]
         task.cancel()
-        itemQueue.popLast()
+        modelQueue.popLast()
         
     }
     
@@ -243,9 +238,52 @@ public class CheetahDownload: NSObject {
             task.cancel()
         }
         
-        itemQueue.removeAll()
+        modelQueue.removeAll()
         synchronizeToDisk()
     }
+    
+    // MARK: - Private Method
+    
+    /**
+     添加一个新的下载模型
+     
+     - parameter model:	下载模型
+     */
+    private func appendNewModel(model: AnyObject) -> Bool {
+        
+        let new = model as! CCVideoDownModel
+        let newTask: NSURLSessionDownloadTask?
+        
+        for mdl in self.modelQueue {
+            let it = mdl as! CCVideoDownModel
+            if it.mar_url == new.mar_url {
+                debugPrint("\(CheetahUtility.ExceptForeword): same model error.")
+                return false
+            }
+        }
+        
+        if !new.complete {
+            
+            if self.resumeTask != nil {
+                
+                for task  in self.resumeTask! {
+                    if task.originalRequest?.URL?.absoluteString == new.mar_url {
+                        // 之前下载过
+                        newTask = task
+                    }else {
+                        // 全新的下载任务
+                        newTask = sesstion.downloadTaskWithURL(NSURL(string: )
+                    }
+                }
+            }
+            
+            
+        }
+        
+        
+        return true
+    }
+    
     
 
     
@@ -297,7 +335,39 @@ extension CheetahDownload {
 
     private static let cacheKey = "com.alloc.maru"
     
-    // MARK: - Private Method
+
+    /**
+     从本地读取所有的下载信息
+     */
+    public func synchronizeFromDisk() {
+        
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            debugPrint("\(CheetahUtility.LogForword):Read from disk!")
+            
+            debugPrint(self.downloadFile)
+            
+            do {
+                let realm = try Realm()
+                
+                let videos = realm.objects(CCVideoDownModel)
+                
+                self.modelQueue.removeAll()
+                
+                for video in videos {
+                    self.modelQueue.append(video)
+                }
+                
+            }catch let error as NSError {
+                debugPrint(error.description)
+            }
+            
+        }
+        
+        
+        
+    }
     
     /**
      保存所有的下载信息到本地
@@ -306,70 +376,40 @@ extension CheetahDownload {
         
         /*******************************************/
         
-        dispatch_async(mar_RealmQueue, {
+        dispatch_async(dispatch_get_main_queue(), {
             
+            debugPrint("\(CheetahUtility.LogForword):save to disk!")
+            
+            for (index,task) in self.taskQueue.enumerate() {
+                task.cancelByProducingResumeData({ (resumeData) in
+                    
+                    let newItem = self.modelQueue[index] as! CCVideoDownModel
+                    
+                    if let data = resumeData {
+                        newItem.mar_data = data
+                    }
+                    
+                    do {
+                        let realm = try Realm()
+                        
+                        try realm.write({
+                            realm.add(newItem, update: true)
+                        })
+                    }catch let error as NSError {
+                        debugPrint(error.description)
+                    }
+                    
+                })
+                
+            }
 
         })
         
-        debugPrint("\(CheetahUtility.LogForword):save to disk!")
-        
-        for (index,task) in self.taskQueue.enumerate() {
-            task.cancelByProducingResumeData({ (resumeData) in
-                
-                let newItem = self.itemQueue[index] as! CCVideoDownModel
-                
-                if let data = resumeData {
-                    newItem.mar_data = data
-                }
-                
-                do {
-                    let realm = try Realm()
-                    
-                    try realm.write({
-                        realm.add(newItem, update: true)
-                    })
-                }catch let error as NSError {
-                    debugPrint(error.description)
-                }
-                
-            })
-            
-        }
+
 
         
     }
     
-    /**
-     从本地读取所有的下载信息
-     */
-    public func synchronizeFromDisk() {
-        
-        dispatch_async(mar_RealmQueue) {
-            
-
-        }
-        
-        debugPrint("\(CheetahUtility.LogForword):Read from disk!")
-        
-        debugPrint(self.downloadFile)
-        
-        do {
-            let realm = try Realm()
-                        
-            let videos = realm.objects(CCVideoDownModel)
-            
-            self.itemQueue.removeAll()
-            
-            for video in videos {
-                self.itemQueue.append(video)
-            }
-            
-        }catch let error as NSError {
-            debugPrint(error.description)
-        }
-        
-        
-    }
     
 }
 
