@@ -65,8 +65,6 @@ public class CheetahDownload: NSObject {
     private static let cheetahDownload =  CheetahDownload()
     /// 任务列表
     var taskQueue: [NSURLSessionDownloadTask]
-
-    
     /// 缓存列表
     public var itemQueue = [AnyObject]() {
         didSet {
@@ -94,14 +92,50 @@ public class CheetahDownload: NSObject {
 
     private var sesstion: NSURLSession! {
         get {
-            let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let config = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("com.alloc.maru")
             return NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
         }
     }
     
+    private func downloadTasks() -> NSArray {
+        
+        let semaphore : dispatch_semaphore_t = dispatch_semaphore_create(0)
+        
+        sesstion.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) -> Void in
+            
+            debugPrint("ALL--------------")
+            
+            for t in downloadTasks {
+                debugPrint(t)
+                debugPrint(t.state.rawValue)
+            }
+            
+            debugPrint("END--------------")
+            
+            dispatch_semaphore_signal(semaphore)
+        }
+        
+        sesstion.getAllTasksWithCompletionHandler { (task) in
+            
+            debugPrint("ALL--------------")
+            
+            for t in task {
+                debugPrint(t)
+                debugPrint(t.state.rawValue)
+            }
+            
+            debugPrint("END--------------")
+        }
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        
+        return NSArray()
+    }
+    
+    
     // MARK: - Life Cycle
     override init() {
-        
+
         maxWork = 3
         taskQueue = [NSURLSessionDownloadTask]()
         fileManager = NSFileManager.defaultManager()
@@ -115,9 +149,13 @@ public class CheetahDownload: NSObject {
         super.init()
         
         // setup notification
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeFromDisk), name: UIApplicationDidFinishLaunchingNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeToDisk), name: UIApplicationWillTerminateNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(synchronizeToDisk), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+ 
+        
+        debugPrint(downloadTasks())
     }
     
     deinit {
