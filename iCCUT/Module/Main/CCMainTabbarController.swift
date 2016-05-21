@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
 
@@ -17,6 +18,7 @@ class CCMainTabbarController: UITabBarController,UITabBarControllerDelegate {
         setupView()
         
         setupSetting()
+        
         
     }
     

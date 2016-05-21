@@ -47,8 +47,8 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
     // MARK: - UITableview Datasource
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.tableViewDisplay(emptyMessage: "暂时没有任何的缓存视频！", count: downloader.itemQueue.count)
-        return downloader.itemQueue.count
+        tableView.tableViewDisplay(emptyMessage: "暂时没有任何的缓存视频！", count: downloader.modelQueue.count)
+        return downloader.modelQueue.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -63,13 +63,11 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
         cell?.selectionStyle = .None
 
         // 获取模型
-        let model = downloader.itemQueue[indexPath.row] as! CCVideoDownModel
-        let task  = downloader.taskQueue[indexPath.row]
-        
+        let model = downloader.modelQueue[indexPath.row] as! CCVideoDownModel
         
         // 配置模型
         cell!.videoName.text = model.name
-        if task.state == .Completed {
+        if model.complete {
             cell?.progressLable.text = "100%"
             cell?.progressBar.progress = 1.0
             cell?.setStatus(.Finish)
@@ -85,33 +83,43 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
     // MARK: - UITableView Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let task = downloader.taskQueue[indexPath.row]
+        let model = downloader.modelQueue[indexPath.row]
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! CCDownloadCell
-
-        if task.state == .Running {
-            task.suspend()
-            dispatch_async(dispatch_get_main_queue(), { 
-                cell.setStatus(.Pause)
-            })
-        }else if task.state == .Suspended {
-            task.resume()
+        
+        if model.complete {
+            
+            //已经下载完毕
+            
             dispatch_async(dispatch_get_main_queue(), {
-                cell.setStatus(.Loading)
-            })
-        }else {
-            dispatch_async(dispatch_get_main_queue(), {
-                let url = self.downloader.downloadFile.URLByAppendingPathComponent(task.response!.suggestedFilename!)
-                let model = self.downloader.itemQueue[indexPath.row] as! CCVideoDownModel
+                let model = self.downloader.modelQueue[indexPath.row] as! CCVideoDownModel
                 let newModek = CCVideoModel()
                 newModek.name = model.name
-                newModek.url = url.absoluteString
+                newModek.url = model.mar_url
                 newModek.sorOne = model.sorOne
                 newModek.sortTwo = model.sortTwo
                 self.navigationController?.pushViewController(CCPlayerViewController(mediaModel: newModek), animated: true)
             })
+        }else {
             
+            if let task = downloader.getModelMappingTask(model) {
+                // 存在对应的Task
+                if task.state == .Running {
+                    task.suspend()
+                    dispatch_async(dispatch_get_main_queue(), {
+                        cell.setStatus(.Pause)
+                    })
+                }else if task.state == .Suspended {
+                    task.resume()
+                    dispatch_async(dispatch_get_main_queue(), {
+                        cell.setStatus(.Loading)
+                    })
+                }
+                
+            }
         }
         
+
+
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
@@ -123,8 +131,6 @@ class CCDownloadController: UITableViewController,CheetahDownloadDelegate {
     }
     
     override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
-        CheetahDownload.shareInstance().itemQueue.removeAtIndex(indexPath.row)
-        CheetahDownload.shareInstance().synchronizeToDisk()
         return "删除视频"
     }
     

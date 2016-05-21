@@ -48,8 +48,7 @@ public protocol CheetahDownloadDelegate: NSObjectProtocol {
 }
 
 /// 统一的realm线程，所有的存储相关都在这里操作
-//let mar_RealmQueue = dispatch_queue_create("com.iCCUT.MainQueue", dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_UTILITY, 0))
-let mar_RealmQueue = dispatch_get_main_queue()
+let mar_RealmQueue = dispatch_queue_create("com.iCCUT.MainQueue", DISPATCH_QUEUE_SERIAL)
 
 public class CheetahDownload: NSObject {
     
@@ -63,76 +62,27 @@ public class CheetahDownload: NSObject {
     private let fileManager: NSFileManager!
     /// 单例对象
     private static let cheetahDownload =  CheetahDownload()
-    /// 任务列表
-    var taskQueue: [NSURLSessionDownloadTask]
     /// 缓存列表
-    public var modelQueue = [AnyObject]() {
-        
-        
-        didSet {
-            
-            taskQueue.removeAll()
-            
-            for item in modelQueue {
-                
-                var newTask: NSURLSessionDownloadTask? = nil
-                
-                let model = item as! CCVideoDownModel
-                
-                // 判断该模型是否已经下载完毕
-                if !model.complete {
-                    
-                    if self.resumeTask != nil {
-                        
-                        for task  in self.resumeTask! {
-                            if task.originalRequest?.URL?.absoluteString == model.mar_url {
-                                // 之前下载过
-                                newTask = task
-                            }else {
-                                // 全新的下载任务
-                                newTask = sesstion.downloadTaskWithURL(NSURL(string: model.mar_url!)!)
-                            }
-                        }
-                    }
-                    
-                    
-                }
-                
-                defer {
-                    if !taskQueue.contains(newTask!) && newTask != nil {
-                        taskQueue.append(newTask!)
-                    }
-                }
-                
-                
-            }
-            debugPrint("同步...")
-        }
-    }
-    
+    public var modelQueue = [CheetahBaseModel]()
+    /// 未完成的任务
     var resumeTask: [NSURLSessionDownloadTask]? {
         let semaphore : dispatch_semaphore_t = dispatch_semaphore_create(0)
         var tasks: [NSURLSessionDownloadTask]?
         sesstion.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) in
             tasks = downloadTasks
+            debugPrint(tasks)
             dispatch_semaphore_signal(semaphore)
         }
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         return tasks
     }
-
-    private var sesstion: NSURLSession! {
-        get {
-            let config = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("com.alloc.maru")
-            return NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
-        }
-    }
+    /// 后台Session
+    private var sesstion: NSURLSession!
     
     // MARK: - Life Cycle
     override init() {
 
         maxWork = 3
-        taskQueue = [NSURLSessionDownloadTask]()
         fileManager = NSFileManager.defaultManager()
         downloadFile = fileManager.URLsForDirectory(NSSearchPathDirectory.DownloadsDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first
         do {
@@ -142,6 +92,8 @@ public class CheetahDownload: NSObject {
         }
         
         super.init()
+        
+        sesstion = NSURLSession(configuration: NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("com.alloc.maru"), delegate: self, delegateQueue: nil)
         
         // setup notification
         
@@ -164,23 +116,36 @@ public class CheetahDownload: NSObject {
     }
     
     /**
+     根据模型找到映射的Task
+     
+     - parameter model:	模型
+     
+     - returns: NSURLSessionDownloadTask
+     */
+    public func getModelMappingTask(model: CheetahBaseModel) -> NSURLSessionDownloadTask? {
+        
+        var result: NSURLSessionDownloadTask? = nil
+        
+        for task in resumeTask! {
+            if task.originalRequest?.URL?.absoluteString == model.mar_url {
+                result = task
+                break
+            }
+        }
+        
+        return result
+    }
+    
+    /**
      添加一个下载任务,添加成功返回True，失败返回False
      
      - parameter model:	下载信息模型
      */
-    public func appendDownloadTaskWithModel<T: Object>(model: T) -> Bool {
+    public func appendDownloadTaskWithModel<T: CheetahBaseModel>(model: T) -> Bool {
         
-        if let newURL = model.valueForKey("mar_url") as? String {
-            for task in taskQueue {
-                if task.currentRequest?.URL?.absoluteString == newURL {
-                    debugPrint("Have same task url in taskQueue!")
-                    return false
-                }
-            }
-        }
+        synchronizeToDiskWithModel(model)
         
-        modelQueue.append(model)
-        return true
+        return appendNewModel(model)
     }
     
     
@@ -199,9 +164,6 @@ public class CheetahDownload: NSObject {
      */
     public func deleteDownloadTask(atIndex index: NSInteger) {
         
-        let task = taskQueue[index]
-        task.cancel()
-        modelQueue.popLast()
         
     }
     
@@ -212,9 +174,10 @@ public class CheetahDownload: NSObject {
      */
     public func startAllTask() {
         
-        for task in taskQueue {
-            task.resume();
+        for task in resumeTask! {
+            task.resume()
         }
+        
     }
     
     /**
@@ -222,10 +185,9 @@ public class CheetahDownload: NSObject {
      */
     public func pauseAllTask() {
         
-        for task in taskQueue {
+        for task in resumeTask! {
             task.suspend()
         }
-        
         
     }
     
@@ -234,25 +196,20 @@ public class CheetahDownload: NSObject {
      */
     public func resetAllTask() {
         
-        for task in taskQueue {
-            task.cancel()
-        }
-        
-        modelQueue.removeAll()
-        synchronizeToDisk()
+
     }
     
     // MARK: - Private Method
     
     /**
-     添加一个新的下载模型
+     从数据库读取的时候，添加一个新的下载模型
      
      - parameter model:	下载模型
      */
-    private func appendNewModel(model: AnyObject) -> Bool {
+    private func appendNewModel(model: CheetahBaseModel) -> Bool {
         
         let new = model as! CCVideoDownModel
-        let newTask: NSURLSessionDownloadTask?
+        var newTask: NSURLSessionDownloadTask? = nil
         
         for mdl in self.modelQueue {
             let it = mdl as! CCVideoDownModel
@@ -264,23 +221,25 @@ public class CheetahDownload: NSObject {
         
         if !new.complete {
             
-            if self.resumeTask != nil {
-                
-                for task  in self.resumeTask! {
-                    if task.originalRequest?.URL?.absoluteString == new.mar_url {
-                        // 之前下载过
-                        newTask = task
-                    }else {
-                        // 全新的下载任务
-                        newTask = sesstion.downloadTaskWithURL(NSURL(string: )
-                    }
+            for task  in self.resumeTask! {
+                if task.originalRequest?.URL?.absoluteString == new.mar_url {
+                    // 之前下载过
+                    newTask = task
+                    break
                 }
             }
             
+            if newTask == nil {
+                newTask = sesstion.downloadTaskWithURL(NSURL(string: new.mar_url!)!)
+            }
+            
+            // 开始下载任务
+            newTask?.resume()
             
         }
         
-        
+        modelQueue.append(new)
+    
         return true
     }
     
@@ -293,9 +252,21 @@ public class CheetahDownload: NSObject {
 extension CheetahDownload: NSURLSessionDownloadDelegate {
     
     public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+        
 
-        // 响应代理
-        delegate?.cheetahDownloadDidFinishDownloading(downloadTask, index: Int64(taskQueue.indexOf(downloadTask)!))
+        for (index,model) in self.modelQueue.enumerate() {
+            
+            if model.mar_url == downloadTask.originalRequest?.URL?.absoluteString {
+                
+                model.complete = true
+                model.mar_url = self.downloadFile.URLByAppendingPathComponent((downloadTask.response?.suggestedFilename)!).absoluteString
+                synchronizeToDiskWithModel(model)
+                // 响应代理
+                delegate?.cheetahDownloadDidFinishDownloading(downloadTask, index: Int64(index))
+                break
+            }
+            
+        }
         
         // 移动下载结果至指定目录
         do {
@@ -308,8 +279,11 @@ extension CheetahDownload: NSURLSessionDownloadDelegate {
     
     public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         
-        for (index,task) in taskQueue.enumerate() {
-            if task.isEqual(downloadTask) {
+        debugPrint(bytesWritten)
+        
+        for (index,model) in modelQueue.enumerate() {
+            
+            if model.mar_url == downloadTask.originalRequest?.URL?.absoluteString {
                 
                 // 计算下载百分比
                 let receivedBytesCount = Double(downloadTask.countOfBytesReceived)
@@ -322,7 +296,9 @@ extension CheetahDownload: NSURLSessionDownloadDelegate {
                 let info = MARProgressInfo(progress: progress, speed: speed)
                 
                 delegate?.cheetahDownloadDidUpdate(info, index: Int64(index))
+                break
             }
+            
         }
         
     }
@@ -342,12 +318,10 @@ extension CheetahDownload {
     public func synchronizeFromDisk() {
         
         
-        dispatch_async(dispatch_get_main_queue()) {
+        dispatch_async(mar_RealmQueue) {
             
-            debugPrint("\(CheetahUtility.LogForword):Read from disk!")
-            
-            debugPrint(self.downloadFile)
-            
+            debugPrint("\(CheetahUtility.LogForword):read from \(self.downloadFile)!")
+
             do {
                 let realm = try Realm()
                 
@@ -356,8 +330,9 @@ extension CheetahDownload {
                 self.modelQueue.removeAll()
                 
                 for video in videos {
-                    self.modelQueue.append(video)
+                    self.appendNewModel(video)
                 }
+                
                 
             }catch let error as NSError {
                 debugPrint(error.description)
@@ -365,48 +340,31 @@ extension CheetahDownload {
             
         }
         
-        
-        
     }
     
     /**
      保存所有的下载信息到本地
      */
-    public func synchronizeToDisk() {
+    public func synchronizeToDiskWithModel(model: Object) {
         
         /*******************************************/
         
-        dispatch_async(dispatch_get_main_queue(), {
+        dispatch_async(mar_RealmQueue) {
             
             debugPrint("\(CheetahUtility.LogForword):save to disk!")
             
-            for (index,task) in self.taskQueue.enumerate() {
-                task.cancelByProducingResumeData({ (resumeData) in
-                    
-                    let newItem = self.modelQueue[index] as! CCVideoDownModel
-                    
-                    if let data = resumeData {
-                        newItem.mar_data = data
-                    }
-                    
-                    do {
-                        let realm = try Realm()
-                        
-                        try realm.write({
-                            realm.add(newItem, update: true)
-                        })
-                    }catch let error as NSError {
-                        debugPrint(error.description)
-                    }
-                    
-                })
+            do {
+                let realm = try Realm()
+                realm.beginWrite()
+                realm.add(model,update: true)
+                try! realm.commitWrite()
                 
+            }catch let error as NSError {
+                debugPrint(error)
             }
 
-        })
+        }
         
-
-
         
     }
     
