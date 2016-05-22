@@ -79,4 +79,27 @@ class NetworkTests: XCTestCase {
             debugPrint(error)
         }
     }
+    
+    func testRegisterServiceSuccess() {
+        let expectation = expectationWithDescription("...")
+        
+        Alamofire
+            .request(.POST, "http:localhost:5050/api/register", parameters: ["email":"44521232@qq.com","password":"321321321","username":"测试1"], encoding: .URLEncodedInURL, headers: nil)
+            .responseJSON { (response) in
+                
+                XCTAssertNotNil(response.result.value)
+                let json = JSON(response.result.value!)
+                XCTAssertEqual(json["code"].stringValue, "200")
+                XCTAssertEqual(json["msg"], "Register success!")
+                XCTAssertNotNil(json["data"])
+                expectation.fulfill()
+                
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) in
+            debugPrint(error)
+        }
+    }
+    
+
 }

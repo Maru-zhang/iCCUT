@@ -80,6 +80,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: NAV_FONT_COLOR]
         //设置返回颜色
         UINavigationBar.appearance().tintColor = NAV_FONT_COLOR
+        
+        
+        //设置字体颜色
+        let attributesN =  [NSForegroundColorAttributeName: UIColor.grayColor()]
+        let attributesH = [NSForegroundColorAttributeName: NAV_COLOR]
+        //赋值字体颜色
+        UITabBarItem.appearance().setTitleTextAttributes(attributesN, forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes(attributesH, forState: UIControlState.Selected)
     }
 
 
