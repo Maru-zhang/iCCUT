@@ -104,16 +104,16 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
         }
         
         // 请求参数
-        var parmeter: [String: String] = ["index": "\(currentIndex)","leve1": leve1!,"leve2":""]
+        var parmeter: [String: String] = ["index": "\(currentIndex)","category": API_Route.TypeMapping[leve1]!]
         
         
         // 是否有leve2然后生成不同的参数
         if leve2 != nil {
-            parmeter["leve2"] = leve2
+            parmeter["mark"] = leve2
         }
         
         // 发送请求
-        Alamofire.request(.POST, "\(HOST)/iCCUT/MediaList", parameters:parmeter,encoding: .URLEncodedInURL)
+        Alamofire.request(.POST, API_Route.Videos, parameters:parmeter,encoding: .URLEncodedInURL)
             .responseJSON { response in
                 
                 switch response.result {
@@ -130,7 +130,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                         let json = JSON(value)
                         
                         //如果success不为1那么就相关处理
-                        guard json["success"].boolValue else {
+                        guard json["code"].intValue == 200 else {
                             SCLAlertView().showInfo("温馨提示", subTitle: json["msg"].stringValue)
                             //停止刷新
                             self.tableView.mj_footer.endRefreshing()
@@ -138,7 +138,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                             return
                         }
                         
-                        for (_,subJson): (String,JSON) in json["datas"] {
+                        for (_,subJson): (String,JSON) in json["data"] {
                             let videoItem: CCVideoModel = CCVideoModel()
                             videoItem.name = subJson["title"].stringValue
                             videoItem.url = subJson["url"].stringValue

@@ -36,7 +36,7 @@ class NewsViewModel: TableModelType {
      */
     func fetchData(reset: Bool) {
         
-        Alamofire.request(.POST, "\(HOST)/iCCUT/NewsList",parameters:["index": pageNum],encoding: .URLEncodedInURL)
+        Alamofire.request(.POST, API_Route.News,parameters:["index": pageNum],encoding: .URLEncodedInURL)
             .responseJSON { (response) -> Void in
                 
                 if reset {
@@ -50,12 +50,12 @@ class NewsViewModel: TableModelType {
                         
                         let json = JSON(response.result.value!)
                         
-                        for (_,itemJson) in json["datas"] {
+                        for (_,itemJson) in json["data"] {
                             // 遍历添加数据
                             var newsModel: NewsModel = NewsModel()
                             newsModel.title = itemJson["title"].stringValue
                             newsModel.url = itemJson["url"].stringValue
-                            newsModel.time = itemJson["time"].stringValue
+                            newsModel.time = itemJson["datetime"].stringValue
                             self.dataSource.append(newsModel)
                             
                         }

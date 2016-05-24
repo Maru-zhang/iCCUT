@@ -76,9 +76,9 @@ let AutoLoginKey = "isAutoLogin"
  /// 服务器地址
 var HOST: String {
     if Platform.isSimulator {
-        return "http://127.0.0.1:5060"
+        return "http://127.0.0.1:5050"
     }else {
-        return "http://10.73.5.140:5060"
+        return "http://10.73.5.140:5050"
     }
 }
  /// 学校登录地址
