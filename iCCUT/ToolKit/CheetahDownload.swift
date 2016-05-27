@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 /**
  下载器的下载设置状态
@@ -322,30 +321,31 @@ extension CheetahDownload {
             
             debugPrint("\(CheetahUtility.LogForword):read from \(self.downloadFile)!")
 
-            do {
-                let realm = try Realm()
-                
-                let videos = realm.objects(CCVideoDownModel)
-                
-                self.modelQueue.removeAll()
-                
-                for video in videos {
-                    self.appendNewModel(video)
-                }
-                
-                
-            }catch let error as NSError {
-                debugPrint(error.description)
-            }
+//            do {
+//                let realm = try Realm()
+//                
+//                let videos = realm.objects(CCVideoDownModel)
+//                
+//                self.modelQueue.removeAll()
+//                
+//                for video in videos {
+//                    self.appendNewModel(video)
+//                }
+//                
+//                
+//            }catch let error as NSError {
+//                debugPrint(error.description)
+//            }
             
         }
         
     }
     
+    
     /**
      保存所有的下载信息到本地
      */
-    public func synchronizeToDiskWithModel(model: Object) {
+    public func synchronizeToDiskWithModel(model: AnyObject) {
         
         /*******************************************/
         
@@ -353,15 +353,15 @@ extension CheetahDownload {
             
             debugPrint("\(CheetahUtility.LogForword):save to disk!")
             
-            do {
-                let realm = try Realm()
-                realm.beginWrite()
-                realm.add(model,update: true)
-                try! realm.commitWrite()
-                
-            }catch let error as NSError {
-                debugPrint(error)
-            }
+//            do {
+//                let realm = try Realm()
+//                realm.beginWrite()
+//                realm.add(model,update: true)
+//                try! realm.commitWrite()
+//                
+//            }catch let error as NSError {
+//                debugPrint(error)
+//            }
 
         }
         

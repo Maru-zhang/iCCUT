@@ -8,12 +8,10 @@
 
 import UIKit
 import Alamofire
-import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let downloader = CheetahDownload.shareInstance()
     var window: UIWindow?
     /// 下载组件
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

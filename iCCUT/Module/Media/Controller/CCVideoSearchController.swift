@@ -16,7 +16,7 @@ class CCVideoSearchController: UITableViewController,UISearchBarDelegate,UISearc
     /// 唯一标识
     let identifier = "searchCell"
     /// 数据源
-    var dataSource = NSMutableArray()
+    var dataSource = [CCVideoModel]()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -71,7 +71,7 @@ class CCVideoSearchController: UITableViewController,UISearchBarDelegate,UISearc
                 cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
             }
             
-            let model: CCVideoModel = dataSource[indexPath.row] as! CCVideoModel
+            let model: CCVideoModel = dataSource[indexPath.row]
             
             cell!.textLabel?.text = model.name
             
@@ -115,12 +115,11 @@ class CCVideoSearchController: UITableViewController,UISearchBarDelegate,UISearc
     // MARK: - UISearchBar Delegate
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        // 请求操作
-        ServerOperator.getSearchVideoList(searchText) { (videoArray) -> Void in
-            
-            self.dataSource = videoArray
-            
+        CCNetService.fetchSearchResult(searchText, success: { [unowned self] (models) in
+            self.dataSource = models
             self.resultVC.tableView.reloadData()
+            }) { (msg) in
+                
         }
     }
     

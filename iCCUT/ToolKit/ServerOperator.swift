@@ -29,7 +29,7 @@ class ServerOperator: NSObject {
         completeHandler: (videoArray: NSMutableArray
         ) -> Void) {
         
-        let parameter = ["keyword": keyword]
+        let parameter = ["key": keyword]
         
         basicOperator(searchAddress, parameters: parameter) { (isSuccess, response) -> Void in
             

@@ -5,13 +5,15 @@
 //  Created by Maru on 15/9/24.
 //  Copyright © 2015年 Alloc. All rights reserved.
 //
+import ObjectMapper
 
-class CCVideoModel: NSObject {
+class CCVideoModel: NSObject,Mappable {
     
     var name: String!
     var url: String!
     var sorOne: String!
     var sortTwo: String!
+    var cover: String!
     
     
     func configureWithDic(dic: NSDictionary) {
@@ -24,5 +26,22 @@ class CCVideoModel: NSObject {
         self.url = urlString
         self.sorOne = sort_1
         self.sortTwo = sort_2
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    required init?(_ map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
+        name <- map["title"]
+        url <- map["url"]
+        sorOne <- map["leve1"]
+        sortTwo <- map["leve2"]
+        cover <- map["cover"]
     }
 }

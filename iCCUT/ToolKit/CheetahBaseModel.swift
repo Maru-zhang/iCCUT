@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import RealmSwift
 
-public class CheetahBaseModel: Object {
+public class CheetahBaseModel {
 
     /// 资源的URL地址
     dynamic var mar_url: String? = nil
@@ -20,8 +19,8 @@ public class CheetahBaseModel: Object {
     /// 是否已经下载完毕
     dynamic var complete: Bool = false
     
-    override public static func primaryKey() -> String? {
-        return "mar_url"
-    }
+//    override public static func primaryKey() -> String? {
+//        return "mar_url"
+//    }
     
 }

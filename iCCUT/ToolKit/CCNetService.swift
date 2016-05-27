@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import ObjectMapper
 
 struct API_Route {
     
@@ -19,17 +20,43 @@ struct API_Route {
     static let News = "\(HOST)/api/newslist"
     /// 视频列表路由
     static let Videos = "\(HOST)/api/vides"
+    /// 视频搜索路由
+    static let Search = "\(HOST)/api/videoSearch"
 }
 
 class CCNetService {
     
     static func fetchNewsList(page: Int,success:()->(),fail:()->()) {
-        Alamofire.request(.GET, "http://127.0.0.1:5050/api/newslist?index=0", parameters: nil, encoding: .URLEncodedInURL)
+        Alamofire.request(.POST, API_Route.News, parameters: nil, encoding: .URLEncodedInURL)
             .responseJSON { (response) in
                 switch response.result {
                 case .Success(_):
                     let json = JSON(response.result.value!)
 
+                    break
+                case .Failure(_):
+                    break
+                }
+        }
+    }
+    
+    static func fetchSearchResult(key: String,success: ([CCVideoModel])->(),fail: (msg: String)->()) {
+        Alamofire.request(.POST, API_Route.Search,parameters: ["key": key],encoding: .URLEncodedInURL)
+            .responseJSON { (response) in
+                switch response.result {
+                case .Success(_):
+                    
+                    let json = JSON(response.result.value!)
+                    
+                    guard json["code"] == 200 else {
+                        fail(msg: json["msg"].stringValue)
+                        return
+                    }
+                    
+                    let modelArr = Mapper<CCVideoModel>().mapArray(json["data"].rawString())
+                    
+                    success(modelArr!)
+                    
                     break
                 case .Failure(_):
                     break

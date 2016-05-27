@@ -2,10 +2,15 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-target "iCCUT" do
-pod 'RealmSwift'
-pod 'Alamofire', '~> 3.0'
-pod 'Cartography', '~> 0.6.0'
-pod 'SwiftyJSON', '~> 2.3.2'
-pod 'SCLAlertView'
+def pods
+    #pod 'RealmSwift'
+    pod 'Alamofire', '~> 3.0'
+    pod 'Cartography', '~> 0.6.0'
+    pod 'SwiftyJSON', '~> 2.3.2'
+    pod 'ObjectMapper', '~> 1.2'
+    pod 'SCLAlertView'
+end
+
+target 'iCCUT' do
+    pods
 end

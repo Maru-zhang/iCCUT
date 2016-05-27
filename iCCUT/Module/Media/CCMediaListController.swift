@@ -139,7 +139,7 @@ class CCMediaListController: UITableViewController,CCSortViewProtocol {
                         }
                         
                         for (_,subJson): (String,JSON) in json["data"] {
-                            let videoItem: CCVideoModel = CCVideoModel()
+                            let videoItem = CCVideoModel()
                             videoItem.name = subJson["title"].stringValue
                             videoItem.url = subJson["url"].stringValue
                             self.dataArray.addObject(videoItem)
