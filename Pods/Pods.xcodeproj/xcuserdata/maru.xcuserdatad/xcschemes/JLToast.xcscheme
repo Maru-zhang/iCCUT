@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9269086B0DDD07549529D7A3'
-               BlueprintName = 'SCLAlertView'
+               BlueprintIdentifier = '0B2780E04669FFCB72AEEDF5'
+               BlueprintName = 'JLToast'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SCLAlertView.framework'>
+               BuildableName = 'JLToast.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

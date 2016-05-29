@@ -9,24 +9,12 @@ import ObjectMapper
 
 class CCVideoModel: NSObject,Mappable {
     
+    var id: Int!
     var name: String!
     var url: String!
     var sorOne: String!
     var sortTwo: String!
     var cover: String!
-    
-    
-    func configureWithDic(dic: NSDictionary) {
-        let urlString: String = dic["url"] as! String
-        let name: String = dic["name"] as! String
-        let sort_1: String = dic["sortOne"] as! String
-        let sort_2: String = dic["sortTwo"] as! String
-        
-        self.name = name
-        self.url = urlString
-        self.sorOne = sort_1
-        self.sortTwo = sort_2
-    }
     
     override init() {
         super.init()
@@ -38,6 +26,7 @@ class CCVideoModel: NSObject,Mappable {
     
     func mapping(map: Map) {
         
+        id <- map["id"]
         name <- map["title"]
         url <- map["url"]
         sorOne <- map["leve1"]

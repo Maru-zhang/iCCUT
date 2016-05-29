@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-iCCUT/Alamofire.framework"
   install_framework "Pods-iCCUT/Cartography.framework"
+  install_framework "Pods-iCCUT/JLToast.framework"
   install_framework "Pods-iCCUT/ObjectMapper.framework"
   install_framework "Pods-iCCUT/SCLAlertView.framework"
   install_framework "Pods-iCCUT/SwiftyJSON.framework"
@@ -93,6 +94,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-iCCUT/Alamofire.framework"
   install_framework "Pods-iCCUT/Cartography.framework"
+  install_framework "Pods-iCCUT/JLToast.framework"
   install_framework "Pods-iCCUT/ObjectMapper.framework"
   install_framework "Pods-iCCUT/SCLAlertView.framework"
   install_framework "Pods-iCCUT/SwiftyJSON.framework"

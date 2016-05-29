@@ -17,8 +17,12 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var mediaModel: CCVideoModel!
     /// 播放器
     let mr_player: MRVLCPlayer = MRVLCPlayer()
-    /// 评论
+    /// 评论列表
     let comment: UITableView = UITableView()
+    /// 评论模型
+    var source: [CCComment] = []
+    /// 页码
+    var page: Int = 0
 
     
     // MARK: - Initialize
@@ -62,21 +66,12 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         mr_player.showInView(view)
         mr_player.exitBlock = { self.exit() }
         
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
-        constrain(mr_player, comment) { (player, comment) in
-            
-            player.top    == (player.superview?.top)!
-            player.left   == (player.superview?.left)!
-            player.width  == (player.superview?.width)!
-            player.height == (player.superview?.width)! * (9/16)
-            
-            comment.top   == player.bottom
-            comment.left  == player.left
-            comment.right == player.right
-            comment.bottom == (player.superview?.bottom)!
-            
-        }
+        mr_player.frame = CGRectMake(0, 0, SCREEN_BOUNDS.width, SCREEN_BOUNDS.width * (9 / 16))
+        comment.frame   = CGRectMake(0, SCREEN_BOUNDS.width * (9 / 16), SCREEN_BOUNDS.width, SCREEN_BOUNDS.height - SCREEN_BOUNDS.width * (9 / 16))
+        
+        fetchComments(true)
         
     }
 
@@ -102,8 +97,26 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         
     }
+
+    // MARK: - TextFiled Delegate
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+
+        return true
+    }
     
-    // MARK: - Event
+    
+    // MARK: - Override
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+
+}
+
+extension CCPlayerViewController {
+    
+    // MARK: - Private Method
+    
     @objc private func exit() {
         
         if let _ = self.navigationController {
@@ -116,17 +129,44 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
     }
     
+    /**
+     传入一个Bool，如果是true那就从头获取数据，否则使用下一页
+     
+     - parameter flag:	标记
+     */
+    private func fetchComments(flag: Bool) {
+        
+        if flag { page = 0 }
+        
+        CCNetService.fetchCommentList(page, vid: mediaModel.id, success: { [unowned self] (comments) in
+            if flag { self.source.removeAll() }
+            self.source.appendContentsOf(comments)
+            self.comment.reloadData()
+            }) { (msg) in
+                CCToastService.showNetworkFail()
+        }
+    }
+}
+
+
+extension CCPlayerViewController {
+    
     // MARK: - TableView DataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : 10
+        tableView.tableViewDisplay(emptyMessage: "暂时还没有评论哦，来做沙发吧~", count: source.count)
+        if section == 0 {
+            return 1
+        }else {
+            return source.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
+        
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(String(CCMediaInfoCell), forIndexPath: indexPath) as! CCMediaInfoCell
             cell.mediaName.text = "视频名称:\(mediaModel!.name)"
@@ -135,9 +175,10 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
             return cell
         }else {
             let cell = tableView.dequeueReusableCellWithIdentifier("CCCommentCell", forIndexPath: indexPath) as! CCCommentCell
-            cell.username.text = "测试用户名"
-            cell.commentTime.text = "2016-01-31"
-            cell.content.text = "这是测试评论"
+            cell.username.text = source[indexPath.row].user
+            cell.commentTime.text = source[indexPath.row].datetime
+            cell.content.text = source[indexPath.row].content
+            cell.goodCount.text = String(source[indexPath.row].good)
             return cell
         }
         
@@ -151,10 +192,17 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let editView = CCEditView(frame: CGRectMake(0, 0, tableView.frame.width, 40))
-        editView.commentBlock = { textFiled in
-            debugPrint("提交评论")
+        
+        editView.commentBlock = { [unowned self] textFiled in
+            CCNetService.submitComment(self.mediaModel.id, uid: -1, content: textFiled.text!, success: {
+                textFiled.text = ""
+                CCToastService.showMessage("提交成功")
+//                self.fetchComments(true)
+                }, fail: { (msg) in
+                    CCToastService.showMessage("提交失败")
+            })
         }
-
+        
         return editView
     }
     
@@ -181,18 +229,4 @@ class CCPlayerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         UIApplication.sharedApplication().keyWindow?.endEditing(true)
     }
     
-    
-    // MARK: - TextFiled Delegate
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-
-        return true
-    }
-    
-    
-    // MARK: - Override
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-
 }

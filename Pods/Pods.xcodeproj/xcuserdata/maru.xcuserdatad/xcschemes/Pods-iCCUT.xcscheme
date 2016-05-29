@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C3E2AF50A799413261FC5CA1'
+               BlueprintIdentifier = '903FA3A85A400E31695245C0'
                BlueprintName = 'Pods-iCCUT'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_iCCUT.framework'>

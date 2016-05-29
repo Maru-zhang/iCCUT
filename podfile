@@ -3,8 +3,8 @@ platform :ios, '9.0'
 use_frameworks!
 
 def pods
-    #pod 'RealmSwift'
     pod 'Alamofire', '~> 3.0'
+    pod 'JLToast', '~> 1.4'
     pod 'Cartography', '~> 0.6.0'
     pod 'SwiftyJSON', '~> 2.3.2'
     pod 'ObjectMapper', '~> 1.2'

@@ -101,5 +101,15 @@ class NetworkTests: XCTestCase {
         }
     }
     
+    func testFetchCommentList() {
+        
+        CCNetService.fetchCommentList(0, vid: "1", success: { (comments) in
+            XCTAssertNotNil(comments, "not nil")
+            }) { (msg) in
+                
+        }
+    
+    }
+    
 
 }
